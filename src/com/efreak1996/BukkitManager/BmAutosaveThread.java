@@ -81,24 +81,12 @@ public class BmAutosaveThread extends Thread {
 
 			for (int i = 0; i < config.getInt("Autosave.Interval"); i++) {
 				try {
-					if (!run) {
-						/*if (config.Config.getBoolean("General.Debug")) {
-							log.info(String.format("[%s] Graceful quit of AutoSaveThread", plugin.getDescription().getName()));
-						}*/
-					return;
+					if (!run) return;
+					boolean warn = false;
+					for (int w : config.getIntegerList("Autosave.Warntimes")) {
+						if (w != 0 && w + i == config.getInt("Autosave.Interval")) warn = true;
 					}
-					/*boolean warn = false;
-					for (int w : config.Config.getIntegerList("Autosave.Warntimes")) {
-						if (w != 0 && w + i == config.Config.getInt("Autosave.Interval")) {
-							warn = true;
-						}
-					}
-
-					if (warn) {
-						int timeLeft = config.Config.getInt("Autosave.Interval") - i;
-						out.sendBroadcast("Autosave in " + timeLeft);
-						out.sendConsole("Autosave in " + timeLeft);
-					}*/
+					if (warn) io.broadcast(io.translate("Autosave.Warn").replaceAll("%timeleft%", String.valueOf(config.getInt("Autosave.Interval") - i)));
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					if (config.getDebug()) e.printStackTrace();

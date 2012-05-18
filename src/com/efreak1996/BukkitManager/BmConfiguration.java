@@ -67,57 +67,6 @@ public class BmConfiguration{
 			}
 		}
 	}
-
-	/*/**
-	 * 
-	 * Creates a new config
-	 * 
-	 */
-	
-	/*public void CreateConfig() {
-	    config.set("General.Use-Permissions", true);
-	    config.set("General.Use-Vault", true);
-	    config.set("General.Force-SuperPerms", false);
-	    config.set("General.Aliases.Bukkit", false);
-	    config.set("General.Aliases.Plugin", false);
-	    config.set("General.Aliases.Player", false);
-	    config.set("General.Aliases.Language", false);
-	    config.set("General.Debug", false);
-	    config.set("IO.Show-Prefix", true);
-	    config.set("IO.Prefix", "&4[BukkitManager]");
-	    config.set("IO.Error", "&c[Error]");
-	    config.set("IO.Warning", "&e[Warning]");
-	    config.set("IO.Language", "en_US");
-	    config.set("IO.ColoredLogs", true);
-	    config.set("IO.HelpFormat", "&e%cmd% %args%: &f%desc%");
-	    config.set("Database.System", "SQLite");
-	    config.set("Database.File", "database.db");
-	    config.set("Automessage.Enabled", true);
-	    config.set("Automessage.Interval", 120);
-	    config.set("Automessage.Random", false);
-	    config.set("Automessage.Prefix", "[AutoMessage]");
-	    config.set("Autosave.Interval", 900);
-	    config.set("Autosave.Enabled", true);
-	    config.set("Autosave.NoOffline", true);
-	    config.set("Autosave.Taskmode", "Async");
-	    config.set("Autobackup.Interval", 3600);
-	    config.set("Autobackup.Enabled", true);
-	    config.set("Autobackup.NoOffline", true);
-	    config.set("Autobackup.Taskmode", "Async");
-	    updateWorlds();
-	    config.set("Autobackup.Backup.Plugins", true);
-	    config.set("Autobackup.Backup.craftbukkit", true);
-	    /*config.set("Webinterface.Enabled", true);
-	    config.set("Webinterface.Port", 4444);
-	    config.set("Webinterface.UseSwingPort", false);
-	    config.set("Webinterface.ConnectionLogging", true);
-	    config.set("Swing.Enabled", true);
-	    config.set("Swing.Start", "on-load");
-	    config.set("Swing.Remote.Enabled", true);
-	    config.set("Swing.Remote.Port", 4445);
-	    config.set("Swing.Remote.UseWebinterfacePort", false);
-	    config.set("Swing.Remote.ConnectionLogging", true);*/
-	/*}*/
 	
 	/**
 	 * 
@@ -149,6 +98,7 @@ public class BmConfiguration{
 		update("Automessage.Random", false);
 		update("Automessage.Prefix", "[AutoMessage]");
 		update("Autosave.Interval", 900);
+		addAutosaveWarntimes();
 		update("Autosave.Enabled", true);
 		update("Autosave.NoOffline", true);
 		if (update("Autosave.Taskmode", "Async")) {
@@ -160,6 +110,7 @@ public class BmConfiguration{
 			}
 		}		
 		update("Autobackup.Interval", 3600);
+		addAutobackupWarntimes();
 		update("Autobackup.Enabled", true);
 		update("Autobackup.NoOffline", true);
 		if (update("Autobackup.Taskmode", "Async")) {
@@ -201,84 +152,6 @@ public class BmConfiguration{
 			set("Database.Port", null);
 		}
 		
-		/*
-		 * 		if (config.contains("General.Dev-Mode")) devMode = config.getBoolean("General.Dev-Mode");
-		if (!config.contains("General.Aliases.Bukkit")) config.set("General.Aliases.Bukkit", false);
-		if (!config.contains("General.Aliases.Plugin")) config.set("General.Aliases.Plugin", false);
-		if (!config.contains("General.Aliases.Player")) config.set("General.Aliases.Player", false);
-		if (!config.contains("General.Aliases.Language")) config.set("General.Aliases.Language", false);
-		if (!config.contains("General.Use-Permissions")) config.set("General.Use-Permissions", true);
-		if (!config.contains("General.Use-Vault")) config.set("General.Use-Vault", true);
-		if (!config.contains("General.Force-SuperPerms")) config.set("General.Force-SuperPerms", false);
-		if (!config.contains("General.Debug")) config.set("General.Debug", false);
-		if (!config.contains("IO.Show-Prefix")) config.set("IO.Show-Prefix", true);
-		if (!config.contains("IO.Prefix")) config.set("IO.Prefix", "&4[BukkitManager]");
-		if (!config.contains("IO.Error")) config.set("IO.Error", "&c[Error]");
-		if (!config.contains("IO.Warning")) config.set("IO.Warning", "&e[Warning]");
-		if (!config.contains("IO.Language")) config.set("IO.Language", "en_US");		
-		if (!config.contains("IO.ColoredLogs")) config.set("IO.ColoredLogs", true);
-		if (!config.contains("IO.HelpFormat")) config.set("IO.HelpFormat", "&e%cmd% %args%: &f%desc%");
-	    if (!config.contains("Automessage.Enabled")) config.set("Automessage.Enabled", true);
-		if (!config.contains("Automessage.Interval")) config.set("Automessage.Interval", 120);
-		if (!config.contains("Automessage.Random")) config.set("Automessage.Random", false);
-		if (!config.contains("Automessage.Prefix")) config.set("Automessage.Prefix", "[AutoMessage]");
-		if (!config.contains("Autosave.Interval")) config.set("Autosave.Interval", 900);
-		if (!config.contains("Autosave.Enabled")) config.set("Autosave.Enabled", true);
-		if (!config.contains("Autosave.NoOffline")) config.set("Autosave.NoOffline", true);
-		if (!config.contains("Autosave.Taskmode")) config.set("Autosave.Taskmode", "Async");
-		else {
-			if (config.getString("Autosave.Taskmode").equalsIgnoreCase("Sync")) saveMode = "SYNC";
-			else if (config.getString("Autosave.Taskmode").equalsIgnoreCase("Async")) saveMode = "ASYNC";
-			else {
-				config.set("Autosave.Taskmode", "Sync");
-				saveMode = "SYNC";
-			}
-		}		
-		if (!config.contains("Autobackup.Interval")) config.set("Autobackup.Interval", 3600);
-		if (!config.contains("Autobackup.Enabled")) config.set("Autobackup.Enabled", true);
-		if (!config.contains("Autobackup.NoOffline")) config.set("Autobackup.NoOffline", true);
-		if (!config.contains("Autobackup.Taskmode")) config.set("Autobackup.Taskmode", "Async");
-		else {
-			if (config.getString("Autobackup.Taskmode").equalsIgnoreCase("Sync")) backupMode = "SYNC";
-			else if (config.getString("Autobackup.Taskmode").equalsIgnoreCase("Async")) backupMode = "ASYNC";
-			else {
-				config.set("Autobackup.Taskmode", "Sync");
-				backupMode = "SYNC";
-			}
-		}
-		updateWorlds();
-		if (!config.contains("Autobackup.Backup.Plugins")) config.set("Autobackup.Backup.Plugins", true);
-		if (!config.contains("Autobackup.Backup.craftbukkit")) config.set("Autobackup.Backup.craftbukkit", true);
-		if (!config.contains("Database.System")) config.set("Database.System", "SQLite");
-		if (config.getString("Database.System").equalsIgnoreCase("SQLite")) {
-			dbType = "SQLite";
-			if (!config.contains("Database.File")) config.set("Database.File", "database.db");
-			if (config.contains("Database.Host")) config.set("Database.Host", null);
-			if (config.contains("Database.Port")) config.set("Database.Port", null);
-			if (config.contains("Database.Username")) config.set("Database.Username", null);
-			if (config.contains("Database.Password")) config.set("Database.Password", null);
-			if (config.contains("Database.TablePrefix")) config.set("Database.TablePrefix", null);
-			if (config.contains("Database.Name")) config.set("Database.Name", null);
-		}else if (config.getString("Database.System").equalsIgnoreCase("MySQL")) {
-			dbType = "MySQL";
-			if (!config.contains("Database.Host")) config.set("Database.Host", "localhost");
-			if (!config.contains("Database.Port")) config.set("Database.Port", 3306);
-			if (!config.contains("Database.Name")) config.set("Database.Name", "minecraft");
-			if (!config.contains("Database.Username")) config.set("Database.Username", "root");
-			if (!config.contains("Database.Password")) config.set("Database.Password", "");
-			if (config.contains("Database.File")) config.set("Database.File" , null);
-		}else if (config.getString("Database.System").equalsIgnoreCase("H2")) {
-			dbType = "H2";
-			if (!config.contains("Database.Host")) config.set("Database.Host", "localhost");
-			if (!config.contains("Database.Name")) config.set("Database.Name", "minecraft");
-			if (!config.contains("Database.Username")) config.set("Database.Username", "root");
-			if (!config.contains("Database.Password")) config.set("Database.Password", "");
-			if (config.contains("Database.File")) config.set("Database.File" , null);
-			if (config.contains("Database.Port")) config.set("Database.Port", null);
-		}
-		 * 
-		 */
-		
 		if (devMode) {
 			//update("Webinterface.Enabled", false);
 			//update("Webinterface.Port", 4444);
@@ -308,6 +181,18 @@ public class BmConfiguration{
 		for (int i = 0; i < worlds.size(); i++) update("Autobackup.Backup.Worlds." + worlds.get(i).getName(), true);
 	}
 
+	private void addAutosaveWarntimes() {
+		List<Integer> warntimes = new ArrayList<Integer>();
+		warntimes.add(60);
+		update("Autosave.Warntimes", warntimes);
+	}
+	
+	private void addAutobackupWarntimes() {
+		List<Integer> warntimes = new ArrayList<Integer>();
+		warntimes.add(60);
+		update("Autobackup.Warntimes", warntimes);
+	}
+	
 	/**
 	 * 
 	 * Return whether Bukkimanager is in Debug Mode or not
@@ -320,6 +205,7 @@ public class BmConfiguration{
 	public boolean getDebug() {return config.getBoolean("General.Debug", false);}
 	
 	public String getDatabaseType() {return dbType;}
+	
 	public String getBackupMode() {return backupMode;}
 	public String getSaveMode() {return saveMode;}
 	
@@ -335,6 +221,8 @@ public class BmConfiguration{
 	public List<?> getList(String path) {return config.getList(path);}
 	public List<?> getList(String path, List<?> def) {return config.getList(path, def);}
 	
+	public List<Integer> getIntegerList(String path) {return config.getIntegerList(path);}
+
 	public Object get(String path) {return config.get(path);}
 	public Object get(String path, Object def) {return config.get(path, def);}
 	

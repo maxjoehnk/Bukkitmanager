@@ -49,6 +49,7 @@ public class English extends Language {
 			set("Autobackup.Compressing.Plugins", "&2Compressing plugins...");
 			set("Autobackup.Compressing.World", "&2Compressing world: %world%...");
 			set("Autobackup.Compressing.Bukkit", "&2Compressing %jar%...");
+			set("Autobackup.Warn", "Autobackup in %timeleft% sec.");
 			
 			set("Autosave.Saving.Players", "&2Saving Players...");
 			set("Autosave.Saved.Players", "&aSaved Players!");
@@ -56,6 +57,7 @@ public class English extends Language {
 			set("Autosave.Saved.Worlds", "&aSaved %worlds% Worlds!");
 			set("Autosave.SaveInProgress", "&eMultiple concurrent saves attempted! Autosave interval is likely too short!");
 			set("Autosave.NoPlayer", "&eSkipping save, no players online.");
+			set("Autosave.Warn", "Autosave in %timeleft% sec.");
 			
 			set("Downloader.Downloading", "&2Downloading %file% (%filesize%)");
 			set("Downloader.Downloaded", "&aDownload of %file% finished.");

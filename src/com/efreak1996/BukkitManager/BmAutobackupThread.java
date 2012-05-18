@@ -301,18 +301,11 @@ public class BmAutobackupThread extends Thread {
 			for (int i = 0; i < config.getInt("Autobackup.Interval"); i++) {
 				try {
 					if (!run) return;
-					/*boolean warn = false;
-					for (int w : config.Config.getIntegerList("Autobackup.Warntimes")) {
-						if (w != 0 && w + i == config.Config.getInt("Autobackup.Interval")) {
-							warn = true;
-						}
+					boolean warn = false;
+					for (int w : config.getIntegerList("Autobackup.Warntimes")) {
+						if (w != 0 && w + i == config.getInt("Autobackup.Interval")) warn = true;
 					}
-
-					if (warn) {
-						int timeLeft = config.Config.getInt("Autobackup.Interval") - i;
-						out.sendBroadcast("Autobackup in " + timeLeft);
-						out.sendConsole("Autobackup in " + timeLeft);
-					}*/
+					if (warn) io.broadcast(io.translate("Autobackup.Warn").replaceAll("%timeleft%", String.valueOf(config.getInt("Autobackup.Interval") - i)));
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					if (config.getDebug()) e.printStackTrace();
