@@ -1,0 +1,568 @@
+name: BukkitManager
+main: com.efreak1996.BukkitManager.BmPlugin
+version: 1.6
+website: http://dev.bukkit.org/server-mods/bukkitmanager
+author: efreak1996
+prefix: BukkitManager
+soft-depend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, zPermissions, DroxPerms, GroupManager]
+description: >
+             A plugin to update and manage bukkit and its plugins
+commands:
+  bm:
+    description: The Main Command of Bukkitmanager
+    usage: >
+           Use /bm help for more Help
+permissions:
+    bm.*:
+        description: Gives access to all Bukkitmanager commands
+        children:
+            bm.see: true
+            bm.unkickable: true
+            bm.autobackup.*: true
+            bm.automessage.*: true
+            bm.autosave.*: true
+            bm.bukkit.*: true
+            bm.help: true
+            bm.language.*: true
+            bm.player.*: true
+            bm.plugin.*: true
+            bm.password.*: true
+        default: op
+    bm.see:
+        description: Allows you to see hidden Player
+        default: op
+    bm.unkickable:
+        description: Makes you unkickable
+        default: op
+    bm.autobackup.*:
+        description: Gives acces to all /bm autobackup commands
+        children:
+            bm.autobackup.backup: true
+            bm.autobackup.interval: true
+            bm.autobackup.restart: true
+            bm.autobackup.start: true
+            bm.autobackup.stop: true
+        default: op
+    bm.autobackup.backup:    
+        description: Allows to perform a Server backup
+        default: op
+    bm.autobackup.interval:    
+        description: Allows to set/get the Autobackup Interval
+        children:
+            bm.autobackup.interval.get: true
+            bm.autobackup.interval.set: true
+        default: op
+    bm.autobackup.interval.get:    
+        description: Allows to get the Autobackup Interval
+        default: op
+    bm.autobackup.interval.set:    
+        description: Allows to set the Autobackup Interval
+        default: op
+    bm.autobackup.restart:    
+        description: Allows to restart the Autobackup Thread
+        default: op
+    bm.autobackup.start:    
+        description: Allows to start the Autobackup Thread
+        default: op
+    bm.autobackup.stop:    
+        description: Allows to stop the Autobackup Thread
+        default: op
+    bm.automessage.*:
+        description: Gives acces to all /bm automessage commands
+        children:
+            bm.automessage: true
+            bm.automessage.add: true
+            bm.automessage.get: true
+            bm.automessage.interval: true
+            bm.automessage.list: true
+            bm.automessage.remove: true
+            bm.automessage.restart: true
+            bm.automessage.send: true
+            bm.automessage.start: true
+            bm.automessage.stop: true
+        default: op
+    bm.automessage:
+        description: Allows to receive Automessages
+        default: true
+    bm.automessage.add:    
+        description: Allows to add a Automessage
+        default: op
+    bm.automessage.get:    
+        description: Allows to get a Automessage
+        default: op
+    bm.automessage.interval:    
+        description: Allows to set/get the Automessage Interval
+        children:
+            bm.automessage.interval.get: true
+            bm.automessage.interval.set: true
+        default: op
+    bm.automessage.interval.get:    
+        description: Allows to get the Automessage Interval
+        default: op
+    bm.automessage.interval.set:    
+        description: Allows to set the Automessage Interval
+        default: op
+    bm.automessage.list:    
+        description: Allows to list all Automessages
+        default: op
+    bm.automessage.remove:    
+        description: Allows to remove a Automessage
+        default: op
+    bm.automessage.restart:    
+        description: Allows to restart the Automessage Thread
+        default: op
+    bm.automessage.send:    
+        description: Allows to send a Automessage
+        default: op
+    bm.automessage.start:    
+        description: Allows to start the Automessage Thread
+        default: op
+    bm.automessage.stop:    
+        description: Allows to stop the Automessage Thread
+        default: op
+    bm.autosave.*:
+        description: Gives acces to all /bm autosave commands
+        children:
+            bm.autosave.interval: true
+            bm.autosave.restart: true
+            bm.autosave.save: true
+            bm.autosave.start: true
+            bm.autosave.stop: true
+        default: op
+    bm.autosave.interval:    
+        description: Allows to set/get the Autosave Interval
+        children:
+            bm.autosave.interval.get: true
+            bm.autosave.interval.set: true
+        default: op
+    bm.autosave.interval.get:    
+        description: Allows to get the Autosave Interval
+        default: op
+    bm.autosave.interval.set:    
+        description: Allows to set the Autosave Interval
+        default: op
+    bm.autosave.restart:    
+        description: Allows to restart the Autosave Thread
+        default: op
+    bm.autosave.save:    
+        description: Allows to perform a Serversave
+        default: op
+    bm.autosave.start:    
+        description: Allows to start the Autosave Thread
+        default: op
+    bm.autosave.stop:    
+        description: Allows to stop the Autosave Thread
+        default: op
+    bm.bukkit.*:
+        description: Gives acces to all /bm bukkit commands
+        children:
+            bm.bukkit.config: true
+            bm.bukkit.info: true
+        default: op
+    bm.bukkit.info:    
+        description: Allows to view Server infos
+        default: op
+    bm.bukkit.config:
+        description: Allows to edit the Serverconfig
+        children:
+            bm.bukkit.config.get: true
+            bm.bukkit.config.set: true
+        default: op
+    bm.bukkit.config.get:
+        description: Allows to get Values from the server.properties
+        default: op
+    bm.bukkit.config.set:
+        description: Allows to set Values from the server.properties
+        default: op
+    bm.help:
+        description: Allows to view the Help
+        default: op
+    bm.language.*:
+        description: Allows to set/get the language
+        children:
+            bm.language.get: true
+            bm.language.set: true
+        default: op
+    bm.language.get:
+        description: Allows to get the Language
+        default: true
+    bm.language.set:
+        description: Allows to set the Language
+        default: op
+    bm.player.*:
+        description: Gives access to all /bm player commands
+        children:
+            bm.player.chat: true
+            bm.player.cmd: true
+            bm.player.displayname.*: true
+            bm.player.exp.*: true
+            bm.player.firstseen: true
+            bm.player.food.*: true
+            bm.player.gamemode: true
+            bm.player.health.*: true
+            bm.player.hide: true
+            bm.player.lastseen: true
+            bm.player.level.*: true
+            bm.player.listname.*: true
+            bm.player.load: true
+            bm.player.save: true
+            bm.player.show: true
+            bm.player.time.*: true
+        default: op
+    bm.player.chat:
+        description: Allows to perform the /bm player chat (player) (msg) command
+        default: op
+    bm.player.cmd:
+        description: Allows to perform the /bm player cmd (player) (cmd) command
+        default: op
+    bm.player.displayname.*:
+        description: Allows to use the /bm player displayname Commands
+        children:
+            bm.player.displayname.get.your: true
+            bm.player.displayname.get.other: true
+            bm.player.displayname.set.your: true
+            bm.player.displayname.set.other: true
+            bm.player.displayname.reset.your: true
+            bm.player.displayname.reset.other: true
+        default: op
+    bm.player.displayname.get.your:
+        description: Allows to get your Displayname
+        default: true
+    bm.player.displayname.get.other:
+        description: Allows to get a Player Displayname
+        default: true
+    bm.player.displayname.set.your:
+        description: Allows to set your Displayname
+        default: op
+    bm.player.displayname.set.other:
+        description: Allows to set a Player Displayname
+        default: op
+    bm.player.displayname.reset.your:
+        description: Allows to reset your Displayname
+        default: op
+    bm.player.displayname.reset.other:
+        description: Allows to reset a Player Displayname
+        default: op
+    bm.player.exp.*:
+        description: Allows you to use the /bm player exp Commands
+        children:
+            bm.player.exp.get.your: true
+            bm.player.exp.get.other: true
+            bm.player.exp.set.your: true
+            bm.player.exp.set.other: true
+            bm.player.exp.add.your: true
+            bm.player.exp.add.other: true
+        default: op
+    bm.player.exp.get.your:
+        description: Allows to get your Exp Level
+        default: true
+    bm.player.exp.get.other:
+        description: Allows to get a Players Exp Level
+        default: true
+    bm.player.exp.set.your:
+        description: Allows to set your Exp Level
+        default: op
+    bm.player.exp.set.other:
+        description: Allows to set a Players Exp Level
+        default: op
+    bm.player.exp.add.your:
+        description: Allows to add Exp to your Exp Level
+        default: op
+    bm.player.exp.add.other:
+        description: Allows to add Exp to a Players Exp Level
+        default: op
+    bm.player.firstseen:
+        description: Allows to get the Firstseen Date
+        children:
+            bm.player.firstseen.your: true
+            bm.player.firstseen.other: true
+        default: op
+    bm.player.firstseen.your:
+        description: Allows to get your Firstseen Date
+        default: op
+    bm.player.firstseen.other:
+        description: Allows to get the Firstseen Date of a Player
+        default: op
+    bm.player.food.*:
+        description: Allows you to use the /bm player food Commands
+        children:
+            bm.player.food.get.your: true
+            bm.player.food.get.other: true
+            bm.player.food.set.your: true
+            bm.player.food.set.other: true
+            bm.player.food.add.your: true
+            bm.player.food.add.other: true
+            bm.player.food.remove.your: true
+            bm.player.food.remove.other: true
+        default: op
+    bm.player.food.get.your:
+        description: Allows to get your Food Level
+        default: true
+    bm.player.food.get.other:
+        description: Allows to get a Players Food Level
+        default: true
+    bm.player.food.set.your:
+        description: Allows to set your Food Level
+        default: op
+    bm.player.food.set.other:
+        description: Allows to set a Players Food Level
+        default: op
+    bm.player.food.add.your:
+        description: Allows to add Food to your Food Level
+        default: op
+    bm.player.food.add.other:
+        description: Allows to add Food to a Players Food Level
+        default: op
+    bm.player.food.remove.your:
+        description: Allows to remove Food from your Food Level
+        default: op
+    bm.player.food.remove.other:
+        description: Allows to remove Food from a Players Food Level
+        default: op
+    bm.player.gamemode:
+        description: Allows to set the Gamemode
+        children:
+            bm.player.gamemode.your: true
+            bm.player.gamemode.other: true
+        default: op
+    bm.player.gamemode.your:
+        description: Allows to set your Gamemode
+        default: op
+    bm.player.gamemode.other:
+        description: Allows to set the Gamemode of a Player
+        default: op
+    bm.player.health.*:
+        description: Allows you to use the /bm player health Commands
+        children:
+            bm.player.health.get.your: true
+            bm.player.health.get.other: true
+            bm.player.health.set.your: true
+            bm.player.health.set.other: true
+            bm.player.health.add.your: true
+            bm.player.health.add.other: true
+            bm.player.health.remove.your: true
+            bm.player.health.remove.other: true
+        default: op
+    bm.player.health.get.your:
+        description: Allows to get your Health
+        default: true
+    bm.player.health.get.other:
+        description: Allows to get a Players Health
+        default: true
+    bm.player.health.set.your:
+        description: Allows to set your Health
+        default: op
+    bm.player.health.set.other:
+        description: Allows to set a Players Health
+        default: op
+    bm.player.health.add.your:
+        description: Allows to add Health to your Health
+        default: op
+    bm.player.health.add.other:
+        description: Allows to add Health to a Players Health
+        default: op
+    bm.player.health.remove.your:
+        description: Allows to remove Health from your Health
+        default: op
+    bm.player.health.remove.other:
+        description: Allows to remove Health from a Players Health
+        default: op
+    bm.player.hide:
+        description: Allows to hide a Player
+        children:
+            bm.player.hide.your: true
+            bm.player.hide.other: true
+        default: op
+    bm.player.hide.your:
+        description: Allows to hide you
+        default: op
+    bm.player.hide.other:
+        description: Allows to hide a Player
+        default: op
+    bm.player.lastseen:
+        description: Allows to get the Lastseen Date
+        children:
+            bm.player.lastseen.your: true
+            bm.player.lastseen.other: true
+        default: op
+    bm.player.lastseen.your:
+        description: Allows to get your Lastseen Date
+        default: op
+    bm.player.lastseen.other:
+        description: Allows to get the Lastseen Date of a Player
+        default: op
+    bm.player.level.*:
+        description: Allows you to use the /bm player level Commands
+        children:
+            bm.player.level.get.your: true
+            bm.player.level.get.other: true
+            bm.player.level.set.your: true
+            bm.player.level.set.other: true
+        default: op
+    bm.player.level.get.your:
+        description: Allows to get your Level
+        default: true
+    bm.player.level.get.other:
+        description: Allows to get a Players Level
+        default: true
+    bm.player.level.set.your:
+        description: Allows to set your Level
+        default: op
+    bm.player.level.set.other:
+        description: Allows to set a Players Level
+        default: op
+    bm.player.listname.*:
+        description: Allows to use the /bm player listname Commands
+        children:
+            bm.player.listname.get.your: true
+            bm.player.listname.get.other: true
+            bm.player.listname.set.your: true
+            bm.player.listname.set.other: true
+            bm.player.listname.reset.your: true
+            bm.player.listname.reset.other: true
+        default: op
+    bm.player.listname.get.your:
+        description: Allows to get your Listname
+        default: true
+    bm.player.listname.get.other:
+        description: Allows to get a Player Listname
+        default: true
+    bm.player.listname.set.your:
+        description: Allows to set your Listname
+        default: op
+    bm.player.listname.set.other:
+        description: Allows to set a Player Listname
+        default: op
+    bm.player.listname.reset.your:
+        description: Allows to reset your Listname
+        default: op
+    bm.player.listname.reset.other:
+        description: Allows to reset a Player Listname
+        default: op
+    bm.player.load:
+        description: Allows to load a Players .dat File
+        children:
+            bm.player.load.your: true
+            bm.player.load.other: true
+        default: op
+    bm.player.load.your:
+        description: Allows to load your .dat File
+        default: op
+    bm.player.load.other:
+        description: Allows to load a Players .dat File
+        default: op
+    bm.player.save:
+        description: Allows to save a Players .dat File
+        children:
+            bm.player.save.your: true
+            bm.player.save.other: true
+        default: op
+    bm.player.save.your:
+        description: Allows to save your .dat File
+        default: op
+    bm.player.save.other:
+        description: Allows to save a Players .dat File
+        default: op
+    bm.player.show:
+        description: Allows to show a Player
+        children:
+            bm.player.show.your: true
+            bm.player.show.other: true
+        default: op
+    bm.player.show.your:
+        description: Allows to show you
+        default: op
+    bm.player.show.other:
+        description: Allows to show a Player
+        default: op
+    bm.player.time.*:
+        description: Allows to use the /bm player time Commands
+        children:
+            bm.player.time.get.your: true
+            bm.player.time.get.other: true
+            bm.player.time.set.your: true
+            bm.player.time.set.other: true
+            bm.player.time.reset.your: true
+            bm.player.time.reset.other: true
+        default: op
+    bm.player.time.get.your:
+        description: Allows to get your Time
+        default: true
+    bm.player.time.get.other:
+        description: Allows to get a Player Time
+        default: true
+    bm.player.time.set.your:
+        description: Allows to set your Time
+        default: op
+    bm.player.time.set.other:
+        description: Allows to set a Player Time
+        default: op
+    bm.player.time.reset.your:
+        description: Allows to reset your Time
+        default: op
+    bm.player.time.reset.other:
+        description: Allows to reset a Player Time
+        default: op
+    bm.plugin.*:
+        description: Gives access to all /bm plugin commands
+        children:
+            bm.plugin.config: true
+            bm.plugin.disable: true
+            bm.plugin.enable: true
+            bm.plugin.info: true
+            bm.plugin.install: true
+            bm.plugin.list: true
+            bm.plugin.restart: true
+            bm.plugin.update: true
+        default: op
+    bm.plugin.config:
+        description: Allows to edit Plugin Configs
+        children:
+            bm.plugin.config.get: true
+            bm.plugin.config.set: true
+        default: op
+    bm.plugin.config.get:
+        description: Allows to get Values from Plugin Configs
+        default: op
+    bm.plugin.config.set:
+        description: Allows to set Values from Plugin Configs
+        default: op
+    bm.plugin.disable:
+        description: Allows to disable Plugins
+        default: op
+    bm.plugin.enable:
+        description: Allows to enable Plugins
+        default: op
+    bm.plugin.info:
+        description: Allows to view Infos about Plugins
+        default: op
+    bm.plugin.install:
+        description: Allows to install a Plugin
+        default: op
+    bm.plugin.list:
+        description: Allows to view a List of all Plugins
+        children:
+            bm.plugin.list.normal: true
+            bm.plugin.list.detail: true
+        default: op
+    bm.plugin.list.normal:
+        description: Allows to view a Normal Plugin List
+        default: op
+    bm.plugin.list.detail:
+        description: Allows to view a Detailed Plugin List
+        default: op
+    bm.plugin.restart:
+        description: Allows to restart Plugins
+        default: op
+    bm.plugin.update:
+        description: Allows to update a Plugin
+        default: op
+    bm.password.*:
+        description: Gives you access to all /bm password Commands
+        children:
+            bm.password.get.your: true
+            bm.password.get.other: true
+            bm.password.set.your: true
+            bm.password.set.other: true
+        default: op
+        

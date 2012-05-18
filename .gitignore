@@ -1,0 +1,23 @@
+# Eclipse stuff
+/.classpath
+/.project
+/.settings
+
+# Build stuff
+/bin
+
+# Librarys
+/lib
+
+# Unfinished Stuff
+/src/img
+/src/com/efreak1996/BukkitManager/Addon
+/src/com/efreak1996/BukkitManager/SQL
+/src/com/efreak1996/BukkitManager/Webinterface
+/src/com/efreak1996/BukkitManager/Webserver
+/src/com/efreak1996/BukkitManager/lang
+/src/com/efreak1996/BukkitManager/Spout
+/src/com/efreak1996/BukkitManager/Bukkitmanager.java
+/src/com/efreak1996/BukkitManager/BmTranslatorOld.java
+/src/com/efreak1996/BukkitManager/Listener/Spout
+/src/com/efreak1996/BukkitManager/Swing
