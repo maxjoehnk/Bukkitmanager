@@ -99,6 +99,7 @@ public class BmConfiguration{
 		update("Automessage.Prefix", "[AutoMessage]");
 		update("Autosave.Interval", 900);
 		addAutosaveWarntimes();
+		update("Autosave.Notification", true);
 		update("Autosave.Enabled", true);
 		update("Autosave.NoOffline", true);
 		if (update("Autosave.Taskmode", "Async")) {
@@ -111,6 +112,7 @@ public class BmConfiguration{
 		}		
 		update("Autobackup.Interval", 3600);
 		addAutobackupWarntimes();
+		update("Autobackup.Notification", true);
 		update("Autobackup.Enabled", true);
 		update("Autobackup.NoOffline", true);
 		if (update("Autobackup.Taskmode", "Async")) {

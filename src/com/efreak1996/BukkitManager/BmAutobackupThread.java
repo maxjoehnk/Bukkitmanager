@@ -57,6 +57,7 @@ public class BmAutobackupThread extends Thread {
 				return;
 			}
 		}
+		if (config.getBoolean("Autobackup.Notification")) io.broadcast(io.translate("Autobackup.Notification.Start"));
 		backupInProgress = true;
 		saveThread.performSave();
 		try {
@@ -76,6 +77,7 @@ public class BmAutobackupThread extends Thread {
 		}
 		lastBackup = new Date();
 		backupInProgress = false;
+		if (config.getBoolean("Autobackup.Notification")) io.broadcast(io.translate("Autobackup.Notification.Finish"));
 	}	
 
 	private void compress() {
