@@ -35,6 +35,7 @@ public class BmPlugin extends JavaPlugin {
 	
 	@Override
 	public void onLoad() {
+		com.jidesoft.utils.Lm.verifyLicense("Max Joehnk", "Bukkitmanager", "YrreBQlj.lyFAbpwcAUamoLF3Moy0zN");
 		plugin = this;
 	}
 
