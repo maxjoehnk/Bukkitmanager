@@ -45,8 +45,6 @@ public class BmConfiguration{
 			io.sendConsole("Creating config.yml...", true);
 			try {
 				configFile.createNewFile();
-				//CreateConfig();
-				//config.save(configFile);
 				UpdateConfig();
 		        io.sendConsole("config.yml succesfully created!", true);
 				config.load(configFile);
@@ -160,8 +158,8 @@ public class BmConfiguration{
 			//update("Webinterface.UseSwingPort", false);
 			//update("Webinterface.ConnectionLogging", true);
 			update("Swing.Enabled", false);
-			update("Swing.Start", "on-load");
-			update("Swing.Remote.Enabled", false);
+			//update("Swing.Start", "on-load");
+			//update("Swing.Remote.Enabled", false);
 			List<Integer> portList = new ArrayList<Integer>();
 			portList.add(4445);
 			portList.add(4447);
@@ -171,9 +169,9 @@ public class BmConfiguration{
 			portList.add(4455);
 			portList.add(4457);
 			portList.add(4459);
-			update("Swing.Remote.Ports", portList);
+			//update("Swing.Remote.Ports", portList);
 			//update("Swing.Remote.UseWebinterfacePort", false);
-			update("Swing.Remote.ConnectionLogging", true);
+			//update("Swing.Remote.ConnectionLogging", true);
 		}
 		config.save(configFile);
 	}

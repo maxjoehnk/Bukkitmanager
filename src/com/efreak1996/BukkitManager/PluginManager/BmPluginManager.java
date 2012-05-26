@@ -3,7 +3,6 @@ package com.efreak1996.BukkitManager.PluginManager;
 import java.io.File;
 import java.util.Set;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -17,38 +16,38 @@ import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.UnknownDependencyException;
 
-public class BmPluginManager implements PluginManager {
+import com.efreak1996.BukkitManager.BmPlugin;
 
-	private PluginManager pm = Bukkit.getPluginManager();
+public class BmPluginManager implements PluginManager {
 	
 	@Override
 	public void addPermission(Permission arg0) {
-		pm.addPermission(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().addPermission(arg0);
 	}
 
 	@Override
 	public void callEvent(Event arg0) {
-		pm.callEvent(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().callEvent(arg0);
 	}
 
 	@Override
 	public void clearPlugins() {
-		pm.clearPlugins();
+		BmPlugin.getPlugin().getServer().getPluginManager().clearPlugins();
 	}
 
 	@Override
 	public void disablePlugin(Plugin arg0) {
-		pm.disablePlugin(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().disablePlugin(arg0);
 	}
 
 	@Override
 	public void disablePlugins() {
-		pm.disablePlugins();
+		BmPlugin.getPlugin().getServer().getPluginManager().disablePlugins();
 	}
 
 	@Override
 	public void enablePlugin(Plugin arg0) {
-		pm.enablePlugin(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().enablePlugin(arg0);
 	}
 
 	public void enablePlugins(Plugin[] plugins) {
@@ -57,117 +56,117 @@ public class BmPluginManager implements PluginManager {
 	
 	@Override
 	public Set<Permissible> getDefaultPermSubscriptions(boolean arg0) {
-		return pm.getDefaultPermSubscriptions(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().getDefaultPermSubscriptions(arg0);
 	}
 
 	@Override
 	public Set<Permission> getDefaultPermissions(boolean arg0) {
-		return pm.getDefaultPermissions(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().getDefaultPermissions(arg0);
 	}
 
 	@Override
 	public Permission getPermission(String arg0) {
-		return pm.getPermission(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().getPermission(arg0);
 	}
 
 	@Override
 	public Set<Permissible> getPermissionSubscriptions(String arg0) {
-		return pm.getPermissionSubscriptions(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().getPermissionSubscriptions(arg0);
 	}
 
 	@Override
 	public Set<Permission> getPermissions() {
-		return pm.getPermissions();
+		return BmPlugin.getPlugin().getServer().getPluginManager().getPermissions();
 	}
 
 	@Override
 	public Plugin getPlugin(String arg0) {
-		return pm.getPlugin(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().getPlugin(arg0);
 	}
 
 	@Override
 	public Plugin[] getPlugins() {
-		return pm.getPlugins();
+		return BmPlugin.getPlugin().getServer().getPluginManager().getPlugins();
 	}
 
 	@Override
 	public boolean isPluginEnabled(String arg0) {
-		return pm.isPluginEnabled(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().isPluginEnabled(arg0);
 	}
 
 	@Override
 	public boolean isPluginEnabled(Plugin arg0) {
-		return pm.isPluginEnabled(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().isPluginEnabled(arg0);
 	}
 
 	@Override
 	public Plugin loadPlugin(File arg0) throws InvalidPluginException, InvalidDescriptionException, UnknownDependencyException {
-		return pm.loadPlugin(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().loadPlugin(arg0);
 	}
 
 	@Override
 	public Plugin[] loadPlugins(File arg0) {
-		return pm.loadPlugins(arg0);
+		return BmPlugin.getPlugin().getServer().getPluginManager().loadPlugins(arg0);
 	}
 
 	@Override
 	public void recalculatePermissionDefaults(Permission arg0) {
-		pm.recalculatePermissionDefaults(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().recalculatePermissionDefaults(arg0);
 	}
 
 	@Override
 	public void registerEvent(Class<? extends Event> arg0, Listener arg1, EventPriority arg2, EventExecutor arg3, Plugin arg4) {
-		pm.registerEvent(arg0, arg1, arg2, arg3, arg4);
+		BmPlugin.getPlugin().getServer().getPluginManager().registerEvent(arg0, arg1, arg2, arg3, arg4);
 	}
 
 	@Override
 	public void registerEvent(Class<? extends Event> arg0, Listener arg1, EventPriority arg2, EventExecutor arg3, Plugin arg4, boolean arg5) {
-		pm.registerEvent(arg0, arg1, arg2, arg3, arg4, arg5);		
+		BmPlugin.getPlugin().getServer().getPluginManager().registerEvent(arg0, arg1, arg2, arg3, arg4, arg5);		
 	}
 
 	@Override
 	public void registerEvents(Listener arg0, Plugin arg1) {
-		pm.registerEvents(arg0, arg1);
+		BmPlugin.getPlugin().getServer().getPluginManager().registerEvents(arg0, arg1);
 	}
 
 	@Override
 	public void registerInterface(Class<? extends PluginLoader> arg0) throws IllegalArgumentException {
-		pm.registerInterface(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().registerInterface(arg0);
 	}
 
 	@Override
 	public void removePermission(Permission arg0) {
-		pm.removePermission(arg0);
+		BmPlugin.getPlugin().getServer().getPluginManager().removePermission(arg0);
 	}
 
 	@Override
 	public void removePermission(String arg0) {
-		pm.removePermission(arg0);		
+		BmPlugin.getPlugin().getServer().getPluginManager().removePermission(arg0);		
 	}
 
 	@Override
 	public void subscribeToDefaultPerms(boolean arg0, Permissible arg1) {
-		pm.subscribeToDefaultPerms(arg0, arg1);
+		BmPlugin.getPlugin().getServer().getPluginManager().subscribeToDefaultPerms(arg0, arg1);
 	}
 
 	@Override
 	public void subscribeToPermission(String arg0, Permissible arg1) {
-		pm.subscribeToPermission(arg0, arg1);
+		BmPlugin.getPlugin().getServer().getPluginManager().subscribeToPermission(arg0, arg1);
 	}
 
 	@Override
 	public void unsubscribeFromDefaultPerms(boolean arg0, Permissible arg1) {
-		pm.unsubscribeFromDefaultPerms(arg0, arg1);
+		BmPlugin.getPlugin().getServer().getPluginManager().unsubscribeFromDefaultPerms(arg0, arg1);
 	}
 
 	@Override
 	public void unsubscribeFromPermission(String arg0, Permissible arg1) {
-		pm.unsubscribeFromPermission(arg0, arg1);
+		BmPlugin.getPlugin().getServer().getPluginManager().unsubscribeFromPermission(arg0, arg1);
 	}
 
 	@Override
 	public boolean useTimings() {
-		return pm.useTimings();
+		return BmPlugin.getPlugin().getServer().getPluginManager().useTimings();
 	}
 	
 	public void updatePluginDB() {
