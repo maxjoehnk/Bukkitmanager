@@ -57,9 +57,7 @@ public class BmLoggerConfiguration {
 		addContent("Block", "SignChange");
 		//Enchantment Events
 		addContent("Enchantment", "EnchantItem");
-		addContent("Enchantment", "PrepareItemEnchant");
-		//Entity Events
-		
+		addContent("Enchantment", "PrepareItemEnchant");	
 	}
 	
 	private void addContent(String eventType, String event) {

@@ -1,7 +1,5 @@
 package com.efreak1996.BukkitManager;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -9,7 +7,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.util.HashMap;
 
 /**
  * 
@@ -177,6 +174,9 @@ public class BmDatabase {
 		dbStatement.executeUpdate("CREATE TABLE IF NOT EXISTS Log_EntityBlockFormEvent (time String NOT NULL, block Block NOT NULL, cancelled Boolean NOT NULL, newState BlockState NOT NULL, entity Entity NOT NULL);");
 		dbStatement.executeUpdate("CREATE TABLE IF NOT EXISTS Log_LeavesDecayEvent (time String NOT NULL, block Block NOT NULL, cancelled Boolean NOT NULL);");
 		dbStatement.executeUpdate("CREATE TABLE IF NOT EXISTS Log_SignChangeEvent (time String NOT NULL, block Block NOT NULL, cancelled Boolean NOT NULL, lines String[] NOT NULL, player Player NOT NULL);");
+		//All Logging Tables for the Enchantment Events
+		dbStatement.executeUpdate("CREATE TABLE IF NOT EXISTS Log_EnchantItemEvent (time String NOT NULL, enchantBlock Block NOT NULL, cancelled Boolean NOT NULL, enchanter Player NOT NULL, enchantmentsToAdd Map NOT NULL, expLevelCost Integer NOT NULL, inventory Inventory NOT NULL, item ItemStack NOT NULL, view InventoryView NOT NULL, viewers List NOT NULL, button Integer NOT NULL);");
+		dbStatement.executeUpdate("CREATE TABLE IF NOT EXISTS Log_PrepareItemEnchantEvent (time String NOT NULL, enchantBlock Block NOT NULL, cancelled Boolean NOT NULL, enchanter Player NOT NULL, enchantmentBonus Integer NOT NULL, expLevelCostsOffered Integer[] NOT NULL, inventory Inventory NOT NULL, item ItemStack NOT NULL, view InventoryView NOT NULL, viewers List NOT NULL);");
 	}
 	
 	/*
@@ -574,15 +574,10 @@ public class BmDatabase {
 		return false;
 	}
 
-	public void logBlock(HashMap<String, Object> values) {
-		String EventName = (String) values.get("EventName");
-		java.util.Date date = new java.util.Date();
+	public void log(String table, String columns, String values) {
 		try {
-			if (EventName.equalsIgnoreCase("BlockBreakEvent")) dbStatement.executeUpdate("INSERT INTO Log_BlockBreakEvent (time, block, cancelled, player) VALUES ('" + date.toGMTString() +  "', '" + (Block) values.get("Block") + "', '" + (Boolean) values.get("Cancelled") + "', '" + (Player) values.get("Player") + "');");
-			else if (EventName.equalsIgnoreCase("BlockBurnEvent")) dbStatement.executeUpdate("INSERT INTO Log_BlockBurnEvent (time, block, cancelled) VALUES ('" + date.toGMTString() +  "', '" + (Block) values.get("Block") + "', '" + (Boolean) values.get("Cancelled") + "');");
-			else if (EventName.equalsIgnoreCase("BlockCanBuildEvent")) dbStatement.executeUpdate("INSERT INTO Log_BlockCanBuildEvent (time, block, buildable, material, materialId) VALUES ('" + date.toGMTString() +  "', '" + (Block) values.get("Block") + "', '" + (Boolean) values.get("Buildable") + "', '" + (Material) values.get("Material") + "', '" + (Integer) values.get("MaterialId") + "');");
-			else if (EventName.equalsIgnoreCase("BlockDamageEvent")) dbStatement.executeUpdate("INSERT INTO Log_BlockDamageEvent (time, block, cancelled, player, instaBreak, itemInHand) VALUES ('" + date.toGMTString() +  "', '" + (Block) values.get("Block") + "', '" + (Boolean) values.get("Cancelled") + "');");
-		}catch (SQLException e) {
+			dbStatement.executeUpdate("INSERT INTO " + table + " (" + columns + ") VALUES (" + values + ");");
+		} catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
 		}
 	}

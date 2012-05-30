@@ -1,7 +1,6 @@
 package com.efreak1996.BukkitManager.Logger.Block;
 
 import java.io.File;
-import java.util.HashMap;
 
 import com.efreak1996.BukkitManager.Logger.BmHandler;
 
@@ -11,9 +10,5 @@ public abstract class BmBlockHandler extends BmHandler {
 		super(arg2Logger, arg3FileLogging, arg4DatabaseLogging);
 		eventType = "Block";
 		setupFile(arg1File);
-	}
-	
-	public void logDb(HashMap<String, Object> values) {
-		db.logBlock(values);
 	}
 }
