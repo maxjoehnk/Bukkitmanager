@@ -1,6 +1,6 @@
 name: BukkitManager
 main: com.efreak1996.BukkitManager.BmPlugin
-version: 1.6-dev2
+version: 1.6
 website: http://dev.bukkit.org/server-mods/bukkitmanager
 author: efreak1996
 prefix: BukkitManager
@@ -96,10 +96,10 @@ permissions:
             bm.automessage.interval.get: true
             bm.automessage.interval.set: true
         default: op
-    bm.automessage.interval.get:    
+    bm.automessage.interval.get:   
         description: Allows to get the Automessage Interval
         default: op
-    bm.automessage.interval.set:    
+    bm.automessage.interval.set:   
         description: Allows to set the Automessage Interval
         default: op
     bm.automessage.list:    
