@@ -1,10 +1,7 @@
 package com.efreak1996.BukkitManager;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.bukkit.plugin.Plugin;
@@ -73,7 +70,7 @@ public class BmInitialize {
 		Threads();
 		downloader = new BmDownloader();
 		downloader.initialize();
-
+		if (config.getBoolean("General.Statistics.Enabled")) new BmStats().start();
 		//new Bukkitmanager(plugin, io, config, database, permHandler);
 		//Bukkitmanager.getAddonManager().loadAddons();
 		io.sendConsole(io.translate("Plugin.Done"));

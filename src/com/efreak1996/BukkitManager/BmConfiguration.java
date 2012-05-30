@@ -1,9 +1,11 @@
 package com.efreak1996.BukkitManager;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -84,6 +86,9 @@ public class BmConfiguration{
 		update("General.Use-Vault", true);
 		update("General.Force-SuperPerms", false);
 		update("General.Debug", false);
+		update("General.Statistics.Enabled", true);
+		update("General.Statistics.GUID", UUID.randomUUID().toString());
+		addDefault("General.Statistics.GUID", getString("General.Statistics.GUID"));
 		update("IO.Show-Prefix", true);
 		update("IO.Prefix", "&4[BukkitManager]");
 		update("IO.Error", "&c[Error]");
@@ -236,4 +241,32 @@ public class BmConfiguration{
 	public void set(String path, Object value) {config.set(path, value);}
 	
 	public boolean contains(String path) {return config.contains(path);}
+
+	public String getGUID() {
+		return getString("General.Statistics.GUID");
+	}
+
+	public void reload() {
+		try {
+			config.load(configFile);
+		} catch (FileNotFoundException e) {
+			if (getDebug()) e.printStackTrace();
+		} catch (IOException e) {
+			if (getDebug()) e.printStackTrace();
+		} catch (InvalidConfigurationException e) {
+			if (getDebug()) e.printStackTrace();
+		}
+	}
+
+	public void save() {
+		try {
+			config.save(configFile);
+		} catch (IOException e) {
+			if (getDebug()) e.printStackTrace();
+		}
+	}
+
+	public void addDefault(String path, Object value) {
+		config.addDefault(path, value);
+	}
 }
