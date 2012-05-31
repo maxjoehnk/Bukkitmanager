@@ -185,7 +185,7 @@ public class BmStats {
     public boolean start() {
         synchronized (optOutLock) {
             // Did we opt out?
-            if (isDisabled()) return false;
+            if (!isEnabled()) return false;
 
             // Is metrics already running?
             if (taskId >= 0) {
@@ -202,7 +202,7 @@ public class BmStats {
                         // This has to be synchronized or it can collide with the disable method.
                         synchronized (optOutLock) {
                             // Disable Task, if it is running and the server owner decided to opt-out
-                            if (isDisabled() && taskId > 0) {
+                            if (!isEnabled() && taskId > 0) {
                                 plugin.getServer().getScheduler().cancelTask(taskId);
                                 taskId = -1;
                             }
@@ -231,10 +231,10 @@ public class BmStats {
      *
      * @return
      */
-    public boolean isDisabled() {
+    public boolean isEnabled() {
         synchronized(optOutLock) {
             config.reload();
-            return config.getBoolean("General.Statistics.Enabled", false);
+            return config.getBoolean("General.Statistics.Enabled", true);
         }
     }
 
@@ -247,7 +247,7 @@ public class BmStats {
         // This has to be synchronized or it can collide with the check in the task.
         synchronized (optOutLock) {
         	// Check if the server owner has already set opt-out, if not, set it.
-        	if (isDisabled()) {
+        	if (!isEnabled()) {
         		config.set("General.Statistics.Enabled", true);
         		config.save();
         	}
@@ -268,7 +268,7 @@ public class BmStats {
         // This has to be synchronized or it can collide with the check in the task.
         synchronized (optOutLock) {
             // Check if the server owner has already set opt-out, if not, set it.
-            if (!isDisabled()) {
+            if (isEnabled()) {
         		config.set("General.Statistics.Enabled", false);
             	config.save();
             }
@@ -549,7 +549,5 @@ public class BmStats {
             final Plotter plotter = (Plotter) object;
             return plotter.name.equals(name) && plotter.getValue() == getValue();
         }
-
     }
-
 }
