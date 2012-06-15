@@ -49,8 +49,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.UUID;
-import java.util.logging.Level;
 
 /**
  * <p>
