@@ -7,8 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.efreak1996.BukkitManager.BmDatabase;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmPlayerGamemode {
 	

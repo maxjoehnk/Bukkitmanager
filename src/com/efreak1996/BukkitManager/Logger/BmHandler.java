@@ -10,7 +10,7 @@ import java.util.logging.LogRecord;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
 import com.efreak1996.BukkitManager.BmDatabase;
-import com.efreak1996.BukkitManager.BmIOManager;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public abstract class BmHandler extends Handler {
 	

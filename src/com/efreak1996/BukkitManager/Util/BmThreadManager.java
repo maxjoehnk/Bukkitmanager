@@ -1,6 +1,12 @@
-package com.efreak1996.BukkitManager;
+package com.efreak1996.BukkitManager.Util;
 
-public class BmFunctions {
+import com.efreak1996.BukkitManager.BmAutobackupThread;
+import com.efreak1996.BukkitManager.BmAutomessageThread;
+import com.efreak1996.BukkitManager.BmAutosaveThread;
+import com.efreak1996.BukkitManager.BmConfiguration;
+import com.efreak1996.BukkitManager.BmThreadType;
+
+public class BmThreadManager {
 	
 	private static BmIOManager io;
 	public static BmAutosaveThread saveThread;

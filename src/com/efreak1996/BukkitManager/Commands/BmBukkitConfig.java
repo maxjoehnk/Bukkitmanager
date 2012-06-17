@@ -9,8 +9,8 @@ import java.util.Properties;
 import org.bukkit.command.CommandSender;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmBukkitConfig {
 	

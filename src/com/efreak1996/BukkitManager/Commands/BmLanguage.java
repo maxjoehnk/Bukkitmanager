@@ -2,8 +2,8 @@ package com.efreak1996.BukkitManager.Commands;
 
 import org.bukkit.command.CommandSender;
 
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmLanguage {
 

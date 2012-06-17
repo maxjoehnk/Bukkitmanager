@@ -7,9 +7,9 @@ import org.bukkit.entity.Player;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
 import com.efreak1996.BukkitManager.BmDatabase;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
 import com.efreak1996.BukkitManager.Util.BmExperienceParser;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmPlayerExp {
 	

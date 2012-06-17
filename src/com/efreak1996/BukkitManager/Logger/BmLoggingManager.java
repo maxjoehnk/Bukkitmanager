@@ -7,10 +7,10 @@ import java.util.List;
 import org.bukkit.plugin.Plugin;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPlugin;
 import com.efreak1996.BukkitManager.Logger.Block.*;
 import com.efreak1996.BukkitManager.Logger.Enchantment.*;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmLoggingManager {
 	

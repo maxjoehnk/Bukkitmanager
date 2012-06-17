@@ -4,23 +4,23 @@ import org.bukkit.command.CommandSender;
 
 import com.efreak1996.BukkitManager.BmAutobackupThread;
 import com.efreak1996.BukkitManager.BmConfiguration;
-import com.efreak1996.BukkitManager.BmFunctions;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
 import com.efreak1996.BukkitManager.BmThreadType;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
+import com.efreak1996.BukkitManager.Util.BmThreadManager;
 
 public class BmAutobackup {
 
 	private static BmPermissions permHandler;
 	private static BmConfiguration config;
-	private static BmFunctions func;
+	private static BmThreadManager func;
 	private static BmAutobackupThread backupThread;
 	private static BmIOManager io;
 	
 	public void initialize() {
 		config = new BmConfiguration();
 		io = new BmIOManager();
-		func = new BmFunctions();
+		func = new BmThreadManager();
 		backupThread = new BmAutobackupThread();
 		permHandler = new BmPermissions();
 	}

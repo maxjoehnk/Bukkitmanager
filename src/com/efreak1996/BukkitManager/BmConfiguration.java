@@ -12,6 +12,8 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
+import com.efreak1996.BukkitManager.Util.BmIOManager;
+
 /**
  * 
  * Loads and manages the config File

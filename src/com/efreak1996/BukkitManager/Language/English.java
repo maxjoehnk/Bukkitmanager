@@ -35,11 +35,13 @@ public class English extends Language {
 			set("Plugin.Done", "&aDone!");
 			set("Plugin.LoadingCommands", "&2Loading Commands...");
 			set("Plugin.CommandsLoaded", "&aCommands successfully loaded!");
+			set("Plugin.LoadingAliases", "&2Loading Aliases...");
+			set("Plugin.AliasesLoaded", "&aAliases successfully loaded!");
 			
 			set("Permissions.ForceSuper", "&2Superperms forced!");
 			set("Permissions.Found", "&a%perms% support enabled!");
 			set("Permissions.NoPerms", "&eNo Permissions System Found!");
-			set("Permissions.OP", "&2Using OP-Rights for Commands!");
+			set("Permissions.OP", "&aUsing OP-Rights for Commands!");
 			
 			set("Autobackup.BackupInProgress", "&eMultiple concurrent backup attempted! Autobackup interval is likely too short!");
 			set("Autobackup.NoPlayer", "&eSkipping backup, no players online.");
@@ -176,7 +178,7 @@ public class English extends Language {
 			set("Command.Plugin.Load.IsNoFile", "&c%file% is no File!");
 			set("Command.Plugin.Load.FileDoesntExists", "&c%file% doesn't exists!");
 			
-			set("Logger.Loading", "Loading Logger...");
+			set("Logger.Loading", "&2Loading Logger...");
 			set("Logger.Loaded", "&aLogger loaded!");
 			set("Logger.Block.BlockBreak", "");
 			set("Logger.Block.BlockBurn", "");

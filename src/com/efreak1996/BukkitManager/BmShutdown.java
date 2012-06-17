@@ -9,6 +9,8 @@ import org.bukkit.plugin.Plugin;
 import com.efreak1996.BukkitManager.Logger.BmLoggingManager;
 import com.efreak1996.BukkitManager.Swing.BmSwing;
 //import com.efreak1996.BukkitManager.Webinterface.BmWebinterface;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
+import com.efreak1996.BukkitManager.Util.BmThreadManager;
 
 /**
  * 
@@ -25,7 +27,7 @@ public class BmShutdown {
 	private static BmDatabase db;
 	private static Plugin plugin;
     private static BmIOManager io;
-	private static BmFunctions func;
+	private static BmThreadManager func;
 	private static BmConfiguration config;
 	private static BmLoggingManager logManager;
 
@@ -35,7 +37,7 @@ public class BmShutdown {
     	logManager.shutdown();
     	plugin = BmPlugin.getPlugin();
     	io = new BmIOManager();
-    	func = new BmFunctions();
+    	func = new BmThreadManager();
     	config = new BmConfiguration();
     	db.shutdown();
     	func.stopThread(BmThreadType.AUTOSAVE);

@@ -9,8 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmCommandExecutor implements CommandExecutor {
 	
@@ -62,7 +62,7 @@ public class BmCommandExecutor implements CommandExecutor {
 			passwordCmd.initialize();
 			io.sendConsoleDev("Development Commands Loaded!");
 		}
-		io.sendConsole("Loading Aliases...");
+		io.sendConsole(io.translate("Plugin.LoadingAliases"));
 		if (config.getBoolean("General.Aliases.Bukkit")) {
 			bukkitCommand = new BmBukkitCommand("bukkit", plugin);
 			((CraftServer) plugin.getServer()).getCommandMap().register("bukkit", bukkitCommand);
@@ -79,7 +79,7 @@ public class BmCommandExecutor implements CommandExecutor {
 			langCommand = new BmLanguageCommand("lang", plugin);
 			((CraftServer) plugin.getServer()).getCommandMap().register("lang", langCommand);
 		}
-		io.sendConsole("Aliases Loaded!");
+		io.sendConsole(io.translate("Plugin.AliasesLoaded"));
 		io.sendConsole(io.translate("Plugin.CommandsLoaded"));
 	}
 	
@@ -102,10 +102,6 @@ public class BmCommandExecutor implements CommandExecutor {
 		else if (args[0].equalsIgnoreCase("password")) {
 			if (config.getDev()) passwordCmd.cmd(sender, args);
 			else return false;
-		/*}else if (args[0].equalsIgnoreCase("help")) {			
-			  if (!(p == null)) if (permHandler.has(p, "bm.help")) helpCmd.player(p, args);
-			  if (!(c == null)) helpCmd.console(c, args);
-		}else return false;*/
 		}else if (args[0].equalsIgnoreCase("help")) helpCmd.cmd(sender, args);
 		else return false;
 		return true;

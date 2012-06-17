@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 
+import com.efreak1996.BukkitManager.Util.BmIOManager;
+
 public class BmAutosaveThread extends Thread {
 
 	private static boolean run = true;

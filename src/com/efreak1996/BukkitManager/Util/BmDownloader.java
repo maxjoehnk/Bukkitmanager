@@ -9,7 +9,6 @@ import java.net.URLConnection;
 import java.net.URL;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
-import com.efreak1996.BukkitManager.BmIOManager;
 
 public class BmDownloader {
 
@@ -51,9 +50,7 @@ public class BmDownloader {
         for (;;) {
 
             int count = in.read(buffer);
-            if (count < 0)
-                break;
-
+            if (count < 0) break;
             out.write(buffer, 0, count);
             //currentCount += count;
         }

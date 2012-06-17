@@ -1,17 +1,17 @@
-package com.efreak1996.BukkitManager;
+package com.efreak1996.BukkitManager.Util;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import com.efreak1996.BukkitManager.BmConfiguration;
+import com.efreak1996.BukkitManager.BmPlugin;
 import com.efreak1996.BukkitManager.Language.Language;
 
 public class BmTranslator {
@@ -19,8 +19,10 @@ public class BmTranslator {
 	private static HashMap<String, YamlConfiguration> languages;
 	private static BmConfiguration config;
 	private static String language;
+	private static BmIOManager io;
 	
 	public void initialize() {
+		io = new BmIOManager();
 		languages = new HashMap<String, YamlConfiguration>();
 		config = new BmConfiguration();
 		language = config.getString("IO.Language", "en_US");
@@ -39,7 +41,12 @@ public class BmTranslator {
 				if (loadedFiles.get(i2).equals(langFiles[i])) isLoaded = true;
 			}
 			if (!isLoaded) loadLanguageFile(langFiles[i]);
-		}			
+		}
+		if (languages.get(language) == null) {
+			io.sendConsoleError("Language " + language + " doesn't seem to exist. Forcing to en_US!");
+			language = "en_US";
+			config.set("IO.Language", "en_US");
+		}
 	}
 	
 	private void loadLanguageFile(File languageFile) {
@@ -73,6 +80,8 @@ public class BmTranslator {
 	}
 	
 	public String getKey(String key) {
-		return languages.get(language).getString(key);
+		if (languages.get(language) == null) return "Language " + language + " doesn't seem to exist. Please change it in the config.yml!";
+		if (languages.get(language).getString(key) != null) return languages.get(language).getString(key);
+		else return "Key " + key + " couldn't be found. Please check your lang Files!";
 	}
 }

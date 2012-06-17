@@ -1,4 +1,4 @@
-package com.efreak1996.BukkitManager;
+package com.efreak1996.BukkitManager.Util;
 
 import java.util.Hashtable;
 
@@ -10,6 +10,8 @@ import org.bukkit.conversations.Conversation;
 import org.bukkit.conversations.ConversationFactory;
 import org.bukkit.conversations.Prompt;
 import org.bukkit.plugin.Plugin;
+
+import com.efreak1996.BukkitManager.BmConfiguration;
 
 /**
  * 

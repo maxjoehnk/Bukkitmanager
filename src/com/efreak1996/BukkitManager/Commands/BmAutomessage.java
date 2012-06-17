@@ -6,16 +6,16 @@ import org.bukkit.command.CommandSender;
 
 import com.efreak1996.BukkitManager.BmAutomessageReader;
 import com.efreak1996.BukkitManager.BmConfiguration;
-import com.efreak1996.BukkitManager.BmFunctions;
-import com.efreak1996.BukkitManager.BmIOManager;
 import com.efreak1996.BukkitManager.BmPermissions;
 import com.efreak1996.BukkitManager.BmThreadType;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
+import com.efreak1996.BukkitManager.Util.BmThreadManager;
 
 public class BmAutomessage {
 
 	private static BmPermissions permHandler;
 	private static BmConfiguration config;
-	private static BmFunctions func;
+	private static BmThreadManager func;
 	private static BmIOManager io;
 	private static BmAutomessageReader msgReader;
 	
@@ -23,7 +23,7 @@ public class BmAutomessage {
 		permHandler = new BmPermissions();
 		msgReader = new BmAutomessageReader();
 		config = new BmConfiguration();
-		func = new BmFunctions();
+		func = new BmThreadManager();
 		io = new BmIOManager();
 	}
 	

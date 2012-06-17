@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.efreak1996.BukkitManager.BmPermissions;
 import com.efreak1996.BukkitManager.BmPlugin;
-import com.efreak1996.BukkitManager.BmIOManager;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmPluginDisable {
 

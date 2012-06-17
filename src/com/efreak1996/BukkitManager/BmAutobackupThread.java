@@ -20,6 +20,7 @@ import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmAutobackupThread extends Thread {
 	

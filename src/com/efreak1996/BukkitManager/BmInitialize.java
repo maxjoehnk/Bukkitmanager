@@ -10,15 +10,14 @@ import com.efreak1996.BukkitManager.Commands.BmCommandExecutor;
 import com.efreak1996.BukkitManager.Listener.BmBukkitListener;
 import com.efreak1996.BukkitManager.Logger.BmLoggingManager;
 import com.efreak1996.BukkitManager.Swing.BmSwing;
-import com.efreak1996.BukkitManager.Util.BmDownloader;
+import com.efreak1996.BukkitManager.Util.BmIOManager;
+import com.efreak1996.BukkitManager.Util.BmThreadManager;
 
 /**
  * 
  * Manages the start of Bukkitmanager 
  *
  * @author efreak1996
- *
- * @version Alpha 1.5
  * 
  */
 
@@ -32,11 +31,11 @@ public class BmInitialize {
 	private static BmAutosaveThread saveThread;
 	private static BmAutobackupThread backupThread;
 	private static BmPermissions permHandler;
-	private static BmFunctions func;
+	private static BmThreadManager func;
 	private static BmDatabase database;
-	private static BmDownloader downloader;
 	private static BmSwing swing;
 	private static File rootFolder;
+	//private static BmLibraryManager libManager;
 	
 	/**
 	 * 
@@ -51,9 +50,11 @@ public class BmInitialize {
 		config.initalize();
 		io = new BmIOManager();
 		io.initialize();
+		//libManager = new BmLibraryManager();
+		//libManager.initialize();
 		permHandler = new BmPermissions();
 		permHandler.initialize();
-		func = new BmFunctions();
+		func = new BmThreadManager();
 		func.initialize();
 		database = new BmDatabase();
 		database.initialize();
@@ -68,8 +69,6 @@ public class BmInitialize {
 		plugin.getServer().getPluginCommand("bm").setExecutor(new BmCommandExecutor());
 		plugin.getServer().getPluginManager().registerEvents(new BmBukkitListener(), plugin);
 		Threads();
-		downloader = new BmDownloader();
-		downloader.initialize();
 		if (config.getBoolean("General.Statistics.Enabled")) new BmStats().start();
 		//new Bukkitmanager(plugin, io, config, database, permHandler);
 		//Bukkitmanager.getAddonManager().loadAddons();
@@ -82,7 +81,7 @@ public class BmInitialize {
 	 * 
 	 */
 	
-	public void CreateDirs() {
+	private void CreateDirs() {
 		rootFolder = plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile();
 		if (!(plugin.getDataFolder().exists()))
 				plugin.getDataFolder().mkdirs();
@@ -106,8 +105,8 @@ public class BmInitialize {
 	 * 
 	 */
 	
-	public void Spout() {
-		if (config.getBoolean("Spout.Enabled")) {
+	private void Spout() {
+		if (config.getBoolean("General.Spout")) {
 			if (plugin.getServer().getPluginManager().getPlugin("Spout") != null) {            
 				io.sendConsole("Spout support enabled.");
 				io.sendConsole("Initializing Spoutgui...");
@@ -117,7 +116,13 @@ public class BmInitialize {
 		}
 	}
 	
-	public void Threads() {
+	/**
+	 * 
+	 * Initialize all Threads
+	 * 
+	 */
+	
+	private void Threads() {
 		msgThread = new BmAutomessageThread();
 		msgThread.initialize();
 		saveThread = new BmAutosaveThread();
