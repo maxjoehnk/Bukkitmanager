@@ -77,7 +77,8 @@ public class English extends Language {
 			set("Command.FewArgs", "&cToo few Arguments");
 			set("Command.ManyArgs", "&cToo many Arguments");
 			set("Command.Usage", "Usage: %usage%");
-			set("Command.NoPerm", "'&cYou dont have Permission to do that!");
+			set("Command.NoPerm.Player", "&cYou dont have Permission to do that!");
+			set("Command.NoPerm.Console", "&e%player% has tried to perform command %cmd%!");
 			set("Command.Language.Get", "The Language is %lang%.");
 			set("Command.Language.Set", "&aThe Language was set to %lang%!");
 			set("Command.Language.Error", "&cThe Language %lang% doesn't exists!");

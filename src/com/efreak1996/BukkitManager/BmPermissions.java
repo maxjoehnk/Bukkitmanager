@@ -79,6 +79,10 @@ public class BmPermissions {
 	public void shutdown() {}
 	
 	public boolean has(CommandSender sender, String perm) {
+		return has(sender, perm, true);
+	}
+	
+	public boolean has(CommandSender sender, String perm, boolean log) {
 		if (sender instanceof ConsoleCommandSender) return true;
 		if (forceSuper) return sender.hasPermission(perm);
 		boolean hasPerm = false;
@@ -92,7 +96,10 @@ public class BmPermissions {
 			else if (permSystem.equalsIgnoreCase("zPermissions")) hasPerm = sender.hasPermission(perm);
 			else if (permSystem.equalsIgnoreCase("DroxPerms")) hasPerm = sender.hasPermission(perm);
 		}
-		if (hasPerm == false) io.send(sender, io.translate("Comman.NoPerm"));
+		if (hasPerm == false) {
+			io.send(sender, io.translate("Command.NoPerm.Player"));
+			if (log) io.sendConsoleWarning(io.translate("Command.NoPerm.Console").replaceAll("%cmd%", perm.replaceAll(".", " ")).replaceAll("%player%", sender.getName()));
+		}
 		return hasPerm;
 	}
 	

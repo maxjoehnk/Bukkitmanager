@@ -38,7 +38,7 @@ public class BmHelpTopic {
 	}
 	
 	public boolean hasPerm(CommandSender sender) {
-		return permHandler.has(sender, perms);
+		return permHandler.has(sender, perms, false);
 	}
 	
 }
