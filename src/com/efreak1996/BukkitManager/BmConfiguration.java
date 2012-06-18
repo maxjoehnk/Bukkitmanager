@@ -158,6 +158,13 @@ public class BmConfiguration{
 			set("Database.File" , null);
 			set("Database.Port", null);
 		}
+		update("CustomMessages.Enabled", true);
+		List<String> joinMessages = new ArrayList<String>();
+		joinMessages.add("&e%player% joined the game.");
+		update("CustomMessages.Join", joinMessages);
+		List<String> leaveMessages = new ArrayList<String>();
+		leaveMessages.add("");
+		update("CustomMessages.Leave", leaveMessages);
 		
 		if (devMode) {
 			//update("Webinterface.Enabled", false);
@@ -228,6 +235,7 @@ public class BmConfiguration{
 	public List<?> getList(String path) {return config.getList(path);}
 	public List<?> getList(String path, List<?> def) {return config.getList(path, def);}
 	
+	public List<String> getStringList(String path) {return config.getStringList(path);}
 	public List<Integer> getIntegerList(String path) {return config.getIntegerList(path);}
 
 	public Object get(String path) {return config.get(path);}

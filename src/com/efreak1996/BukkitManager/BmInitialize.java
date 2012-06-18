@@ -35,6 +35,7 @@ public class BmInitialize {
 	private static BmDatabase database;
 	private static BmSwing swing;
 	private static File rootFolder;
+	private static BmCustomMessageManager msgManager;
 	//private static BmLibraryManager libManager;
 	
 	/**
@@ -70,6 +71,8 @@ public class BmInitialize {
 		plugin.getServer().getPluginManager().registerEvents(new BmBukkitListener(), plugin);
 		Threads();
 		if (config.getBoolean("General.Statistics.Enabled")) new BmStats().start();
+		msgManager = new BmCustomMessageManager();
+		msgManager.initialize();
 		//new Bukkitmanager(plugin, io, config, database, permHandler);
 		//Bukkitmanager.getAddonManager().loadAddons();
 		io.sendConsole(io.translate("Plugin.Done"));
