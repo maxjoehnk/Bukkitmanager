@@ -163,7 +163,7 @@ public class BmConfiguration{
 		joinMessages.add("&e%player% joined the game.");
 		update("CustomMessages.Join", joinMessages);
 		List<String> leaveMessages = new ArrayList<String>();
-		leaveMessages.add("");
+		leaveMessages.add("&e%player% has left the game.");
 		update("CustomMessages.Leave", leaveMessages);
 		
 		if (devMode) {

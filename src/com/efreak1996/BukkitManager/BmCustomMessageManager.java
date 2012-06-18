@@ -15,6 +15,9 @@ public class BmCustomMessageManager {
 	private static List<String> playerJoin;
 	private static int playerJoinIndex;
 	private static List<Integer> playerJoinDisplayed;
+	private static List<String> playerLeave;
+	private static int playerLeaveIndex;
+	private static List<Integer> playerLeaveDisplayed;
 	
 	public void initialize() {
 		config = new BmConfiguration();
@@ -27,6 +30,9 @@ public class BmCustomMessageManager {
 		playerJoin = config.getStringList("CustomMessages.Join");
 		playerJoinIndex = new Random().nextInt(playerJoin.size());
 		playerJoinDisplayed = new ArrayList<Integer>();
+		playerLeave = config.getStringList("CustomMessages.Leave");
+		playerLeaveIndex = new Random().nextInt(playerLeave.size());
+		playerLeaveDisplayed = new ArrayList<Integer>();
 	}
 	
 	public String getPlayerJoin() {
@@ -35,6 +41,16 @@ public class BmCustomMessageManager {
 		while (playerJoinDisplayed.contains(playerJoinIndex)) {
 			if (playerJoinDisplayed.size() == playerJoin.size()) playerJoinDisplayed.clear();
 			playerJoinIndex = new Random().nextInt(playerJoin.size());
+		}
+		return text;
+	}
+
+	public String getPlayerLeave() {
+		String text = playerLeave.get(playerLeaveIndex);
+		playerLeaveDisplayed.add(playerLeaveIndex);
+		while (playerLeaveDisplayed.contains(playerLeaveIndex)) {
+			if (playerLeaveDisplayed.size() == playerLeave.size()) playerLeaveDisplayed.clear();
+			playerLeaveIndex = new Random().nextInt(playerLeave.size());
 		}
 		return text;
 	}

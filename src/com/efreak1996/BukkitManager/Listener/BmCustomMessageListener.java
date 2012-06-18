@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.efreak1996.BukkitManager.BmCustomMessageManager;
 import com.efreak1996.BukkitManager.Util.BmIOManager;
@@ -20,6 +21,11 @@ public class BmCustomMessageListener implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		event.setJoinMessage(parse(msgManager.getPlayerJoin(), event));
+	}
+	
+	@EventHandler
+	public void onPlayerQuit(PlayerQuitEvent event) {
+		event.setQuitMessage(parse(msgManager.getPlayerLeave(), event));
 	}
 	
 	
