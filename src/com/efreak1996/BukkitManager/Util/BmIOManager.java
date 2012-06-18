@@ -190,7 +190,7 @@ public class BmIOManager {
 		else return remColor(msg);
 	}
 	
-	public String parseColor(String message) {
+	public static String parseColor(String message) {
 		message = message.replaceAll("&0", ChatColor.BLACK + "");
 		message = message.replaceAll("&1", ChatColor.DARK_BLUE + "");
 		message = message.replaceAll("&2", ChatColor.DARK_GREEN + "");
@@ -210,7 +210,7 @@ public class BmIOManager {
 		return message;
 	}
 	
-	public String remColor(String message) {
+	public static String remColor(String message) {
 		message = message.replaceAll("&0", "");
 		message = message.replaceAll("&1", "");
 		message = message.replaceAll("&2", "");
