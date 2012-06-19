@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.efreak1996.BukkitManager.BmCustomMessageManager;
@@ -28,6 +29,10 @@ public class BmCustomMessageListener implements Listener {
 		event.setQuitMessage(parse(msgManager.getPlayerLeave(), event));
 	}
 	
+	@EventHandler
+	public void onPlayerKick(PlayerKickEvent event) {
+		event.setLeaveMessage(parse(msgManager.getPlayerKick().replaceAll("%reason%", event.getReason()), event));
+	}
 	
 	private String parse(String msg, PlayerEvent event) {
 		return BmIOManager.parseColor(msg.replaceAll("%player%", event.getPlayer().getName()).replaceAll("%world%", event.getPlayer().getWorld().getName()).replaceAll("%time%", String.valueOf(event.getPlayer().getWorld().getTime()*1000)));

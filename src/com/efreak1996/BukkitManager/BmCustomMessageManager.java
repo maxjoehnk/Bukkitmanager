@@ -18,21 +18,29 @@ public class BmCustomMessageManager {
 	private static List<String> playerLeave;
 	private static int playerLeaveIndex;
 	private static List<Integer> playerLeaveDisplayed;
+	private static List<String> playerKick;
+	private static int playerKickIndex;
+	private static List<Integer> playerKickDisplayed;
+
 	
 	public void initialize() {
 		config = new BmConfiguration();
 		listener = new BmCustomMessageListener();
 		io = new BmIOManager();
 		if (config.getBoolean("CustomMessages.Enabled")) {
-			io.sendConsole("Enabling Custom Messages...");
+			io.sendConsole(io.translate("CustomMessages.Loading"));
 			BmPlugin.getPlugin().getServer().getPluginManager().registerEvents(listener, BmPlugin.getPlugin());
+			playerJoin = config.getStringList("CustomMessages.Join");
+			playerJoinIndex = new Random().nextInt(playerJoin.size());
+			playerJoinDisplayed = new ArrayList<Integer>();
+			playerLeave = config.getStringList("CustomMessages.Leave");
+			playerLeaveIndex = new Random().nextInt(playerLeave.size());
+			playerLeaveDisplayed = new ArrayList<Integer>();
+			playerKick = config.getStringList("CustomMessages.Kick");
+			playerKickIndex = new Random().nextInt(playerKick.size());
+			playerKickDisplayed = new ArrayList<Integer>();
+			io.sendConsole(io.translate("CustomMessages.Loaded").replaceAll("%msgCount%", String.valueOf(playerJoin.size() + playerLeave.size() + playerKick.size())));
 		}
-		playerJoin = config.getStringList("CustomMessages.Join");
-		playerJoinIndex = new Random().nextInt(playerJoin.size());
-		playerJoinDisplayed = new ArrayList<Integer>();
-		playerLeave = config.getStringList("CustomMessages.Leave");
-		playerLeaveIndex = new Random().nextInt(playerLeave.size());
-		playerLeaveDisplayed = new ArrayList<Integer>();
 	}
 	
 	public String getPlayerJoin() {
@@ -51,6 +59,16 @@ public class BmCustomMessageManager {
 		while (playerLeaveDisplayed.contains(playerLeaveIndex)) {
 			if (playerLeaveDisplayed.size() == playerLeave.size()) playerLeaveDisplayed.clear();
 			playerLeaveIndex = new Random().nextInt(playerLeave.size());
+		}
+		return text;
+	}
+
+	public String getPlayerKick() {
+		String text = playerKick.get(playerKickIndex);
+		playerKickDisplayed.add(playerKickIndex);
+		while (playerKickDisplayed.contains(playerKickIndex)) {
+			if (playerKickDisplayed.size() == playerKick.size()) playerKickDisplayed.clear();
+			playerKickIndex = new Random().nextInt(playerKick.size());
 		}
 		return text;
 	}

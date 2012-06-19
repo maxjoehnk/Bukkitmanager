@@ -165,6 +165,9 @@ public class BmConfiguration{
 		List<String> leaveMessages = new ArrayList<String>();
 		leaveMessages.add("&e%player% has left the game.");
 		update("CustomMessages.Leave", leaveMessages);
+		List<String> kickMessages = new ArrayList<String>();
+		kickMessages.add("&e%player% has left the game.");
+		update("CustomMessages.Kick", kickMessages);
 		
 		if (devMode) {
 			//update("Webinterface.Enabled", false);

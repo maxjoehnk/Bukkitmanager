@@ -78,7 +78,7 @@ public class English extends Language {
 			set("Command.ManyArgs", "&cToo many Arguments");
 			set("Command.Usage", "Usage: %usage%");
 			set("Command.NoPerm.Player", "&cYou dont have Permission to do that!");
-			set("Command.NoPerm.Console", "&e%player% has tried to perform command %cmd%!");
+			set("Command.NoPerm.Console", "&e%player% has tried to perform command &8%cmd%!");
 			set("Command.Language.Get", "The Language is %lang%.");
 			set("Command.Language.Set", "&aThe Language was set to %lang%!");
 			set("Command.Language.Error", "&cThe Language %lang% doesn't exists!");
@@ -178,6 +178,9 @@ public class English extends Language {
 			set("Command.Plugin.Load.File.Success", "&a%plugin% was successfully loaded by File %file%!");
 			set("Command.Plugin.Load.IsNoFile", "&c%file% is no File!");
 			set("Command.Plugin.Load.FileDoesntExists", "&c%file% doesn't exists!");
+			
+			set("CustomMessages.Loading", "&2Loading Custom-Messages...");
+			set("CustomMessages.Loaded", "&a%msgCount% Custom-Messages loaded!");
 			
 			set("Logger.Loading", "&2Loading Logger...");
 			set("Logger.Loaded", "&aLogger loaded!");
