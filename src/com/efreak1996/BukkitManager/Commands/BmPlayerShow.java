@@ -29,12 +29,13 @@ public class BmPlayerShow {
 				if (args.length == 2) {
 					if (permHandler.has(sender, "bm.player.show.your")) {
 						Player p = ((Player) sender);
-						if (!Boolean.parseBoolean(db.getPlayer(p, "hidden").toString())) io.sendError(sender, io.translate("Command.Player.Show.Already.Your"));
+						if (!Boolean.parseBoolean(db.getPlayer(p, "hidden").toString())) io.sendError(sender, io.translate("Command.Player.Show.Already.You"));
 						else {
 							Player[] player = Bukkit.getOnlinePlayers();
 							for (int i = 0; i < player.length; i++) player[i].showPlayer(p);
 							db.setPlayer(p, "hidden", false);
 							io.send(sender, io.translate("Command.Player.Show.You"));
+							io.sendConsole(io.translate("Command.Player.Show.Console.You").replaceAll("%player%", p.getName()));
 						}
 					}
 				}else if (args.length == 3) {
@@ -47,6 +48,7 @@ public class BmPlayerShow {
 							db.setPlayer(p, "hidden", false);
 							io.send(sender, io.translate("Command.Player.Show.Other").replaceAll("%player%", p.getName()));
 							io.send(p, io.translate("Command.Player.Show.ByOther").replaceAll("%player%", sender.getName()));
+							io.sendConsole(io.translate("Command.Player.Show.Console.Other").replaceAll("%player%", p.getName()).replaceAll("%causer%", sender.getName()));
 						}
 					}
 				}
@@ -58,12 +60,13 @@ public class BmPlayerShow {
 				if (args.length == 1) {
 					if (permHandler.has(sender, "bm.player.show.your")) {
 						Player p = ((Player) sender);
-						if (!Boolean.parseBoolean(db.getPlayer(p, "hidden").toString())) io.sendError(sender, io.translate("Command.Player.Show.Already.Your"));
+						if (!Boolean.parseBoolean(db.getPlayer(p, "hidden").toString())) io.sendError(sender, io.translate("Command.Player.Show.Already.You"));
 						else {
 							Player[] player = Bukkit.getOnlinePlayers();
 							for (int i = 0; i < player.length; i++) player[i].showPlayer(p);
 							db.setPlayer(p, "hidden", false);
 							io.send(sender, io.translate("Command.Player.Show.You"));
+							io.sendConsole(io.translate("Command.Player.Show.Console.You").replaceAll("%player%", p.getName()));
 						}
 					}
 				}else if (args.length == 2) {
@@ -76,6 +79,7 @@ public class BmPlayerShow {
 							db.setPlayer(p, "hidden", false);
 							io.send(sender, io.translate("Command.Player.Show.Other").replaceAll("%player%", p.getName()));
 							io.send(p, io.translate("Command.Player.Show.ByOther").replaceAll("%player%", sender.getName()));
+							io.sendConsole(io.translate("Command.Player.Show.Console.Other").replaceAll("%player%", p.getName()).replaceAll("%causer%", sender.getName()));
 						}
 					}
 				}

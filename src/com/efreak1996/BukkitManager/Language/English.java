@@ -141,8 +141,10 @@ public class English extends Language {
 			set("Command.Player.Hide.You", "You were successfully hidden!");
 			set("Command.Player.Hide.Other", "%player% were successfully hidden!");
 			set("Command.Player.Hide.ByOther", "You were hidden by %player%!");
-			set("Command.Player.Hide.Already.Your", "&eYou are already hidden!");
+			set("Command.Player.Hide.Already.You", "&eYou are already hidden!");
 			set("Command.Player.Hide.Already.Other", "&e%player% is already hidden!");
+			set("Command.Player.Hide.Console.You", "%player% has hidden itself!");
+			set("Command.Player.Hide.Console.Other", "%causer% has hidden %player%!");
 			set("Command.Player.Gamemode.Error", "&cGamemode has to be a Integer!");
 			set("Command.Player.Gamemode.Unknown", "&cUnknown Gamemode!");
 			set("Command.Player.Lastseen.Your", "You were lastseen on %lastseen_date% at %lastseen_time%");
@@ -159,8 +161,10 @@ public class English extends Language {
 			set("Command.Player.Show.You", "You were successfully shown!");
 			set("Command.Player.Show.Other", "%player% were successfully shown!");
 			set("Command.Player.Show.ByOther", "You were shown by %player%!");
-			set("Command.Player.Show.Already.Your", "&eYou are already visible!");
+			set("Command.Player.Show.Already.You", "&eYou are already visible!");
 			set("Command.Player.Show.Already.Other", "&e%player% is already visible!");
+			set("Command.Player.Show.Console.You", "%player% has shown itself!");
+			set("Command.Player.Show.Console.Other", "%causer% has shown %player%!");
 			set("Command.Player.Time.Get.Your", "Your Time is: %time%.");
 			set("Command.Player.Time.Get.Other", "The Time of %player% is: %time%.");
 			set("Command.Player.Time.Set.Your", "Your Time was set to: %time%.");
