@@ -5,12 +5,14 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.efreak1996.BukkitManager.BmConfiguration;
 import com.efreak1996.BukkitManager.BmDatabase;
+import com.efreak1996.BukkitManager.BmFakepluginsManager;
 import com.efreak1996.BukkitManager.Util.BmIOManager;
 
 public class BmBukkitListener implements Listener{
@@ -53,6 +55,16 @@ public class BmBukkitListener implements Listener{
 					if (!(player[i].hasPermission("bm.see"))) player[i].hidePlayer(p);
 				}
 				io.send(event.getPlayer(), io.translate("Player.Login.Hidden"));
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onCommandPreprocess(PlayerCommandPreprocessEvent event) {
+		if (event.getMessage().equalsIgnoreCase("/plugins")) {
+			if (config.getBoolean("Fakepluginlist.Enabled")) {
+				BmFakepluginsManager.execute(event.getPlayer());
+				event.setCancelled(true);
 			}
 		}
 	}

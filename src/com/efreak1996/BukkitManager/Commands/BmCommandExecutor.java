@@ -33,6 +33,7 @@ public class BmCommandExecutor implements CommandExecutor {
 	private static BmPlayerCommand playerCommand;
 	private static BmPluginCommand pluginCommand;
 	private static BmLanguageCommand langCommand;
+	private static BmFakepluginsCommand fakePluginsCommand;
 	
 	public BmCommandExecutor() {
 		io = new BmIOManager();
@@ -107,4 +108,8 @@ public class BmCommandExecutor implements CommandExecutor {
 		return true;
 	}
 
+	public BmFakepluginsCommand getFakepluginsCommand() {
+		return fakePluginsCommand;
+	}
+	
 }

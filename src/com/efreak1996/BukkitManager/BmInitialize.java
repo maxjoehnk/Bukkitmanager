@@ -73,6 +73,7 @@ public class BmInitialize {
 		if (config.getBoolean("General.Statistics.Enabled")) new BmStats().start();
 		msgManager = new BmCustomMessageManager();
 		msgManager.initialize();
+		new BmFakepluginsManager();
 		//new Bukkitmanager(plugin, io, config, database, permHandler);
 		//Bukkitmanager.getAddonManager().loadAddons();
 		io.sendConsole(io.translate("Plugin.Done"));

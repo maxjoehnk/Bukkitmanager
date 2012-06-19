@@ -27,7 +27,11 @@ permissions:
             bm.player.*: true
             bm.plugin.*: true
             bm.password.*: true
+            bm.fakeplugins: false
         default: op
+    bm.fakeplugins:
+        description: Let you see a fakepluginlist if you run the /plugins command
+        default: not op
     bm.see:
         description: Allows you to see hidden Player
         default: op

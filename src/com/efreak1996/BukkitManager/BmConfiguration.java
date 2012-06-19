@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -103,7 +104,7 @@ public class BmConfiguration{
 		update("Automessage.Random", false);
 		update("Automessage.Prefix", "[AutoMessage]");
 		update("Autosave.Interval", 900);
-		addAutosaveWarntimes();
+		update("Autosave.Warntimes", Arrays.asList(60));
 		update("Autosave.Notification", true);
 		update("Autosave.Enabled", true);
 		update("Autosave.NoOffline", true);
@@ -111,12 +112,12 @@ public class BmConfiguration{
 			if (config.getString("Autosave.Taskmode").equalsIgnoreCase("Sync")) saveMode = "SYNC";
 			else if (config.getString("Autosave.Taskmode").equalsIgnoreCase("Async")) saveMode = "ASYNC";
 			else {
-				config.set("Autosave.Taskmode", "Sync");
-				saveMode = "SYNC";
+				config.set("Autosave.Taskmode", "Async");
+				saveMode = "ASYNC";
 			}
 		}		
 		update("Autobackup.Interval", 3600);
-		addAutobackupWarntimes();
+		update("Autobackup.Warntimes", Arrays.asList(60));
 		update("Autobackup.Notification", true);
 		update("Autobackup.Enabled", true);
 		update("Autobackup.NoOffline", true);
@@ -124,8 +125,8 @@ public class BmConfiguration{
 			if (config.getString("Autobackup.Taskmode").equalsIgnoreCase("Sync")) backupMode = "SYNC";
 			else if (config.getString("Autobackup.Taskmode").equalsIgnoreCase("Async")) backupMode = "ASYNC";
 			else {
-				set("Autobackup.Taskmode", "Sync");
-				backupMode = "SYNC";
+				set("Autobackup.Taskmode", "Async");
+				backupMode = "ASYNC";
 			}
 		}
 		updateWorlds();
@@ -135,12 +136,12 @@ public class BmConfiguration{
 		if (config.getString("Database.System").equalsIgnoreCase("SQLite")) {
 			dbType = "SQLite";
 			update("Database.File", "database.db");
-			set("Database.Host", null);
-			set("Database.Port", null);
-			set("Database.Username", null);
-			set("Database.Password", null);
-			set("Database.TablePrefix", null);
-			set("Database.Name", null);
+			remove("Database.Host");
+			remove("Database.Port");
+			remove("Database.Username");
+			remove("Database.Password");
+			remove("Database.TablePrefix");
+			remove("Database.Name");
 		}else if (config.getString("Database.System").equalsIgnoreCase("MySQL")) {
 			dbType = "MySQL";
 			update("Database.Host", "localhost");
@@ -148,27 +149,23 @@ public class BmConfiguration{
 			update("Database.Name", "minecraft");
 			update("Database.Username", "root");
 			update("Database.Password", "");
-			set("Database.File" , null);
+			remove("Database.File");
 		}else if (config.getString("Database.System").equalsIgnoreCase("H2")) {
 			dbType = "H2";
 			update("Database.Host", "localhost");
 			update("Database.Name", "minecraft");
 			update("Database.Username", "root");
 			update("Database.Password", "");
-			set("Database.File" , null);
-			set("Database.Port", null);
+			remove("Database.File");
+			remove("Database.Port");
 		}
 		update("CustomMessages.Enabled", true);
-		List<String> joinMessages = new ArrayList<String>();
-		joinMessages.add("&e%player% joined the game.");
-		update("CustomMessages.Join", joinMessages);
-		List<String> leaveMessages = new ArrayList<String>();
-		leaveMessages.add("&e%player% has left the game.");
-		update("CustomMessages.Leave", leaveMessages);
-		List<String> kickMessages = new ArrayList<String>();
-		kickMessages.add("&e%player% has left the game.");
-		update("CustomMessages.Kick", kickMessages);
-		
+		update("CustomMessages.Join", Arrays.asList("&e%player% joined the game."));
+		update("CustomMessages.Leave", Arrays.asList("&e%player% has left the game."));
+		update("CustomMessages.Kick", Arrays.asList("&e%player% has left the game."));
+		update("Fakepluginlist.Enabled", true);
+		update("Fakepluginlist.Fakes", Arrays.asList("fakeplugin123", "AntiGrief"));
+		update("Fakepluginlist.Hidden", Arrays.asList("*", "--BukkitManager"));
 		if (devMode) {
 			//update("Webinterface.Enabled", false);
 			//update("Webinterface.Port", 4444);
@@ -177,16 +174,7 @@ public class BmConfiguration{
 			update("Swing.Enabled", false);
 			//update("Swing.Start", "on-load");
 			//update("Swing.Remote.Enabled", false);
-			List<Integer> portList = new ArrayList<Integer>();
-			portList.add(4445);
-			portList.add(4447);
-			portList.add(4449);
-			portList.add(4451);
-			portList.add(4453);
-			portList.add(4455);
-			portList.add(4457);
-			portList.add(4459);
-			//update("Swing.Remote.Ports", portList);
+			//update("Swing.Remote.Ports", Arrays.asList(4445,4447,4449,4451,4453,4455,4457,4459);
 			//update("Swing.Remote.UseWebinterfacePort", false);
 			//update("Swing.Remote.ConnectionLogging", true);
 		}
@@ -197,18 +185,16 @@ public class BmConfiguration{
 		List<World> worlds = plugin.getServer().getWorlds();
 		for (int i = 0; i < worlds.size(); i++) update("Autobackup.Backup.Worlds." + worlds.get(i).getName(), true);
 	}
-
-	private void addAutosaveWarntimes() {
-		List<Integer> warntimes = new ArrayList<Integer>();
-		warntimes.add(60);
-		update("Autosave.Warntimes", warntimes);
-	}
 	
-	private void addAutobackupWarntimes() {
-		List<Integer> warntimes = new ArrayList<Integer>();
-		warntimes.add(60);
-		update("Autobackup.Warntimes", warntimes);
-	}
+	/**
+	 * 
+	 * Return whether Bukkimanager is in Dev Mode or not
+	 * 
+	 * @return The Dev Mode
+	 * 
+	 */
+	
+	public boolean getDev() {return devMode;}
 	
 	/**
 	 * 
@@ -218,7 +204,6 @@ public class BmConfiguration{
 	 * 
 	 */
 	
-	public boolean getDev() {return devMode;}
 	public boolean getDebug() {return config.getBoolean("General.Debug", false);}
 	
 	public String getDatabaseType() {return dbType;}
@@ -252,6 +237,8 @@ public class BmConfiguration{
 	}
 	
 	public void set(String path, Object value) {config.set(path, value);}
+	
+	public void remove(String path) {config.set(path, null);}
 	
 	public boolean contains(String path) {return config.contains(path);}
 
