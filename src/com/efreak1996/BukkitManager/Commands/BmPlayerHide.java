@@ -36,6 +36,7 @@ public class BmPlayerHide {
 								if (!(player[i].hasPermission("bm.see"))) player[i].hidePlayer(p);
 							}
 							db.setPlayer(p, "hidden", true);
+							io.send(sender, io.translate("Command.Player.Hide.You"));
 						}
 					}
 				}else if (args.length == 3) {
@@ -48,6 +49,8 @@ public class BmPlayerHide {
 								if (!(player[i].hasPermission("bm.see"))) player[i].hidePlayer(p);
 							}
 							db.setPlayer(p, "hidden", true);
+							io.send(sender, io.translate("Command.Player.Hide.Other").replaceAll("%player%", p.getName()));
+							io.send(p, io.translate("Command.Player.Hide.ByOther").replaceAll("%player%", sender.getName()));
 						}
 					}
 				}
@@ -66,6 +69,7 @@ public class BmPlayerHide {
 								if (!(player[i].hasPermission("bm.see"))) player[i].hidePlayer(p);
 							}
 							db.setPlayer(p, "hidden", true);
+							io.send(sender, io.translate("Command.Player.Hide.You"));
 						}
 					}
 				}else if (args.length == 2) {
@@ -78,6 +82,8 @@ public class BmPlayerHide {
 								if (!(player[i].hasPermission("bm.see"))) player[i].hidePlayer(p);
 							}
 							db.setPlayer(p, "hidden", true);
+							io.send(sender, io.translate("Command.Player.Hide.Other").replaceAll("%player%", p.getName()));
+							io.send(p, io.translate("Command.Player.Hide.ByOther").replaceAll("%player%", sender.getName()));
 						}
 					}
 				}

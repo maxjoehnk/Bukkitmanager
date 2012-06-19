@@ -52,6 +52,7 @@ public class BmBukkitListener implements Listener{
 				for (int i = 0; i < player.length; i++) {
 					if (!(player[i].hasPermission("bm.see"))) player[i].hidePlayer(p);
 				}
+				io.send(event.getPlayer(), io.translate("Player.Login.Hidden"));
 			}
 		}
 	}

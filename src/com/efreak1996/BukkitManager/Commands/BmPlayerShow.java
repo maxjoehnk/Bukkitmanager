@@ -34,6 +34,7 @@ public class BmPlayerShow {
 							Player[] player = Bukkit.getOnlinePlayers();
 							for (int i = 0; i < player.length; i++) player[i].showPlayer(p);
 							db.setPlayer(p, "hidden", false);
+							io.send(sender, io.translate("Command.Player.Show.You"));
 						}
 					}
 				}else if (args.length == 3) {
@@ -44,6 +45,8 @@ public class BmPlayerShow {
 							Player[] player = Bukkit.getOnlinePlayers();
 							for (int i = 0; i < player.length; i++) player[i].showPlayer(p);
 							db.setPlayer(p, "hidden", false);
+							io.send(sender, io.translate("Command.Player.Show.Other").replaceAll("%player%", p.getName()));
+							io.send(p, io.translate("Command.Player.Show.ByOther").replaceAll("%player%", sender.getName()));
 						}
 					}
 				}
@@ -60,6 +63,7 @@ public class BmPlayerShow {
 							Player[] player = Bukkit.getOnlinePlayers();
 							for (int i = 0; i < player.length; i++) player[i].showPlayer(p);
 							db.setPlayer(p, "hidden", false);
+							io.send(sender, io.translate("Command.Player.Show.You"));
 						}
 					}
 				}else if (args.length == 2) {
@@ -70,6 +74,8 @@ public class BmPlayerShow {
 							Player[] player = Bukkit.getOnlinePlayers();
 							for (int i = 0; i < player.length; i++) player[i].showPlayer(p);
 							db.setPlayer(p, "hidden", false);
+							io.send(sender, io.translate("Command.Player.Show.Other").replaceAll("%player%", p.getName()));
+							io.send(p, io.translate("Command.Player.Show.ByOther").replaceAll("%player%", sender.getName()));
 						}
 					}
 				}

@@ -38,6 +38,8 @@ public class English extends Language {
 			set("Plugin.LoadingAliases", "&2Loading Aliases...");
 			set("Plugin.AliasesLoaded", "&aAliases successfully loaded!");
 			
+			set("Player.Login.Hidden", "You are hidden!");
+			
 			set("Permissions.ForceSuper", "&2Superperms forced!");
 			set("Permissions.Found", "&a%perms% support enabled!");
 			set("Permissions.NoPerms", "&eNo Permissions System Found!");
@@ -136,6 +138,9 @@ public class English extends Language {
 			set("Command.Player.Health.Add.Other", "%health% was added to the Health of %player%.");
 			set("Command.Player.Health.Remove.Your", "%health% was removed from your Health.");
 			set("Command.Player.Health.Remove.Other", "%health% was removed from the Health of %player%.");
+			set("Command.Player.Hide.You", "You were successfully hidden!");
+			set("Command.Player.Hide.Other", "%player% were successfully hidden!");
+			set("Command.Player.Hide.ByOther", "You were hidden by %player%!");
 			set("Command.Player.Hide.Already.Your", "&eYou are already hidden!");
 			set("Command.Player.Hide.Already.Other", "&e%player% is already hidden!");
 			set("Command.Player.Gamemode.Error", "&cGamemode has to be a Integer!");
@@ -151,6 +156,9 @@ public class English extends Language {
 			set("Command.Player.Level.Set.Other", "The Level of %player% was set to: %level%.");
 			set("Command.Player.Load", "&a%player%.dat loaded!");
 			set("Command.Player.Save", "&a%player%.dat saved!");
+			set("Command.Player.Show.You", "You were successfully shown!");
+			set("Command.Player.Show.Other", "%player% were successfully shown!");
+			set("Command.Player.Show.ByOther", "You were shown by %player%!");
 			set("Command.Player.Show.Already.Your", "&eYou are already visible!");
 			set("Command.Player.Show.Already.Other", "&e%player% is already visible!");
 			set("Command.Player.Time.Get.Your", "Your Time is: %time%.");
