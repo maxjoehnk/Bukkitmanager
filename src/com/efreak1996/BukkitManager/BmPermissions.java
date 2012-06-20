@@ -78,11 +78,11 @@ public class BmPermissions {
 	
 	public void shutdown() {}
 	
-	public boolean has(CommandSender sender, String perm) {
+	public static boolean has(CommandSender sender, String perm) {
 		return has(sender, perm, true);
 	}
 	
-	public boolean has(CommandSender sender, String perm, boolean log) {
+	public static boolean has(CommandSender sender, String perm, boolean log) {
 		if (sender instanceof ConsoleCommandSender) return true;
 		if (forceSuper) return sender.hasPermission(perm);
 		boolean hasPerm = false;
