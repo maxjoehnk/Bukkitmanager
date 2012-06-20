@@ -1,9 +1,9 @@
-name: BukkitManager
+name: Bukkitmanager
 main: org.efreak1996.Bukkitmanager.BmPlugin
-version: 1.6
+version: 1.7
 website: http://dev.bukkit.org/server-mods/bukkitmanager
 author: efreak1996
-prefix: BukkitManager
+prefix: Bukkitmanager
 soft-depend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, zPermissions, DroxPerms, GroupManager]
 description: >
              A plugin to update and manage bukkit and its plugins
