@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockPistonRetractEvent;
 
-public class BlockPistonRetractLogger extends BmBlockLogger {
+public class BlockPistonRetractLogger extends BlockLogger {
 	
 	public BlockPistonRetractLogger() {
 		super("BlockPistonRetract");

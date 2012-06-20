@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.SignChangeEvent;
 
-public class SignChangeLogger extends BmBlockLogger {
+public class SignChangeLogger extends BlockLogger {
 	
 	public SignChangeLogger() {
 		super("SignChange");

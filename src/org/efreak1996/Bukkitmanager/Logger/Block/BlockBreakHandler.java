@@ -6,13 +6,13 @@ import java.util.HashMap;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.efreak1996.Bukkitmanager.Logger.BmLoggerConfiguration;
+import org.efreak1996.Bukkitmanager.Logger.LoggerConfiguration;
 
 
-public class BlockBreakHandler extends BmBlockHandler {
+public class BlockBreakHandler extends BlockHandler {
 
 	public BlockBreakHandler(BlockBreakLogger arg1logger) {
-		super(new File("Block" + File.separator + "BlockBreak.log"), arg1logger, BmLoggerConfiguration.get("Block.BlockBreak.File"), BmLoggerConfiguration.get("Block.BlockBreak.Database"));
+		super(new File("Block" + File.separator + "BlockBreak.log"), arg1logger, LoggerConfiguration.get("Block.BlockBreak.File"), LoggerConfiguration.get("Block.BlockBreak.Database"));
 	}
 	
 	public String logFile(HashMap<String, Object> values) {

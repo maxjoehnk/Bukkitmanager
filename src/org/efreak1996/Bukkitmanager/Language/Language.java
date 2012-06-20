@@ -22,8 +22,8 @@ public abstract class Language {
 	
 	public static List<Language> getLanguages() {
 		List<Language> languages = new ArrayList<Language>();
-		languages.add(new English());
-		//languages.add(new Deutsch());
+		languages.add(new en_US());
+		//languages.add(new de_De());
 		return languages;
 	}
 	

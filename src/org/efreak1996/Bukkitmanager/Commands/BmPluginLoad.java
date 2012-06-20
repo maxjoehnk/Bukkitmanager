@@ -9,27 +9,27 @@ import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.UnknownDependencyException;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmPermissions;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 import org.efreak1996.Bukkitmanager.BmPlugin;
-import org.efreak1996.Bukkitmanager.PluginManager.BmPluginManager;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.PluginManager.PluginManager;
 
 
 public class BmPluginLoad {
 
-	private static BmIOManager io;
+	private static IOManager io;
 	private static Plugin bukkitmanager;
-	private static BmPermissions permHandler;
-	private static BmPluginManager pm;
-	private static BmConfiguration config;
+	private static Permissions permHandler;
+	private static PluginManager pm;
+	private static Configuration config;
 	
 	public void initialize() {
 		bukkitmanager = BmPlugin.getPlugin();
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
+		io = new IOManager();
+		permHandler = new Permissions();
 		pm = BmPlugin.getPluginManager();
-		config = new BmConfiguration();
+		config = new Configuration();
 	}
 	public void shutdown() {}
 

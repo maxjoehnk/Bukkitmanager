@@ -10,23 +10,23 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmPluginConfig {
 	
-	private static BmIOManager io;
-	private static BmConfiguration config;
-	private static BmPermissions permHandler;
+	private static IOManager io;
+	private static Configuration config;
+	private static Permissions permHandler;
 	
 	public void shutdown() {}
 	
 	public void initialize() {
-		config = new BmConfiguration();
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
+		config = new Configuration();
+		io = new IOManager();
+		permHandler = new Permissions();
 	}
 
 	public void cmd(CommandSender sender, String[] args, boolean prefixed) {

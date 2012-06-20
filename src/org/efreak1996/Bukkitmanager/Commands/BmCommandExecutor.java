@@ -7,19 +7,19 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.craftbukkit.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmCommandExecutor implements CommandExecutor {
 	
 	public static Player p;
 	public static ConsoleCommandSender c;
-	private static BmIOManager io;
+	private static IOManager io;
 	private static Plugin plugin;
-	private static BmConfiguration config;
-	private static BmPermissions permHandler;
+	private static Configuration config;
+	private static Permissions permHandler;
 	private static BmAutomessage automessageCmd;
 	private static BmAutosave autosaveCmd;
 	private static BmAutobackup autobackupCmd;
@@ -35,9 +35,9 @@ public class BmCommandExecutor implements CommandExecutor {
 	private static BmLanguageCommand langCommand;
 	
 	public BmCommandExecutor() {
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
-		config = new BmConfiguration();
+		io = new IOManager();
+		permHandler = new Permissions();
+		config = new Configuration();
 		plugin = org.efreak1996.Bukkitmanager.BmPlugin.getPlugin();
 		io.sendConsole(io.translate("Plugin.LoadingCommands"));
 		bukkitCmd = new BmBukkit();

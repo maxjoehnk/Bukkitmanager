@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockPistonExtendEvent;
 
-public class BlockPistonExtendLogger extends BmBlockLogger {
+public class BlockPistonExtendLogger extends BlockLogger {
 	
 	public BlockPistonExtendLogger() {
 		super("BlockPistonExtend");

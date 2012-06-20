@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 
-import org.efreak1996.Bukkitmanager.Swing.BmSwing;
+import org.efreak1996.Bukkitmanager.Swing.Swing;
 import org.efreak1996.Bukkitmanager.Swing.Local.GuiObject;
 
 
@@ -25,8 +25,8 @@ public class WindowsMenu extends JMenu implements GuiObject {
 		playerListItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (playerListItem.isSelected()) BmSwing.getLocalMainGui().show("PlayerList");
-				else BmSwing.getLocalMainGui().hide("PlayerList");
+				if (playerListItem.isSelected()) Swing.getLocalMainGui().show("PlayerList");
+				else Swing.getLocalMainGui().hide("PlayerList");
 			}
 		});
 		add(playerListItem);
@@ -36,8 +36,8 @@ public class WindowsMenu extends JMenu implements GuiObject {
 		onlinePlayerListItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (onlinePlayerListItem.isSelected()) BmSwing.getLocalMainGui().show("OnlinePlayerList");
-				else BmSwing.getLocalMainGui().hide("OnlinePlayerList");
+				if (onlinePlayerListItem.isSelected()) Swing.getLocalMainGui().show("OnlinePlayerList");
+				else Swing.getLocalMainGui().hide("OnlinePlayerList");
 			}
 		});
 		add(onlinePlayerListItem);
@@ -47,8 +47,8 @@ public class WindowsMenu extends JMenu implements GuiObject {
 		offlinePlayerListItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (offlinePlayerListItem.isSelected()) BmSwing.getLocalMainGui().show("OfflinePlayerList");
-				else BmSwing.getLocalMainGui().hide("OfflinePlayerList");
+				if (offlinePlayerListItem.isSelected()) Swing.getLocalMainGui().show("OfflinePlayerList");
+				else Swing.getLocalMainGui().hide("OfflinePlayerList");
 			}
 		});
 		add(offlinePlayerListItem);
@@ -58,8 +58,8 @@ public class WindowsMenu extends JMenu implements GuiObject {
 		pluginListItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (pluginListItem.isSelected()) BmSwing.getLocalMainGui().show("PluginList");
-				else BmSwing.getLocalMainGui().hide("PluginList");
+				if (pluginListItem.isSelected()) Swing.getLocalMainGui().show("PluginList");
+				else Swing.getLocalMainGui().hide("PluginList");
 			}
 		});
 		add(pluginListItem);
@@ -69,8 +69,8 @@ public class WindowsMenu extends JMenu implements GuiObject {
 		consoleItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (consoleItem.isSelected()) BmSwing.getLocalMainGui().show("Console");
-				else BmSwing.getLocalMainGui().hide("Console");
+				if (consoleItem.isSelected()) Swing.getLocalMainGui().show("Console");
+				else Swing.getLocalMainGui().hide("Console");
 		}
 		});
 		add(consoleItem);
@@ -78,14 +78,14 @@ public class WindowsMenu extends JMenu implements GuiObject {
 
 	@Override
 	public void update() {
-		if (BmSwing.getLocalMainGui().isVisible("PlayerList")) playerListItem.setSelected(true);
+		if (Swing.getLocalMainGui().isVisible("PlayerList")) playerListItem.setSelected(true);
 		else playerListItem.setSelected(false);
-		if (BmSwing.getLocalMainGui().isVisible("OnlinePlayerList")) onlinePlayerListItem.setSelected(true);
+		if (Swing.getLocalMainGui().isVisible("OnlinePlayerList")) onlinePlayerListItem.setSelected(true);
 		else onlinePlayerListItem.setSelected(false);
-		if (BmSwing.getLocalMainGui().isVisible("OfflinePlayerList")) offlinePlayerListItem.setSelected(true);
+		if (Swing.getLocalMainGui().isVisible("OfflinePlayerList")) offlinePlayerListItem.setSelected(true);
 		else offlinePlayerListItem.setSelected(false);
-		if (BmSwing.getLocalMainGui().isVisible("Console")) consoleItem.setSelected(true);
+		if (Swing.getLocalMainGui().isVisible("Console")) consoleItem.setSelected(true);
 		else consoleItem.setSelected(false);
-		if (BmSwing.getLocalMainGui().isVisible("PluginList")) pluginListItem.setSelected(true);
+		if (Swing.getLocalMainGui().isVisible("PluginList")) pluginListItem.setSelected(true);
 		else pluginListItem.setSelected(false);	}
 }

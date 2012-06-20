@@ -3,17 +3,17 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.IOManager;
 
 
 public class BmBukkitCommandExecutor implements CommandExecutor {
 	
-	public static BmIOManager io;
+	public static IOManager io;
 	public static BmBukkitConfig Config;
 	public static BmBukkitInfo Info;
 
 	public BmBukkitCommandExecutor() {
-		io = new BmIOManager();
+		io = new IOManager();
 		Config = new BmBukkitConfig();
 		Info = new BmBukkitInfo();
 	}

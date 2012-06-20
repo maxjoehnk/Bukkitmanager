@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.EntityBlockFormEvent;
 
-public class EntityBlockFormLogger extends BmBlockLogger {
+public class EntityBlockFormLogger extends BlockLogger {
 	
 	public EntityBlockFormLogger() {
 		super("EntityBlockForm");

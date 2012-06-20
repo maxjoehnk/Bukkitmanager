@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmBukkitConfig {
@@ -17,15 +17,15 @@ public class BmBukkitConfig {
 	public static FileInputStream streamIn = null;
 	public static FileOutputStream streamOut = null;
 	public static Properties propertie;
-	private static BmConfiguration config;
-	private static BmIOManager io;
-	private static BmPermissions permHandler;
+	private static Configuration config;
+	private static IOManager io;
+	private static Permissions permHandler;
 	
 	public void initialize() {
 		propertie = new Properties();
-		config = new BmConfiguration();
-		permHandler = new BmPermissions();
-		io = new BmIOManager();
+		config = new Configuration();
+		permHandler = new Permissions();
+		io = new IOManager();
 		try {
 			streamIn = new FileInputStream("server.properties");
 			propertie.load(streamIn);

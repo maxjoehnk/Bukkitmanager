@@ -3,21 +3,21 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
-import org.efreak1996.Bukkitmanager.BmPermissions;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 import org.efreak1996.Bukkitmanager.BmPlugin;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
 
 
 public class BmPluginList {
 
 	private static Plugin plugin;
-	private static BmIOManager io;
-	private static BmPermissions permHandler;
+	private static IOManager io;
+	private static Permissions permHandler;
 	
 	public void initialize() {
 		plugin = BmPlugin.getPlugin();
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
+		io = new IOManager();
+		permHandler = new Permissions();
 	}
 	public void shutdown() {}
 

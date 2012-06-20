@@ -7,7 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockCanBuildEvent;
 
 
-public class BlockCanBuildLogger extends BmBlockLogger {
+public class BlockCanBuildLogger extends BlockLogger {
 	
 	public BlockCanBuildLogger() {
 		super("BlockCanBuild");

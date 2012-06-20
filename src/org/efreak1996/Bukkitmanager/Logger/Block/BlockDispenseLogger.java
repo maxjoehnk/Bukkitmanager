@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockDispenseEvent;
 
-public class BlockDispenseLogger extends BmBlockLogger {
+public class BlockDispenseLogger extends BlockLogger {
 	
 	public BlockDispenseLogger() {
 		super("BlockDispense");

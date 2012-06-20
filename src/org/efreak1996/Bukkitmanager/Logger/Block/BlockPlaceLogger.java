@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class BlockPlaceLogger extends BmBlockLogger {
+public class BlockPlaceLogger extends BlockLogger {
 	
 	public BlockPlaceLogger() {
 		super("BlockPlace");

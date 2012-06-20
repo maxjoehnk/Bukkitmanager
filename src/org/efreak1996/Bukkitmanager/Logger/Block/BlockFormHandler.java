@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 import org.bukkit.block.Block;
-import org.efreak1996.Bukkitmanager.Logger.BmLoggerConfiguration;
+import org.efreak1996.Bukkitmanager.Logger.LoggerConfiguration;
 
 
-public class BlockFormHandler extends BmBlockHandler {
+public class BlockFormHandler extends BlockHandler {
 
 	public BlockFormHandler(BlockFormLogger arg1logger) {
-		super(new File("Block" + File.separator + "BlockForm.log"), arg1logger, BmLoggerConfiguration.get("Block.BlockForm.File"), BmLoggerConfiguration.get("Block.BlockForm.Database"));
+		super(new File("Block" + File.separator + "BlockForm.log"), arg1logger, LoggerConfiguration.get("Block.BlockForm.File"), LoggerConfiguration.get("Block.BlockForm.Database"));
 	}
 	
 	public String logFile(HashMap<String, Object> values) {

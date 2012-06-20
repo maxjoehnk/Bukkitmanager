@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockGrowEvent;
 
-public class BlockGrowLogger extends BmBlockLogger {
+public class BlockGrowLogger extends BlockLogger {
 	
 	public BlockGrowLogger() {
 		super("BlockGrow");

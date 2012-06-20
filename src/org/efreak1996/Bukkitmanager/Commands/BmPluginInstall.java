@@ -1,24 +1,24 @@
 package org.efreak1996.Bukkitmanager.Commands;
 
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmDatabase;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.Database;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmPluginInstall {
 
-	private static BmIOManager io;
-	private static BmConfiguration config;
-	private static BmDatabase db;
-	private static BmPermissions permHandler;
+	private static IOManager io;
+	private static Configuration config;
+	private static Database db;
+	private static Permissions permHandler;
 	
 	public void initialize() {
-		io = new BmIOManager();
-		config = new BmConfiguration();
-		db = new BmDatabase();
-		permHandler = new BmPermissions();
+		io = new IOManager();
+		config = new Configuration();
+		db = new Database();
+		permHandler = new Permissions();
 	}
 	public void shutdown() {}
 

@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.UIManager;
 
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.Swing.BmSwing;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.Swing.Swing;
 import org.efreak1996.Bukkitmanager.Swing.Local.Frames.*;
 import org.efreak1996.Bukkitmanager.Swing.Local.MenuBar.*;
 import org.efreak1996.Bukkitmanager.Swing.Local.StatusBar.*;
@@ -22,7 +22,7 @@ import java.awt.Toolkit;
 
 public class LocalMainGui extends DefaultDockableHolder implements GuiObject{
 	
-	private static BmConfiguration config;
+	private static Configuration config;
 	JMenuBar menuBar;
 	FileMenu fileMenu;
 	HelpMenu helpMenu;
@@ -45,7 +45,7 @@ public class LocalMainGui extends DefaultDockableHolder implements GuiObject{
 	}
 	
 	public LocalMainGui() {
-		config = new BmConfiguration();
+		config = new Configuration();
 	}
 	
 	public void initialize() {
@@ -78,7 +78,7 @@ public class LocalMainGui extends DefaultDockableHolder implements GuiObject{
 		serverActionsMenu = new ServerActionsMenu();
 		menuBar.add(serverActionsMenu);
 		windowsMenu = new WindowsMenu();
-		BmSwing.addLocalGuiObject(windowsMenu);
+		Swing.addLocalGuiObject(windowsMenu);
 		menuBar.add(windowsMenu);
 		helpMenu = new HelpMenu();
 		menuBar.add(helpMenu);
@@ -87,7 +87,7 @@ public class LocalMainGui extends DefaultDockableHolder implements GuiObject{
 		//Setup Statusbar
 		statusBar = new StatusBar();
 		onlinePlayerStatusBarItem = new OnlinePlayerStatusBarItem();
-		BmSwing.addLocalGuiObject(onlinePlayerStatusBarItem);
+		Swing.addLocalGuiObject(onlinePlayerStatusBarItem);
 		statusBar.add(onlinePlayerStatusBarItem);
 		statusBar.add(new ResizeStatusBarItem(), BorderLayout.LINE_END);
 		getContentPane().add(statusBar, BorderLayout.AFTER_LAST_LINE);
@@ -103,23 +103,23 @@ public class LocalMainGui extends DefaultDockableHolder implements GuiObject{
 		//Playerlist
 		playerList = new PlayerListFrame();
 		getDockingManager().addFrame(playerList);
-		BmSwing.addLocalGuiObject(playerList);
+		Swing.addLocalGuiObject(playerList);
 		//Online Playerlist
 		onlinePlayerList = new OnlinePlayerListFrame();
 		getDockingManager().addFrame(onlinePlayerList);
-		BmSwing.addLocalGuiObject(onlinePlayerList);
+		Swing.addLocalGuiObject(onlinePlayerList);
 		//Offline Playerlist
 		offlinePlayerList = new OfflinePlayerListFrame();
 		getDockingManager().addFrame(offlinePlayerList);
-		BmSwing.addLocalGuiObject(offlinePlayerList);
+		Swing.addLocalGuiObject(offlinePlayerList);
 		//Console
 		console = new ConsoleFrame();
 		getDockingManager().addFrame(console);
-		BmSwing.addLocalGuiObject(console);
+		Swing.addLocalGuiObject(console);
 		//Pluginlist
 		pluginList = new PluginListFrame();
 		getDockingManager().addFrame(pluginList);
-		BmSwing.addLocalGuiObject(pluginList);
+		Swing.addLocalGuiObject(pluginList);
 				
 		//Setup Workspace
 		getDockingManager().getWorkspace().setAcceptDockableFrame(true);

@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockRedstoneEvent;
 
-public class BlockRedstoneLogger extends BmBlockLogger {
+public class BlockRedstoneLogger extends BlockLogger {
 	
 	public BlockRedstoneLogger() {
 		super("BlockRedstone");

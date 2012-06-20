@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 import org.bukkit.block.Block;
-import org.efreak1996.Bukkitmanager.Logger.BmLoggerConfiguration;
+import org.efreak1996.Bukkitmanager.Logger.LoggerConfiguration;
 
 
-public class BlockRedstoneHandler extends BmBlockHandler {
+public class BlockRedstoneHandler extends BlockHandler {
 
 	public BlockRedstoneHandler(BlockRedstoneLogger arg1logger) {
-		super(new File("Block" + File.separator + "BlockRedstone.log"), arg1logger, BmLoggerConfiguration.get("Block.BlockRedstone.File"), BmLoggerConfiguration.get("Block.BlockRedstone.Database"));
+		super(new File("Block" + File.separator + "BlockRedstone.log"), arg1logger, LoggerConfiguration.get("Block.BlockRedstone.File"), LoggerConfiguration.get("Block.BlockRedstone.Database"));
 	}
 	
 	public String logFile(HashMap<String, Object> values) {

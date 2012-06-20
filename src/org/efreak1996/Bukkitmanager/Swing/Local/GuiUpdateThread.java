@@ -2,17 +2,17 @@ package org.efreak1996.Bukkitmanager.Swing.Local;
 
 import java.util.List;
 
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.Swing.BmSwing;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.Swing.Swing;
 
 
 public class GuiUpdateThread extends Thread {
 
 	private static boolean run = true;
-	private static BmConfiguration config;
+	private static Configuration config;
 	
 	public void initialize() {
-		config = new BmConfiguration();
+		config = new Configuration();
 		this.start();
 	}
 	
@@ -22,8 +22,8 @@ public class GuiUpdateThread extends Thread {
 	
 	public void run() {
 		while (run) {
-			while (BmSwing.getLocalMainGui().isVisible()) {
-				List<GuiObject> guiObjects = BmSwing.getLocalGuiObjects();
+			while (Swing.getLocalMainGui().isVisible()) {
+				List<GuiObject> guiObjects = Swing.getLocalGuiObjects();
 				for (int i = 0; i < guiObjects.size(); i++) guiObjects.get(i).update();
 				try {
 					Thread.sleep(1000);

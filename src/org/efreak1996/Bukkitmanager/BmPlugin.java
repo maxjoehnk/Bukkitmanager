@@ -7,12 +7,10 @@ import org.apache.commons.io.FileUtils;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.efreak1996.Bukkitmanager.Commands.BmCommandExecutor;
-import org.efreak1996.Bukkitmanager.Listener.BmBukkitListener;
-import org.efreak1996.Bukkitmanager.Logger.BmLoggingManager;
-import org.efreak1996.Bukkitmanager.PluginManager.BmPluginManager;
-import org.efreak1996.Bukkitmanager.Swing.BmSwing;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
-import org.efreak1996.Bukkitmanager.Util.BmThreadManager;
+import org.efreak1996.Bukkitmanager.Listener.BukkitListener;
+import org.efreak1996.Bukkitmanager.Logger.LoggingManager;
+import org.efreak1996.Bukkitmanager.PluginManager.PluginManager;
+import org.efreak1996.Bukkitmanager.Swing.Swing;
 
 
 /**
@@ -26,19 +24,19 @@ import org.efreak1996.Bukkitmanager.Util.BmThreadManager;
 public class BmPlugin extends JavaPlugin {
 	
 	private static Plugin plugin;
-	private static BmConfiguration config;
-	private static BmIOManager io;
-	private static BmLoggingManager logManager;
-	private static BmAutomessageThread msgThread;
-	private static BmAutosaveThread saveThread;
-	private static BmAutobackupThread backupThread;
-	private static BmPermissions permHandler;
-	private static BmThreadManager func;
-	private static BmDatabase db;
-	private static BmSwing swing;
+	private static Configuration config;
+	private static IOManager io;
+	private static LoggingManager logManager;
+	private static AutomessageThread msgThread;
+	private static AutosaveThread saveThread;
+	private static AutobackupThread backupThread;
+	private static Permissions permHandler;
+	private static ThreadManager func;
+	private static Database db;
+	private static Swing swing;
 	private static File rootFolder;
-	private static BmCustomMessageManager msgManager;
-	//private static BmLibraryManager libManager;
+	private static CustomMessageManager msgManager;
+	//private static LibraryManager libManager;
 
 	/**
 	 * 
@@ -49,9 +47,9 @@ public class BmPlugin extends JavaPlugin {
 	@Override
 	public void onDisable() {
     	db.shutdown();
-    	func.stopThread(BmThreadType.AUTOSAVE);
-    	func.stopThread(BmThreadType.AUTOBACKUP);
-    	func.stopThread(BmThreadType.AUTOMESSAGE);
+    	func.stopThread(ThreadType.AUTOSAVE);
+    	func.stopThread(ThreadType.AUTOBACKUP);
+    	func.stopThread(ThreadType.AUTOMESSAGE);
 		try {
 			FileUtils.cleanDirectory(new File(plugin.getDataFolder().getParentFile().getAbsoluteFile().getParentFile() + File.separator + "backups" + File.separator + "temp"));
 		} catch (IOException e) {
@@ -86,31 +84,31 @@ public class BmPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		CreateDirs();
-		config = new BmConfiguration();
+		config = new Configuration();
 		config.initalize();
-		io = new BmIOManager();
+		io = new IOManager();
 		io.initialize();
-		permHandler = new BmPermissions();
+		permHandler = new Permissions();
 		permHandler.initialize();
-		func = new BmThreadManager();
+		func = new ThreadManager();
 		func.initialize();
-		db = new BmDatabase();
+		db = new Database();
 		db.initialize();
-		logManager = new BmLoggingManager();
+		logManager = new LoggingManager();
 		logManager.initialize();
 		if (config.getDev()) {
 			io.sendConsoleDev("Development Mode enabled!");
 			io.sendConsoleDev("New Features, which aren't complete or unstable will be enabled!");
-			swing = new BmSwing();
+			swing = new Swing();
 			swing.initialize();
 		}		
 		plugin.getServer().getPluginCommand("bm").setExecutor(new BmCommandExecutor());
-		plugin.getServer().getPluginManager().registerEvents(new BmBukkitListener(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new BukkitListener(), plugin);
 		Threads();
-		if (config.getBoolean("General.Statistics.Enabled")) new BmStats().start();
-		msgManager = new BmCustomMessageManager();
+		if (config.getBoolean("General.Statistics.Enabled")) new Statistics().start();
+		msgManager = new CustomMessageManager();
 		msgManager.initialize();
-		new BmFakepluginsManager();
+		new FakepluginsManager();
 		io.sendConsole(io.translate("Plugin.Done"));
 	}
 	
@@ -148,15 +146,15 @@ public class BmPlugin extends JavaPlugin {
 	 */
 	
 	private void Threads() {
-		msgThread = new BmAutomessageThread();
+		msgThread = new AutomessageThread();
 		msgThread.initialize();
-		saveThread = new BmAutosaveThread();
+		saveThread = new AutosaveThread();
 		saveThread.initialize();
-		backupThread = new BmAutobackupThread();
+		backupThread = new AutobackupThread();
 		backupThread.initialize();
-		if (config.getBoolean("Autosave.Enabled")) func.startThread(BmThreadType.AUTOSAVE);
-		if (config.getBoolean("Automessage.Enabled")) func.startThread(BmThreadType.AUTOMESSAGE);
-		if (config.getBoolean("Autobackup.Enabled")) func.startThread(BmThreadType.AUTOBACKUP);
+		if (config.getBoolean("Autosave.Enabled")) func.startThread(ThreadType.AUTOSAVE);
+		if (config.getBoolean("Automessage.Enabled")) func.startThread(ThreadType.AUTOMESSAGE);
+		if (config.getBoolean("Autobackup.Enabled")) func.startThread(ThreadType.AUTOBACKUP);
 	}
 	/**
 	 * 
@@ -178,7 +176,7 @@ public class BmPlugin extends JavaPlugin {
 	 * 
 	 */
 	
-	public static BmPluginManager getPluginManager() {
-		return new BmPluginManager();
+	public static PluginManager getPluginManager() {
+		return new PluginManager();
 	}
 }

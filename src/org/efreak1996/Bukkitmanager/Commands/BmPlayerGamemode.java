@@ -5,21 +5,21 @@ import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.efreak1996.Bukkitmanager.BmDatabase;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Database;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmPlayerGamemode {
 	
-	private static BmPermissions permHandler;
-	private static BmIOManager io;
-	private static BmDatabase db;
+	private static Permissions permHandler;
+	private static IOManager io;
+	private static Database db;
 
 	public void initialize() {
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
-		db = new BmDatabase();
+		io = new IOManager();
+		permHandler = new Permissions();
+		db = new Database();
 	}
 	public void shutdown() {}
 

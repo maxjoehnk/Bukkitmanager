@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockFromToEvent;
 
-public class BlockFromToLogger extends BmBlockLogger {
+public class BlockFromToLogger extends BlockLogger {
 	
 	public BlockFromToLogger() {
 		super("BlockFromTo");

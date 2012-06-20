@@ -3,7 +3,7 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.IOManager;
 
 
 public class BmPlayerCommandExecutor implements CommandExecutor {
@@ -24,10 +24,10 @@ public class BmPlayerCommandExecutor implements CommandExecutor {
 	private static BmPlayerGamemode gamemodeCmd;
 	private static BmPlayerHealth healthCmd;
 	private static BmPlayerFood foodCmd;
-	private static BmIOManager io;
+	private static IOManager io;
 
 	public BmPlayerCommandExecutor() {
-		io = new BmIOManager();
+		io = new IOManager();
 		hideCmd = new BmPlayerHide();
 		showCmd = new BmPlayerShow();
 		levelCmd = new BmPlayerLevel();

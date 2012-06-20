@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockFadeEvent;
 
-public class BlockFadeLogger extends BmBlockLogger {
+public class BlockFadeLogger extends BlockLogger {
 	
 	public BlockFadeLogger() {
 		super("BlockFade");

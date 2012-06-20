@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 import org.bukkit.block.Block;
-import org.efreak1996.Bukkitmanager.Logger.BmLoggerConfiguration;
+import org.efreak1996.Bukkitmanager.Logger.LoggerConfiguration;
 
 
-public class EnchantItemHandler extends BmEnchantmentHandler {
+public class EnchantItemHandler extends EnchantmentHandler {
 
 	public EnchantItemHandler(EnchantItemLogger arg1logger) {
-		super(new File("Enchantment" + File.separator + "EnchantItem.log"), arg1logger, BmLoggerConfiguration.get("Enchantment.EnchantItem.File"), BmLoggerConfiguration.get("Enchantment.EnchantItem.Database"));
+		super(new File("Enchantment" + File.separator + "EnchantItem.log"), arg1logger, LoggerConfiguration.get("Enchantment.EnchantItem.File"), LoggerConfiguration.get("Enchantment.EnchantItem.Database"));
 	}
 	
 	public String logFile(HashMap<String, Object> values) {

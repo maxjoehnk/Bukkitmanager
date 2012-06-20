@@ -1,28 +1,28 @@
 package org.efreak1996.Bukkitmanager.Commands;
 
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.BmAutosaveThread;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.BmThreadType;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
-import org.efreak1996.Bukkitmanager.Util.BmThreadManager;
+import org.efreak1996.Bukkitmanager.AutosaveThread;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
+import org.efreak1996.Bukkitmanager.ThreadManager;
+import org.efreak1996.Bukkitmanager.ThreadType;
 
 
 public class BmAutosave {
 	
-	private static BmPermissions permHandler;
-	private static BmConfiguration config;
-	private static BmThreadManager func;
-	private static BmAutosaveThread saveThread;
-	private static BmIOManager io;
+	private static Permissions permHandler;
+	private static Configuration config;
+	private static ThreadManager func;
+	private static AutosaveThread saveThread;
+	private static IOManager io;
 
 	public void initialize() {
-		saveThread = new BmAutosaveThread();
-		permHandler = new BmPermissions();
-		func = new BmThreadManager();
-		config = new BmConfiguration();
-		io = new BmIOManager();
+		saveThread = new AutosaveThread();
+		permHandler = new Permissions();
+		func = new ThreadManager();
+		config = new Configuration();
+		io = new IOManager();
 	}
 	public void shutdown() {}
 
@@ -35,18 +35,18 @@ public class BmAutosave {
 			}else if (args[1].equalsIgnoreCase("stop")) {
 				if (permHandler.has(sender, "bm.autosave.stop")) {
 					io.sendTranslation(sender, "Command.Autosave.Stop");
-					func.stopThread(BmThreadType.AUTOSAVE);
+					func.stopThread(ThreadType.AUTOSAVE);
 				}
 			}else if (args[1].equalsIgnoreCase("start")) {
 				if (permHandler.has(sender, "bm.autosave.start")) {
 					io.sendTranslation(sender, "Command.Autosave.Start");
-					func.startThread(BmThreadType.AUTOSAVE);
+					func.startThread(ThreadType.AUTOSAVE);
 				}
 			}else if (args[1].equalsIgnoreCase("restart")) {
 				if (permHandler.has(sender, "bm.autosave.restart")) {
 					io.sendTranslation(sender, "Command.Autosave.Restart");
-					func.stopThread(BmThreadType.AUTOSAVE);
-					func.startThread(BmThreadType.AUTOSAVE);
+					func.stopThread(ThreadType.AUTOSAVE);
+					func.startThread(ThreadType.AUTOSAVE);
 				}
 			}else if (args[1].equalsIgnoreCase("interval")) {
 				if (args.length == 2) {
@@ -56,8 +56,8 @@ public class BmAutosave {
 						io.send(sender, io.translate("Command.Autosave.Interval.Set").replaceAll("%interval%", config.getString("Autosave.Interval")));
 						config.set("Autosave.Interval", new Integer(args[2]));
 						io.sendTranslation(sender, "Command.Autosave.Restart");
-						func.stopThread(BmThreadType.AUTOSAVE);
-						func.startThread(BmThreadType.AUTOSAVE);
+						func.stopThread(ThreadType.AUTOSAVE);
+						func.startThread(ThreadType.AUTOSAVE);
 						io.sendTranslation(sender, "Plugin.Done");
 					}
 				}else io.sendManyArgs(sender, "/bm autosave interval [interval]", false);

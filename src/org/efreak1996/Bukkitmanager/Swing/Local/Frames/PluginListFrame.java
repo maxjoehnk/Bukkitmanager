@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.bukkit.plugin.Plugin;
 import org.efreak1996.Bukkitmanager.BmPlugin;
-import org.efreak1996.Bukkitmanager.PluginManager.BmPluginManager;
+import org.efreak1996.Bukkitmanager.PluginManager.PluginManager;
 import org.efreak1996.Bukkitmanager.Swing.Local.GuiObject;
 
 import com.jidesoft.docking.DockContext;
@@ -65,7 +65,7 @@ public class PluginListFrame extends DockableFrame implements GuiObject {
 
 	@Override
 	public void update() {
-		BmPluginManager pm = BmPlugin.getPluginManager();
+		PluginManager pm = BmPlugin.getPluginManager();
 		Plugin[] plugins = pm.getPlugins();
 		Object[][] newTabledata = new Object[plugins.length][model.getColumnCount()];
 		for (int i = 0; i < plugins.length; i++) {

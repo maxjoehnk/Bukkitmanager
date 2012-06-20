@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockDamageEvent;
 
-public class BlockDamageLogger extends BmBlockLogger {
+public class BlockDamageLogger extends BlockLogger {
 	
 	public BlockDamageLogger() {
 		super("BlockDamage");

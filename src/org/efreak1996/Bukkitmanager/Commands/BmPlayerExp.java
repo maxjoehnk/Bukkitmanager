@@ -4,27 +4,27 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmDatabase;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmExperienceParser;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.Database;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
+import org.efreak1996.Bukkitmanager.Util.ExperienceParser;
 
 
 public class BmPlayerExp {
 	
-	private static BmConfiguration config;
-	private static BmIOManager io;
-	private static BmPermissions permHandler;
-	private static BmDatabase db;
-	private static BmExperienceParser expParser;
+	private static Configuration config;
+	private static IOManager io;
+	private static Permissions permHandler;
+	private static Database db;
+	private static ExperienceParser expParser;
 
 	public void initialize() {
-		config = new BmConfiguration();
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
-		db = new BmDatabase();
-		expParser = new BmExperienceParser();
+		config = new Configuration();
+		io = new IOManager();
+		permHandler = new Permissions();
+		db = new Database();
+		expParser = new ExperienceParser();
 	}
 	public void shutdown() {}
 

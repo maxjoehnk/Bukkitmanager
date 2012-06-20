@@ -7,7 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 
 
-public class BlockBreakLogger extends BmBlockLogger {
+public class BlockBreakLogger extends BlockLogger {
 	
 	public BlockBreakLogger() {
 		super("BlockBreak");

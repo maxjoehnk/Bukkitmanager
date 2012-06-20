@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockIgniteEvent;
 
-public class BlockIgniteLogger extends BmBlockLogger {
+public class BlockIgniteLogger extends BlockLogger {
 	
 	public BlockIgniteLogger() {
 		super("BlockIgnite");

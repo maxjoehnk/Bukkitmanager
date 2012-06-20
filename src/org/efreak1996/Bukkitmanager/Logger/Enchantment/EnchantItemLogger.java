@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 
-public class EnchantItemLogger extends BmEnchantmentLogger {
+public class EnchantItemLogger extends EnchantmentLogger {
 	
 	public EnchantItemLogger() {
 		super("EnchantItem");

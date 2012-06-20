@@ -4,24 +4,24 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmDatabase;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.Database;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmPlayerHealth {
 
-	private static BmIOManager io;
-	private static BmPermissions permHandler;
-	private static BmConfiguration config;
-	private static BmDatabase db;
+	private static IOManager io;
+	private static Permissions permHandler;
+	private static Configuration config;
+	private static Database db;
 	
 	public void initialize() {
-		io = new BmIOManager();
-		permHandler = new BmPermissions();
-		config = new BmConfiguration();
-		db = new BmDatabase();
+		io = new IOManager();
+		permHandler = new Permissions();
+		config = new Configuration();
+		db = new Database();
 	}
 	public void shutdown() {}
 

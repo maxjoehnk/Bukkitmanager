@@ -1,22 +1,22 @@
 package org.efreak1996.Bukkitmanager.Commands;
 
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
 
 
 public class BmBukkit {
 	
-	public static BmIOManager io;
+	public static IOManager io;
 	public static BmBukkitConfig Config;
 	public static BmBukkitInfo Info;
-	public static BmPermissions permHandler;
+	public static Permissions permHandler;
 
 	public void initialize() {
-		io = new BmIOManager();
+		io = new IOManager();
 		Config = new BmBukkitConfig();
 		Info = new BmBukkitInfo();
-		permHandler = new BmPermissions();
+		permHandler = new Permissions();
 		Config.initialize();
 		Info.initialize();
 	}

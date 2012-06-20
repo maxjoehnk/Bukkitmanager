@@ -3,28 +3,28 @@ package org.efreak1996.Bukkitmanager.Commands;
 import java.util.List;
 
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.BmAutomessageReader;
-import org.efreak1996.Bukkitmanager.BmConfiguration;
-import org.efreak1996.Bukkitmanager.BmPermissions;
-import org.efreak1996.Bukkitmanager.BmThreadType;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
-import org.efreak1996.Bukkitmanager.Util.BmThreadManager;
+import org.efreak1996.Bukkitmanager.AutomessageReader;
+import org.efreak1996.Bukkitmanager.Configuration;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Permissions;
+import org.efreak1996.Bukkitmanager.ThreadManager;
+import org.efreak1996.Bukkitmanager.ThreadType;
 
 
 public class BmAutomessage {
 
-	private static BmPermissions permHandler;
-	private static BmConfiguration config;
-	private static BmThreadManager func;
-	private static BmIOManager io;
-	private static BmAutomessageReader msgReader;
+	private static Permissions permHandler;
+	private static Configuration config;
+	private static ThreadManager func;
+	private static IOManager io;
+	private static AutomessageReader msgReader;
 	
 	public void initialize() {
-		permHandler = new BmPermissions();
-		msgReader = new BmAutomessageReader();
-		config = new BmConfiguration();
-		func = new BmThreadManager();
-		io = new BmIOManager();
+		permHandler = new Permissions();
+		msgReader = new AutomessageReader();
+		config = new Configuration();
+		func = new ThreadManager();
+		io = new IOManager();
 	}
 	
 	public void shutdown() {}
@@ -52,18 +52,18 @@ public class BmAutomessage {
 			}else if (args[1].equalsIgnoreCase("stop")) {
 				if (permHandler.has(sender, "bm.automessage.stop")) {
 					io.sendTranslation(sender, "Command.Automessage.Stop");
-					func.stopThread(BmThreadType.AUTOMESSAGE);
+					func.stopThread(ThreadType.AUTOMESSAGE);
 				}
 			}else if (args[1].equalsIgnoreCase("start")) {
 				if (permHandler.has(sender, "bm.automessage.start")) {
 					io.sendTranslation(sender, "Command.Automessage.Start");
-					func.startThread(BmThreadType.AUTOMESSAGE);
+					func.startThread(ThreadType.AUTOMESSAGE);
 				}
 			}else if (args[1].equalsIgnoreCase("restart")) {
 				if (permHandler.has(sender, "bm.automessage.restart")) {
 					io.sendTranslation(sender, "Command.Automessage.Restart");
-					func.stopThread(BmThreadType.AUTOMESSAGE);
-					func.startThread(BmThreadType.AUTOMESSAGE);
+					func.stopThread(ThreadType.AUTOMESSAGE);
+					func.startThread(ThreadType.AUTOMESSAGE);
 				}
 			}else if (args[1].equalsIgnoreCase("interval")) {
 				if (args.length == 2) {
@@ -73,8 +73,8 @@ public class BmAutomessage {
 						io.send(sender, io.translate("Command.Automessage.Interval.Set").replaceAll("%interval%", config.getString("Automessage.Interval")));
 						config.set("Automessage.Interval", args[2]);
 						io.sendTranslation(sender, "Command.Automessage.Restart");
-						func.stopThread(BmThreadType.AUTOMESSAGE);
-						func.startThread(BmThreadType.AUTOMESSAGE);
+						func.stopThread(ThreadType.AUTOMESSAGE);
+						func.startThread(ThreadType.AUTOMESSAGE);
 						io.sendTranslation(sender, "Plugin.Done");
 					}
 				}else io.sendManyArgs(sender, "/bm Automessage interval [interval]");

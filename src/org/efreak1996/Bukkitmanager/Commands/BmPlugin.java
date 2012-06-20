@@ -1,12 +1,12 @@
 package org.efreak1996.Bukkitmanager.Commands;
 
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.IOManager;
 
 
 public class BmPlugin {
 	
-	public static BmIOManager io;
+	public static IOManager io;
 	public static BmPluginConfig configCmd;
 	public static BmPluginDisable disableCmd;
 	public static BmPluginEnable enableCmd;
@@ -18,7 +18,7 @@ public class BmPlugin {
 	public static BmPluginLoad loadCmd;
 
 	public void initialize() {
-		io = new BmIOManager();
+		io = new IOManager();
 		configCmd = new BmPluginConfig();
 		configCmd.initialize();
 		disableCmd = new BmPluginDisable();

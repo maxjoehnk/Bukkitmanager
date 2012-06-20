@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockFormEvent;
 
-public class BlockFormLogger extends BmBlockLogger {
+public class BlockFormLogger extends BlockLogger {
 	
 	public BlockFormLogger() {
 		super("BlockForm");

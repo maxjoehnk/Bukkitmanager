@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
-public class BlockPhysicsLogger extends BmBlockLogger {
+public class BlockPhysicsLogger extends BlockLogger {
 	
 	public BlockPhysicsLogger() {
 		super("BlockPhysics");

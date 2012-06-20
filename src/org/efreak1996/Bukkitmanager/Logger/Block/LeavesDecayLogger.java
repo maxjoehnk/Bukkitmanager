@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.LeavesDecayEvent;
 
-public class LeavesDecayLogger extends BmBlockLogger {
+public class LeavesDecayLogger extends BlockLogger {
 	
 	public LeavesDecayLogger() {
 		super("LeavesDecay");

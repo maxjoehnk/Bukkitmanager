@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockSpreadEvent;
 
-public class BlockSpreadLogger extends BmBlockLogger {
+public class BlockSpreadLogger extends BlockLogger {
 	
 	public BlockSpreadLogger() {
 		super("BlockSpread");

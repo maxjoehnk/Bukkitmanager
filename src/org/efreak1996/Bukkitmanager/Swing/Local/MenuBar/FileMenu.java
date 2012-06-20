@@ -9,7 +9,7 @@ import javax.swing.JMenuItem;
 import java.awt.Component;
 import javax.swing.Box;
 
-import org.efreak1996.Bukkitmanager.Swing.BmSwing;
+import org.efreak1996.Bukkitmanager.Swing.Swing;
 import org.efreak1996.Bukkitmanager.Swing.Local.SettingsGui;
 
 public class FileMenu extends JMenu {
@@ -41,7 +41,7 @@ public class FileMenu extends JMenu {
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				BmSwing.closeLocalGui();
+				Swing.closeLocalGui();
 			}
 		});
 		add(exitItem);

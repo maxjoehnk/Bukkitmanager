@@ -7,7 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBurnEvent;
 
 
-public class BlockBurnLogger extends BmBlockLogger {
+public class BlockBurnLogger extends BlockLogger {
 	
 	public BlockBurnLogger() {
 		super("BlockBurn");

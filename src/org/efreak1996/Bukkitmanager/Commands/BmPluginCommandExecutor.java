@@ -3,12 +3,12 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.efreak1996.Bukkitmanager.Util.BmIOManager;
+import org.efreak1996.Bukkitmanager.IOManager;
 
 
 public class BmPluginCommandExecutor implements CommandExecutor {
 	
-	public static BmIOManager io;
+	public static IOManager io;
 	public static BmPluginConfig configCmd;
 	public static BmPluginDisable disableCmd;
 	public static BmPluginEnable enableCmd;
@@ -20,7 +20,7 @@ public class BmPluginCommandExecutor implements CommandExecutor {
 	public static BmPluginLoad loadCmd;
 
 	public BmPluginCommandExecutor() {
-		io = new BmIOManager();
+		io = new IOManager();
 		configCmd = new BmPluginConfig();
 		disableCmd = new BmPluginDisable();
 		enableCmd = new BmPluginEnable();
