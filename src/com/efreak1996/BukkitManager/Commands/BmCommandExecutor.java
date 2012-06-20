@@ -33,7 +33,6 @@ public class BmCommandExecutor implements CommandExecutor {
 	private static BmPlayerCommand playerCommand;
 	private static BmPluginCommand pluginCommand;
 	private static BmLanguageCommand langCommand;
-	private static BmFakepluginsCommand fakePluginsCommand;
 	
 	public BmCommandExecutor() {
 		io = new BmIOManager();
@@ -106,10 +105,5 @@ public class BmCommandExecutor implements CommandExecutor {
 		}else if (args[0].equalsIgnoreCase("help")) helpCmd.cmd(sender, args);
 		else return false;
 		return true;
-	}
-
-	public BmFakepluginsCommand getFakepluginsCommand() {
-		return fakePluginsCommand;
-	}
-	
+	}	
 }
