@@ -9,14 +9,17 @@
 # Librarys
 /lib
 
+#Backups
+/Alpha1.6
+
 # Unfinished Stuff
 /src/img
-/src/com/efreak1996/BukkitManager/Addon
-/src/com/efreak1996/BukkitManager/SQL
-/src/com/efreak1996/BukkitManager/Webinterface
-/src/com/efreak1996/BukkitManager/Webserver
-/src/com/efreak1996/BukkitManager/lang
-/src/com/efreak1996/BukkitManager/Spout
-/src/com/efreak1996/BukkitManager/Swing/Remote
-/src/com/efreak1996/BukkitManager/Bukkitmanager.java
-/src/com/efreak1996/BukkitManager/Listener/Spout
+/src/org/efreak1996/Bukkitmanager/Addon
+/src/org/efreak1996/Bukkitmanager/SQL
+/src/org/efreak1996/Bukkitmanager/Webinterface
+/src/org/efreak1996/Bukkitmanager/Webserver
+/src/org/efreak1996/Bukkitmanager/lang
+/src/org/efreak1996/Bukkitmanager/Spout
+/src/org/efreak1996/Bukkitmanager/Swing/Remote
+/src/org/efreak1996/Bukkitmanager/Bukkitmanager.java
+/src/org/efreak1996/Bukkitmanager/Listener/Spout
