@@ -123,13 +123,7 @@ public class BmPlugin extends JavaPlugin {
 	private void CreateDirs() {
 		rootFolder = plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile();
 		if (new File(plugin.getDataFolder().getAbsoluteFile().getParentFile(), "BukkitManager").exists()) {
-			plugin.getLogger().info("Moving Foldercontent to new Folder...");
-			try {
-				FileUtils.copyDirectory(new File(plugin.getDataFolder().getAbsoluteFile().getParentFile(), "BukkitManager"), plugin.getDataFolder());
-				plugin.getLogger().info("Done! Please delete the folder: " + new File(plugin.getDataFolder().getAbsoluteFile().getParentFile(), "BukkitManager").toString());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			new File(plugin.getDataFolder().getAbsoluteFile().getParentFile(), "BukkitManager").renameTo(plugin.getDataFolder().getAbsoluteFile());
 		}
 		if (!(plugin.getDataFolder().exists()))
 				plugin.getDataFolder().mkdirs();
