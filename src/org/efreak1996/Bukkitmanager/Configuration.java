@@ -101,10 +101,10 @@ public class Configuration{
 		update("Automessage.Interval", 120);
 		update("Automessage.Random", false);
 		update("Automessage.Prefix", "[AutoMessage]");
+		update("Autosave.Enabled", true);
 		update("Autosave.Interval", 900);
 		update("Autosave.Warntimes", Arrays.asList(60));
 		update("Autosave.Notification", true);
-		update("Autosave.Enabled", true);
 		update("Autosave.NoOffline", true);
 		if (update("Autosave.Taskmode", "Async")) {
 			if (config.getString("Autosave.Taskmode").equalsIgnoreCase("Sync")) saveMode = "SYNC";
@@ -114,10 +114,10 @@ public class Configuration{
 				saveMode = "ASYNC";
 			}
 		}		
+		update("Autobackup.Enabled", true);
 		update("Autobackup.Interval", 3600);
 		update("Autobackup.Warntimes", Arrays.asList(60));
 		update("Autobackup.Notification", true);
-		update("Autobackup.Enabled", true);
 		update("Autobackup.NoOffline", true);
 		if (update("Autobackup.Taskmode", "Async")) {
 			if (config.getString("Autobackup.Taskmode").equalsIgnoreCase("Sync")) backupMode = "SYNC";
