@@ -6,9 +6,8 @@ import java.io.IOException;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
-
 
 public class HelpFile {
 
@@ -18,7 +17,7 @@ public class HelpFile {
 	
 	public void initialize() {
 		config = new Configuration();
-		helpFile = new File(BmPlugin.getPlugin().getDataFolder(), "help.yml");
+		helpFile = new File(Bukkitmanager.getInstance().getDataFolder(), "help.yml");
 		help = new YamlConfiguration();
 		try {
 			if (!helpFile.exists()) helpFile.createNewFile();

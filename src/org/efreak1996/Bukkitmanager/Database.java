@@ -33,7 +33,7 @@ public class Database {
 	 */
 	
 	public void initialize() {
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		config = new Configuration();
 		io = new IOManager();
 		dbType = config.getDatabaseType();

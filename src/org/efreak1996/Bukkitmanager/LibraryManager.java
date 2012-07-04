@@ -1,27 +1,14 @@
 package org.efreak1996.Bukkitmanager;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.jar.Attributes;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.jar.Manifest;
-import java.util.zip.ZipException;
 
 import org.efreak1996.Bukkitmanager.Util.Downloader;
-import org.jsoup.Jsoup;
-
 
 public class LibraryManager {
 
 	private static Downloader downloader;
 
-	public static File libFolder = new File(BmPlugin.getPlugin().getDataFolder(), "lib");
+	public static File libFolder = new File(Bukkitmanager.getInstance().getDataFolder(), "lib");
 	public static File APACHE_COMMONS_IO = new File(libFolder, "commons-io.jar");
 	public static File JIDE_ACTION = new File(libFolder, "jide_action.jar");
 	public static File JIDE_COMMON = new File(libFolder, "jide_common.jar");

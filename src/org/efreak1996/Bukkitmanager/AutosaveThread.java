@@ -18,7 +18,7 @@ public class AutosaveThread extends Thread {
 	private static Plugin plugin;
 
 	public void initialize() {
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		config = new Configuration();
 		io = new IOManager();
 		lastSave = new Date();

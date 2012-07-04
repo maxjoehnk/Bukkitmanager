@@ -25,7 +25,7 @@ public class AutomessageReader {
 	private static List<Integer> displayed = new ArrayList<Integer>();
 
 	public void initialize() {
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		io = new IOManager();
 		config = new Configuration();
 		prefix = config.getString("Automessage.Prefix") + " ";

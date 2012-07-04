@@ -22,7 +22,7 @@ public class MainGUI {
 
 	private JFrame frmBukkitmanagerGui;	
 	
-	public static void main(String[] args) {
+	public static void main() {
 		com.jidesoft.utils.Lm.verifyLicense("Max Joehnk", "Bukkitmanager", "YrreBQlj.lyFAbpwcAUamoLF3Moy0zN");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

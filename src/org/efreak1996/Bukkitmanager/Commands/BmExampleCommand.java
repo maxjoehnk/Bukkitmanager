@@ -3,11 +3,11 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
 import org.efreak1996.Bukkitmanager.Database;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Permissions;
-import org.efreak1996.Bukkitmanager.BmPlugin;
 
 public class BmExampleCommand {
 
@@ -22,7 +22,7 @@ public class BmExampleCommand {
 		config = new Configuration();
 		db = new Database();
 		permHandler = new Permissions();
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 	}
 	public void shutdown() {}
 

@@ -9,11 +9,10 @@ import java.util.List;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Language.Language;
-
 
 public class Translator {
 
@@ -27,7 +26,7 @@ public class Translator {
 		languages = new HashMap<String, YamlConfiguration>();
 		config = new Configuration();
 		language = config.getString("IO.Language", "en_US");
-		File[] langFiles = new File(BmPlugin.getPlugin().getDataFolder() + File.separator + "lang").listFiles();
+		File[] langFiles = new File(Bukkitmanager.getInstance().getDataFolder() + File.separator + "lang").listFiles();
 		List<Language> langs = Language.getLanguages();
 		List<File> loadedFiles = new ArrayList<File>();
 		for (int i = 0; i < langs.size(); i++) {

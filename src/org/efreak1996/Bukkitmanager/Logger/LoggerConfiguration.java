@@ -6,9 +6,8 @@ import java.io.IOException;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
-
 
 public class LoggerConfiguration {
 
@@ -18,7 +17,7 @@ public class LoggerConfiguration {
 	
 	public void initialize() {
 		config = new Configuration();
-		configFile = new File(BmPlugin.getPlugin().getDataFolder(), "logger.yml");
+		configFile = new File(Bukkitmanager.getInstance().getDataFolder(), "logger.yml");
 		configYaml = new YamlConfiguration();
 		try {
 			if (!configFile.exists()) configFile.createNewFile();

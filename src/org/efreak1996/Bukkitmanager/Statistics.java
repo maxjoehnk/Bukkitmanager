@@ -128,7 +128,7 @@ public class Statistics {
 
     public Statistics() {
     	config = new Configuration();
-        plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 
         // Load the guid then
         guid = config.getGUID();

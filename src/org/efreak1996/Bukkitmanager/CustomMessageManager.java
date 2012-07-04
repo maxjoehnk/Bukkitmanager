@@ -29,7 +29,6 @@ public class CustomMessageManager {
 		io = new IOManager();
 		if (config.getBoolean("CustomMessages.Enabled")) {
 			io.sendConsole(io.translate("CustomMessages.Loading"));
-			BmPlugin.getPlugin().getServer().getPluginManager().registerEvents(listener, BmPlugin.getPlugin());
 			playerJoin = config.getStringList("CustomMessages.Join");
 			playerJoinIndex = new Random().nextInt(playerJoin.size());
 			playerJoinDisplayed = new ArrayList<Integer>();

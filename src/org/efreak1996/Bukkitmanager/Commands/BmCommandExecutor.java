@@ -7,6 +7,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.craftbukkit.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Permissions;
@@ -38,7 +39,7 @@ public class BmCommandExecutor implements CommandExecutor {
 		io = new IOManager();
 		permHandler = new Permissions();
 		config = new Configuration();
-		plugin = org.efreak1996.Bukkitmanager.BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		io.sendConsole(io.translate("Plugin.LoadingCommands"));
 		bukkitCmd = new BmBukkit();
 		bukkitCmd.initialize();

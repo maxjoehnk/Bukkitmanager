@@ -5,10 +5,9 @@ import java.util.logging.Logger;
 
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
 import org.efreak1996.Bukkitmanager.IOManager;
-
 
 public abstract class BmLogger extends Logger implements Listener {
 
@@ -36,7 +35,7 @@ public abstract class BmLogger extends Logger implements Listener {
 		io = new IOManager();
 		config = new Configuration();
 		handler = arg1handler;
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 		this.setUseParentHandlers(true);
 		this.addHandler(arg1handler);

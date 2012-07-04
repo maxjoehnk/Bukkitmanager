@@ -39,7 +39,7 @@ public class Configuration{
 	 */
 	
 	public void initalize() {
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		configFile = new File(plugin.getDataFolder() + File.separator + "config.yml");
 		io = new IOManager();
 		io.plugin = plugin;

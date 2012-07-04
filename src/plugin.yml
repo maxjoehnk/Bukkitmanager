@@ -1,5 +1,5 @@
 name: Bukkitmanager
-main: org.efreak1996.Bukkitmanager.BmPlugin
+main: org.efreak1996.Bukkitmanager.Bukkitmanager
 version: 1.7
 website: http://dev.bukkit.org/server-mods/bukkitmanager
 author: efreak1996

@@ -6,8 +6,7 @@ import java.io.IOException;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
-
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 
 public class en_US extends Language {
 
@@ -16,7 +15,7 @@ public class en_US extends Language {
 	
 	@Override
 	public void createLanguageFile() {
-		langFile = new File(BmPlugin.getPlugin().getDataFolder() + File.separator + "lang" + File.separator + "en_US.lang");
+		langFile = new File(Bukkitmanager.getInstance().getDataFolder() + File.separator + "lang" + File.separator + "en_US.lang");
 		if (!langFile.exists()) {
 			try {
 				langFile.createNewFile();

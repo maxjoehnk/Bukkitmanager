@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Server;
-import org.efreak1996.Bukkitmanager.BmPlugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Swing.Local.GuiObject;
 
 import com.jidesoft.docking.DockContext;
@@ -79,7 +79,7 @@ public class OfflinePlayerListFrame extends DockableFrame implements GuiObject {
 
 	@Override
 	public void update() {
-		Server server = BmPlugin.getPlugin().getServer();
+		Server server = Bukkitmanager.getInstance().getServer();
 		OfflinePlayer[] players = server.getOfflinePlayers();
 		Object[][] newTabledata = new Object[players.length][model.getColumnCount()];
 		for (int player = 0; player < players.length; player++) {

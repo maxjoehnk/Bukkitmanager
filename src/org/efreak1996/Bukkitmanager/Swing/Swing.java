@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.plugin.Plugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Swing.Local.*;
-
 
 public class Swing {
 	
@@ -25,7 +24,7 @@ public class Swing {
 	public void initialize() {
 		config = new Configuration();
 		io = new IOManager();
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		if (config.getBoolean("Swing.Enabled")) {
 			io.sendConsoleDev("Loading SwingGUI...");
 			ConsoleOutputHandler outputHandler = new ConsoleOutputHandler();

@@ -9,26 +9,25 @@ import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.UnknownDependencyException;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Permissions;
-import org.efreak1996.Bukkitmanager.BmPlugin;
 import org.efreak1996.Bukkitmanager.PluginManager.PluginManager;
-
 
 public class BmPluginLoad {
 
 	private static IOManager io;
-	private static Plugin bukkitmanager;
+	private static Plugin plugin;
 	private static Permissions permHandler;
 	private static PluginManager pm;
 	private static Configuration config;
 	
 	public void initialize() {
-		bukkitmanager = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		io = new IOManager();
 		permHandler = new Permissions();
-		pm = BmPlugin.getPluginManager();
+		pm = Bukkitmanager.getPluginManager();
 		config = new Configuration();
 	}
 	public void shutdown() {}
@@ -40,7 +39,7 @@ public class BmPluginLoad {
 			else {
 				if (permHandler.has(sender, "bm.plugin.load")) {
 					if (args.length == 3) {
-						File dir = new File(bukkitmanager.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[2]);
+						File dir = new File(plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[2]);
 						System.out.println(dir);
 						System.out.println(dir.toString());
 						if (dir.exists()) {
@@ -55,7 +54,7 @@ public class BmPluginLoad {
 							}else io.sendError(sender, io.translate("Command.Plugin.Load.IsNoDir").replaceAll("%dir%", dir.getAbsolutePath()));
 						}else io.sendError(sender, io.translate("Command.Plugin.Load.DirDoesntExists").replaceAll("%dir%", dir.getAbsolutePath()));
 					}else {
-						File dir = new File(bukkitmanager.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[2]);
+						File dir = new File(plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[2]);
 						if (dir.exists()) {
 							if (dir.isDirectory()) {
 								File jarFile = new File(dir, args[3]);
@@ -81,7 +80,7 @@ public class BmPluginLoad {
 			else {
 				if (permHandler.has(sender, "bm.plugin.load")) {
 					if (args.length == 2) {
-						File dir = new File(bukkitmanager.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[1]);
+						File dir = new File(plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[1]);
 						if (dir.exists()) {
 							if (dir.isDirectory()) {
 								try {
@@ -94,7 +93,7 @@ public class BmPluginLoad {
 							}else io.sendError(sender, io.translate("Command.Plugin.Load.IsNoDir").replaceAll("%dir%", dir.getAbsolutePath()));
 						}else io.sendError(sender, io.translate("Command.Plugin.Load.DirDoesntExists").replaceAll("%dir%", dir.getAbsolutePath()));
 					}else {
-						File dir = new File(bukkitmanager.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[1]);
+						File dir = new File(plugin.getDataFolder().getAbsoluteFile().getParentFile().getParentFile(), args[1]);
 						if (dir.exists()) {
 							if (dir.isDirectory()) {
 								File jarFile = new File(dir, args[2]);

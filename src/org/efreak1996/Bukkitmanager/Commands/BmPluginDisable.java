@@ -3,10 +3,9 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Permissions;
-import org.efreak1996.Bukkitmanager.BmPlugin;
-
 
 public class BmPluginDisable {
 
@@ -15,7 +14,7 @@ public class BmPluginDisable {
 	private static Permissions permHandler;
 	
 	public void initialize() {
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		io = new IOManager();
 		permHandler = new Permissions();
 	}

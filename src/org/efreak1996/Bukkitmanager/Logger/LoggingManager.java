@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.plugin.Plugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.BmPlugin;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Logger.Block.*;
 import org.efreak1996.Bukkitmanager.Logger.Enchantment.*;
-
 
 public class LoggingManager {
 	
@@ -24,7 +23,7 @@ public class LoggingManager {
 	public void initialize() {
 		config = new Configuration();
 		io = new IOManager();
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		logConfig = new LoggerConfiguration();
 		io.sendConsole(io.translate("Logger.Loading"));
 		logConfig.initialize();

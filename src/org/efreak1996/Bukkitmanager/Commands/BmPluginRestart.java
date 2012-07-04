@@ -3,10 +3,9 @@ package org.efreak1996.Bukkitmanager.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Permissions;
-import org.efreak1996.Bukkitmanager.BmPlugin;
-
 
 public class BmPluginRestart {
 
@@ -17,7 +16,7 @@ public class BmPluginRestart {
 	public void initialize() {
 		io = new IOManager();
 		permHandler = new Permissions();
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 	}
 	public void shutdown() {}
 

@@ -39,7 +39,7 @@ public class AutobackupThread extends Thread {
 	public void initialize() {
 		config = new Configuration();
 		io = new IOManager();
-		plugin = BmPlugin.getPlugin();
+		plugin = Bukkitmanager.getInstance();
 		saveThread = new AutosaveThread();
 		bukkitFolder = plugin.getDataFolder().getParentFile().getAbsoluteFile().getParentFile();
 		backupFolder = new File(bukkitFolder + File.separator + "backups");
