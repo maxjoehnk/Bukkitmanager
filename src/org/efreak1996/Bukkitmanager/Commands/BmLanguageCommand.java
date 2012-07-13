@@ -13,7 +13,6 @@ public final class BmLanguageCommand extends Command implements PluginIdentifiab
 
     protected BmLanguageCommand(String name, Plugin owner) {
         super(name);
-        executor = new BmLanguageCommandExecutor();
         owningPlugin = owner;
         usageMessage = "/lang get\n/lang set (language)";
         description = "Get/Set the Language of Bukkitmanager";
@@ -26,7 +25,7 @@ public final class BmLanguageCommand extends Command implements PluginIdentifiab
         if (!owningPlugin.isEnabled()) return false;
 
         try {
-            success = executor.onCommand(sender, this, commandLabel, args);
+            success = true;//executor.onCommand(sender, this, commandLabel, args);
         } catch (Throwable ex) {
             throw new CommandException("Unhandled exception executing command '" + commandLabel + "' in plugin " + owningPlugin.getDescription().getFullName(), ex);
         }

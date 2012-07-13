@@ -58,6 +58,7 @@ public class Configuration{
 			}
 		}else {
 	        try {
+	        	Bukkitmanager.firstRun = false;
 				config.load(configFile);
 				UpdateConfig();
 				config.load(configFile);
@@ -79,10 +80,6 @@ public class Configuration{
 	
 	public void UpdateConfig() throws IOException {
 		if (config.contains("General.Dev-Mode")) devMode = config.getBoolean("General.Dev-Mode");
-		update("General.Aliases.Bukkit", false);
-		update("General.Aliases.Plugin", false);
-		update("General.Aliases.Player", false);
-		update("General.Aliases.Language", false);
 		update("General.Use-Permissions", true);
 		update("General.Use-Vault", true);
 		update("General.Force-SuperPerms", false);
@@ -91,7 +88,7 @@ public class Configuration{
 		update("General.Statistics.GUID", UUID.randomUUID().toString());
 		addDefault("General.Statistics.GUID", getString("General.Statistics.GUID"));
 		update("IO.Show-Prefix", true);
-		update("IO.Prefix", "&4[BukkitManager]");
+		update("IO.Prefix", "&4[Bukkitmanager]");
 		update("IO.Error", "&c[Error]");
 		update("IO.Warning", "&e[Warning]");
 		update("IO.Language", "en_US");		
@@ -266,5 +263,13 @@ public class Configuration{
 
 	public void addDefault(String path, Object value) {
 		config.addDefault(path, value);
+	}
+	
+	public void addAlias(String cmd) {
+		update("General.Aliases." + cmd.substring(0, 1).toUpperCase() + cmd.substring(1), false);
+	}
+	
+	public boolean getAlias(String cmd) {
+		return getBoolean("General.Aliases." + cmd.substring(0, 1).toUpperCase() + cmd.substring(1));
 	}
 }

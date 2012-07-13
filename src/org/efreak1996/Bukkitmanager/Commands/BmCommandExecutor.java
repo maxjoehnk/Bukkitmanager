@@ -1,110 +1,125 @@
 package org.efreak1996.Bukkitmanager.Commands;
 
-import org.bukkit.command.Command;
+import java.util.Arrays;
+import java.util.HashMap;
+
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.craftbukkit.CraftServer;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-import org.efreak1996.Bukkitmanager.Bukkitmanager;
-import org.efreak1996.Bukkitmanager.Configuration;
-import org.efreak1996.Bukkitmanager.IOManager;
-import org.efreak1996.Bukkitmanager.Permissions;
 
+import org.efreak1996.Bukkitmanager.Bukkitmanager;
+import org.efreak1996.Bukkitmanager.IOManager;
+import org.efreak1996.Bukkitmanager.Commands.Addon.*;
+import org.efreak1996.Bukkitmanager.Commands.Autobackup.*;
+import org.efreak1996.Bukkitmanager.Commands.Automessage.*;
+import org.efreak1996.Bukkitmanager.Commands.Autosave.*;
+import org.efreak1996.Bukkitmanager.Commands.Bukkit.*;
+import org.efreak1996.Bukkitmanager.Commands.General.*;
+import org.efreak1996.Bukkitmanager.Commands.Player.*;
+import org.efreak1996.Bukkitmanager.Commands.Plugin.*;
 
 public class BmCommandExecutor implements CommandExecutor {
 	
-	public static Player p;
-	public static ConsoleCommandSender c;
 	private static IOManager io;
-	private static Plugin plugin;
-	private static Configuration config;
-	private static Permissions permHandler;
-	private static BmAutomessage automessageCmd;
-	private static BmAutosave autosaveCmd;
-	private static BmAutobackup autobackupCmd;
-	private static BmPlugin pluginCmd;
-	private static BmBukkit bukkitCmd;
-	private static BmHelp helpCmd;
-	private static BmPlayer playerCmd;
-	private static BmLanguage langCmd;
-	private static BmPassword passwordCmd;
-	private static BmBukkitCommand bukkitCommand;
-	private static BmPlayerCommand playerCommand;
-	private static BmPluginCommand pluginCommand;
-	private static BmLanguageCommand langCommand;
+	private static HashMap<String, Command> commands;
 	
 	public BmCommandExecutor() {
 		io = new IOManager();
-		permHandler = new Permissions();
-		config = new Configuration();
-		plugin = Bukkitmanager.getInstance();
+		commands = new HashMap<String, Command>();
 		io.sendConsole(io.translate("Plugin.LoadingCommands"));
-		bukkitCmd = new BmBukkit();
-		bukkitCmd.initialize();
-		pluginCmd = new BmPlugin();
-		pluginCmd.initialize();
-		automessageCmd = new BmAutomessage();
-		automessageCmd.initialize();
-		autosaveCmd = new BmAutosave();
-		autosaveCmd.initialize();
-		autobackupCmd = new BmAutobackup();
-		autobackupCmd.initialize();
-		helpCmd = new BmHelp();
-		helpCmd.initialize();
-		playerCmd = new BmPlayer();
-		playerCmd.initialize();
-		langCmd = new BmLanguage();
-		langCmd.initialize();
-		if (config.getDev()) {
-			io.sendConsoleDev("Loading Development Commands...");
-			passwordCmd = new BmPassword();
-			passwordCmd.initialize();
-			io.sendConsoleDev("Development Commands Loaded!");
-		}
-		io.sendConsole(io.translate("Plugin.LoadingAliases"));
-		if (config.getBoolean("General.Aliases.Bukkit")) {
-			bukkitCommand = new BmBukkitCommand("bukkit", plugin);
-			((CraftServer) plugin.getServer()).getCommandMap().register("bukkit", bukkitCommand);
-		}
-		if (config.getBoolean("General.Aliases.Plugin")) {
-			pluginCommand = new BmPluginCommand("plugin", plugin);
-			((CraftServer) plugin.getServer()).getCommandMap().register("plugin", pluginCommand);
-		}
-		if (config.getBoolean("General.Aliases.Player")) {
-			playerCommand = new BmPlayerCommand("player", plugin);
-			((CraftServer) plugin.getServer()).getCommandMap().register("player", playerCommand);
-		}
-		if (config.getBoolean("General.Aliases.Language")) {
-			langCommand = new BmLanguageCommand("lang", plugin);
-			((CraftServer) plugin.getServer()).getCommandMap().register("lang", langCommand);
-		}
-		io.sendConsole(io.translate("Plugin.AliasesLoaded"));
+		//Generalcommands
+		registerCommand(new LanguageCmd());
+		registerCommand(new BackupCmd());
+		registerCommand(new SaveCmd());
+		if (Bukkitmanager.firstRun) registerCommand(new InstallCmd());
+		//Addoncommands
+		//new AddonCommand();
+		//Autobackupcommands
+		new AutobackupCommand();
+		registerCommand(new AutobackupBackupCmd());
+		registerCommand(new AutobackupIntervalCmd());
+		registerCommand(new AutobackupRestartCmd());
+		registerCommand(new AutobackupStartCmd());
+		registerCommand(new AutobackupStopCmd());
+		//Autosavecommands
+		new AutosaveCommand();
+		registerCommand(new AutosaveSaveCmd());
+		registerCommand(new AutosaveIntervalCmd());
+		registerCommand(new AutosaveRestartCmd());
+		registerCommand(new AutosaveStartCmd());
+		registerCommand(new AutosaveStopCmd());
+		//Automessagecommands
+		new AutomessageCommand();
+		registerCommand(new AutomessageAddCmd());
+		registerCommand(new AutomessageGetCmd());
+		registerCommand(new AutomessageIntervalCmd());
+		registerCommand(new AutomessageListCmd());
+		registerCommand(new AutomessageRemoveCmd());
+		registerCommand(new AutomessageRestartCmd());
+		registerCommand(new AutomessageSendCmd());
+		registerCommand(new AutomessageStartCmd());
+		registerCommand(new AutomessageStopCmd());
+		//Bukkitcommands
+		new BukkitCommand();
+		registerCommand(new BukkitConfigCmd());
+		registerCommand(new BukkitInfoCmd());
+		//Playercommands
+		new PlayerCommand();
+		registerCommand(new PlayerChatCmd());
+		registerCommand(new PlayerCmdCmd());
+		registerCommand(new PlayerDisplaynameCmd());
+		//Plugincommands
+		new PluginCommand();
+		registerCommand(new PluginConfigCmd());
+		registerCommand(new PluginDisableCmd());
+		registerCommand(new PluginEnableCmd());
+		registerCommand(new PluginInfoCmd());
+		//registerCommand(new PluginInstallCmd());
+		registerCommand(new PluginListCmd());
+		registerCommand(new PluginLoadCmd());
+		registerCommand(new PluginRestartCmd());
+		registerCommand(new PluginUpdateCmd());
 		io.sendConsole(io.translate("Plugin.CommandsLoaded"));
 	}
 	
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		p = null;
-		c = null;
+	public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String commandLabel, String[] args) {
+		Player p = null;
+		ConsoleCommandSender c = null;
 		if (sender instanceof Player) p = (Player) sender;
 		if (sender instanceof ConsoleCommandSender) c = (ConsoleCommandSender) sender;
 		if (p == c) return false;
 		if (args.length == 0) return false;
-		else if (args[0].equalsIgnoreCase("bukkit")) bukkitCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("plugin")) pluginCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("player")) playerCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("lang")) langCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("language")) langCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("automessage")) automessageCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("autosave")) autosaveCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("autobackup")) autobackupCmd.cmd(sender, args);
-		else if (args[0].equalsIgnoreCase("password")) {
-			if (config.getDev()) passwordCmd.cmd(sender, args);
-			else return false;
-		}else if (args[0].equalsIgnoreCase("help")) helpCmd.cmd(sender, args);
+		//else if (args[0].equalsIgnoreCase("install")) return commands.get("install").execute(sender, args, 1);
+		else if (!Arrays.asList(CommandCategory.values()).contains(args[0].toUpperCase()) && commands.containsKey(args[0])) return commands.get(args[0]).execute(sender, args, 1);
+		else if (CommandCategory.valueOf(args[0].toUpperCase()).equals(commands.get(args[1]).getCategory()) && commands.containsKey(args[1])) return commands.get(args[1]).execute(sender, args, 1);
 		else return false;
-		return true;
-	}	
+	}
+	
+	public static void registerCommand(Command command) {
+		commands.put(command.getLabel(), command);
+		if (!command.getCategory().equals(CommandCategory.GENERAL)) {
+			switch (command.getCategory()) {
+				case ADDON:
+					AddonCommand.registerCommand(command);
+				case AUTOBACKUP:
+					AutobackupCommand.registerCommand(command);
+				case AUTOSAVE:
+					AutosaveCommand.registerCommand(command);
+				case AUTOMESSAGE:
+					AutomessageCommand.registerCommand(command);
+				case BUKKIT:
+					BukkitCommand.registerCommand(command);
+				case PLAYER:
+					PlayerCommand.registerCommand(command);
+				case PLUGIN:
+					PluginCommand.registerCommand(command);
+				case GENERAL:
+					break;
+				default:
+					break;
+			}
+		}
+	}
 }

@@ -59,7 +59,6 @@ public class AutosaveThread extends Thread {
 				return;
 			}
 		}
-		if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Start"));
 		saveInProgress = true;
 		savePlayers();
 		io.sendConsole(io.translate("Autosave.Saved.Players"));
@@ -68,7 +67,6 @@ public class AutosaveThread extends Thread {
 		io.sendConsole(io.translate("Autosave.Saved.Worlds").replaceAll("%worlds%", String.valueOf(saved)));
 		lastSave = new Date();
 		saveInProgress = false;
-		if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Finish"));
 	}
 	
 	public void run() {
@@ -98,14 +96,18 @@ public class AutosaveThread extends Thread {
 			if (config.getSaveMode().equalsIgnoreCase("SYNC")) {
 				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 					public void run() {
+						if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Start"));
 						performSave();
+						if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Finish"));
 						lastSave = new Date();
 					}
 				});
 			}else {
 				Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(plugin, new Runnable() {
 					public void run() {
+						if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Start"));
 						performSave();
+						if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Finish"));
 						lastSave = new Date();
 					}
 				});

@@ -42,14 +42,37 @@ public class PluginManager implements org.bukkit.plugin.PluginManager {
 	public void disablePlugins() {
 		Bukkitmanager.getInstance().getServer().getPluginManager().disablePlugins();
 	}
+	
+	public void disablePlugins(Plugin[] plugins) {
+		for (int i = 0; i < plugins.length; i++) disablePlugin(plugins[i]);
+	}
 
 	@Override
 	public void enablePlugin(Plugin arg0) {
 		Bukkitmanager.getInstance().getServer().getPluginManager().enablePlugin(arg0);
 	}
 
+	public void enablePlugins() {
+		Plugin[] plugins = getPlugins();
+		for (int i = 0; i < plugins.length; i++) enablePlugin(plugins[i]);
+	}
+	
 	public void enablePlugins(Plugin[] plugins) {
 		for (int i = 0; i < plugins.length; i++) enablePlugin(plugins[i]);
+	}
+	
+	public void restartPlugin(Plugin plugin) {
+		disablePlugin(plugin);
+		enablePlugin(plugin);
+	}
+	
+	public void restartPlugins() {
+		Plugin[] plugins = Bukkitmanager.getInstance().getServer().getPluginManager().getPlugins();
+		for (int i = 0; i < plugins.length; i++) restartPlugin(plugins[i]);
+	}
+	
+	public void restartPlugins(Plugin[] plugins) {
+		for (int i = 0; i < plugins.length; i++) restartPlugin(plugins[i]);
 	}
 	
 	@Override
@@ -78,8 +101,8 @@ public class PluginManager implements org.bukkit.plugin.PluginManager {
 	}
 
 	@Override
-	public Plugin getPlugin(String arg0) {
-		return Bukkitmanager.getInstance().getServer().getPluginManager().getPlugin(arg0);
+	public Plugin getPlugin(String plugin) {
+		return Bukkitmanager.getInstance().getServer().getPluginManager().getPlugin(plugin);
 	}
 
 	@Override

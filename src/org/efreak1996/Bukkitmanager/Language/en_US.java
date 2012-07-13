@@ -34,8 +34,7 @@ public class en_US extends Language {
 			set("Plugin.Done", "&aDone!");
 			set("Plugin.LoadingCommands", "&2Loading Commands...");
 			set("Plugin.CommandsLoaded", "&aCommands successfully loaded!");
-			set("Plugin.LoadingAliases", "&2Loading Aliases...");
-			set("Plugin.AliasesLoaded", "&aAliases successfully loaded!");
+			set("Plugin.FirstRun", "This seems to be the first time you run Bukkitmanager. You may run /bm install to configure Bukkitmanager...");
 			
 			set("Player.Login.Hidden", "You are hidden!");
 			
@@ -84,20 +83,20 @@ public class en_US extends Language {
 			set("Command.Language.Set", "&aThe Language was set to %lang%!");
 			set("Command.Language.Error", "&cThe Language %lang% doesn't exists!");
 			set("Command.Autobackup.Interval.Get", "The current Autobackupinterval is: %interval%");
-			set("Command.Autobackup.Interval.Set", "Setting Autobackupinterval from: %interval_old% to: %interval_new%...");
-			set("Command.Autobackup.Restart", "Restarting Autobackupthread...");
-			set("Command.Autobackup.Start", "Starting Autobackupthread...");
-			set("Command.Autobackup.Stop", "Stopping Autobackupthread...");
+			set("Command.Autobackup.Interval.Set", "Set Autobackupinterval from: %interval_old% to: %interval_new%!");
+			set("Command.Autobackup.Restart", "Restarted Autobackupthread!");
+			set("Command.Autobackup.Start", "Started Autobackupthread!");
+			set("Command.Autobackup.Stop", "Stopped Autobackupthread!");
 			set("Command.Autosave.Interval.Get", "The current Autosaveinterval is: %interval%");
-			set("Command.Autosave.Interval.Set", "Setting Autosaveinterval from: %interval_old% to: %interval_new%...");
-			set("Command.Autosave.Restart", "Restarting Autosavethread...");
-			set("Command.Autosave.Start", "Starting Autosavethread...");
-			set("Command.Autosave.Stop", "Stopping Autosavethread...");
+			set("Command.Autosave.Interval.Set", "Set Autosaveinterval from: %interval_old% to: %interval_new%!");
+			set("Command.Autosave.Restart", "Restarted Autosavethread!");
+			set("Command.Autosave.Start", "Started Autosavethread!");
+			set("Command.Autosave.Stop", "Stopped Autosavethread!");
 			set("Command.Automessage.Interval.Get", "The current Automessageinterval is: %interval%");
-			set("Command.Automessage.Interval.Set", "Setting Automessageinterval from: %interval_old% to: %interval_new%...");
-			set("Command.Automessage.Restart", "Restarting Automessagethread...");
-			set("Command.Automessage.Start", "Starting Automessagethread...");
-			set("Command.Automessage.Stop", "Stopping Automessagethread...");
+			set("Command.Automessage.Interval.Set", "Set Automessageinterval from: %interval_old% to: %interval_new%!");
+			set("Command.Automessage.Restart", "Restarted Automessagethread!");
+			set("Command.Automessage.Start", "Started Automessagethread!");
+			set("Command.Automessage.Stop", "Stopped Automessagethread!");
 			set("Command.Automessage.Add", "&aA new Automessage was added at index %index%.");
 			set("Command.Automessage.Remove", "&aThe Automessage with Index %index% was removed.");
 			set("Command.Automessage.Get", "The Automessage with Index %index% contains:");

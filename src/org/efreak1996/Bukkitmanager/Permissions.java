@@ -20,7 +20,7 @@ public class Permissions {
 	private static GroupManager groupManager = null;
 	private static IOManager io;
 	private static Configuration config;
-	private static boolean usePerms;
+	public static boolean usePerms;
 	private static boolean forceSuper;
 	private static String permSystem;
 	

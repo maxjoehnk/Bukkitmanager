@@ -27,21 +27,23 @@ public class IOManager {
 	public static Plugin plugin;
 	private static ConversationFactory conversationFactory;
 	private static Hashtable<String, Conversation> conversations;
-	public static String prefix = ChatColor.DARK_RED + "[BukkitManager] " + ChatColor.WHITE;
+	public static String prefix = ChatColor.DARK_RED + "[Bukkitmanager] " + ChatColor.WHITE;
 	public static String error = ChatColor.RED + "[Error] " + ChatColor.WHITE;
 	public static String warning = ChatColor.YELLOW + "[Warning] " + ChatColor.WHITE;
 	private static Translator translator;
 	private static boolean color = true;
 	
 	public void initialize() {
+		plugin = Bukkitmanager.getInstance();
 		config = new Configuration();
 		color = config.getBoolean("IO.ColoredLogs");
-		conversationFactory = new ConversationFactory(plugin);
 		prefix = color(config.getString("IO.Prefix")) + " " + ChatColor.WHITE;
 		error = color(config.getString("IO.Error")) + " " + ChatColor.WHITE;
 		warning = color(config.getString("IO.Warning")) + " " + ChatColor.WHITE;
 		translator = new Translator();
 		translator.initialize();
+		conversationFactory = new ConversationFactory(Bukkitmanager.getInstance());
+		conversations = new Hashtable<String, Conversation>();
 	}
 
 	public void broadcast(String msg) {
@@ -170,9 +172,37 @@ public class IOManager {
 	}
 	
 	public void createConversation(CommandSender sender, String name, Prompt prompt) {
+		conversationFactory.withEscapeSequence("/quit");
 		conversationFactory.withFirstPrompt(prompt);
+		conversationFactory.withTimeout(10);
 		conversations.put(name, conversationFactory.buildConversation((Conversable) sender));
-	}	
+		conversations.get(name).begin();
+	}
+	
+	public void createConversation(CommandSender sender, String name, Prompt prompt, String escapeSequence) {
+		conversationFactory.withEscapeSequence(escapeSequence);
+		conversationFactory.withFirstPrompt(prompt);
+		conversationFactory.withTimeout(10);
+		conversations.put(name, conversationFactory.buildConversation((Conversable) sender));
+		conversations.get(name).begin();
+	}
+	
+	public void createConversation(CommandSender sender, String name, Prompt prompt, int timeout) {
+		conversationFactory.withEscapeSequence("/quit");
+		conversationFactory.withFirstPrompt(prompt);
+		conversationFactory.withTimeout(timeout);
+		conversations.put(name, conversationFactory.buildConversation((Conversable) sender));
+		conversations.get(name).begin();
+	}
+	
+	public void createConversation(CommandSender sender, String name, Prompt prompt, String escapeSequence, int timeout) {
+		conversationFactory.withEscapeSequence(escapeSequence);
+		conversationFactory.withFirstPrompt(prompt);
+		conversationFactory.withTimeout(timeout);
+		conversations.put(name, conversationFactory.buildConversation((Conversable) sender));
+		conversations.get(name).begin();
+	}
+	
 	public Conversation getConversation(String name) {
 		return conversations.get(name);
 	}

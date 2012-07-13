@@ -19,6 +19,7 @@ import org.efreak1996.Bukkitmanager.PluginManager.PluginManager;
 import org.efreak1996.Bukkitmanager.Swing.Swing;
 
 /**
+ * 
  * The mainclass of Bukkitmanager
  * Initializes everything, shutdowns everything, handles almost everything
  * 
@@ -50,6 +51,7 @@ public class Bukkitmanager extends JavaPlugin {
 	private static CustomMessageManager msgManager;
 	private static List<Plugin> plugins;
 	private static List<Addon> addons;
+	public static boolean firstRun = true;
 	//private static LibraryManager libManager;
 
 	/**
@@ -78,6 +80,7 @@ public class Bukkitmanager extends JavaPlugin {
     	func.stopThread(ThreadType.AUTOSAVE);
     	func.stopThread(ThreadType.AUTOBACKUP);
     	func.stopThread(ThreadType.AUTOMESSAGE);
+    	getServer().getScheduler().cancelTasks(this);
 		try {
 			FileUtils.cleanDirectory(new File(getDataFolder().getParentFile().getAbsoluteFile().getParentFile() + File.separator + "backups" + File.separator + "temp"));
 		} catch (IOException e) {
@@ -117,6 +120,7 @@ public class Bukkitmanager extends JavaPlugin {
 		config.initalize();
 		io = new IOManager();
 		io.initialize();
+		if (firstRun) io.sendConsole(io.translate("Plugin.FirstRun"));
 		permHandler = new Permissions();
 		permHandler.initialize();
 		func = new ThreadManager();
@@ -269,5 +273,21 @@ public class Bukkitmanager extends JavaPlugin {
 	public static AddonCommand registerCommand(Addon addon, String name, AddonCommandExecutor executor) {
 		//AddonCommand cmd = new AddonCommand(name, addon, executor);
 		return null;
+	}
+	
+	/**
+	 * 
+	 * Returns the Rootfolder of the Server
+	 * 
+	 * @return The Rootfolder
+	 * 
+	 */
+	
+	public static File getRootFolder() {
+		return rootFolder;
+	}
+
+	public static void reload() {
+		
 	}
 }
