@@ -102,6 +102,7 @@ public class HelpFile {
 		update("Plugin.List", "Lists all Plugins");
 		update("Plugin.Load", "Loads Plugins without a reload");
 		update("Plugin.Restart", "Restarts a Plugin");
+		update("Plugin.Update", "Updates a Plugin");
 	}
 	
 	public String getHelp(String key) {

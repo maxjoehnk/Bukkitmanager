@@ -14,7 +14,7 @@ public class AutomessageStopCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutomessageStopCmd() {
-		super("stop", "Automessage.Stop", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
+		super("stop", "Automessage.Stop", "bm.automessage.stop", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
 		func = new ThreadManager();
 	}
 

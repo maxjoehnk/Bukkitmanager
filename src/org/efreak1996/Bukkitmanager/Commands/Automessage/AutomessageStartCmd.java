@@ -14,7 +14,7 @@ public class AutomessageStartCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutomessageStartCmd() {
-		super("start", "Automessage.Start", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
+		super("start", "Automessage.Start", "bm.automessage.start", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
 		func = new ThreadManager();
 	}
 

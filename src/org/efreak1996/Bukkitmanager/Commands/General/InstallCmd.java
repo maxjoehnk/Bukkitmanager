@@ -14,7 +14,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class InstallCmd extends Command {
 	
 	public InstallCmd() {
-		super("install", "Install", new ArrayList<String>(), CommandCategory.GENERAL);
+		super("install", "Install", "bm.install", new ArrayList<String>(), CommandCategory.GENERAL);
 	}
 
 	@Override

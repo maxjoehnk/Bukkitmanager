@@ -13,7 +13,7 @@ public class SaveCmd extends Command {
 	private static AutosaveThread saveThread;
 	
 	public SaveCmd() {
-		super("save", "Autosave.Save", new ArrayList<String>(), CommandCategory.GENERAL);
+		super("save", "Autosave.Save", "bm.autosave.save", new ArrayList<String>(), CommandCategory.GENERAL);
 		saveThread = new AutosaveThread();
 	}
 

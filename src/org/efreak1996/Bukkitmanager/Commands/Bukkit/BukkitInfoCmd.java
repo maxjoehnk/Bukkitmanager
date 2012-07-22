@@ -11,7 +11,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class BukkitInfoCmd extends Command{
 	
 	public BukkitInfoCmd() {
-		super("info", "Bukkit.Info", new ArrayList<String>(), CommandCategory.BUKKIT);
+		super("info", "Bukkit.Info", "bm.bukkit.info", new ArrayList<String>(), CommandCategory.BUKKIT);
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class AutomessageGetCmd extends Command {
 	private static AutomessageReader msgReader;
 	
 	public AutomessageGetCmd() {
-		super("get", "Automessage.Get", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
+		super("get", "Automessage.Get", "bm.automessage.get", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
 		msgReader = new AutomessageReader();
 	}
 

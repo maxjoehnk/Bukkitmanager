@@ -14,7 +14,7 @@ public class AutomessageRestartCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutomessageRestartCmd() {
-		super("restart", "Automessage.Restart", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
+		super("restart", "Automessage.Restart", "bm.automessage.restart", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
 		func = new ThreadManager();
 	}
 

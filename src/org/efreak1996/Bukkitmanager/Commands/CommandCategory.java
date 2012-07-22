@@ -5,7 +5,7 @@ public enum CommandCategory {
 	/**
 	 * 
 	 * All commands, which are concerned with Bukkitmanager
-	 * Layout: /bm (label) (args) or /(label) (args)
+	 * Layout: /bm (label) (args)
 	 * 
 	 */
 	

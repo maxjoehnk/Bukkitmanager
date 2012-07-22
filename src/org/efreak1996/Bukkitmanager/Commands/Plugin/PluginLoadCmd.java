@@ -15,7 +15,7 @@ public class PluginLoadCmd extends Command {
 	private static PluginManager pm;
 	
 	public PluginLoadCmd() {
-		super("load", "Plugin.Load", Arrays.asList("(path)", "[file]"), CommandCategory.PLUGIN);
+		super("load", "Plugin.Load", "bm.plugin.load", Arrays.asList("(path)", "[file]"), CommandCategory.PLUGIN);
 		pm = Bukkitmanager.getPluginManager();
 	}
 

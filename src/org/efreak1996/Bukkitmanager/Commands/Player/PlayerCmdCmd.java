@@ -12,7 +12,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PlayerCmdCmd extends Command {
 
 	public PlayerCmdCmd() {
-		super("cmd", "Player.Cmd", Arrays.asList("(player)", "(cmd)"), CommandCategory.PLAYER);
+		super("cmd", "Player.Cmd", "bm.player.cmd", Arrays.asList("(player)", "(cmd)"), CommandCategory.PLAYER);
 	}
 	
 	@Override

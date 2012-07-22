@@ -14,7 +14,7 @@ public class AutosaveIntervalCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutosaveIntervalCmd() {
-		super("interval", "Autosave.Interval", Arrays.asList("[interval]"), CommandCategory.AUTOSAVE);
+		super("interval", "Autosave.Interval", "bm.autosave.interval", Arrays.asList("[interval]"), CommandCategory.AUTOSAVE);
 		func = new ThreadManager();
 	}
 

@@ -6,25 +6,27 @@ import org.bukkit.command.CommandSender;
 import org.efreak1996.Bukkitmanager.Configuration;
 import org.efreak1996.Bukkitmanager.IOManager;
 import org.efreak1996.Bukkitmanager.Permissions;
+import org.efreak1996.Bukkitmanager.Help.HelpManager;
 
 public abstract class Command {
 	
 	protected String label;
 	protected String helpNode;
+	protected String helpPerm;
 	protected List<String> args;
 	protected CommandCategory category;
 	protected static IOManager io;
 	protected static Configuration config;
 	
-	public Command() {}
-	
-	public Command(String arg1Label, String arg2HelpNode, List<String> arg3Args, CommandCategory arg4Category) {
+	public Command(String arg1Label, String arg2HelpNode, String arg3HelpPermission, List<String> arg4Args, CommandCategory arg5Category) {
 		label = arg1Label;
 		helpNode = arg2HelpNode;
-		args = arg3Args;
-		category = arg4Category;
+		helpPerm = arg3HelpPermission;
+		args = arg4Args;
+		category = arg5Category;
 		io = new IOManager();
 		config = new Configuration();
+		HelpManager.registerCommand(this);
 	}
 	
 	public abstract boolean execute(CommandSender sender, String[] args, Integer length);
@@ -47,5 +49,9 @@ public abstract class Command {
 	
 	public String getHelpNode() {
 		return helpNode;
+	}
+	
+	public String getHelpPermission() {
+		return helpPerm;
 	}
 }

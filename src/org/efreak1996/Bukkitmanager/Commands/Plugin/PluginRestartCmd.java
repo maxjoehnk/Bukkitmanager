@@ -13,7 +13,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginRestartCmd extends Command {
 	
 	public PluginRestartCmd() {
-		super("restart", "Plugin.Restart", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
+		super("restart", "Plugin.Restart", "bm.plugin.restart", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
 	}
 
 	private String getPluginList() {

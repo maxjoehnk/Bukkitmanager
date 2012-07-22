@@ -12,7 +12,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginInfoCmd extends Command {
 	
 	public PluginInfoCmd() {
-		super("info", "Plugin.Info", Arrays.asList("[plugin]"), CommandCategory.PLUGIN);
+		super("info", "Plugin.Info", "bm.plugin.info", Arrays.asList("[plugin]"), CommandCategory.PLUGIN);
 	}
 
 	@Override

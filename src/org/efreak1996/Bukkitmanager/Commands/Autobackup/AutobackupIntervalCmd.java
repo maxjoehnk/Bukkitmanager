@@ -14,7 +14,7 @@ public class AutobackupIntervalCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutobackupIntervalCmd() {
-		super("interval", "Autobackup.Interval", Arrays.asList("[interval]"), CommandCategory.AUTOBACKUP);
+		super("interval", "Autobackup.Interval", "bm.autobackup.interval", Arrays.asList("[interval]"), CommandCategory.AUTOBACKUP);
 		func = new ThreadManager();
 	}
 

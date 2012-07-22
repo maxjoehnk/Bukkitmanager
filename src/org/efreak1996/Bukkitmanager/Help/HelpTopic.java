@@ -7,11 +7,10 @@ import org.efreak1996.Bukkitmanager.Permissions;
 
 public class HelpTopic {
 
-	private String cmd;
-	private String args;
-	private String desc;
+	private String cmd = null;
+	private String args = null;
+	private String desc = null;
 	private String perms;
-	private static Permissions permHandler;
 	private static Configuration config;
 	
 	/**
@@ -27,18 +26,20 @@ public class HelpTopic {
 		args = arg2Args;
 		desc = arg3Desc;
 		perms = arg4Perms;
-		permHandler = new Permissions();
 		config = new Configuration();
 	}
 	
 	public String format() {
 		String formatted = "";
-		formatted = config.getString("IO.HelpFormat").replaceAll("%cmd%", cmd).replaceAll("%args%", args).replaceAll("%desc%", desc);
+		formatted = config.getString("IO.HelpFormat");
+		if (cmd != null) formatted = formatted.replaceAll("%cmd%", cmd);
+		if (args != null) formatted = formatted.replaceAll("%args%", args);
+		if (desc != null) formatted = formatted.replaceAll("%desc%", desc);
 		return formatted;
 	}
 	
 	public boolean hasPerm(CommandSender sender) {
-		return permHandler.has(sender, perms, false);
+		return Permissions.has(sender, perms, false);
 	}
 	
 }

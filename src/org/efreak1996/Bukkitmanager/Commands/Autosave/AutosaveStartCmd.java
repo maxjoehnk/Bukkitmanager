@@ -14,7 +14,7 @@ public class AutosaveStartCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutosaveStartCmd() {
-		super("start", "Autosave.Start", new ArrayList<String>(), CommandCategory.AUTOSAVE);
+		super("start", "Autosave.Start", "bm.autsave.start", new ArrayList<String>(), CommandCategory.AUTOSAVE);
 		func = new ThreadManager();
 	}
 

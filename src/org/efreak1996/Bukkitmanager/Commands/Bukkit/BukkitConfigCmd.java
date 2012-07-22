@@ -18,7 +18,7 @@ public class BukkitConfigCmd extends Command {
 	public static Properties propertie;
 	
 	public BukkitConfigCmd() {
-		super("config", "Bukkit.Config", Arrays.asList("(entry)","[value]"), CommandCategory.BUKKIT);
+		super("config", "Bukkit.Config", "bm.bukkit.config", Arrays.asList("(entry)","[value]"), CommandCategory.BUKKIT);
 		propertie = new Properties();
 		try {
 			streamIn = new FileInputStream("server.properties");

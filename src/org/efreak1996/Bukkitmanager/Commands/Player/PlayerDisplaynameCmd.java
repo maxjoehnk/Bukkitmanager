@@ -16,7 +16,7 @@ public class PlayerDisplaynameCmd extends Command {
 	private static Database db;
 
 	public PlayerDisplaynameCmd() {
-		super("displayname", "Player.Displayname", Arrays.asList("(get|set|reset)", "[displayname]", "[player]"), CommandCategory.PLAYER);
+		super("displayname", "Player.Displayname", "bm.player.displayname", Arrays.asList("(get|set|reset)", "[displayname]", "[player]"), CommandCategory.PLAYER);
 		db = new Database();
 	}
 	

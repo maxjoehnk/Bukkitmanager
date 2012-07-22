@@ -47,20 +47,20 @@ public class IOManager {
 	}
 
 	public void broadcast(String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) Bukkit.getServer().broadcastMessage(color(this.prefix + msg));
-		else Bukkit.getServer().broadcastMessage(color(msg));
+		if (config.getBoolean("IO.Show-Prefix")) Bukkit.getServer().broadcastMessage(parseColor(this.prefix + msg));
+		else Bukkit.getServer().broadcastMessage(parseColor(msg));
 	}
 	public void broadcast(Boolean prefix, String msg) {
-		if (prefix) Bukkit.getServer().broadcastMessage(color(this.prefix + msg));
-		else Bukkit.getServer().broadcastMessage(color(msg));
+		if (prefix) Bukkit.getServer().broadcastMessage(parseColor(this.prefix + msg));
+		else Bukkit.getServer().broadcastMessage(parseColor(msg));
 	}
 	public void broadcast(String msg, String perm) {
-		if (config.getBoolean("IO.Show-Prefix")) Bukkit.getServer().broadcast(color(this.prefix + msg), perm);
-		else Bukkit.getServer().broadcast(color(msg), perm);
+		if (config.getBoolean("IO.Show-Prefix")) Bukkit.getServer().broadcast(parseColor(this.prefix + msg), perm);
+		else Bukkit.getServer().broadcast(parseColor(msg), perm);
 	}
 	public void broadcast(Boolean prefix, String msg, String perm) {
-		if (prefix) Bukkit.getServer().broadcast(color(this.prefix + msg), perm);
-		else Bukkit.getServer().broadcast(color(msg), perm);
+		if (prefix) Bukkit.getServer().broadcast(parseColor(this.prefix + msg), perm);
+		else Bukkit.getServer().broadcast(parseColor(msg), perm);
 	}	
 	
 	public void sendConsole(String msg) {
@@ -98,76 +98,76 @@ public class IOManager {
 	}
 	
 	public void send(CommandSender sender, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(color(this.prefix + msg));
-		else sender.sendMessage(color(msg));
+		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(this.prefix + msg));
+		else sender.sendMessage(parseColor(msg));
 	}
 	public void send(CommandSender sender, String msg, boolean prefix) {
-		if (prefix) sender.sendMessage(color(this.prefix + msg));
-		else sender.sendMessage(color(msg));
+		if (prefix) sender.sendMessage(parseColor(this.prefix + msg));
+		else sender.sendMessage(parseColor(msg));
 	}
 	
 	public void sendTranslation(CommandSender sender, String key) {
-		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(color(this.prefix + translate(key)));
-		else sender.sendMessage(color(translate(key)));
+		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(this.prefix + translate(key)));
+		else sender.sendMessage(parseColor(translate(key)));
 	}
 	public void sendTranslation(CommandSender sender, String key, boolean prefix) {
-		if (prefix) sender.sendMessage(color(this.prefix + translate(key)));
-		else sender.sendMessage(color(translate(key)));
+		if (prefix) sender.sendMessage(parseColor(this.prefix + translate(key)));
+		else sender.sendMessage(parseColor(translate(key)));
 	}
 	
 	public void sendWarning(CommandSender sender, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(color(this.prefix + this.warning + ChatColor.YELLOW + msg));
-		else sender.sendMessage(color(this.warning + msg));
+		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(this.prefix + this.warning + ChatColor.YELLOW + msg));
+		else sender.sendMessage(parseColor(this.warning + msg));
 	}
 	public void sendWarning(CommandSender sender, String msg, boolean prefix) {
-		if (prefix) sender.sendMessage(color(this.prefix + this.warning + ChatColor.YELLOW + msg));
-		else sender.sendMessage(color(this.warning + msg));
+		if (prefix) sender.sendMessage(parseColor(this.prefix + this.warning + ChatColor.YELLOW + msg));
+		else sender.sendMessage(parseColor(this.warning + msg));
 	}
 
 	public void sendError(CommandSender sender, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(color(this.prefix + this.error + ChatColor.RED + msg));
-		else sender.sendMessage(color(this.error + msg));
+		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(this.prefix + this.error + ChatColor.RED + msg));
+		else sender.sendMessage(parseColor(this.error + msg));
 	}
 	public void sendError(CommandSender sender, String msg, boolean prefix) {
-		if (prefix) sender.sendMessage(color(this.prefix + this.error + ChatColor.RED + msg));
-		else sender.sendMessage(color(this.warning + msg));
+		if (prefix) sender.sendMessage(parseColor(this.prefix + this.error + ChatColor.RED + msg));
+		else sender.sendMessage(parseColor(this.warning + msg));
 	}
 	
 	public void sendFewArgs(CommandSender sender, String usage) {
 		if (config.getBoolean("IO.Show-Prefix")) {
-			sender.sendMessage(color(this.prefix + translate("Command.FewArgs")));
-			sender.sendMessage(color(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.FewArgs")));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
 		}else {
-			sender.sendMessage(color(translate("Command.FewArgs")));
-			sender.sendMessage(color(translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(translate("Command.FewArgs")));
+			sender.sendMessage(parseColor(translate("Command.Usage").replaceAll("%usage%", usage)));
 		}
 	}
 	public void sendFewArgs(CommandSender sender, String usage, boolean prefix) {
 		if (prefix) {
-			sender.sendMessage(color(this.prefix + translate("Command.FewArgs")));
-			sender.sendMessage(color(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.FewArgs")));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
 		}else {
-			sender.sendMessage(color(translate("Command.FewArgs")));
-			sender.sendMessage(color(translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(translate("Command.FewArgs")));
+			sender.sendMessage(parseColor(translate("Command.Usage").replaceAll("%usage%", usage)));
 		}
 	}
 
 	public void sendManyArgs(CommandSender sender, String usage) {
 		if (config.getBoolean("IO.Show-Prefix")) {
-			sender.sendMessage(color(this.prefix + translate("Command.ManyArgs")));
-			sender.sendMessage(color(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.ManyArgs")));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
 		}else {
-			sender.sendMessage(color(translate("Command.ManyArgs")));
-			sender.sendMessage(color(translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(translate("Command.ManyArgs")));
+			sender.sendMessage(parseColor(translate("Command.Usage").replaceAll("%usage%", usage)));
 		}
 	}	
 	public void sendManyArgs(CommandSender sender, String usage, boolean prefix) {
 		if (prefix) {
-			sender.sendMessage(color(this.prefix + translate("Command.ManyArgs")));
-			sender.sendMessage(color(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.ManyArgs")));
+			sender.sendMessage(parseColor(this.prefix + translate("Command.Usage").replaceAll("%usage%", usage)));
 		}else {
-			sender.sendMessage(color(translate("Command.ManyArgs")));
-			sender.sendMessage(color(translate("Command.Usage").replaceAll("%usage%", usage)));
+			sender.sendMessage(parseColor(translate("Command.ManyArgs")));
+			sender.sendMessage(parseColor(translate("Command.Usage").replaceAll("%usage%", usage)));
 		}
 	}
 	

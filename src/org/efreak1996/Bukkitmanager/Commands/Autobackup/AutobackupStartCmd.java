@@ -14,7 +14,7 @@ public class AutobackupStartCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutobackupStartCmd() {
-		super("start", "Autobackup.Start", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
+		super("start", "Autobackup.Start", "bm.autobackup.start", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
 		func = new ThreadManager();
 	}
 

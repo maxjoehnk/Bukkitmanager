@@ -10,7 +10,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginUpdateCmd extends Command{
 	
 	public PluginUpdateCmd() {
-		super("update", "Plugin.Update", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
+		super("update", "Plugin.Update", "bm.plugin.update", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
 	}
 		
 	@Override

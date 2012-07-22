@@ -12,7 +12,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginListCmd extends Command {
 	
 	public PluginListCmd() {
-		super("list", "Plugin.List", Arrays.asList("[#]"), CommandCategory.PLUGIN);
+		super("list", "Plugin.List", "bm.plugin.list", Arrays.asList("[#]"), CommandCategory.PLUGIN);
 	}
 
 	@Override

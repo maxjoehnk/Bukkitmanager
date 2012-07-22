@@ -14,7 +14,7 @@ public class AutosaveRestartCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutosaveRestartCmd() {
-		super("restart", "Autosave.Restart", new ArrayList<String>(), CommandCategory.AUTOSAVE);
+		super("restart", "Autosave.Restart", "bm.autosave.restart", new ArrayList<String>(), CommandCategory.AUTOSAVE);
 		func = new ThreadManager();
 	}
 

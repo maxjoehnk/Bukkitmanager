@@ -10,7 +10,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginInstallCmd extends Command {
 
 	public PluginInstallCmd() {
-		super("install", "Plugin.Install", Arrays.asList("[plugin]"), CommandCategory.PLUGIN);
+		super("install", "Plugin.Install", "bm.plugin.install", Arrays.asList("[plugin]"), CommandCategory.PLUGIN);
 	}
 
 	@Override

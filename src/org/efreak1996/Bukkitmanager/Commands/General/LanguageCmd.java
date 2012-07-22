@@ -9,7 +9,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class LanguageCmd extends Command{
 	
 	public LanguageCmd() {
-		super("language", "Language", Arrays.asList("(get|set)", "[language]"), CommandCategory.GENERAL);
+		super("language", "Language", "bm.language", Arrays.asList("(get|set)", "[language]"), CommandCategory.GENERAL);
 	}
 
 	@Override

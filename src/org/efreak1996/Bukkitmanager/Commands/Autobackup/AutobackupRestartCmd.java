@@ -14,7 +14,7 @@ public class AutobackupRestartCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutobackupRestartCmd() {
-		super("restart", "Autobackup.Restart", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
+		super("restart", "Autobackup.Restart", "bm.autobackup.restart", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
 		func = new ThreadManager();
 	}
 

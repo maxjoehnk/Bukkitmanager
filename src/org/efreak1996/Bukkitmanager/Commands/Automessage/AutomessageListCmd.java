@@ -14,7 +14,7 @@ public class AutomessageListCmd extends Command {
 	private static AutomessageReader msgReader;
 	
 	public AutomessageListCmd() {
-		super("list", "Automessage.List", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
+		super("list", "Automessage.List", "bm.automessage.list", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
 		msgReader = new AutomessageReader();
 	}
 

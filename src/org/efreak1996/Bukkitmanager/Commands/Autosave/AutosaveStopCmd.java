@@ -14,7 +14,7 @@ public class AutosaveStopCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutosaveStopCmd() {
-		super("stop", "Autosave.Stop", new ArrayList<String>(), CommandCategory.AUTOSAVE);
+		super("stop", "Autosave.Stop", "bm.autosave.stop", new ArrayList<String>(), CommandCategory.AUTOSAVE);
 		func = new ThreadManager();
 	}
 

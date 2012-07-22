@@ -2,9 +2,7 @@ package org.efreak1996.Bukkitmanager;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.bukkit.plugin.Plugin;
@@ -13,6 +11,8 @@ import org.efreak1996.Bukkitmanager.Addon.Addon;
 import org.efreak1996.Bukkitmanager.Addon.AddonCommand;
 import org.efreak1996.Bukkitmanager.Addon.AddonCommandExecutor;
 import org.efreak1996.Bukkitmanager.Commands.BmCommandExecutor;
+import org.efreak1996.Bukkitmanager.External.ArgumentParser;
+import org.efreak1996.Bukkitmanager.Help.HelpManager;
 import org.efreak1996.Bukkitmanager.Listener.BukkitListener;
 import org.efreak1996.Bukkitmanager.Logger.LoggingManager;
 import org.efreak1996.Bukkitmanager.PluginManager.PluginManager;
@@ -33,8 +33,6 @@ public class Bukkitmanager extends JavaPlugin {
 	private static IOManager io;
 	//The Config of the Plugin
 	private static Configuration config;
-	//The Properties File of the standalone Version
-	private static Properties properties;
 	//The Database of the Plugin
 	private static Database db;
 	//The PermissionsHandler of the Plugin
@@ -42,14 +40,15 @@ public class Bukkitmanager extends JavaPlugin {
 	//
 	private static Plugin instance;
 	private static LoggingManager logManager;
+	private static HelpManager helpManager;
 	private static AutomessageThread msgThread;
 	private static AutosaveThread saveThread;
 	private static AutobackupThread backupThread;
 	private static ThreadManager func;
 	private static Swing swing;
 	private static File rootFolder;
+	private static File pluginFile;
 	private static CustomMessageManager msgManager;
-	private static List<Plugin> plugins;
 	private static List<Addon> addons;
 	public static boolean firstRun = true;
 	//private static LibraryManager libManager;
@@ -61,11 +60,8 @@ public class Bukkitmanager extends JavaPlugin {
 	 */
 	
 	public static void main(String[] args) {
-		List<String> argList = Arrays.asList(args);
 		if (args.length == 0); //Open Gui
-		else if (argList.contains("--external") || argList.contains("-e")) {
-			
-		}
+		else ArgumentParser.parse(args);
 	}
 	
 	/**
@@ -105,6 +101,7 @@ public class Bukkitmanager extends JavaPlugin {
 	public void onLoad() {
 		com.jidesoft.utils.Lm.verifyLicense("Max Joehnk", "Bukkitmanager", "YrreBQlj.lyFAbpwcAUamoLF3Moy0zN");
 		instance = this;
+		pluginFile = getFile();
 	}
 
 	/**
@@ -134,7 +131,9 @@ public class Bukkitmanager extends JavaPlugin {
 			io.sendConsoleDev("New Features, which aren't complete or unstable will be enabled!");
 			swing = new Swing();
 			swing.initialize();
-		}		
+		}
+		helpManager = new HelpManager();
+		helpManager.initialize();
 		getServer().getPluginCommand("bm").setExecutor(new BmCommandExecutor());
 		getServer().getPluginManager().registerEvents(new BukkitListener(), this);
 		Threads();
@@ -289,5 +288,9 @@ public class Bukkitmanager extends JavaPlugin {
 
 	public static void reload() {
 		
+	}
+	
+	public static File getPluginFile() {
+		return pluginFile;
 	}
 }

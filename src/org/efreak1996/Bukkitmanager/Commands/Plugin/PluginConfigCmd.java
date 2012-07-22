@@ -18,7 +18,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginConfigCmd extends Command {
 
 	public PluginConfigCmd() {
-		super("config", "Plugin.Config", Arrays.asList("(plugin)", "(entry)", "[value]"), CommandCategory.PLUGIN);
+		super("config", "Plugin.Config", "bm.plugin.config", Arrays.asList("(plugin)", "(entry)", "[value]"), CommandCategory.PLUGIN);
 	}
 
 	@Override

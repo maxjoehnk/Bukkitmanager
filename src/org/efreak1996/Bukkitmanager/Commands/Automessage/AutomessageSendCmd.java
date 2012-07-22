@@ -13,7 +13,7 @@ public class AutomessageSendCmd extends Command {
 	private static AutomessageReader msgReader;
 	
 	public AutomessageSendCmd() {
-		super("send", "Automessage.Send", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
+		super("send", "Automessage.Send", "bm.automessage.send", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
 		msgReader = new AutomessageReader();
 	}
 

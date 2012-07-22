@@ -13,7 +13,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PluginEnableCmd extends Command {
 	
 	public PluginEnableCmd() {
-		super("enable", "Plugin.Enable", Arrays.asList("(plugin|all)"), CommandCategory.PLUGIN);
+		super("enable", "Plugin.Enable", "bm.plugin.enable", Arrays.asList("(plugin|all)"), CommandCategory.PLUGIN);
 	}
 
 	@Override

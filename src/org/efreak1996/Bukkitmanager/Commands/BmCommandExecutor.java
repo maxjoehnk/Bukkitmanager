@@ -1,6 +1,5 @@
 package org.efreak1996.Bukkitmanager.Commands;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 import org.bukkit.command.CommandExecutor;
@@ -23,34 +22,39 @@ public class BmCommandExecutor implements CommandExecutor {
 	
 	private static IOManager io;
 	private static HashMap<String, Command> commands;
+	private static HashMap<String, Alias> aliases;
 	
 	public BmCommandExecutor() {
 		io = new IOManager();
 		commands = new HashMap<String, Command>();
+		aliases = new HashMap<String, Alias>();
 		io.sendConsole(io.translate("Plugin.LoadingCommands"));
 		//Generalcommands
 		registerCommand(new LanguageCmd());
 		registerCommand(new BackupCmd());
 		registerCommand(new SaveCmd());
+		registerCommand(new HelpCmd());
+		//registerCommand(new DialogCmd());
+		//registerCommand(new TestCmd());
 		if (Bukkitmanager.firstRun) registerCommand(new InstallCmd());
 		//Addoncommands
 		//new AddonCommand();
 		//Autobackupcommands
-		new AutobackupCommand();
+		registerAlias("autobackup", new AutobackupCommand());
 		registerCommand(new AutobackupBackupCmd());
 		registerCommand(new AutobackupIntervalCmd());
 		registerCommand(new AutobackupRestartCmd());
 		registerCommand(new AutobackupStartCmd());
 		registerCommand(new AutobackupStopCmd());
 		//Autosavecommands
-		new AutosaveCommand();
+		registerAlias("autosave", new AutosaveCommand());
 		registerCommand(new AutosaveSaveCmd());
 		registerCommand(new AutosaveIntervalCmd());
 		registerCommand(new AutosaveRestartCmd());
 		registerCommand(new AutosaveStartCmd());
 		registerCommand(new AutosaveStopCmd());
 		//Automessagecommands
-		new AutomessageCommand();
+		registerAlias("automessage", new AutomessageCommand());
 		registerCommand(new AutomessageAddCmd());
 		registerCommand(new AutomessageGetCmd());
 		registerCommand(new AutomessageIntervalCmd());
@@ -61,16 +65,18 @@ public class BmCommandExecutor implements CommandExecutor {
 		registerCommand(new AutomessageStartCmd());
 		registerCommand(new AutomessageStopCmd());
 		//Bukkitcommands
-		new BukkitCommand();
+		registerAlias("bukkit", new BukkitCommand());
 		registerCommand(new BukkitConfigCmd());
 		registerCommand(new BukkitInfoCmd());
 		//Playercommands
-		new PlayerCommand();
+		registerAlias("player", new PlayerCommand());
 		registerCommand(new PlayerChatCmd());
 		registerCommand(new PlayerCmdCmd());
 		registerCommand(new PlayerDisplaynameCmd());
+		registerCommand(new PlayerExpCmd());
+		registerCommand(new PlayerTimeCmd());
 		//Plugincommands
-		new PluginCommand();
+		registerAlias("plugin", new PluginCommand());
 		registerCommand(new PluginConfigCmd());
 		registerCommand(new PluginDisableCmd());
 		registerCommand(new PluginEnableCmd());
@@ -92,14 +98,18 @@ public class BmCommandExecutor implements CommandExecutor {
 		if (p == c) return false;
 		if (args.length == 0) return false;
 		//else if (args[0].equalsIgnoreCase("install")) return commands.get("install").execute(sender, args, 1);
-		else if (!Arrays.asList(CommandCategory.values()).contains(args[0].toUpperCase()) && commands.containsKey(args[0])) return commands.get(args[0]).execute(sender, args, 1);
-		else if (CommandCategory.valueOf(args[0].toUpperCase()).equals(commands.get(args[1]).getCategory()) && commands.containsKey(args[1])) return commands.get(args[1]).execute(sender, args, 1);
+		else if (commands.containsKey("general." + args[0])) return commands.get("general." + args[0]).execute(sender, args, 1);
+		else if (commands.containsKey(args[0] + "." + args[1])) return commands.get(args[0] + "." + args[1]).execute(sender, args, 1);
+		//else if (!Arrays.asList(CommandCategory.values()).contains(args[0].toUpperCase()) && commands.containsKey(args[0])) return commands.get(args[0]).execute(sender, args, 1);
+		//else if (Arrays.asList(CommandCategory.values()).contains(args[0].toUpperCase()) && commands.containsKey(args[1])) return commands.get(args[1]).execute(sender, args, 1);
 		else return false;
 	}
 	
 	public static void registerCommand(Command command) {
-		commands.put(command.getLabel(), command);
-		if (!command.getCategory().equals(CommandCategory.GENERAL)) {
+		commands.put(command.getCategory().toString().toLowerCase() + "." + command.getLabel(), command);
+		Alias alias = aliases.get(command.getCategory().toString().toLowerCase());
+		if (alias != null) alias.registerCommand(command);
+		/*if (!command.getCategory().equals(CommandCategory.GENERAL)) {
 			switch (command.getCategory()) {
 				case ADDON:
 					AddonCommand.registerCommand(command);
@@ -120,6 +130,10 @@ public class BmCommandExecutor implements CommandExecutor {
 				default:
 					break;
 			}
-		}
+		}*/
+	}
+	
+	public static void registerAlias(String category, Alias alias) {
+		aliases.put(category, alias);
 	}
 }

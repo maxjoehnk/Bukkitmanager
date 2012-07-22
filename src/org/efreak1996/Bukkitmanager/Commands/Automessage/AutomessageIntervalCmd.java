@@ -14,7 +14,7 @@ public class AutomessageIntervalCmd extends Command {
 	private static ThreadManager func;
 	
 	public AutomessageIntervalCmd() {
-		super("interval", "Automessage.Interval", Arrays.asList("[interval]"), CommandCategory.AUTOMESSAGE);
+		super("interval", "Automessage.Interval", "bm.automessage.interval", Arrays.asList("[interval]"), CommandCategory.AUTOMESSAGE);
 		func = new ThreadManager();
 	}
 

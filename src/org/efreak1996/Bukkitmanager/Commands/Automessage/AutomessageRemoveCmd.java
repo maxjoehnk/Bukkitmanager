@@ -13,7 +13,7 @@ public class AutomessageRemoveCmd extends Command {
 	private static AutomessageReader msgReader;
 	
 	public AutomessageRemoveCmd() {
-		super("remove", "Automessage.Remove", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
+		super("remove", "Automessage.Remove", "bm.automessage.remove", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
 		msgReader = new AutomessageReader();
 	}
 

@@ -12,7 +12,7 @@ import org.efreak1996.Bukkitmanager.Commands.CommandCategory;
 public class PlayerChatCmd extends Command {
 
 	public PlayerChatCmd() {
-		super("chat", "Player.Chat", Arrays.asList("(player)", "(msg)"), CommandCategory.PLAYER);
+		super("chat", "Player.Chat", "bm.player.chat", Arrays.asList("(player)", "(msg)"), CommandCategory.PLAYER);
 	}
 	
 	@Override

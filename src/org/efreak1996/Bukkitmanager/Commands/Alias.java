@@ -16,7 +16,7 @@ public class Alias extends org.bukkit.command.Command implements PluginIdentifia
 	protected static IOManager io;
 	protected static Plugin plugin;
 	protected static Configuration config;
-	protected static HashMap<String, Command> commands;
+	protected HashMap<String, Command> commands;
 	
 	protected Alias(String name, String desc) {
 		super(name);
@@ -38,7 +38,7 @@ public class Alias extends org.bukkit.command.Command implements PluginIdentifia
 		else return false;
 	}
 
-	public static void registerCommand(Command cmd) {
+	public void registerCommand(Command cmd) {
 		commands.put(cmd.getLabel(), cmd);
 	}
 

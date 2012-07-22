@@ -13,7 +13,7 @@ public class AutobackupBackupCmd extends Command {
 	private static AutobackupThread backupThread;
 	
 	public AutobackupBackupCmd() {
-		super("backup", "Autobackup.Backup", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
+		super("backup", "Autobackup.Backup", "bm.autobackup.backup", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
 		backupThread = new AutobackupThread();
 	}
 
