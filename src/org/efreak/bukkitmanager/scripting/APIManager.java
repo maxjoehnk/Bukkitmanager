@@ -12,6 +12,7 @@ public class APIManager {
 
 	public APIManager() {
 		apiObjects = new HashMap<String, APIObject>();
+		cmds = new HashMap<String, APICommand>();
 	}
 	
 	public void addAPI(String name, APIObject object) {
