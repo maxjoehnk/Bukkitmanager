@@ -25,6 +25,7 @@ import org.efreak.bukkitmanager.remoteserver.RemoteCommandManager;
 import org.efreak.bukkitmanager.remoteserver.RemoteServer;
 import org.efreak.bukkitmanager.remoteserver.commands.*;
 import org.efreak.bukkitmanager.scripting.ScriptManager;
+import org.efreak.bukkitmanager.util.ChatFilter;
 //import org.efreak.bukkitmanager.scoreboards.ScoreboardManager;
 import org.efreak.bukkitmanager.util.FileHelper;
 
@@ -111,6 +112,7 @@ public class Bukkitmanager extends JavaPlugin {
 		new PluginManager().init();
 		//new ScoreboardManager().init();
 		new ScriptManager().init();
+		new ChatFilter().init();
 		if (config.getDev()) {
 			RemoteCommandManager.registerHandler(PlayerCommands.class);
 			RemoteCommandManager.registerHandler(ServerCommands.class);

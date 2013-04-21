@@ -172,6 +172,9 @@ public class Configuration{
 			update("RemoteServer.User.Admin.Username", "admin");
 			update("RemoteServer.User.Admin.Password", "123456");
 		}
+		update("Chatfilter.Enabled", true);
+		update("Chatfilter.File", "chatfilter.txt");
+		update("Chatfilter.Replacement", "*");
 		/*if (devMode) {
 			update("Swing.Enabled", false);
 		  	update("Swing.Start", "on-load");

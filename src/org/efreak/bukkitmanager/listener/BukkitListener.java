@@ -1,7 +1,10 @@
 package org.efreak.bukkitmanager.listener;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -16,6 +19,7 @@ import org.efreak.bukkitmanager.FakepluginsManager;
 import org.efreak.bukkitmanager.IOManager;
 import org.efreak.bukkitmanager.Permissions;
 import org.efreak.bukkitmanager.pluginmanager.PluginManager;
+import org.efreak.bukkitmanager.util.ChatFilter;
 
 public class BukkitListener implements Listener{
 	
@@ -72,5 +76,10 @@ public class BukkitListener implements Listener{
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		BmPlayer player = new BmPlayer(event.getPlayer());
 		player.onLeave();
+	}
+	
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void chatFilter(AsyncPlayerChatEvent event) {
+		if (config.getBoolean("Chatfilter.Enabled")) event.setMessage(ChatFilter.filter(event.getMessage()));
 	}
 }
