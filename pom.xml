@@ -15,6 +15,10 @@
       <id>turt2live-repo</id>
       <url>http://repo.turt2live.com</url>
     </repository>
+    <repository>
+      <id>milkbowl-repo</id>
+		  <url>http://ci.milkbowl.net/plugin/repository/everything/</url>
+	  </repository>
   </repositories>
   <dependencies>
     <dependency>
@@ -41,5 +45,10 @@
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+		  <groupId>net.milkbowl.vault</groupId>
+	  	<artifactId>Vault</artifactId>
+	  	<version>1.2.26-SNAPSHOT</version>
+	  </dependency>
   </dependencies>  
 </project>
