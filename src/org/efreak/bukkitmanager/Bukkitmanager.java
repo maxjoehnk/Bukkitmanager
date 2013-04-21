@@ -55,7 +55,7 @@ public class Bukkitmanager extends JavaPlugin {
     	ThreadManager.stopThread(ThreadType.AUTOBACKUP);
     	ThreadManager.stopThread(ThreadType.AUTOMESSAGE);
 		getServer().getScheduler().cancelTasks(this);
-		remoteServer.shutdown();
+		if (config.getDev()) remoteServer.shutdown();
 		try {
 			FileUtils.cleanDirectory(new File(getDataFolder().getParentFile().getAbsoluteFile().getParentFile() + File.separator + "backups" + File.separator + "temp"));
 		} catch (IOException e) {
@@ -75,10 +75,10 @@ public class Bukkitmanager extends JavaPlugin {
 	public void onEnable() {
 		getDataFolder().mkdir();
 		config = new Configuration();
+		io = new IOManager();
 		config.init();
 		FileHelper.setupFolderStructure();
-		io = new IOManager();
-		io.initialize();
+		io.init();
 		if (config.getDebug()) io.sendConsoleWarning(io.translate("Plugin.Debug"));
 		if (firstRun) io.sendConsole(io.translate("Plugin.FirstRun"));
 		try {

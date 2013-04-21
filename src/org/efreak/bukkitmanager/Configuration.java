@@ -39,10 +39,8 @@ public class Configuration{
 	 */
 	
 	public void init() {
-		plugin = Bukkitmanager.getInstance();
+		io = Bukkitmanager.getIOManager();
 		configFile = new File(plugin.getDataFolder(), "config.yml");
-		io = new IOManager();
-		IOManager.plugin = plugin;
 		config = plugin.getConfig();
 		if (!configFile.exists()){
 			io.sendConsole("Creating config.yml...", true);

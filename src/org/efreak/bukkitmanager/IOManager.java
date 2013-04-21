@@ -38,7 +38,7 @@ public class IOManager {
 		config = Bukkitmanager.getConfiguration();
 	}
 	
-	public void initialize() {
+	public void init() {
 		color = config.getBoolean("IO.ColoredLogs");
 		prefix = color(config.getString("IO.Prefix")) + " " + ChatColor.WHITE;
 		error = color(config.getString("IO.Error")) + " " + ChatColor.WHITE;
