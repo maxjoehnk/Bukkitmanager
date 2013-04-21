@@ -1,10 +1,10 @@
 name: Bukkitmanager
-main: org.efreak1996.Bukkitmanager.Bukkitmanager
-version: 1.7 - Dev 1
+main: org.efreak.bukkitmanager.Bukkitmanager
+version: 1.3
 website: http://dev.bukkit.org/server-mods/bukkitmanager
-author: efreak1996
+author: e-freak
 prefix: Bukkitmanager
-soft-depend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, zPermissions, DroxPerms, GroupManager]
+softdepend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, zPermissions, DroxPerms, GroupManager, Notifications]
 description: >
              A plugin to update and manage bukkit and its plugins
 commands:
@@ -28,6 +28,7 @@ permissions:
             bm.plugin.*: true
             bm.password.*: true
             bm.fakeplugins: false
+            bm.notification.*: true
         default: op
     bm.fakeplugins:
         description: Let you see a fakepluginlist if you run the /plugins command
@@ -193,6 +194,10 @@ permissions:
     bm.language.set:
         description: Allows to set the Language
         default: op
+    bm.notification.*:
+        description: Gives access to all notifications
+        children:
+            bm.notification.update: true
     bm.player.*:
         description: Gives access to all /bm player commands
         children:

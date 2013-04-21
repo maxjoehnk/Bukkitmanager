@@ -6,18 +6,18 @@
 # Build stuff
 /bin
 
-# Librarys
+#Libraries
 /lib
 
 #Backups
-/Alpha1.6
+/beta1.1_backup
+/Beta1.2_backup
+/src_1.3_old
 
-# Unfinished Stuff
+#Testserver
+/server
+
 /src/img
-/src/org/efreak1996/Bukkitmanager/Addon
-/src/org/efreak1996/Bukkitmanager/SQL
-/src/org/efreak1996/Bukkitmanager/Webinterface
-/src/org/efreak1996/Bukkitmanager/Webserver
-/src/org/efreak1996/Bukkitmanager/Spout
-/src/org/efreak1996/Bukkitmanager/Swing/Remote
-/src/org/efreak1996/Bukkitmanager/Listener/Spout
+/src/org/efreak/bukkitmanager/tutorials
+/src/org/efreak/bukkitmanager/scoreboards
+/src/org/efreak/bukkitmanager/pluginmanager/updater_new
