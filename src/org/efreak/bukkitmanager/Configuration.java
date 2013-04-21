@@ -77,26 +77,14 @@ public class Configuration{
 	 */
 	public void UpdateConfig() throws IOException {
 		if (contains("General.DevMode")) devMode = getBoolean("General.DevMode");
-		if (get("General.Use-Permissions") != null) {
-		  update("General.Permissions.Use-Permissions", getBoolean("General.Use-Permissions"));
-		  remove("General.Use-Permissions");
-		}
 		update("General.Permissions.Use-Permissions", true);
-		if (get("General.Use-Vault") != null) {
-			  update("General.Permissions.Use-Vault", getBoolean("General.Use-Vault"));
-			  remove("General.Use-Vault");
-		}
 		update("General.Permissions.Use-Vault", true);
-		if (get("General.Force-SuperPerms") != null) {
-			  update("General.Permissions.Force-SuperPerms", getBoolean("General.Force-SuperPerms"));
-			  remove("General.Force-SuperPerms");
-		}
 		update("General.Permissions.Force-SuperPerms", false);
 		update("General.Permissions.Log", true);
 		update("General.Auto-Updater", true);
 		update("General.Debug", false);
 		update("General.Logger", false);
-		update("General.Player-Synchronisation", false);
+		update("General.Player-Synchronisation", true);
 		update("General.CPULoad", false);
 		update("General.Scripting", true);
 		update("General.Statistics", true);
