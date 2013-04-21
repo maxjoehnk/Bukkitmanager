@@ -1,3 +1,8 @@
+Beta 1.3.1
+========
+* Implemented Chatfilter
+* Fixed the NullPointerException thrown every time a command is run
+
 Beta 1.3
 ========
 * Added new Statistics (Command Usage Donut Graph, Installed Addons Pie Chart, Total Command Usage Line Graph)
