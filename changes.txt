@@ -1,8 +1,0 @@
-Added new Statistics (Command Usage Donut Graph, Installed Addons Pie Chart, Total Command Usage Line Graph)
-Rewrite of the Database System (Faster, stable and added a way to add custom Database Systems with Addons)
-Finally all Player Commands are working as they should, even if the Player is offline (PlayerSynchronisation has to be enabled)
-Added Updater Black- and Whitelists
-Added an Autobackup Option to remove old backups (The count doesn't work properly if you enter 5 in most cases only 4 files are remaining, sometimes also 5 are remaining)
-Added Support for Notifications Plugin (FTPBackup Plugin too)
-Temporary removed Scoreboards
-Started with a huge API for the Scripting Engine, neither finished nor documented yet
