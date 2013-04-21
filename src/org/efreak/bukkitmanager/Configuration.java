@@ -160,6 +160,7 @@ public class Configuration{
 		update("Notifications.PluginUpdater.Updated", true);
 		update("Notifications.Autobackup.Started", true);
 		update("Notifications.Autobackup.Finished", true);
+		update("Notifications.RemoteServer", false);
 		if (!PluginManager.isPluginEnabled("Notifications") && getBoolean("Notifications.Enabled")) io.sendConsoleWarning("Notifications enabled but Plugin couldn't be found");
 		if (devMode) {
 			update("RemoteServer.Enabled", false);

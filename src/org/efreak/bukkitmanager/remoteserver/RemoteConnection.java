@@ -12,6 +12,7 @@ import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 //import org.efreak.bukkitmanager.Database;
 import org.efreak.bukkitmanager.IOManager;
+import org.efreak.bukkitmanager.util.NotificationsHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,9 +42,8 @@ public class RemoteConnection extends Thread {
 	
 	@Override
 	public void run() {
-		if (config.getBoolean("RemoteServer.Logging.Enabled")) {
-			io.sendConsole("Remote Connection from IP: " + socket.getInetAddress());
-		}
+		if (config.getBoolean("RemoteServer.Logging.Enabled")) io.sendConsole("Remote Connection from IP: " + socket.getInetAddress());
+		if (config.getBoolean("Notifications.RemoteServer")) NotificationsHandler.notify("Bukkitmanager", "Remoteserver Connection", "IP: " + socket.getInetAddress());
 		try {
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
