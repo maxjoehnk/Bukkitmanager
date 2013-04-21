@@ -41,7 +41,7 @@ public class ChatFilter {
 		}catch (FileNotFoundException e) {
 			if (config.getDebug()) e.printStackTrace();
 		}
-		io.sendConsole("Chatfilter loaded! " + filtered.size() + " entries found");
+		io.sendConsole("Chatfilter loaded! " + filtered.size() + " Entrie(s) found");
 	}
 	
 	public static String filter(String msg) {
