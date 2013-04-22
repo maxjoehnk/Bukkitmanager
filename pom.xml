@@ -143,10 +143,11 @@
               </configuration>
               <reports>
                 <report>index</report>
-                <report>license</report>
                 <report>project-team</report>
                 <report>cim</report>
+                <report>issue-tracking</report>
                 <report>scm</report>
+                <report>license</report>
               </reports>
             </plugin>
             <plugin>
@@ -163,6 +164,10 @@
                   </reports>
                 </reportSet>
               </reportSets>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-pmd-plugin</artifactId>
             </plugin>
           </reportPlugins>
         </configuration>
