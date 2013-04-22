@@ -118,7 +118,16 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>site</phase>
+            <goals>
+              <goal>jar</goal>
+              <goal>aggregate</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -131,41 +140,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <reportPlugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-project-info-reports-plugin</artifactId>
-              <reports>
-                <report>cim</report>
-                <report>issue-tracking</report>
-              </reports>
-            </plugin>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <executions>
-                <execution>
-                  <id>attach-javadocs-site</id>
-                  <phase>site</phase>
-                  <goals>
-                    <goal>aggregate</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>attach-javadocs</id>
-                  <goals>
-                    <goal>jar</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-          </reportPlugins>
-        </configuration>
       </plugin>
     </plugins>
   </build>
