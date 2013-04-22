@@ -19,6 +19,16 @@
     </developer>
   </developers>
   
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <scm>
+    <developerConnection>scm:git:git@github.com:efreak1996/Bukkitmanager.git</developerConnection>
+    <connection>scm:git:git://github.com/efreak1996/Bukkitmanager.git</connection>
+    <url>https://github.com/efreak1996/Bukkitmanager/tree/master/</url>
+  </scm>
+  
   <licenses>
     <license>
       <name>The GNU General Public License Version 3</name>
