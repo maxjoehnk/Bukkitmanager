@@ -29,6 +29,11 @@
     <url>https://github.com/efreak1996/Bukkitmanager/tree/master/</url>
   </scm>
   
+  <issueManagement>
+	<url>http://dev.bukkit.org/server-mods/bukkitmanager/tickets/</url>
+	<system>BukkitDev Tracking System</system>
+  </issueManagement>
+  
   <licenses>
     <license>
       <name>The GNU General Public License Version 3</name>
