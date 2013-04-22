@@ -137,8 +137,9 @@
             <goals>
               <goal>jar</goal>
             </goals>
-         </execution>
-      </executions>
-    </plugin>
-  </plugins>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
