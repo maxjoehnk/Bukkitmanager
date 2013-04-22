@@ -10,7 +10,8 @@
 /doc
 
 #Libraries
-/lib
+/lib/*
+!/lib/plugins
 
 #Backups
 /beta1.1_backup
