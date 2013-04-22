@@ -52,6 +52,10 @@
       <id>turt2live-repo</id>
       <url>http://repo.turt2live.com</url>
     </repository>
+    <repository>
+      <id>onejar-maven-plugin.googlecode.com</id>
+      <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+    </repository>
   </repositories>
   
   <dependencies>
@@ -194,6 +198,10 @@
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+       		  <artifactId>changelog-maven-plugin</artifactId>
             </plugin>
           </reportPlugins>
         </configuration>
