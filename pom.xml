@@ -15,10 +15,6 @@
       <id>turt2live-repo</id>
       <url>http://repo.turt2live.com</url>
     </repository>
-    <repository>
-      <id>milkbowl-repo</id>
-	  <url>http://ci.milkbowl.net/plugin/repository/everything/</url>
-	</repository>
   </repositories>
   <dependencies>
     <dependency>
@@ -48,7 +44,16 @@
     <dependency>
 	  <groupId>net.milkbowl.vault</groupId>
 	  <artifactId>Vault</artifactId>
-	  <version>1.2.26-SNAPSHOT</version>
+	  <version>1.2.15-SNAPSHOT</version>
+	  <scope>system</scope>
+	  <systemPath>${project.basedir}/lib/plugins/Vault.jar</systemPath>
+	</dependency>
+	<dependency>
+	  <groupId>ru.tehkode</groupId>
+	  <artifactId>PermissionsEx</artifactId>
+	  <version>1.19.1</version>
+	  <scope>system</scope>
+	  <systemPath>${project.basedir}/lib/plugins/PermissionsEx.jar</systemPath>
 	</dependency>
     <dependency>
 	  <groupId>me.muizers.Notifications</groupId>
@@ -56,6 +61,20 @@
 	  <version>1.2</version>
 	  <scope>system</scope>
 	  <systemPath>${project.basedir}/lib/plugins/Notifications.jar</systemPath>
+	</dependency>
+	<dependency>
+	  <groupId>de.bananaco</groupId>
+	  <artifactId>bPermissions</artifactId>
+	  <version>2.10.4</version>
+	  <scope>system</scope>
+	  <systemPath>${project.basedir}/lib/plugins/bpermissions.jar</systemPath>
+	</dependency>
+	<dependency>
+	  <groupId>org.anjocaido.groupmanager</groupId>
+	  <artifactId>EssentialsGroupManager</artifactId>
+	  <version>2.0.122</version>
+	  <scope>system</scope>
+	  <systemPath>${project.basedir}/lib/plugins/EssentialsGroupManager.jar</systemPath>
 	</dependency>
   </dependencies>  
 </project>
