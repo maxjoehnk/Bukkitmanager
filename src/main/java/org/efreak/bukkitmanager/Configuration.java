@@ -110,10 +110,10 @@ public class Configuration{
 		update("Autosave.Warntimes", Arrays.asList(60));
 		update("Autosave.Notification", true);
 		update("Autosave.NoOffline", true);
-		if (update("Autosave.Taskmode", "async")) {
-			if (!getString("Autosave.Taskmode").equalsIgnoreCase("sync") && !getString("Autosave.Taskmode").equalsIgnoreCase("async")) 
-				set("Autosave.Taskmode", "async");
-		}
+		if (update("Autosave.Taskmode", "async") && 
+				!getString("Autosave.Taskmode").equalsIgnoreCase("sync") && 
+				!getString("Autosave.Taskmode").equalsIgnoreCase("async")) 
+			set("Autosave.Taskmode", "async");
 		update("Autobackup.Enabled", true);
 		update("Autobackup.RenameJar", true);
 		update("Autobackup.Interval", 3600);
@@ -125,10 +125,10 @@ public class Configuration{
 		update("Autobackup.TempBackupDir", "backups/temp");
 		update("Autobackup.PostExecution.Enabled", false);
 		update("Autobackup.PostExecution.File", "backup.sh");
-		if (update("Autobackup.Taskmode", "async")) {
-			if (!getString("Autobackup.Taskmode").equalsIgnoreCase("sync") && !getString("Autobackup.Taskmode").equalsIgnoreCase("async")) 
-				set("Autobackup.Taskmode", "async");
-		}
+		if (update("Autobackup.Taskmode", "async") && 
+				!getString("Autobackup.Taskmode").equalsIgnoreCase("sync") && 
+				!getString("Autobackup.Taskmode").equalsIgnoreCase("async")) 
+			set("Autobackup.Taskmode", "async");
 		updateWorlds();
 		update("Autobackup.Backup.Plugins", true);
 		update("Autobackup.Backup.craftbukkit", true);

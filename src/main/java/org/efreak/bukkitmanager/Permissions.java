@@ -1,7 +1,5 @@
 package org.efreak.bukkitmanager;
 
-import net.milkbowl.vault.permission.Permission;
-
 import org.anjocaido.groupmanager.GroupManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -15,7 +13,7 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 public class Permissions {
 
 	private static PermissionManager pex = null;
-	private static Permission vault = null;
+	private static net.milkbowl.vault.permission.Permission vault = null;
 	//private static de.bananaco.bpermissions.imp.Permissions bPermissions = null;
 	private static GroupManager groupManager = null;
 	private static IOManager io;
@@ -39,7 +37,7 @@ public class Permissions {
 		if (usePerms) {
 			if (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null) {
 				if (config.getBoolean("General.Permissions.Use-Vault")) {
-					RegisteredServiceProvider<Permission> permissionProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.permission.Permission.class);
+					RegisteredServiceProvider<net.milkbowl.vault.permission.Permission> permissionProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.permission.Permission.class);
 					if (permissionProvider != null) {
 						vault = permissionProvider.getProvider();
 						permSystem = "Vault";

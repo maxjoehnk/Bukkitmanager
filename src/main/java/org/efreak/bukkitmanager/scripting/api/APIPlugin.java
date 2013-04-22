@@ -49,4 +49,6 @@ public class APIPlugin {
 	public boolean isEnabled() {
 		return PluginManager.isPluginEnabled(plugin);
 	}
+	
+	//TODO: Add more APIPlugin Methods
 }

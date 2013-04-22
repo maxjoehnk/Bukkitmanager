@@ -12,6 +12,6 @@ public class FileFilter implements FilenameFilter {
 	}
 	
     public boolean accept(File dir, String name) {
-        return (name.endsWith(suffix));
+        return name.endsWith(suffix);
     }
 }

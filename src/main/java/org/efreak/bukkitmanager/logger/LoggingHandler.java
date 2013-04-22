@@ -33,10 +33,10 @@ public abstract class LoggingHandler extends Handler {
 		db = Bukkitmanager.getDb();
 	}
 	
-	public LoggingHandler(BmLogger arg2Logger, boolean arg3FileLogging, boolean arg4DatabaseLogging) {
+	public LoggingHandler(BmLogger arg1Logger, boolean arg2FileLogging, boolean arg3DatabaseLogging) {
 		super();
-		fileLogging = arg3FileLogging;
-		dbLogging = arg4DatabaseLogging;
+		fileLogging = arg2FileLogging;
+		dbLogging = arg3DatabaseLogging;
 		this.setFormatter(new LogFormatter());
 	}
 	

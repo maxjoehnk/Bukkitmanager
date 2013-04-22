@@ -8,7 +8,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import org.efreak.bukkitmanager.Bukkitmanager;
-import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.IOManager;
 //import org.efreak.bukkitmanager.Commands.Addon.*;
 import org.efreak.bukkitmanager.commands.autobackup.*;
@@ -23,13 +22,11 @@ import org.efreak.bukkitmanager.commands.server.*;
 public class BmCommandExecutor implements CommandExecutor {
 	
 	private static IOManager io;
-	private static Configuration config;
 	private static HashMap<String, Command> commands;
 	private static HashMap<String, Alias> aliases;
 	
 	public BmCommandExecutor() {
 		io = Bukkitmanager.getIOManager();
-		config = Bukkitmanager.getConfiguration();
 		commands = new HashMap<String, Command>();
 		aliases = new HashMap<String, Alias>();
 		io.sendConsole(io.translate("Plugin.LoadingCommands"));

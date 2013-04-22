@@ -20,12 +20,8 @@ public class PluginListCmd extends Command {
 		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm plugin list [#]");
 		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin list [#]");
 		else {
-			if (args.length == (1 + length)) {
-				if (has(sender, "bm.plugin.list.normal")) io.send(sender, "Plugins: " + getPluginList());
-			}
-			else if (args.length == (2 + length)) {
-				if (has(sender, "bm.plugin.list.detail")) showDetailedList(sender, Integer.parseInt(args[1 + length]));
-			}
+			if (args.length == (1 + length) && has(sender, "bm.plugin.list.normal")) io.send(sender, "Plugins: " + getPluginList());
+			else if (args.length == (2 + length) && has(sender, "bm.plugin.list.detail")) showDetailedList(sender, Integer.parseInt(args[1 + length]));
 		}
 		return true;
 	}

@@ -37,6 +37,8 @@ public class NotificationsHandler {
 					else notification = new Notification(line1, "");
 				}
 				notificationsPlugin.showNotification(notification);
+			}else {
+				//TODO: Implement own Notifications
 			}
 		}
 	}

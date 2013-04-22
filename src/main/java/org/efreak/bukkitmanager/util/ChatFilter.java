@@ -36,6 +36,7 @@ public class ChatFilter {
 			}
 		}
 		try {
+			@SuppressWarnings("resource")
 			Scanner scanner = new Scanner(new FileInputStream(filterFile));
 			while (scanner.hasNext()) filtered.add(scanner.next());
 		}catch (FileNotFoundException e) {

@@ -45,11 +45,9 @@ public class BackupHelper {
 			io.sendConsoleWarning(io.translate("Autobackup.BackupInProgress"));
 			return;
 		}
-		if (config.getBoolean("Autobackup.NoOffline")) {
-			if (plugin.getServer().getOnlinePlayers().length == 0) {
-				io.sendConsole(io.translate("Autobackup.NoPlayer"));
-				return;
-			}
+		if (config.getBoolean("Autobackup.NoOffline") && plugin.getServer().getOnlinePlayers().length == 0) {
+			io.sendConsole(io.translate("Autobackup.NoPlayer"));
+			return;
 		}
 		inProgress = true;
 		if (config.getBoolean("Notifications.Autobackup.Started")) NotificationsHandler.notify("Bukkitmanager", "Autobackup Started", "");

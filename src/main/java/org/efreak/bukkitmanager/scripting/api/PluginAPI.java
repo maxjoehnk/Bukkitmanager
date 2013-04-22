@@ -15,10 +15,11 @@ public class PluginAPI implements APIObject {
 	}
 
 	@Override
-	public void loadAPI() {
+	public boolean loadAPI() {
 		plugins = new HashMap<String, APIPlugin>();
 		Plugin[] pluginArray = PluginManager.getPlugins();
 		for (Plugin plugin : pluginArray) plugins.put(plugin.getName(), new APIPlugin(plugin));
+		return true;
 	}
 	
 }

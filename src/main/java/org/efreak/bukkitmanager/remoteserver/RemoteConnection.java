@@ -22,7 +22,7 @@ public class RemoteConnection extends Thread {
 	private Socket socket;
 	private PrintWriter out;
 	private BufferedReader in;
-	private String type = "", user = "", pass = "", action = "";
+	private String user = "", pass = "", action = "";
 	private JSONObject args = null;
 	private JSONArray actions = null;
 	//private static Database db;
@@ -63,7 +63,6 @@ public class RemoteConnection extends Thread {
 	}
 	
 	private void handleJSON(JSONObject jsonInput) throws JSONException {
-		type = jsonInput.getString("type");
 		user = jsonInput.getString("username");
 		pass = jsonInput.getString("password");
 		if (!login(user, pass)) {
@@ -84,7 +83,7 @@ public class RemoteConnection extends Thread {
 	}
 	
 	private void handleWebsocket(String inputLine) throws IOException {
-		//while (in.readLine() != "");
+		//TODO: Write Websocket handler
 	}
 
 	private String hashPassword(String password) {

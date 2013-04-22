@@ -57,8 +57,7 @@ public class PluginConfigCmd extends Command {
 							output.append(keys[1].toString() + "=" + pluginConfig.get(keys[1].toString()));
 							for (int i = 2; i < keys.length; i++) {
 								String value = pluginConfig.get(keys[i].toString()).toString();
-								if (value.startsWith("MemorySection"));
-								else output.append(", " + keys[i] + "=" + value);
+								if (!value.startsWith("MemorySection")) output.append(", " + keys[i] + "=" + value);
 							}
 							io.send(sender, io.translate("Command.Plugin.Config.List").replaceAll("%plugin%", plugin.getName()).replaceAll("%items%", output.toString()));
 						}else io.sendError(sender, io.translate("Command.Plugin.Config.NoConfig"));

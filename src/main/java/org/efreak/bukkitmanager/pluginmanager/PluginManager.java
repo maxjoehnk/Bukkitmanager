@@ -47,12 +47,8 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 					List<String> blacklist = (List<String>) config.getList("PluginUpdater.Blacklist.List");
 					if (blacklist == null) blacklist = new ArrayList<String>();
 					for (int i = 0; i < plugins.length; i++) {
-						if (config.getBoolean("PluginUpdater.Blacklist.Enabled")) {
-							if (blacklist.contains(plugins[i].getName())) continue;
-						}
-						if (config.getBoolean("PluginUpdater.Whitelist.Enabled")) {
-							if (!whitelist.contains(plugins[i].getName())) continue;
-						}
+						if (config.getBoolean("PluginUpdater.Blacklist.Enabled") && blacklist.contains(plugins[i].getName())) continue;
+						if (config.getBoolean("PluginUpdater.Whitelist.Enabled") && !whitelist.contains(plugins[i].getName())) continue;
 						PluginPage pluginPage = new PluginPage(plugins[i].getName());
 						if (pluginPage.exists()) {
 					    	pluginPages.put(plugins[i], pluginPage);
@@ -64,11 +60,7 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 					if (config.getBoolean("PluginUpdater.CheckOnStart")) {
 						io.sendConsole(io.translate("PluginUpdater.CheckingUpdates"));
 						for (int i = 0; i < plugins.length; i++) {
-							try {
-								if (!PluginManager.checkPlugin(plugins[i])) {
-									updatesAvailable = true;
-								}
-							}catch (NullPointerException e) {}
+							if (!PluginManager.checkPlugin(plugins[i])) updatesAvailable = true;
 						}
 						io.sendConsole(io.translate("PluginUpdater.UpdatesAvailable"));
 						io.sendConsole(io.translate("Plugin.Done"));

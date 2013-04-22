@@ -13,7 +13,8 @@ public class WorldAPI implements APIObject {
 	}
 
 	@Override
-	public void loadAPI() {
+	public boolean loadAPI() {
 		worlds = new HashMap<String, APIWorld>();
+		return true;
 	}
 }

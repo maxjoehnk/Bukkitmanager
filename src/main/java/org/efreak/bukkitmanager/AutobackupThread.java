@@ -1,6 +1,5 @@
 package org.efreak.bukkitmanager;
 
-import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.util.BackupHelper;
 
 public class AutobackupThread extends Thread {

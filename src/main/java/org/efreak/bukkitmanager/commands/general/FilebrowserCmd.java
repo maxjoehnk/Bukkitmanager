@@ -8,7 +8,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.*;
 
-import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.commands.Command;
 import org.efreak.bukkitmanager.commands.CommandCategory;
 import org.efreak.bukkitmanager.util.FileHelper;

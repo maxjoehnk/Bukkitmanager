@@ -4,7 +4,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -64,11 +63,9 @@ public class BukkitListener implements Listener{
 	
 	@EventHandler
 	public void onCommandPreprocess(PlayerCommandPreprocessEvent event) {
-		if (event.getMessage().equalsIgnoreCase("/plugins")) {
-			if (config.getBoolean("Fakepluginlist.Enabled")) {
-				FakepluginsManager.execute(event.getPlayer());
-				event.setCancelled(true);
-			}
+		if (event.getMessage().equalsIgnoreCase("/plugins") && config.getBoolean("Fakepluginlist.Enabled")) {
+			FakepluginsManager.execute(event.getPlayer());
+			event.setCancelled(true);
 		}
 	}
 	

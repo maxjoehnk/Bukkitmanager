@@ -1,7 +1,6 @@
 package org.efreak.bukkitmanager.util;
 
 import java.util.Iterator;
-import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -34,11 +33,9 @@ public class SaveHelper {
 			io.sendConsoleWarning(io.translate("Autosave.SaveInProgress"));
 			return;
 		}
-		if (config.getBoolean("Autosave.NoOffline")) {
-			if (Bukkit.getServer().getOnlinePlayers().length == 0) {
-				io.sendConsole(io.translate("Autosave.NoPlayer"));
-				return;
-			}
+		if (config.getBoolean("Autosave.NoOffline") && Bukkit.getServer().getOnlinePlayers().length == 0) {
+			io.sendConsole(io.translate("Autosave.NoPlayer"));
+			return;
 		}
 		saveInProgress = true;
 		if (config.getBoolean("Autosave.Notification")) io.broadcast(io.translate("Autosave.Notification.Start"));

@@ -1,11 +1,8 @@
 package org.efreak.bukkitmanager.commands.player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import org.efreak.bukkitmanager.commands.Command;
 import org.efreak.bukkitmanager.commands.CommandCategory;

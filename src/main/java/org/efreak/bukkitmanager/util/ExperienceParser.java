@@ -2,7 +2,6 @@ package org.efreak.bukkitmanager.util;
 
 import java.util.Arrays;
 
-import org.bukkit.entity.Player;
 import org.efreak.bukkitmanager.BmPlayer;
 
 public class ExperienceParser {

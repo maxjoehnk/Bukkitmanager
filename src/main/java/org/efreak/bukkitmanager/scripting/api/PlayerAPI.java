@@ -15,8 +15,9 @@ public class PlayerAPI implements APIObject {
 	}
 
 	@Override
-	public void loadAPI() {
+	public boolean loadAPI() {
 		players = new HashMap<String, APIPlayer>();
+		return true;
 	}
 	
 	public void addPlayer(OfflinePlayer player) {
