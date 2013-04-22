@@ -3,9 +3,48 @@
   <groupId>org.efreak.bukkitmanager</groupId>
   <artifactId>bukkitmanager</artifactId>
   <version>Beta 1.4</version>
-  <packaging>jar</packaging>
+  
   <name>Bukkitmanager</name>
   <url>http://dev.bukkit.org/server-mods/bukkitmanager/</url>
+  
+  <developers>
+    <developer>
+      <id>e-freak</id>
+      <name>Max Jöhnk (e-freak)</name>
+      <email>maxjoehnk@gmail.com</email>
+      <roles>
+        <role>Project Manager</role>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+  
+  <licenses>
+    <license>
+      <name>The GNU General Public License Version 3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+    </license>
+  </licenses>
+  
+  <ciManagement>
+    <system>jenkins</system>
+    <url>http://98.164.246.75:8080/</url>
+  </ciManagement>
+  
+  <packaging>jar</packaging>
+  
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>changelog-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+
   <repositories>
     <repository>
       <id>bukkit-repo</id>
@@ -16,6 +55,7 @@
       <url>http://repo.turt2live.com</url>
     </repository>
   </repositories>
+  
   <dependencies>
     <dependency>
       <groupId>org.bukkit</groupId>
