@@ -32,15 +32,6 @@
   </ciManagement>
   
   <packaging>jar</packaging>
-  
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>changelog-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </reporting>
 
   <repositories>
     <repository>
@@ -121,10 +112,4 @@
 	  <systemPath>${project.basedir}/lib/plugins/EssentialsGroupManager.jar</systemPath>
 	</dependency>
   </dependencies>
-  
-  <build>
-    <defaultGoal>clean package install site</defaultGoal>
-    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
-  </build>
-  
 </project>
