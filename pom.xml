@@ -142,7 +142,10 @@
                 <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
               </configuration>
               <reports>
-                <report>dependencies</report>
+                <report>index</report>
+                <report>license</report>
+                <report>project-team</report>
+                <report>cim</report>
                 <report>scm</report>
               </reports>
             </plugin>
