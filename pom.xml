@@ -71,6 +71,7 @@
       <version>1.6.2</version>
       <scope>system</scope>
 	  <systemPath>${project.basedir}/lib/jsoup-1.6.2.jar</systemPath>
+	</dependency>
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
