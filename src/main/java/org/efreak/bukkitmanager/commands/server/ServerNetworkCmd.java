@@ -48,7 +48,7 @@ public class ServerNetworkCmd extends Command {
 				}
 			}else if (args[1].equalsIgnoreCase("list")) {
 				if (has(sender, "bm.server.network.list")) {
-					if (args.length == (2)) {
+					if (args.length == 2) {
 						try {
 							int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size()/9;
 							io.sendHeader(sender, "NETWORK LIST (1/" + pages + ")");

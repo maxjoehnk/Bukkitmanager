@@ -1,4 +1,4 @@
-package org.efreak.bukkitmanager.commands.plugin;
+ package org.efreak.bukkitmanager.commands.plugin;
 
 import java.util.Arrays;
 
@@ -32,7 +32,7 @@ public class PluginDisableCmd extends Command {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
-						if (!((PluginManager.getPlugin(args[1])).isEnabled())) io.sendError(sender, io.translate("Command.Plugin.Disable.Already"));
+						if (!PluginManager.getPlugin(args[1]).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Disable.Already"));
 						else {
 							if (args[1] == "Spout") {
 								io.sendWarning(sender, io.translate("Command.Plugin.Disable.Spout"));
