@@ -4,4 +4,5 @@
       <item name="FTPBackup" href="ftpbackup.html"/>
     </menu>
     <menu ref="reports"/>
+  </body>
 </project>
