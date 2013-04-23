@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>Addon Installation</title>
+  </properties>
+  <body>
+    <section name="Addon Installation">
+      <p>
+        Bukkitmanager Addons are installed the same way as Bukkit Plugins. Put the .jar into the plugins folder of your Server and you're done. Bukkitmanager does the rest for you.
+      </p>
+    </section>
+  </body>
+</document>
