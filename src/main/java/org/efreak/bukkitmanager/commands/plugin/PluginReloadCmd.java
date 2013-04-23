@@ -37,12 +37,12 @@ public class PluginReloadCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm plugin reload [plugin|all]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin reload [plugin|all]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin reload [plugin|all]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin reload [plugin|all]");
 		else {
 			if (has(sender, "bm.plugin.reload")) {
-				if (args.length == (1 + length)) {
+				if (args.length == 1) {
 					try {
 						PluginManager.reloadPlugin(Bukkitmanager.getInstance());
 						io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", "Bukkitmanager"));
@@ -57,7 +57,7 @@ public class PluginReloadCmd extends Command {
 						if (config.getDebug()) e.printStackTrace();
 					}
 				}else {
-					if (args[1 + length].equalsIgnoreCase("all")) {
+					if (args[1].equalsIgnoreCase("all")) {
 						try {
 							PluginManager.reloadPlugins();
 							io.send(sender, io.translate("Command.Plugin.Reload.Success.All"));
@@ -71,13 +71,13 @@ public class PluginReloadCmd extends Command {
 							io.send(sender, "Plugin.Load.Error.InvalidDescription");
 							if (config.getDebug()) e.printStackTrace();
 						}
-					}else if (PluginManager.getPlugin(args[1 + length]) == null) {
+					}else if (PluginManager.getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
 					}else {
 						try {
-							PluginManager.reloadPlugin(PluginManager.getPlugin(args[1 + length]));
-							io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1 + length]));
+							PluginManager.reloadPlugin(PluginManager.getPlugin(args[1]));
+							io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1]));
 						}catch (UnknownDependencyException e) {
 							io.send(sender, "Plugin.Load.Error.UnknownDependency");
 							if (config.getDebug()) e.printStackTrace();

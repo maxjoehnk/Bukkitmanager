@@ -21,13 +21,13 @@ public class PluginLoadCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm plugin load (path) [file]");
-		else if (args.length > (3 + length)) io.sendManyArgs(sender, "/bm plugin load (path) [file]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm plugin load (path) [file]");
+		else if (args.length > 3) io.sendManyArgs(sender, "/bm plugin load (path) [file]");
 		else {
 			if (has(sender, "bm.plugin.load")) {
-				if (args.length == (2 + length)) {
-					File dir = new File(FileHelper.getBukkitDir(), args[1 + length]);
+				if (args.length == 2) {
+					File dir = new File(FileHelper.getBukkitDir(), args[1]);
 					if (dir.exists()) {
 						if (dir.isDirectory()) {
 							try {
@@ -47,10 +47,10 @@ public class PluginLoadCmd extends Command {
 						}else io.sendError(sender, io.translate("Command.Plugin.Load.IsNoDir").replaceAll("%dir%", dir.getAbsolutePath()));
 					}else io.sendError(sender, io.translate("Command.Plugin.Load.DirDoesntExists").replaceAll("%dir%", dir.getAbsolutePath()));
 				}else {
-					File dir = new File(FileHelper.getBukkitDir(), args[1 + length]);
+					File dir = new File(FileHelper.getBukkitDir(), args[1]);
 					if (dir.exists()) {
 						if (dir.isDirectory()) {
-							File jarFile = new File(dir, args[2 + length]);
+							File jarFile = new File(dir, args[2]);
 							if (jarFile.isFile()) {
 								try {
 									Plugin plugin = PluginManager.loadPlugin(jarFile);

@@ -23,18 +23,18 @@ public class PluginConfigCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (3 + length)) io.sendFewArgs(sender, "/bm plugin config (plugin) (entry|list) [value]");
-		else if (args.length > (4 + length)) io.sendManyArgs(sender, "/bm plugin config (plugin) (entry|list) [value]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 3) io.sendFewArgs(sender, "/bm plugin config (plugin) (entry|list) [value]");
+		else if (args.length > 4) io.sendManyArgs(sender, "/bm plugin config (plugin) (entry|list) [value]");
 		else {
-			if (args.length == (3 + length) && args [2 + length].equalsIgnoreCase("list")) {
+			if (args.length == 3 && args [2].equalsIgnoreCase("list")) {
 				if (has(sender, "bm.plugin.config.get")) {
-					if (Bukkit.getServer().getPluginManager().getPlugin(args[1 + length]) == null) {
+					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
 						return true;
 					}else {
-						Plugin plugin = PluginManager.getPlugin(args[1 + length]);
+						Plugin plugin = PluginManager.getPlugin(args[1]);
 						File pluginFolder = plugin.getDataFolder();
 						if (new File(pluginFolder + File.separator + "config.yml").exists()) {
 							FileConfiguration pluginConfig = plugin.getConfig();
@@ -63,14 +63,14 @@ public class PluginConfigCmd extends Command {
 						}else io.sendError(sender, io.translate("Command.Plugin.Config.NoConfig"));
 					}
 				}
-			}else if (args.length == (3 + length)) {
+			}else if (args.length == 3) {
 				if (has(sender, "bm.plugin.config.get")) {
-					if (Bukkit.getServer().getPluginManager().getPlugin(args[1 + length]) == null) {
+					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
 						return true;
 					}else {
-						Plugin plugin = PluginManager.getPlugin(args[1 + length]);
+						Plugin plugin = PluginManager.getPlugin(args[1]);
 						File pluginFolder = plugin.getDataFolder();
 						if (new File(pluginFolder + File.separator + "config.yml").exists()) {
 							FileConfiguration pluginConfig = plugin.getConfig();
@@ -83,20 +83,20 @@ public class PluginConfigCmd extends Command {
 							} catch (InvalidConfigurationException e) {
 								if (config.getDebug()) e.printStackTrace();
 							}
-							if (pluginConfig.get(args[2 + length]) != null) {
-								io.send(sender, io.translate("Command.Plugin.Config.Get").replaceAll("%entry%", args[2 + length]).replaceAll("%value%", String.valueOf(pluginConfig.get(args[2 + length]))));
+							if (pluginConfig.get(args[2]) != null) {
+								io.send(sender, io.translate("Command.Plugin.Config.Get").replaceAll("%entry%", args[2]).replaceAll("%value%", String.valueOf(pluginConfig.get(args[2]))));
 							}else io.sendError(sender, io.translate("Command.Plugin.Config.NoEntry"));
 						}else io.sendError(sender, io.translate("Command.Plugin.Config.NoConfig"));
 					}
 				}
-			}else if (args.length == (4 + length)) {
+			}else if (args.length == 4) {
 				if (has(sender, "bm.plugin.config.set")) {
-					if (Bukkit.getServer().getPluginManager().getPlugin(args[1 + length]) == null) {
+					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.sendError(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
 						return true;
 					}else {
-						Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(args[1 + length]);
+						Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(args[1]);
 						File pluginFolder = plugin.getDataFolder();
 						if (new File(pluginFolder + File.separator + "config.yml").exists()) {
 							FileConfiguration pluginConfig = plugin.getConfig();
@@ -109,15 +109,15 @@ public class PluginConfigCmd extends Command {
 							} catch (InvalidConfigurationException e) {
 								if (config.getDebug()) e.printStackTrace();
 							}
-							if (pluginConfig.get(args[2 + length]) != null) {
-								String old = pluginConfig.get(args[2 + length]).toString();
-								pluginConfig.set(args[2 + length], args[3 + length]);
+							if (pluginConfig.get(args[2]) != null) {
+								String old = pluginConfig.get(args[2]).toString();
+								pluginConfig.set(args[2], args[3]);
 								try {
 									pluginConfig.save(pluginFolder + File.separator + "config.yml");
 								} catch (IOException e) {
 									if (config.getDebug()) e.printStackTrace();
 								}
-								io.send(sender, io.translate("Command.Plugin.Config.Set").replaceAll("%entry%", args[2 + length]).replaceAll("%value_old%", old).replaceAll("%value_new%", args[3 + length]));
+								io.send(sender, io.translate("Command.Plugin.Config.Set").replaceAll("%entry%", args[2]).replaceAll("%value_old%", old).replaceAll("%value_new%", args[3]));
 							}else io.sendError(sender, io.translate("Command.Plugin.Config.NoEntry"));
 						}else io.sendError(sender, io.translate("Command.Plugin.Config.NoConfig"));
 					}

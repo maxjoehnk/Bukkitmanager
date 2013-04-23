@@ -14,9 +14,9 @@ public class BukkitInfoCmd extends Command{
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm bukkit info");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm bukkit info");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm bukkit info");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm bukkit info");
 		else {
 			if (has(sender, "bm.bukkit.info")) {
 				io.sendHeader(sender, "BUKKIT INFOS");

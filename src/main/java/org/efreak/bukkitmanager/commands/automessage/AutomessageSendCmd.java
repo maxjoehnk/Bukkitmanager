@@ -18,11 +18,11 @@ public class AutomessageSendCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm automessage send (index)");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm automessage send (index)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm automessage send (index)");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm automessage send (index)");
 		else {
-			if (has(sender, "bm.automessage.send")) msgReader.sendMessage(new Integer(args[1 + length]), true);
+			if (has(sender, "bm.automessage.send")) msgReader.sendMessage(new Integer(args[1]), true);
 		}
 		return true;
 	}

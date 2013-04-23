@@ -16,12 +16,12 @@ public class PluginListCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm plugin list [#]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin list [#]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin list [#]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin list [#]");
 		else {
-			if (args.length == (1 + length) && has(sender, "bm.plugin.list.normal")) io.send(sender, "Plugins: " + getPluginList());
-			else if (args.length == (2 + length) && has(sender, "bm.plugin.list.detail")) showDetailedList(sender, Integer.parseInt(args[1 + length]));
+			if (args.length == 1 && has(sender, "bm.plugin.list.normal")) io.send(sender, "Plugins: " + getPluginList());
+			else if (args.length == 2 && has(sender, "bm.plugin.list.detail")) showDetailedList(sender, Integer.parseInt(args[1]));
 		}
 		return true;
 	}

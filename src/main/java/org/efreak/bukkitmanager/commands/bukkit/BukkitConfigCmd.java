@@ -31,7 +31,7 @@ public class BukkitConfigCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
+	public boolean execute(CommandSender sender, String[] args) {
 		try {
 			streamIn = new FileInputStream("server.properties");
 			propertie.load(streamIn);
@@ -41,10 +41,10 @@ public class BukkitConfigCmd extends Command {
 			if (config.getDebug()) e.printStackTrace();
 		}
 
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm bukkit config (entry|list) [value]");
-		else if (args.length > (3 + length)) io.sendManyArgs(sender, "/bm bukkit config (entry|list) [value]");
+		if (args.length < 2) io.sendFewArgs(sender, "/bm bukkit config (entry|list) [value]");
+		else if (args.length > 3) io.sendManyArgs(sender, "/bm bukkit config (entry|list) [value]");
 		else {
-			if (args.length == (2 + length) && args[1 + length].equalsIgnoreCase("list")) {
+			if (args.length == 2 && args[1].equalsIgnoreCase("list")) {
 				if (has(sender, "bm.bukkit.config.list")) {
 					Object[] properties = propertie.entrySet().toArray();
 					StringBuilder output = new StringBuilder();
@@ -55,16 +55,16 @@ public class BukkitConfigCmd extends Command {
 					}
 					io.send(sender, io.translate("Command.Bukkit.Config.List").replaceAll("%items%", output.toString()));
 				}
-			}else if (args.length == (2 + length)) {
+			}else if (args.length == 2) {
 				if (has(sender, "bm.bukkit.config.get")) {
-					if (propertie.getProperty(args[1 + length]) != null) io.send(sender, io.translate("Command.Bukkit.Config.Get").replaceAll("%entry%", args[1 + length]).replaceAll("%value%", propertie.getProperty(args[1 + length])));
-					else io.sendError(sender, io.translate("Command.Bukkit.Config.NotFound").replaceAll("%entry%", args[1 + length]));
+					if (propertie.getProperty(args[1]) != null) io.send(sender, io.translate("Command.Bukkit.Config.Get").replaceAll("%entry%", args[1]).replaceAll("%value%", propertie.getProperty(args[1])));
+					else io.sendError(sender, io.translate("Command.Bukkit.Config.NotFound").replaceAll("%entry%", args[1]));
 				}
-			}else if (args.length == (3 + length)) {
+			}else if (args.length == 3) {
 				if (has(sender, "bm.bukkit.config.set")) {
-					if (propertie.getProperty(args[1 + length]) != null) {
-						propertie.setProperty(args[1 + length], args[2 + length]);
-						io.send(sender, io.translate("Command.Bukkit.Config.Set").replaceAll("%entry%", args[1 + length]).replaceAll("%value%", args[2 + length]));
+					if (propertie.getProperty(args[1]) != null) {
+						propertie.setProperty(args[1], args[2]);
+						io.send(sender, io.translate("Command.Bukkit.Config.Set").replaceAll("%entry%", args[1]).replaceAll("%value%", args[2]));
 						try {
 							streamOut = new FileOutputStream("server.properties");
 						} catch (FileNotFoundException e) {
@@ -82,7 +82,7 @@ public class BukkitConfigCmd extends Command {
 						} catch (IOException e) {
 							if (config.getDebug()) e.printStackTrace();
 						}
-					}else io.sendError(sender, io.translate("Command.Bukkit.Config.NotFound").replaceAll("%entry%", args[1 + length]));
+					}else io.sendError(sender, io.translate("Command.Bukkit.Config.NotFound").replaceAll("%entry%", args[1]));
 				}
 			}
 		}

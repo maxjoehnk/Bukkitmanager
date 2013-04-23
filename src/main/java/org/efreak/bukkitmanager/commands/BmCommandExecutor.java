@@ -1,5 +1,6 @@
 package org.efreak.bukkitmanager.commands;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.bukkit.command.CommandExecutor;
@@ -122,12 +123,14 @@ public class BmCommandExecutor implements CommandExecutor {
 			if (commands.containsKey("general." + args[0])) {
 				Command command = commands.get("general." + args[0]);
 				Bukkitmanager.incrementCommandTracker(command);
-				return command.execute(sender, args, 1);				
+				args = Arrays.copyOfRange(args, 1, args.length);
+				return command.execute(sender, args);
 			}else if (args.length > 1) {
 				if (commands.containsKey(args[0] + '.' + args[1])) {
 					Command command = commands.get(args[0] + "." + args[1]);
 					Bukkitmanager.incrementCommandTracker(command);
-					return command.execute(sender, args, 1);					
+					args = Arrays.copyOfRange(args, 1, args.length);
+					return command.execute(sender, args);					
 				}else return false;
 			}else return false;
 		}

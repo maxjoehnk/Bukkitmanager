@@ -18,11 +18,11 @@ public class PlayerShowCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm player show [player]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm player show [player]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm player show [player]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm player show [player]");
 		else {
-			if (args.length == (1 + length) && sender instanceof Player) {
+			if (args.length == 1 && sender instanceof Player) {
 				if (has(sender, "bm.player.show.your")) {
 					BmPlayer player = new BmPlayer((OfflinePlayer) sender);
 					if (player.isVisible()) io.sendError(sender, io.translate("Command.Player.Show.Already.You"));
@@ -32,9 +32,9 @@ public class PlayerShowCmd extends Command {
 						io.sendConsole(io.translate("Command.Player.Show.Console.You").replaceAll("%player%", player.getName()));
 					}
 				}
-			}else if (args.length == (2 + length)) {
+			}else if (args.length == 2) {
 				if (has(sender, "bm.player.show.other")) {
-					OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[1 + length]);
+					OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[1]);
 					if (offPlayer != null) {
 						BmPlayer player = new BmPlayer(offPlayer);
 						if (player.isVisible()) io.sendError(sender, io.translate("Command.Player.Show.Already.Other").replaceAll("%player%", player.getName()));

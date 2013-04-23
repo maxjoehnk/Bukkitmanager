@@ -16,22 +16,22 @@ public class PlayerSaveCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm player save [player]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm player save [player]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm player save [player]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm player save [player]");
 		else {
-			if (args.length == (1 + length) && sender instanceof Player) {
+			if (args.length == 1 && sender instanceof Player) {
 				if (has(sender, "bm.player.save")) {
 					((Player) sender).saveData();
 					io.send(sender, io.translate("Command.Player.Save").replaceAll("%player%", sender.getName()));
 				}
-			}else if (args.length == (2 + length) && Bukkit.getPlayer(args[1 + length]) != null) {
+			}else if (args.length == 2 && Bukkit.getPlayer(args[1]) != null) {
 				if (has(sender, "bm.player.save.other")) {
-					Player player = Bukkit.getPlayer(args[1 + length]);
+					Player player = Bukkit.getPlayer(args[1]);
 					player.saveData();
 					io.send(sender, io.translate("Command.Player.Save").replaceAll("%player%", sender.getName()));
 				}
-			}else if (args.length == (1 + length)) io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
+			}else if (args.length == 1) io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
 			else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 		}
 		return false;

@@ -18,14 +18,14 @@ public class AutomessageAddCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm automessage add (msg)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm automessage add (msg)");
 		else {
 			if (has(sender, "bm.automessage.add")) {
-				String msg = args[1 + length];
-				if (args.length > (2 + length)) {
+				String msg = args[1];
+				if (args.length > 2) {
 					StringBuilder msgBuilder = new StringBuilder();
-					for (int i = (1 + length); i < args.length; i++) msgBuilder.append(args[i]);
+					for (int i = 1; i < args.length; i++) msgBuilder.append(args[i]);
 					msg = msgBuilder.toString();
 				}
 				io.send(sender, io.translate("Command.Automessage.Add").replaceAll("%index%", String.valueOf(msgReader.addMessage(msg))));

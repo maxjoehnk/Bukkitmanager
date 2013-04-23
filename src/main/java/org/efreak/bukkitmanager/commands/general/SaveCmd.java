@@ -18,9 +18,9 @@ public class SaveCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (0 + length)) io.sendFewArgs(sender, "/bm save");
-		else if (args.length > (0 + length)) io.sendManyArgs(sender, "/bm save");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 0) io.sendFewArgs(sender, "/bm save");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm save");
 		else {
 			if (has(sender, "bm.autosave.save")) saveHelper.performSave();
 		}

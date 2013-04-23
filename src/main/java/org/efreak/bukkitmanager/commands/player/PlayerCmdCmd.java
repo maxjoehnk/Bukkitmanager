@@ -16,14 +16,14 @@ public class PlayerCmdCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (3 + length)) io.sendFewArgs(sender, "/bm player cmd (player) (cmd)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 3) io.sendFewArgs(sender, "/bm player cmd (player) (cmd)");
 		else {
 			if (has(sender, "bm.player.cmd")) {
-				if (Bukkit.getPlayer(args[1 + length]) != null) {
-					Player player = Bukkit.getPlayer(args[1 + length]);
+				if (Bukkit.getPlayer(args[1]) != null) {
+					Player player = Bukkit.getPlayer(args[1]);
 					String cmd = null;
-					for (int i = (2 + length); i < args.length; i++) {
+					for (int i = 2; i < args.length; i++) {
 						if (cmd != null) cmd = cmd + " " + args[i];
 						else cmd = args[i];
 					}

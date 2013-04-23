@@ -10,23 +10,20 @@ import org.efreak.bukkitmanager.commands.Command;
 import org.efreak.bukkitmanager.commands.CommandCategory;
 
 public class AutomessageRestartCmd extends Command {
-
-	private static ThreadManager func;
 	
 	public AutomessageRestartCmd() {
 		super("restart", "Automessage.Restart", "bm.automessage.restart", new ArrayList<String>(), CommandCategory.AUTOMESSAGE);
-		func = new ThreadManager();
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm automessage restart");
-		else if (args.length > (1 + length)) io.sendManyArgs(sender, "/bm automessage restart");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm automessage restart");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm automessage restart");
 		else {
 			if (has(sender, "bm.automessage.restart")) {
 				io.sendTranslation(sender, "Command.Automessage.Restart");
-				func.stopThread(ThreadType.AUTOMESSAGE);
-				func.startThread(ThreadType.AUTOMESSAGE);
+				ThreadManager.stopThread(ThreadType.AUTOMESSAGE);
+				ThreadManager.startThread(ThreadType.AUTOMESSAGE);
 			}
 		}
 		return true;

@@ -19,13 +19,13 @@ public class AutomessageGetCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm automessage get (index)");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm automessage get (index)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm automessage get (index)");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm automessage get (index)");
 		else {
 			if (has(sender, "bm.automessage.get")) {
-				io.send(sender, io.translate("Command.Automessage.Get").replaceAll("%index", args[1 + length]));
-				io.send(sender, msgReader.getMessage(new Integer(args[1 + length])));
+				io.send(sender, io.translate("Command.Automessage.Get").replaceAll("%index", args[1]));
+				io.send(sender, msgReader.getMessage(new Integer(args[1])));
 			}
 		}
 		return true;

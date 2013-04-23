@@ -28,13 +28,13 @@ public class PluginInstallCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm plugin install (plugin)");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin install (plugin)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm plugin install (plugin)");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin install (plugin)");
 		else {
-			PluginPage pluginPage = new PluginPage(args[1 + length]);
-			if (pluginPage.exists()) io.createConversation(sender, "PluginInstallRequest", new InstallPluginPrompt(args[1 + length]));
-			else io.sendError(sender, "Can't find Plugin " + args[1 + length]);
+			PluginPage pluginPage = new PluginPage(args[1]);
+			if (pluginPage.exists()) io.createConversation(sender, "PluginInstallRequest", new InstallPluginPrompt(args[1]));
+			else io.sendError(sender, "Can't find Plugin " + args[1]);
 		}
 		return true;
 	}

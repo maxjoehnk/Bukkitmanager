@@ -15,7 +15,7 @@ public class HelpCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
+	public boolean execute(CommandSender sender, String[] args) {
 		List<HelpTopic> helpTopics = HelpManager.getTopics();
 		List<String> topics = new ArrayList<String>();
 		for (int i = 0; i < helpTopics.size(); i++) {

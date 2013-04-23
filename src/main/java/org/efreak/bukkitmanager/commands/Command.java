@@ -42,7 +42,7 @@ public abstract class Command {
 		tracker = EMetrics.createBasicTracker("Total Command Usage", category.toString().toLowerCase() + " " + label.toLowerCase());
 	}
 	
-	public abstract boolean execute(CommandSender sender, String[] args, Integer length);
+	public abstract boolean execute(CommandSender sender, String[] args);
 	
 	protected boolean has(CommandSender sender, String perm) {
 		return Permissions.has(sender, perm, "/bm " + category.toString().toLowerCase() + " " + label);

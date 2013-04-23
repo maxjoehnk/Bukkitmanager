@@ -17,7 +17,7 @@ public class PlayerFirstseenCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
+	public boolean execute(CommandSender sender, String[] args) {
 		if (args.length < 1) io.sendFewArgs(sender, "/player firstseen [player]");
 		else if (args.length > 2) io.sendManyArgs(sender, "/player firstseen [player]");
 		else {

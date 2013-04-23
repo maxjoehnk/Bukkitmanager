@@ -19,9 +19,9 @@ public class InstallCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (0 + length)) io.sendFewArgs(sender, "/bm install");
-		else if (args.length > (0 + length)) io.sendManyArgs(sender, "/bm install");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 0) io.sendFewArgs(sender, "/bm install");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm install");
 		else {
 			if (has(sender, "bm.install")) io.createConversation(sender, "Bukkitmanager Installation", new WelcomePrompt());
 		}

@@ -21,9 +21,9 @@ public class PlayerTimeCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm player time (get|set|reset) [time] [player]");
-		else if (args.length > (4 + length)) io.sendManyArgs(sender, "/player time (get|set|reset) [time] [player]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm player time (get|set|reset) [time] [player]");
+		else if (args.length > 4) io.sendManyArgs(sender, "/player time (get|set|reset) [time] [player]");
 		else {
 			if (args[1].equalsIgnoreCase("get")) {
 				if (args.length == 2 && sender instanceof Player) {
@@ -41,7 +41,6 @@ public class PlayerTimeCmd extends Command {
 				if (args.length == 3 && sender instanceof Player) {
 					if (has(sender, "bm.player.time.set.your")) {
 						((Player) sender).setPlayerTime(Long.parseLong(String.valueOf(timeParser.matchTime(args[2]))), false);
-						//((Player) sender).setPlayerTime(new Long(args[2]), false);
 						io.send(sender, io.translate("Command.Player.Time.Set.Your").replaceAll("%time%", args[2]));
 					}
 				}else if (args.length == 4) {
@@ -49,7 +48,6 @@ public class PlayerTimeCmd extends Command {
 						Player player = Bukkit.getPlayer(args[3]);
 						if (player != null) {
 							player.setPlayerTime(Long.parseLong(String.valueOf(timeParser.matchTime(args[2]))), false);
-							//player.setPlayerTime(new Long(args[2]), false);
 							io.send(sender, io.translate("Command.Player.Time.Set.Other").replaceAll("%player%", player.getName()).replaceAll("%time%", args[2]));
 						}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 					}

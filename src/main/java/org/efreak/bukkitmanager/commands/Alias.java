@@ -41,7 +41,7 @@ public class Alias extends org.bukkit.command.Command implements PluginIdentifia
 	@Override
 	public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 		if (args.length == 0) return false;
-		else if (commands.containsKey(args[0])) return commands.get(args[0]).execute(sender, args, 0);
+		else if (commands.containsKey(args[0])) return commands.get(args[0]).execute(sender, args);
 		else return false;
 	}
 

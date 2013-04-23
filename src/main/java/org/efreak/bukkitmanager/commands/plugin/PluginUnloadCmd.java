@@ -34,24 +34,24 @@ public class PluginUnloadCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm plugin unload [plugin|all]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin unload [plugin|all]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin unload [plugin|all]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin unload [plugin|all]");
 		else {
 			if (has(sender, "bm.plugin.unload")) {
-				if (args.length == (1 + length)) {
+				if (args.length == 1) {
 					PluginManager.unloadPlugin(Bukkitmanager.getInstance());
 					io.send(sender, io.translate("Command.Plugin.Unload.Success").replaceAll("%plugin%", "Bukkitmanager"));
 				}else {
-					if (args[1 + length].equalsIgnoreCase("all")) {
+					if (args[1].equalsIgnoreCase("all")) {
 						PluginManager.unloadPlugins();
 						io.send(sender, io.translate("Command.Plugin.Reload.Success.All"));
-					}else if (PluginManager.getPlugin(args[1 + length]) == null) {
+					}else if (PluginManager.getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
 					}else {
-						PluginManager.unloadPlugin(PluginManager.getPlugin(args[1 + length]));
-						io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1 + length]));
+						PluginManager.unloadPlugin(PluginManager.getPlugin(args[1]));
+						io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1]));
 					}
 				}
 			}

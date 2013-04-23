@@ -18,11 +18,11 @@ public class ServerNetworkCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm server network [list] [#]");
-		else if (args.length > (3 + length)) io.sendManyArgs(sender, "/bm server network [list] [#]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm server network [list] [#]");
+		else if (args.length > 3) io.sendManyArgs(sender, "/bm server network [list] [#]");
 		else {
-			if (args.length == (1 + length)) {
+			if (args.length == 1) {
 				if (has(sender, "bm.server.network")) {
 					try {
 						int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size();
@@ -46,9 +46,9 @@ public class ServerNetworkCmd extends Command {
 						if (config.getDebug()) e.printStackTrace();
 					}
 				}
-			}else if (args[1 + length].equalsIgnoreCase("list")) {
+			}else if (args[1].equalsIgnoreCase("list")) {
 				if (has(sender, "bm.server.network.list")) {
-					if (args.length == (2 + length)) {
+					if (args.length == (2)) {
 						try {
 							int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size()/9;
 							io.sendHeader(sender, "NETWORK LIST (1/" + pages + ")");
@@ -70,14 +70,14 @@ public class ServerNetworkCmd extends Command {
 					}else {
 						try {
 							int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size()/9;
-							io.sendHeader(sender, "NETWORK LIST (" + args[2 + length] + "/" + pages + ")");
+							io.sendHeader(sender, "NETWORK LIST (" + args[2] + "/" + pages + ")");
 						} catch (SocketException e) {
 							io.sendHeader(sender, "NETWORK LIST");
 							if (config.getDebug()) e.printStackTrace();
 						}
 						int i = 1;
-						int min = (Integer.parseInt(args[2+length])-1)*9;
-						int max = Integer.parseInt(args[2+length])*9;
+						int min = (Integer.parseInt(args[2])-1)*9;
+						int max = Integer.parseInt(args[2])*9;
 						try {
 							Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
 							while (networkInterfaces.hasMoreElements() && i <= max) {
@@ -94,7 +94,7 @@ public class ServerNetworkCmd extends Command {
 				if (has(sender, "bm.server.network")) {
 					try {
 						int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size();
-						io.sendHeader(sender, "NETWORK INFOS (" + args[1 + length] + "/" + pages + ")");
+						io.sendHeader(sender, "NETWORK INFOS (" + args[1] + "/" + pages + ")");
 					} catch (SocketException e) {
 						io.sendHeader(sender, "NETWORK INFOS");
 						if (config.getDebug()) e.printStackTrace();
@@ -104,7 +104,7 @@ public class ServerNetworkCmd extends Command {
 						int i = 1;
 						while (networkInterfaces.hasMoreElements()) {
 							NetworkInterface netInterface = networkInterfaces.nextElement();
-							if (args[1 + length].equals(String.valueOf(i))) {
+							if (args[1].equals(String.valueOf(i))) {
 								io.send(sender, "#" + i + ": " + netInterface.getDisplayName(), false);
 								io.send(sender, "Is Up:          " + netInterface.isUp(), false);
 								io.send(sender, "MTU:            " + netInterface.getMTU(), false);

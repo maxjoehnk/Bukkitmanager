@@ -17,17 +17,17 @@ public class PluginInfoCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm plugin info [plugin]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin info [plugin]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin info [plugin]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin info [plugin]");
 		else {
 			if (has(sender, "bm.plugin.info")) {
-				if (args.length == (2 + length)) {
-					if (PluginManager.getPlugin(args[1 + length]) == null) {
+				if (args.length == 2) {
+					if (PluginManager.getPlugin(args[1]) == null) {
 						io.sendError(sender, "This Plugin does not exists.");
 						return true;
 					}
-					PluginDescriptionFile pdfFile = PluginManager.getPlugin(args[1 + length]).getDescription();
+					PluginDescriptionFile pdfFile = PluginManager.getPlugin(args[1]).getDescription();
 					io.send(sender, ChatColor.YELLOW + "--------------" + ChatColor.WHITE + " Plugin Info " + ChatColor.YELLOW + "--------------", false);
 					io.send(sender, ChatColor.RED + "Name:          " + ChatColor.DARK_RED + pdfFile.getName(), false);
 					io.send(sender, ChatColor.RED + "Version:       " + ChatColor.DARK_RED + pdfFile.getVersion(), false);
@@ -36,7 +36,7 @@ public class PluginInfoCmd extends Command {
 						io.send(sender, ChatColor.RED + "Description:", false);
 						io.send(sender, ChatColor.DARK_RED + pdfFile.getDescription(), false);
 					}
-				} else if (args.length == (1 + length)) {
+				}else if (args.length == 1) {
 					PluginDescriptionFile pdfFile = Bukkitmanager.getInstance().getDescription();
 					io.send(sender, ChatColor.YELLOW + "--------------" + ChatColor.WHITE + " Plugin Info " + ChatColor.YELLOW + "--------------", false);
 					io.send(sender, ChatColor.RED + "Name:          " + ChatColor.DARK_RED + pdfFile.getName(), false);

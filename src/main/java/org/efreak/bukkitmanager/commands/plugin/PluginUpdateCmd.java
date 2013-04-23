@@ -19,11 +19,11 @@ public class PluginUpdateCmd extends Command{
 	}
 		
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm plugin update [plugin|all]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin update [plugin|all]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin update [plugin|all]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin update [plugin|all]");
 		else {
-			if (args.length == (1 + length)) {
+			if (args.length == 1) {
 				Plugin[] plugins = PluginManager.getPlugins();
 				StringBuilder names = new StringBuilder();
 				int updateCount = 0;
@@ -35,10 +35,10 @@ public class PluginUpdateCmd extends Command{
 					}
 				}
 				io.send(sender, io.translate("Command.Plugin.Update.UpdatesAvailable").replaceAll("%count%", String.valueOf(updateCount)).replaceAll("%names%", names.toString()));
-			}else if (args[1 + length].equalsIgnoreCase("all")) {
+			}else if (args[1].equalsIgnoreCase("all")) {
 				PluginManager.updatePlugins();
 			}else {
-				Plugin plugin = PluginManager.getPlugin(args[1 + length]);
+				Plugin plugin = PluginManager.getPlugin(args[1]);
 				if (plugin != null) {
 					boolean uptodate = PluginManager.checkPlugin(plugin);
 					if (uptodate) io.send(sender, io.translate("PluginUpdater.UpToDate").replaceAll("%plugin%", plugin.getName()));

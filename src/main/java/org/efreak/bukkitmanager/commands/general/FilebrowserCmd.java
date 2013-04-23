@@ -27,7 +27,7 @@ public class FilebrowserCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
+	public boolean execute(CommandSender sender, String[] args) {
 		paths.put(sender.getName(), FileHelper.getBukkitDir());
 		io.createConversation(sender, sender.getName() + ".filebrowser", new StartPrompt().init(sender.getName()));
 		return true;
@@ -128,7 +128,7 @@ class ls extends FileCommand {
 				else context.getForWhom().sendRawMessage(ChatColor.WHITE + file.getName());
 			}
 		}else {
-			String[] args = input.substring(input.indexOf(" ")).split(" ");
+			//String[] args = input.substring(input.indexOf(" ")).split(" ");
 		}
 		return null;
 	}

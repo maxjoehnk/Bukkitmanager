@@ -18,9 +18,9 @@ public class AutobackupBackupCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm autobackup backup");
-		else if (args.length > (1 + length)) io.sendManyArgs(sender, "/bm autobackup backup");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup backup");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup backup");
 		else {
 			if (has(sender, "bm.autobackup.backup")) backupHelper.performBackup();
 		}

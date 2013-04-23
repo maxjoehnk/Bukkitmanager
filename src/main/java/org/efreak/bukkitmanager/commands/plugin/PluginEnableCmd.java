@@ -16,23 +16,23 @@ public class PluginEnableCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (2 + length)) io.sendFewArgs(sender, "/bm plugin enable (plugin|all)");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm plugin enable (plugin|all)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm plugin enable (plugin|all)");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin enable (plugin|all)");
 		else {
 			if (has(sender, "bm.plugin.enable")) {
-				if (args[1 + length].equalsIgnoreCase("all")) {
+				if (args[1].equalsIgnoreCase("all")) {
 					PluginManager.enablePlugins();
 					io.send(sender, io.translate("Command.Plugin.Enable.Success.All"));
 				} else {
-					if (PluginManager.getPlugin(args[1 + length]) == null) {
+					if (PluginManager.getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
 					}else {
-						if ((PluginManager.getPlugin(args[1 + length])).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Enable.Already"));
+						if ((PluginManager.getPlugin(args[1])).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Enable.Already"));
 						else {
-							PluginManager.enablePlugin(PluginManager.getPlugin(args[1 + length]));
-							io.send(sender, io.translate("Command.Plugin.Enable.Success").replaceAll("%plugin%", args[1 + length]));
+							PluginManager.enablePlugin(PluginManager.getPlugin(args[1]));
+							io.send(sender, io.translate("Command.Plugin.Enable.Success").replaceAll("%plugin%", args[1]));
 						}
 					}
 				}

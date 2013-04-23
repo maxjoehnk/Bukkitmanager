@@ -19,9 +19,9 @@ public class AutomessageListCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm automessage list");
-		else if (args.length > (1 + length)) io.sendManyArgs(sender, "/bm automessage start");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm automessage list");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm automessage start");
 		else {
 			if (has(sender, "bm.automessage.list")) {
 				List<String> list = msgReader.listMessages();

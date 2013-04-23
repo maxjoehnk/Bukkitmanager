@@ -16,14 +16,14 @@ public class PlayerChatCmd extends Command {
 	}
 	
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (3 + length)) io.sendFewArgs(sender, "/bm player chat (player) (msg)");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 3) io.sendFewArgs(sender, "/bm player chat (player) (msg)");
 		else {
 			if (has(sender, "bm.player.chat")) {
-				if (Bukkit.getPlayer(args[1 + length]) != null) {
-					Player player = Bukkit.getPlayer(args[1 + length]);
+				if (Bukkit.getPlayer(args[1]) != null) {
+					Player player = Bukkit.getPlayer(args[1]);
 					StringBuilder msg = new StringBuilder();
-					for (int i = (2 + length); i < args.length; i++) msg.append(args[i] + " ");
+					for (int i = 2; i < args.length; i++) msg.append(args[i] + " ");
 					if (msg != null) player.chat(msg.substring(0, msg.lastIndexOf(" ")));
 				}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 			}

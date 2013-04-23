@@ -16,9 +16,9 @@ public class AutobackupStartCmd extends Command {
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm autobackup start");
-		else if (args.length > (1 + length)) io.sendManyArgs(sender, "/bm autobackup start");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup start");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup start");
 		else {
 			if (has(sender, "bm.autobackup.start")) {
 				ThreadManager.startThread(ThreadType.AUTOBACKUP);

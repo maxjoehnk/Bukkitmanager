@@ -13,16 +13,16 @@ public class LanguageCmd extends Command{
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args, Integer length) {
-		if (args.length < (1 + length)) io.sendFewArgs(sender, "/bm lang (set|get) [language]");
-		else if (args.length > (2 + length)) io.sendManyArgs(sender, "/bm lang (set|get) [language]");
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm lang (set|get) [language]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm lang (set|get) [language]");
 		else {
-			if (args.length == (1 + length) && args[0 + length].equalsIgnoreCase("get")) {
+			if (args.length == 1 && args[0].equalsIgnoreCase("get")) {
 				if (has(sender, "bm.language.get")) io.send(sender, io.translate("Command.Language.Get").replaceAll("%lang%", io.getTranslator().getLanguage()));
-			}else if (args.length == (2 + length) && args[0 + length].equalsIgnoreCase("set")) {
+			}else if (args.length == 2 && args[0].equalsIgnoreCase("set")) {
 				if (has(sender, "bm.language.set")) {
-					if (io.getTranslator().setLanguage(args[1 + length])) io.send(sender, io.translate("Command.Language.Set").replaceAll("%lang%", args[1 + length]));
-					else io.sendError(sender, io.translate("Command.Language.Error").replaceAll("%lang%", args[1 + length]));
+					if (io.getTranslator().setLanguage(args[1])) io.send(sender, io.translate("Command.Language.Set").replaceAll("%lang%", args[1]));
+					else io.sendError(sender, io.translate("Command.Language.Error").replaceAll("%lang%", args[1]));
 				}
 			}
 		}
