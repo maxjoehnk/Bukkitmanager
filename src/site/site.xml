@@ -1,4 +1,9 @@
 <project>
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skins</artifactId>
+    <version>1.3.0</version>
+  </skin>
   <body>
     <menu name="Overview">
       <item name="Introduction" href="index.html"/>
