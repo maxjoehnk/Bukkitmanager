@@ -7,13 +7,12 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-//import org.efreak.bukkitmanager.scoreboards.ScoreboardManager;
 
 public class BmPlayer implements OfflinePlayer {
 	
-	OfflinePlayer player;
-	public static Database db;
-	public static Configuration config;
+	private OfflinePlayer player;
+	public static final Database db;
+	public static final Configuration config;
 	public static IOManager io;
 	
 	static {

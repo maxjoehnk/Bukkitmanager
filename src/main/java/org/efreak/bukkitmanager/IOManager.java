@@ -23,8 +23,8 @@ import org.efreak.bukkitmanager.util.Translator;
 
 public class IOManager {
 	
-	private static Configuration config;
-	public static Plugin plugin;
+	private static final Configuration config;
+	private static final Plugin plugin;
 	private static ConversationFactory conversationFactory;
 	private static Hashtable<String, Conversation> conversations;
 	public static String prefix = ChatColor.DARK_RED + "[Bukkitmanager] " + ChatColor.WHITE;

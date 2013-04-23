@@ -19,14 +19,14 @@ import org.efreak.bukkitmanager.util.FileHelper;
 
 public class AutomessageReader {
 	
-	private static Configuration config;
-	private static IOManager io;
-	public static String prefix;
+	private static final Configuration config;
+	private static final IOManager io;
+	private static String prefix;
 	private static File messageFile;
-	public static List<String> messages = new ArrayList<String>();
-	public static int lastDisplayed = -1;
+	private static final List<String> messages = new ArrayList<String>();
+	private static final List<Integer> displayed = new ArrayList<Integer>();
+	private static int lastDisplayed = -1;
 	private static boolean random;
-	private static List<Integer> displayed = new ArrayList<Integer>();
 
 	static {
 		io = Bukkitmanager.getIOManager();
@@ -57,7 +57,7 @@ public class AutomessageReader {
 		if (messages.isEmpty()) return;
 		if (random) {
 			if (messages.size() > 1) {
-				if (displayed.size() == messages.size()) displayed = new ArrayList<Integer>();
+				if (displayed.size() == messages.size()) displayed.clear();
 				boolean found = false;
 				while (!found) {
 					Random rnd = new Random();
@@ -187,5 +187,13 @@ public class AutomessageReader {
 			if (perms) io.broadcast(prefix + messages.get(index), "bm.automessage", false);
 			else io.broadcast(prefix + messages.get(index), false);
 		}
+	}
+	
+	public void setPrefix(String arg1Prefix) {
+		prefix = arg1Prefix;
+	}
+	
+	public String getPrefix() {
+		return prefix;
 	}
 }

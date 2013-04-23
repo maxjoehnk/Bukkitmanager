@@ -32,29 +32,29 @@ public class LoggingManager {
 		if (config.getBoolean("General.Logger")) {
 		io.sendConsole(io.translate("Logger.Loading"));
 			//BlockLogger
-			if (logConfig.get("Block.BlockBreak.Enabled")) registerLogger(new BlockBreakLogger());
-			if (logConfig.get("Block.BlockBurn.Enabled")) registerLogger(new BlockBurnLogger());
-			if (logConfig.get("Block.BlockCanBuild.Enabled")) registerLogger(new BlockCanBuildLogger());
-			if (logConfig.get("Block.BlockDamage.Enabled")) registerLogger(new BlockDamageLogger());
-			if (logConfig.get("Block.BlockDispense.Enabled")) registerLogger(new BlockDispenseLogger());
-			if (logConfig.get("Block.BlockFade.Enabled")) registerLogger(new BlockFadeLogger());
-			if (logConfig.get("Block.BlockForm.Enabled")) registerLogger(new BlockFormLogger());
-			if (logConfig.get("Block.BlockFromTo.Enabled")) registerLogger(new BlockFromToLogger());
-			if (logConfig.get("Block.BlockGrow.Enabled")) registerLogger(new BlockGrowLogger());
-			if (logConfig.get("Block.BlockIgnite.Enabled")) registerLogger(new BlockIgniteLogger());
-			if (logConfig.get("Block.BlockPhysics.Enabled")) registerLogger(new BlockPhysicsLogger());
-			if (logConfig.get("Block.BlockPistonExtend.Enabled")) registerLogger(new BlockPistonExtendLogger());
-			if (logConfig.get("Block.BlockPistonRetract.Enabled")) registerLogger(new BlockPistonRetractLogger());
-			if (logConfig.get("Block.BlockPlace.Enabled")) registerLogger(new BlockPlaceLogger());
-			if (logConfig.get("Block.BlockRedstone.Enabled")) registerLogger(new BlockRedstoneLogger());
-			if (logConfig.get("Block.BlockSpread.Enabled")) registerLogger(new BlockSpreadLogger());
-			if (logConfig.get("Block.EntityBlockForm.Enabled")) registerLogger(new EntityBlockFormLogger());
-			if (logConfig.get("Block.LeavesDecay.Enabled")) registerLogger(new LeavesDecayLogger());
-			if (logConfig.get("Block.SignChange.Enabled")) registerLogger(new SignChangeLogger());
+			if (LoggerConfiguration.get("Block.BlockBreak.Enabled")) registerLogger(new BlockBreakLogger());
+			if (LoggerConfiguration.get("Block.BlockBurn.Enabled")) registerLogger(new BlockBurnLogger());
+			if (LoggerConfiguration.get("Block.BlockCanBuild.Enabled")) registerLogger(new BlockCanBuildLogger());
+			if (LoggerConfiguration.get("Block.BlockDamage.Enabled")) registerLogger(new BlockDamageLogger());
+			if (LoggerConfiguration.get("Block.BlockDispense.Enabled")) registerLogger(new BlockDispenseLogger());
+			if (LoggerConfiguration.get("Block.BlockFade.Enabled")) registerLogger(new BlockFadeLogger());
+			if (LoggerConfiguration.get("Block.BlockForm.Enabled")) registerLogger(new BlockFormLogger());
+			if (LoggerConfiguration.get("Block.BlockFromTo.Enabled")) registerLogger(new BlockFromToLogger());
+			if (LoggerConfiguration.get("Block.BlockGrow.Enabled")) registerLogger(new BlockGrowLogger());
+			if (LoggerConfiguration.get("Block.BlockIgnite.Enabled")) registerLogger(new BlockIgniteLogger());
+			if (LoggerConfiguration.get("Block.BlockPhysics.Enabled")) registerLogger(new BlockPhysicsLogger());
+			if (LoggerConfiguration.get("Block.BlockPistonExtend.Enabled")) registerLogger(new BlockPistonExtendLogger());
+			if (LoggerConfiguration.get("Block.BlockPistonRetract.Enabled")) registerLogger(new BlockPistonRetractLogger());
+			if (LoggerConfiguration.get("Block.BlockPlace.Enabled")) registerLogger(new BlockPlaceLogger());
+			if (LoggerConfiguration.get("Block.BlockRedstone.Enabled")) registerLogger(new BlockRedstoneLogger());
+			if (LoggerConfiguration.get("Block.BlockSpread.Enabled")) registerLogger(new BlockSpreadLogger());
+			if (LoggerConfiguration.get("Block.EntityBlockForm.Enabled")) registerLogger(new EntityBlockFormLogger());
+			if (LoggerConfiguration.get("Block.LeavesDecay.Enabled")) registerLogger(new LeavesDecayLogger());
+			if (LoggerConfiguration.get("Block.SignChange.Enabled")) registerLogger(new SignChangeLogger());
 		
 			//EnchantmentLogger
-			if (logConfig.get("Enchantment.EnchantItem.Enabled")) registerLogger(new EnchantItemLogger());
-			if (logConfig.get("Enchantment.PrepareItemEnchant.Enabled")) registerLogger(new PrepareItemEnchantLogger());
+			if (LoggerConfiguration.get("Enchantment.EnchantItem.Enabled")) registerLogger(new EnchantItemLogger());
+			if (LoggerConfiguration.get("Enchantment.PrepareItemEnchant.Enabled")) registerLogger(new PrepareItemEnchantLogger());
 			io.sendConsole(io.translate("Logger.Loaded"));
 		}
 	}

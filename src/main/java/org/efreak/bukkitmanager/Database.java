@@ -10,9 +10,9 @@ public abstract class Database {
 
 	protected Connection dbConn;
 	protected Statement dbStatement;
-	protected static Configuration config;
-	protected static IOManager io;
-	private static HashMap<String, Database> dbSystems;
+	protected static final Configuration config;
+	protected static final IOManager io;
+	private static final HashMap<String, Database> dbSystems;
 	
 	static {
 		config = Bukkitmanager.getConfiguration();

@@ -22,7 +22,7 @@ import org.efreak.bukkitmanager.pluginmanager.PluginManager;
 public class Configuration{
 	 
 	private static IOManager io;
-	private static Plugin plugin;
+	private static final Plugin plugin;
 	private static FileConfiguration config;
 	private static File configFile;
 	private static String dbType = "SQLite";
