@@ -1,17 +1,22 @@
 <project>
   <body>
     <menu name="Overview">
-    
+      <item name="Introduction" href="index.html"/>
+      <item name="Usage" href="usage.html"/>
+      <item name="Configuration" href="config.html"/>
+      <item name="Command Reference" href="cmds.html"/>
     </menu>
     <menu name="Addons">
-      <item name="List" href="addons/list.html"/>
+      <item name="Installation" href="addons/installation.html"/>
+      <item name="Available Addons" href="addons/list.html"/>
       <item name="FTPBackup" href="addons/ftpbackup">
-        <item name="Overview" href="addons/ftpbackup"/>
         <item name="Download" href="addons/ftpbackup/downloads.html"/>
       </item>
-      <item name="H2Database" href="addons/h2.html">
+      <item name="H2Database" href="addons/h2">
+        <item name="Download" href="addons/postgresql/downloads.html"/>
       </item>
-      <item name="PostgreSQL" href="addons/postgresql.html">
+      <item name="PostgreSQL" href="addons/postgresql">
+        <item name="Download" href="addons/postgresql/downloads.html"/>
       </item>
     </menu>
     <menu ref="reports"/>
