@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
@@ -205,6 +206,21 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 			if (!PluginManager.checkPlugin(plugins[i])) updateCount++;
 		}
 		return updateCount;
+	}
+	
+	public static String getPluginList() {
+		StringBuilder pluginList = new StringBuilder();
+		Plugin[] plugins = PluginManager.getPlugins();
+		for (Plugin plugin : plugins) {
+			if (pluginList.length() > 0) {
+				pluginList.append(ChatColor.WHITE);
+				pluginList.append(", ");
+			}
+			
+			pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
+			pluginList.append(plugin.getDescription().getFullName());
+		}
+		return pluginList.toString();
 	}
 
 }

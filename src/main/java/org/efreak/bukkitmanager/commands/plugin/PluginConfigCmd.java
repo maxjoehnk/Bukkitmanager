@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -31,7 +30,7 @@ public class PluginConfigCmd extends Command {
 				if (has(sender, "bm.plugin.config.get")) {
 					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
-						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
+						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 						return true;
 					}else {
 						Plugin plugin = PluginManager.getPlugin(args[1]);
@@ -67,7 +66,7 @@ public class PluginConfigCmd extends Command {
 				if (has(sender, "bm.plugin.config.get")) {
 					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
-						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
+						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 						return true;
 					}else {
 						Plugin plugin = PluginManager.getPlugin(args[1]);
@@ -93,7 +92,7 @@ public class PluginConfigCmd extends Command {
 				if (has(sender, "bm.plugin.config.set")) {
 					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
-						io.sendError(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
+						io.sendError(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 						return true;
 					}else {
 						Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(args[1]);
@@ -125,21 +124,5 @@ public class PluginConfigCmd extends Command {
 			}
 		}
 		return true;
-	}
-
-	private String getPluginList() {
-		StringBuilder pluginList = new StringBuilder();
-		Plugin[] plugins = PluginManager.getPlugins();
-		
-		for (Plugin plugin : plugins) {
-			if (pluginList.length() > 0) {
-				pluginList.append(ChatColor.WHITE);
-				pluginList.append(", ");
-			}
-			
-			pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
-			pluginList.append(plugin.getDescription().getName());
-		}
-		return pluginList.toString();
 	}
 }

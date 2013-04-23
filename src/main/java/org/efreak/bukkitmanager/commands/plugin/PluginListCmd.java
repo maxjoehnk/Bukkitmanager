@@ -20,7 +20,7 @@ public class PluginListCmd extends Command {
 		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin list [#]");
 		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin list [#]");
 		else {
-			if (args.length == 1 && has(sender, "bm.plugin.list.normal")) io.send(sender, "Plugins: " + getPluginList());
+			if (args.length == 1 && has(sender, "bm.plugin.list.normal")) io.send(sender, "Plugins: " + PluginManager.getPluginList());
 			else if (args.length == 2 && has(sender, "bm.plugin.list.detail")) showDetailedList(sender, Integer.parseInt(args[1]));
 		}
 		return true;
@@ -36,20 +36,5 @@ public class PluginListCmd extends Command {
 			pluginList.append(plugin.getDescription().getFullName());
 		}
 		io.send(sender, pluginList.toString(), false);
-	}
-		
-	private static String getPluginList() {
-		StringBuilder pluginList = new StringBuilder();
-		Plugin[] plugins = PluginManager.getPlugins();
-		for (Plugin plugin : plugins) {
-			if (pluginList.length() > 0) {
-				pluginList.append(ChatColor.WHITE);
-				pluginList.append(", ");
-			}
-			
-			pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
-			pluginList.append(plugin.getDescription().getFullName());
-		}
-		return pluginList.toString();
 	}
 }

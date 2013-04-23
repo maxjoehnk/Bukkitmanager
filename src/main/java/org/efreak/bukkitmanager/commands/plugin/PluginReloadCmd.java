@@ -2,11 +2,9 @@ package org.efreak.bukkitmanager.commands.plugin;
 
 import java.util.Arrays;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.UnknownDependencyException;
 
 import org.efreak.bukkitmanager.Bukkitmanager;
@@ -20,22 +18,6 @@ public class PluginReloadCmd extends Command {
 		super("reload", "Plugin.Reload", "bm.plugin.reload", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
 	}
 
-	private String getPluginList() {
-		StringBuilder pluginList = new StringBuilder();
-		Plugin[] plugins = PluginManager.getPlugins();
-		
-		for (Plugin plugin : plugins) {
-			if (pluginList.length() > 0) {
-				pluginList.append(ChatColor.WHITE);
-				pluginList.append(", ");
-			}
-			
-			pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
-			pluginList.append(plugin.getDescription().getName());
-		}
-		return pluginList.toString();
-	}
-	
 	@Override
 	public boolean execute(CommandSender sender, String[] args) {
 		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin reload [plugin|all]");
@@ -73,7 +55,7 @@ public class PluginReloadCmd extends Command {
 						}
 					}else if (PluginManager.getPlugin(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
-						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", getPluginList()));
+						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
 						try {
 							PluginManager.reloadPlugin(PluginManager.getPlugin(args[1]));
