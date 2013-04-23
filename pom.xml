@@ -117,6 +117,13 @@
 	  <scope>system</scope>
 	  <systemPath>${project.basedir}/lib/plugins/EssentialsGroupManager.jar</systemPath>
 	</dependency>
+	<!-- TEST -->
+	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
