@@ -10,6 +10,16 @@
       <p>
         Bukkitmanager is a plugin for the popular Minecraft Server Mod Bukkit.
       </p>
+      <subsection name="Usage">
+        <p>
+          
+        </p>
+      </subsection>
+      <subsection name="Installation">
+        <p>
+          Installation of Bukkitmanager is really easy. Just put the .jar File into the plugins folder of your Server.
+        </p>
+      </subsection>
     </section>
   </body>
 </document>
