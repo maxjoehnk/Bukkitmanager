@@ -1,8 +1,5 @@
 <project>
   <body>
-    <menu name="Overview">
-    
-    </menu>
     <menu name="Addons">
       <item name="FTPBackup" href="ftpbackup.html"/>
     </menu>
