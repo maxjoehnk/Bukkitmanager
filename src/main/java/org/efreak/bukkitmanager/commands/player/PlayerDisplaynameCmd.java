@@ -61,7 +61,7 @@ public class PlayerDisplaynameCmd extends Command {
 						player.resetDisplayName();
 						io.send(sender, io.translate("Command.Player.Displayname.Reset.Your").replaceAll("%displayname%", player.getDisplayName()));
 					}
-				}else if (args.length == (3)) {
+				}else if (args.length == 3) {
 					if (has(sender, "bm.player.displayname.reset.other")) {
 						OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[2]);
 						if (offPlayer != null) {
