@@ -4,12 +4,15 @@
     
     </menu>
     <menu name="Addons">
-      <menu name="FTPBackup" href="addons/ftpbackup.html">
-      </menu>
-      <menu name="H2Database" href="addons/h2.html">
-      </menu>
-      <menu name="PostgreSQL" href="addons/postgresql.html">
-      </menu>
+      <item name="List" href="addons/list.html"/>
+      <item name="FTPBackup" href="addons/ftpbackup">
+        <item name="Overview" href="addons/ftpbackup"/>
+        <item name="Download" href="addons/ftpbackup/downloads.html"/>
+      </item>
+      <item name="H2Database" href="addons/h2.html">
+      </item>
+      <item name="PostgreSQL" href="addons/postgresql.html">
+      </item>
     </menu>
     <menu ref="reports"/>
   </body>
