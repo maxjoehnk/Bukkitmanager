@@ -46,7 +46,7 @@ public class Configuration{
 			io.sendConsole("Creating config.yml...", true);
 			try {
 				configFile.createNewFile();
-				UpdateConfig();
+				updateConfig();
 		        io.sendConsole("config.yml succesfully created!", true);
 				config.load(configFile);
 			} catch (IOException e) {
@@ -58,7 +58,7 @@ public class Configuration{
 	        try {
 	        	Bukkitmanager.firstRun = false;
 				config.load(configFile);
-				UpdateConfig();
+				updateConfig();
 				config.load(configFile);
 			} catch (IOException e) {
 				if (getDebug()) e.printStackTrace();
@@ -75,7 +75,7 @@ public class Configuration{
 	 * @throws IOException
 	 * 
 	 */
-	public void UpdateConfig() throws IOException {
+	public void updateConfig() throws IOException {
 		if (contains("General.DevMode")) devMode = getBoolean("General.DevMode");
 		update("General.Permissions.Use-Permissions", true);
 		update("General.Permissions.Use-Vault", true);
