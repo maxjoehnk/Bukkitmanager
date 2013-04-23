@@ -174,6 +174,7 @@ public abstract class Database {
 	public ResultSet query(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
+			if (!rs.first()) return null;
 			//if (rs.isAfterLast()) return null;
 			//rs.beforeFirst();
 			return rs;
@@ -186,7 +187,7 @@ public abstract class Database {
 	public String queryString(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return null;
 			return rs.getString(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -197,7 +198,7 @@ public abstract class Database {
 	public String queryString(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return null;
 			return rs.getString(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -208,7 +209,7 @@ public abstract class Database {
 	public int queryInt(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return -1;
 			return rs.getInt(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -219,7 +220,7 @@ public abstract class Database {
 	public int queryInt(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return -1;
 			return rs.getInt(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -230,7 +231,7 @@ public abstract class Database {
 	public float queryFloat(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return -1F;
 			return rs.getFloat(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -241,7 +242,7 @@ public abstract class Database {
 	public float queryFloat(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return -1F;
 			return rs.getFloat(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -252,7 +253,7 @@ public abstract class Database {
 	public boolean queryBoolean(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return false;
 			return rs.getBoolean(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -263,7 +264,7 @@ public abstract class Database {
 	public boolean queryBoolean(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			rs.next();
+			if (!rs.first()) return false;
 			return rs.getBoolean(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -283,7 +284,7 @@ public abstract class Database {
 	public boolean tableContains(String table, String column, String value) {
 		try {
 			ResultSet rs = query("SELECT COUNT(" + column + ") AS " + column + "Count FROM " + table + " WHERE " + column + "='" + value + "'");
-			rs.next();
+			if (!rs.first()) return false;
 			if (rs.getInt(1) == 0) return false;
 			else return true;
 		}catch (SQLException e) {
