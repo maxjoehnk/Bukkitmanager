@@ -217,7 +217,7 @@ public class Bukkitmanager extends JavaPlugin {
 	 */
 	
 	public static void addCommandTracker(Command command) {
-		if (commandStatistics == null) System.out.println("hi");
+		if (commandStatistics == null) commandStatistics = new DonutGraph<CommandCategory>("Command Usage");
 		commandStatistics.addSlice(command.getCategory(), command.getCategory().toString().toLowerCase(), command.getLabel().toLowerCase());
 		addTracker(command.getTracker());
 	}
