@@ -1,7 +1,12 @@
 <project>
   <body>
+    <menu name="Overview">
+    
+    </menu>
     <menu name="Addons">
-      <item name="FTPBackup" href="ftpbackup.html"/>
+      <item name="FTPBackup" href="addons/ftpbackup.html"/>
+      <item name="H2Database" href="addons/h2.html"/>
+      <item name="PostgreSQL" href="addons/postgresql.html"/>
     </menu>
     <menu ref="reports"/>
   </body>
