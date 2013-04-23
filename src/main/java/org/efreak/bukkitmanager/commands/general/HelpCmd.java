@@ -22,7 +22,7 @@ public class HelpCmd extends Command {
 			if (helpTopics.get(i).hasPerm(sender)) topics.add(helpTopics.get(i).format());
 		}
 		int pages = 1;
-		if (topics.size() > 9) pages = (int)(((topics.size()) / 9F)+0.4F);
+		if (topics.size() > 9) pages = (int)(topics.size() / 9F+0.4F);
 		if (args.length == 1) {
 			io.sendHeader(sender, config.getString("IO.HelpHeader").replaceAll("%page%",  String.valueOf(1)).replaceAll("%pages%", String.valueOf(pages)));
 			for (int i = 0; i < 9 && i < topics.size(); i++) io.send(sender, topics.get(i), false);
@@ -40,7 +40,7 @@ public class HelpCmd extends Command {
 					if (new Integer(args[1]) <= pages) {
 						int page = new Integer(args[1]);
 						io.send(sender, config.getString("IO.HelpHeader").replaceAll("%page%",  args[1]).replaceAll("%pages%", String.valueOf(pages)), false);
-						for (int i = (9*page-9); i < (9*page) && i < (topics.size()-1); i++) io.send(sender, topics.get(i), false);
+						for (int i = 9*page-9; i < 9*page && i < topics.size()-1; i++) io.send(sender, topics.get(i), false);
 					}else io.sendError(sender, "This Page doesn't exist.");
 				}catch (NumberFormatException e) {
 					if (CommandCategory.valueOf(args[1].toUpperCase()) != null) {

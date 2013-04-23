@@ -260,7 +260,7 @@ public class IOManager {
 	}	
 	
 	public static String formatHeader(String title) {
-		int length = ((55 - title.length())/2)-1;
+		int length = (55 - title.length())/2-1;
 		String lines = "";
 		for (int i = 0; i < length; i++) lines += "-";
 		if (title.length() + 2*lines.length() != 53) title = "&e-" + lines + " &f" + title + " &e" + lines;

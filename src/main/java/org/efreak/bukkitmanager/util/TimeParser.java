@@ -53,8 +53,7 @@ public class TimeParser {
             String[] parts = time.split(":");
             int hours = Integer.parseInt(parts[0]);
             int mins = parts.length >= 2 ? Integer.parseInt(parts[1]) : 0;
-            return (int) ((((hours % 12) + shift - 8) % 24) * 1000
-                    + (mins % 60) / 60.0 * 1000);
+            return (int) ((((hours % 12) + shift - 8) % 24) * 1000 + (mins % 60) / 60.0 * 1000);
 
             // Or some shortcuts
         } else if (timeStr.equalsIgnoreCase("dawn")) {
