@@ -10,21 +10,23 @@ import org.efreak.bukkitmanager.commands.Command;
 import org.efreak.bukkitmanager.commands.CommandCategory;
 
 public class AutobackupStopCmd extends Command {
-	
-	public AutobackupStopCmd() {
-		super("stop", "Autobackup.Stop", "bm.autobackup.stop", new ArrayList<String>(), CommandCategory.AUTOBACKUP);
-	}
 
-	@Override
-	public boolean execute(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup stop");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup stop");
-		else {
-			if (has(sender, "bm.autobackup.stop")) {
-				ThreadManager.stopThread(ThreadType.AUTOBACKUP);
-				io.sendTranslation(sender, "Command.Autobackup.Stop");
-			}
-		}
-		return true;
-	}
+    public AutobackupStopCmd() {
+        super("stop", "Autobackup.Stop", "bm.autobackup.stop",
+                new ArrayList<String>(), CommandCategory.AUTOBACKUP);
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String[] args) {
+        if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup stop");
+        else if (args.length > 1) io
+                .sendManyArgs(sender, "/bm autobackup stop");
+        else {
+            if (has(sender, "bm.autobackup.stop")) {
+                ThreadManager.stopThread(ThreadType.AUTOBACKUP);
+                io.sendTranslation(sender, "Command.Autobackup.Stop");
+            }
+        }
+        return true;
+    }
 }

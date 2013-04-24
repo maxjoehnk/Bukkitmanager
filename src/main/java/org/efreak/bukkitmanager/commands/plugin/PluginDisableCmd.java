@@ -1,4 +1,4 @@
- package org.efreak.bukkitmanager.commands.plugin;
+package org.efreak.bukkitmanager.commands.plugin;
 
 import java.util.Arrays;
 
@@ -10,42 +10,61 @@ import org.efreak.bukkitmanager.commands.CommandCategory;
 import org.efreak.bukkitmanager.pluginmanager.PluginManager;
 
 public class PluginDisableCmd extends Command {
-	
-	public PluginDisableCmd() {
-		super("disable", "Plugin.Disable", "bm.plugin.disable", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
-	}
-	
-	@Override
-	public boolean execute(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin disable [plugin|all]");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin disable [plugin|all]");
-		else {
-			if (has(sender, "bm.plugin.disable")) {
-				if (args.length == 1) {
-					PluginManager.disablePlugin(Bukkitmanager.getInstance());
-					io.send(sender, io.translate("Command.Plugin.Disable.Success").replaceAll("%plugin%", "Bukkitmanager"));
-				}else if (args[1].equalsIgnoreCase("all")) {
-					PluginManager.disablePlugins();
-					io.send(sender, io.translate("Command.Plugin.Disable.Success.All"));
-				}else {
-					if (PluginManager.getPlugin(args[1]) == null) {
-						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
-						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
-					}else {
-						if (!PluginManager.getPlugin(args[1]).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Disable.Already"));
-						else {
-							if (args[1] == "Spout") {
-								io.sendWarning(sender, io.translate("Command.Plugin.Disable.Spout"));
-								return true;
-							}else {
-								PluginManager.disablePlugin(PluginManager.getPlugin(args[1]));
-								io.send(sender, io.translate("Command.Plugin.Disable.Success").replaceAll("%plugin%", args[1]));
-							}
-						}
-					}
-				}
-			}
-		}
-		return true;
-	}
+
+    public PluginDisableCmd() {
+        super("disable", "Plugin.Disable", "bm.plugin.disable", Arrays
+                .asList("[plugin|all]"), CommandCategory.PLUGIN);
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String[] args) {
+        if (args.length < 1) io.sendFewArgs(sender,
+                "/bm plugin disable [plugin|all]");
+        else if (args.length > 2) io.sendManyArgs(sender,
+                "/bm plugin disable [plugin|all]");
+        else {
+            if (has(sender, "bm.plugin.disable")) {
+                if (args.length == 1) {
+                    PluginManager.disablePlugin(Bukkitmanager.getInstance());
+                    io.send(sender,
+                            io.translate("Command.Plugin.Disable.Success")
+                                    .replaceAll("%plugin%", "Bukkitmanager"));
+                } else if (args[1].equalsIgnoreCase("all")) {
+                    PluginManager.disablePlugins();
+                    io.send(sender,
+                            io.translate("Command.Plugin.Disable.Success.All"));
+                } else {
+                    if (PluginManager.getPlugin(args[1]) == null) {
+                        io.sendError(sender,
+                                io.translate("Command.Plugin.DoesntExists"));
+                        io.send(sender,
+                                io.translate("Command.Plugin.Available")
+                                        .replaceAll("%pluginlist%",
+                                                PluginManager.getPluginList()));
+                    } else {
+                        if (!PluginManager.getPlugin(args[1]).isEnabled()) io
+                                .sendError(
+                                        sender,
+                                        io.translate("Command.Plugin.Disable.Already"));
+                        else {
+                            if (args[1] == "Spout") {
+                                io.sendWarning(
+                                        sender,
+                                        io.translate("Command.Plugin.Disable.Spout"));
+                                return true;
+                            } else {
+                                PluginManager.disablePlugin(PluginManager
+                                        .getPlugin(args[1]));
+                                io.send(sender,
+                                        io.translate(
+                                                "Command.Plugin.Disable.Success")
+                                                .replaceAll("%plugin%", args[1]));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

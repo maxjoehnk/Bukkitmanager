@@ -12,7 +12,6 @@ import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.IOManager;
 
-
 public class Downloader {
 
     protected static int count, total, itemCount, itemTotal;
@@ -22,26 +21,32 @@ public class Downloader {
     private static Configuration config;
 
     static {
-    	config = Bukkitmanager.getConfiguration();
-    	io = Bukkitmanager.getIOManager();
+        config = Bukkitmanager.getConfiguration();
+        io = Bukkitmanager.getIOManager();
     }
-    
-    public static File fetch(Boolean silent, String location, String filename, File dir) {
+
+    public static File fetch(Boolean silent, String location, String filename,
+            File dir) {
         try {
             count = total = itemCount = itemTotal = 0;
-            if (!silent) io.sendConsole(io.translate("Downloader.Downloading").replaceAll("%file%", filename).replaceAll("%filesize%", getFileSize(location)));
+            if (!silent) io.sendConsole(io.translate("Downloader.Downloading")
+                    .replaceAll("%file%", filename)
+                    .replaceAll("%filesize%", getFileSize(location)));
             download(location, filename, dir);
-            if (!silent) io.sendConsole(io.translate("Downloader.Downloaded").replaceAll("%file%", filename));
+            if (!silent) io.sendConsole(io.translate("Downloader.Downloaded")
+                    .replaceAll("%file%", filename));
             File downloadedFile = new File(dir, File.separator + filename);
             return downloadedFile;
         } catch (IOException e) {
-        	io.sendConsole(io.translate("Downloader.Error").replaceAll("%file%", filename));
-			if (config.getDebug()) e.printStackTrace();
-        	return null;
+            io.sendConsole(io.translate("Downloader.Error").replaceAll(
+                    "%file%", filename));
+            if (config.getDebug()) e.printStackTrace();
+            return null;
         }
     }
-    
-    protected static synchronized void download(String location, String filename, File dir)throws IOException {
+
+    protected static synchronized void download(String location,
+            String filename, File dir) throws IOException {
         URLConnection connection = new URL(location).openConnection();
         connection.setUseCaches(false);
         lastModified = connection.getLastModified();
@@ -49,14 +54,14 @@ public class Downloader {
         InputStream in = connection.getInputStream();
         OutputStream out = new FileOutputStream(destination);
         byte[] buffer = new byte[65536];
-        //int currentCount = 0;
+        // int currentCount = 0;
 
         for (;;) {
 
             int count = in.read(buffer);
             if (count < 0) break;
             out.write(buffer, 0, count);
-            //currentCount += count;
+            // currentCount += count;
         }
 
         in.close();
@@ -66,12 +71,12 @@ public class Downloader {
     private static String getFileSize(String location) throws IOException {
         URLConnection connection = new URL(location).openConnection();
         return readableSize(connection.getContentLength());
-    }   
+    }
 
     public long getLastModified() {
         return lastModified;
     }
-    
+
     public static String readableSize(long size) {
         String[] units = new String[] { "B", "KB", "MB", "GB", "TB", "PB" };
         int mod = 1024, i;

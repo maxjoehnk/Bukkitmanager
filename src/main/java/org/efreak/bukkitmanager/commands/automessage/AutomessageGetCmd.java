@@ -1,6 +1,5 @@
 package org.efreak.bukkitmanager.commands.automessage;
 
-
 import java.util.Arrays;
 
 import org.bukkit.command.CommandSender;
@@ -11,23 +10,27 @@ import org.efreak.bukkitmanager.commands.CommandCategory;
 
 public class AutomessageGetCmd extends Command {
 
-	private static AutomessageReader msgReader;
-	
-	public AutomessageGetCmd() {
-		super("get", "Automessage.Get", "bm.automessage.get", Arrays.asList("(index)"), CommandCategory.AUTOMESSAGE);
-		msgReader = new AutomessageReader();
-	}
+    private static AutomessageReader msgReader;
 
-	@Override
-	public boolean execute(CommandSender sender, String[] args) {
-		if (args.length < 2) io.sendFewArgs(sender, "/bm automessage get (index)");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm automessage get (index)");
-		else {
-			if (has(sender, "bm.automessage.get")) {
-				io.send(sender, io.translate("Command.Automessage.Get").replaceAll("%index", args[1]));
-				io.send(sender, msgReader.getMessage(new Integer(args[1])));
-			}
-		}
-		return true;
-	}
+    public AutomessageGetCmd() {
+        super("get", "Automessage.Get", "bm.automessage.get", Arrays
+                .asList("(index)"), CommandCategory.AUTOMESSAGE);
+        msgReader = new AutomessageReader();
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String[] args) {
+        if (args.length < 2) io.sendFewArgs(sender,
+                "/bm automessage get (index)");
+        else if (args.length > 2) io.sendManyArgs(sender,
+                "/bm automessage get (index)");
+        else {
+            if (has(sender, "bm.automessage.get")) {
+                io.send(sender, io.translate("Command.Automessage.Get")
+                        .replaceAll("%index", args[1]));
+                io.send(sender, msgReader.getMessage(new Integer(args[1])));
+            }
+        }
+        return true;
+    }
 }

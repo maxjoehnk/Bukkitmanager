@@ -7,8 +7,9 @@ import org.bukkit.command.CommandException;
 
 public class TimeParser {
 
-    protected static final Pattern TWELVE_HOUR_TIME = Pattern.compile("^([0-9]+(?::[0-9]+)?)([apmAPM\\.]+)$");
-	
+    protected static final Pattern TWELVE_HOUR_TIME = Pattern
+            .compile("^([0-9]+(?::[0-9]+)?)([apmAPM\\.]+)$");
+
     public int matchTime(String timeStr) {
         Matcher matcher;
 
@@ -34,7 +35,8 @@ public class TimeParser {
             String[] parts = timeStr.split(":");
             int hours = Integer.parseInt(parts[0]);
             int mins = Integer.parseInt(parts[1]);
-            return (int) (((hours - 8) % 24) * 1000 + Math.round((mins % 60) / 60.0 * 1000));
+            return (int) (((hours - 8) % 24) * 1000 + Math
+                    .round((mins % 60) / 60.0 * 1000));
 
             // Or perhaps 12-hour time
         } else if ((matcher = TWELVE_HOUR_TIME.matcher(timeStr)).matches()) {
@@ -42,12 +44,15 @@ public class TimeParser {
             String period = matcher.group(2);
             int shift;
 
-            if (period.equalsIgnoreCase("am") || period.equalsIgnoreCase("a.m.")) {
+            if (period.equalsIgnoreCase("am")
+                    || period.equalsIgnoreCase("a.m.")) {
                 shift = 0;
-            } else if (period.equalsIgnoreCase("pm") || period.equalsIgnoreCase("p.m.")) {
+            } else if (period.equalsIgnoreCase("pm")
+                    || period.equalsIgnoreCase("p.m.")) {
                 shift = 12;
             } else {
-                throw new CommandException("'am' or 'pm' expected, got '" + period + "'.");
+                throw new CommandException("'am' or 'pm' expected, got '"
+                        + period + "'.");
             }
 
             String[] parts = time.split(":");
