@@ -204,7 +204,7 @@ public class Bukkitmanager extends JavaPlugin {
 	 */
 	
 	public static void addTracker(BasicTracker tracker) {
-		metrics.addTracker(tracker);
+		if (!metrics.isMetricsStarted()) metrics.addTracker(tracker);
 	}
 	
 	/**
