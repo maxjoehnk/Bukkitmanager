@@ -20,10 +20,11 @@ public abstract class Command {
 	protected String helpPerm;
 	protected List<String> args;
 	protected CommandCategory category;
-	protected static IOManager io;
-	protected static Configuration config;
-	protected static Database db;
-	protected static BasicTracker tracker;
+	protected BasicTracker tracker;
+
+	protected static final IOManager io;
+	protected static final Configuration config;
+	protected static final Database db;
 	
 	static {
 		io = Bukkitmanager.getIOManager();
