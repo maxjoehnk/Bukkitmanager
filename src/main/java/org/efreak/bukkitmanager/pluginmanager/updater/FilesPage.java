@@ -10,14 +10,14 @@ import org.jsoup.nodes.Element;
 
 public class FilesPage {
 
-    public static Configuration config;
-    protected String pluginName;
-    protected String url;
-    protected Plugin plugin;
-    protected Document doc;
-    protected Element body;
-
-    static {
-        config = Bukkitmanager.getConfiguration();
-    }
+	public static Configuration config;
+	protected String pluginName;
+	protected String url;
+	protected Plugin plugin;
+	protected Document doc;
+	protected Element body;
+	
+	static {
+		config = Bukkitmanager.getConfiguration();
+	}
 }

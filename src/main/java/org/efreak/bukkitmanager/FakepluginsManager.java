@@ -9,16 +9,15 @@ import org.bukkit.plugin.Plugin;
 
 public class FakepluginsManager {
 
-    private static Configuration config;
-
+	private static Configuration config;
+	
     protected FakepluginsManager() {
         config = Bukkitmanager.getConfiguration();
     }
 
     public static boolean execute(CommandSender sender) {
         if (!sender.hasPermission("bukkit.command.plugins")) return true;
-        if (sender.hasPermission("bm.fakeplugins")) sender
-                .sendMessage("Plugins " + getFakePluginList());
+        if (sender.hasPermission("bm.fakeplugins")) sender.sendMessage("Plugins " + getFakePluginList());
         else sender.sendMessage("Plugins " + getPluginList());
         return true;
     }
@@ -33,20 +32,19 @@ public class FakepluginsManager {
                 pluginList.append(", ");
             }
 
-            pluginList.append(plugin.isEnabled() ? ChatColor.GREEN
-                    : ChatColor.RED);
+            pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
             pluginList.append(plugin.getDescription().getName());
         }
-
+        
         return "(" + plugins.length + "): " + pluginList.toString();
     }
-
+    
     private static String getFakePluginList() {
         StringBuilder pluginList = new StringBuilder();
         int pluginCount = 0;
         List<String> fakePlugins = config.getStringList("Fakepluginlist.Fakes");
         for (String plugin : fakePlugins) {
-            pluginCount++;
+        	pluginCount++;
             if (pluginList.length() > 0) {
                 pluginList.append(ChatColor.WHITE);
                 pluginList.append(", ");
@@ -54,37 +52,33 @@ public class FakepluginsManager {
             pluginList.append(ChatColor.GREEN);
             pluginList.append(plugin);
         }
-
-        List<String> hiddenPlugins = config
-                .getStringList("Fakepluginlist.Hidden");
+        
+        List<String> hiddenPlugins = config.getStringList("Fakepluginlist.Hidden");
         Plugin[] plugins = Bukkit.getPluginManager().getPlugins();
         if (hiddenPlugins.contains("*")) {
             for (Plugin plugin : plugins) {
-                if (hiddenPlugins.contains("--"
-                        + plugin.getDescription().getName())) {
-                    pluginCount++;
-                    if (pluginList.length() > 0) {
-                        pluginList.append(ChatColor.WHITE);
-                        pluginList.append(", ");
-                    }
-                    pluginList.append(plugin.isEnabled() ? ChatColor.GREEN
-                            : ChatColor.RED);
-                    pluginList.append(plugin.getDescription().getName());
-                }
+            	if (hiddenPlugins.contains("--" + plugin.getDescription().getName())) {
+                	pluginCount++;
+            		if (pluginList.length() > 0) {
+            			pluginList.append(ChatColor.WHITE);
+            			pluginList.append(", ");
+            		}
+            		pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
+            		pluginList.append(plugin.getDescription().getName());
+            	}
             }
-        } else {
+        }else {
             for (Plugin plugin : plugins) {
-                if (!hiddenPlugins.contains(plugin.getDescription().getName())) {
-                    pluginCount++;
-                    if (pluginList.length() > 0) {
+        		if (!hiddenPlugins.contains(plugin.getDescription().getName())) {
+                	pluginCount++;
+                	if (pluginList.length() > 0) {
                         pluginList.append(ChatColor.WHITE);
                         pluginList.append(", ");
                     }
-                    pluginList.append(plugin.isEnabled() ? ChatColor.GREEN
-                            : ChatColor.RED);
+                    pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
                     pluginList.append(plugin.getDescription().getName());
-                }
-            }
+        		}
+        	}
         }
 
         return "(" + pluginCount + "): " + pluginList.toString();

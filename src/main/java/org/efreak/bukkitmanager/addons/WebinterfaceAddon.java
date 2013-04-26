@@ -1,16 +1,15 @@
 package org.efreak.bukkitmanager.addons;
 
-public class WebinterfaceAddon extends BukkitmanagerAddon implements
-        RemoteAddon {
+public class WebinterfaceAddon extends BukkitmanagerAddon implements RemoteAddon {
 
-    @Override
-    public void onEnable() {
-        super.onEnable();
-    }
+	@Override
+	public void onEnable() {
+		super.onEnable();
+	}
 
-    @Override
-    public void transferClientFiles() {
-
-    }
-
+	@Override
+	public void transferClientFiles() {
+		
+	}
+	
 }

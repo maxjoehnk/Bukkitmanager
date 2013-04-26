@@ -23,105 +23,93 @@ import org.efreak.bukkitmanager.pluginmanager.updater.PluginPage;
 
 public class PluginInstallCmd extends Command {
 
-    public PluginInstallCmd() {
-        super("install", "Plugin.Install", "bm.plugin.install", Arrays
-                .asList("(plugin)"), CommandCategory.PLUGIN);
-    }
+	public PluginInstallCmd() {
+		super("install", "Plugin.Install", "bm.plugin.install", Arrays.asList("(plugin)"), CommandCategory.PLUGIN);
+	}
 
-    @Override
-    public boolean execute(CommandSender sender, String[] args) {
-        if (args.length < 2) io.sendFewArgs(sender,
-                "/bm plugin install (plugin)");
-        else if (args.length > 2) io.sendManyArgs(sender,
-                "/bm plugin install (plugin)");
-        else {
-            PluginPage pluginPage = new PluginPage(args[1]);
-            if (pluginPage.exists()) io.createConversation(sender,
-                    "PluginInstallRequest", new InstallPluginPrompt(args[1]));
-            else io.sendError(sender, "Can't find Plugin " + args[1]);
-        }
-        return true;
-    }
+	@Override
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 2) io.sendFewArgs(sender, "/bm plugin install (plugin)");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm plugin install (plugin)");
+		else {
+			PluginPage pluginPage = new PluginPage(args[1]);
+			if (pluginPage.exists()) io.createConversation(sender, "PluginInstallRequest", new InstallPluginPrompt(args[1]));
+			else io.sendError(sender, "Can't find Plugin " + args[1]);
+		}
+		return true;
+	}
 
 }
 
 class InstallPluginPrompt extends BooleanPrompt {
 
-    String pluginName;
+	String pluginName;
+	
+	public InstallPluginPrompt(String pluginName) {
+		super();
+		this.pluginName = pluginName;
+	}
+	
+	@Override
+	public String getPromptText(ConversationContext context) {
+		return "Should the newest Version of " + pluginName + " downloaded? (y/n)";
+	}
 
-    public InstallPluginPrompt(String pluginName) {
-        super();
-        this.pluginName = pluginName;
-    }
-
-    @Override
-    public String getPromptText(ConversationContext context) {
-        return "Should the newest Version of " + pluginName
-                + " downloaded? (y/n)";
-    }
-
-    @Override
-    protected Prompt acceptValidatedInput(ConversationContext context,
-            boolean value) {
-        if (value) {
-            PluginPage pluginPage = null;
-            if (Bukkitmanager.getConfiguration()
-                    .getString("PluginUpdater.System")
-                    .equalsIgnoreCase("DevBukkit")) {
-                pluginPage = new PluginPage(pluginName);
-            }
-            FilePage filePage = pluginPage.getNewestFile();
-            File file = filePage.download();
-            return new LoadPluginPrompt(this.pluginName, file);
-        }
-        return Prompt.END_OF_CONVERSATION;
-    }
-
+	@Override
+	protected Prompt acceptValidatedInput(ConversationContext context, boolean value) {
+		if (value) {
+			PluginPage pluginPage = null;
+			if (Bukkitmanager.getConfiguration().getString("PluginUpdater.System").equalsIgnoreCase("DevBukkit")) {
+				pluginPage = new PluginPage(pluginName);
+			}
+			FilePage filePage = pluginPage.getNewestFile();
+			File file = filePage.download();
+			return new LoadPluginPrompt(this.pluginName, file);
+		}
+		return Prompt.END_OF_CONVERSATION;
+	}
+	
 }
 
 class LoadPluginPrompt extends BooleanPrompt {
 
-    String pluginName;
-    File file;
-    Configuration config;
-    IOManager io;
+	String pluginName;
+	File file;
+	Configuration config;
+	IOManager io;
+	
+	public LoadPluginPrompt(String pluginName, File file) {
+		super();
+		this.pluginName = pluginName;
+		this.file = file;
+		config = Bukkitmanager.getConfiguration();
+		io = Bukkitmanager.getIOManager();
+	}
+	
+	@Override
+	public String getPromptText(ConversationContext context) {
+		return "Should " + pluginName + " get loaded? (y/n)";
+	}
 
-    public LoadPluginPrompt(String pluginName, File file) {
-        super();
-        this.pluginName = pluginName;
-        this.file = file;
-        config = Bukkitmanager.getConfiguration();
-        io = Bukkitmanager.getIOManager();
-    }
-
-    @Override
-    public String getPromptText(ConversationContext context) {
-        return "Should " + pluginName + " get loaded? (y/n)";
-    }
-
-    @Override
-    protected Prompt acceptValidatedInput(ConversationContext context,
-            boolean value) {
-        if (value) {
-            Plugin plugin;
-            try {
-                plugin = PluginManager.loadPlugin(this.file);
-                PluginManager.enablePlugin(plugin);
-            } catch (UnknownDependencyException e) {
-                io.sendConversable(context.getForWhom(),
-                        "Plugin.Load.Error.UnknownDependency");
-                if (config.getDebug()) e.printStackTrace();
-            } catch (InvalidPluginException e) {
-                io.sendConversable(context.getForWhom(),
-                        "Plugin.Load.Error.InvalidPlugin");
-                if (config.getDebug()) e.printStackTrace();
-            } catch (InvalidDescriptionException e) {
-                io.sendConversable(context.getForWhom(),
-                        "Plugin.Load.Error.InvalidDescription");
-                if (config.getDebug()) e.printStackTrace();
-            }
-        }
-        return Prompt.END_OF_CONVERSATION;
-    }
-
+	@Override
+	protected Prompt acceptValidatedInput(ConversationContext context, boolean value) {
+		if (value) {
+			Plugin plugin;
+			try {
+				plugin = PluginManager.loadPlugin(this.file);
+				PluginManager.enablePlugin(plugin);
+			} catch (UnknownDependencyException e) {
+				io.sendConversable(context.getForWhom(), "Plugin.Load.Error.UnknownDependency");
+				if (config.getDebug()) e.printStackTrace();
+			} catch (InvalidPluginException e) {
+				io.sendConversable(context.getForWhom(), "Plugin.Load.Error.InvalidPlugin");
+				if (config.getDebug()) e.printStackTrace();
+			} catch (InvalidDescriptionException e) {
+				io.sendConversable(context.getForWhom(), "Plugin.Load.Error.InvalidDescription");
+				if (config.getDebug()) e.printStackTrace();
+			}
+		}
+		return Prompt.END_OF_CONVERSATION;
+	}
+	
 }

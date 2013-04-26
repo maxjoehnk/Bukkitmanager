@@ -5,10 +5,10 @@ import org.efreak.bukkitmanager.tutorials.TutorialAction;
 
 public class BlockBreakAction extends TutorialAction {
 
-    private Block block;
-
-    public BlockBreakAction(String content, boolean sendMsg) {
-        super(content, sendMsg);
-    }
+	private Block block;
+	
+	public BlockBreakAction(String content, boolean sendMsg) {
+		super(content, sendMsg);
+	}
 
 }

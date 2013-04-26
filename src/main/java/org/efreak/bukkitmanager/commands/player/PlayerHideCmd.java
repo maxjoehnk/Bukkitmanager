@@ -13,59 +13,41 @@ import org.efreak.bukkitmanager.commands.CommandCategory;
 
 public class PlayerHideCmd extends Command {
 
-    public PlayerHideCmd() {
-        super("hide", "Player.Hide", "bm.player.hide", Arrays
-                .asList("[player]"), CommandCategory.PLAYER);
-    }
+	public PlayerHideCmd() {
+		super("hide", "Player.Hide", "bm.player.hide", Arrays.asList("[player]"), CommandCategory.PLAYER);
+	}
 
-    @Override
-    public boolean execute(CommandSender sender, String[] args) {
-        if (args.length < 1) io.sendFewArgs(sender, "/bm player hide [player]");
-        else if (args.length > 2) io.sendManyArgs(sender,
-                "/bm player hide [player]");
-        else {
-            if (args.length == 1 && sender instanceof Player) {
-                if (has(sender, "bm.player.hide.your")) {
-                    BmPlayer player = new BmPlayer((OfflinePlayer) sender);
-                    if (!player.isVisible()) io.sendError(sender,
-                            io.translate("Command.Player.Hide.Already.You"));
-                    else {
-                        player.hide();
-                        io.send(sender, io.translate("Command.Player.Hide.You"));
-                        io.sendConsole(io.translate(
-                                "Command.Player.Hide.Console.You").replaceAll(
-                                "%player%", player.getName()));
-                    }
-                }
-            } else if (args.length == 2) {
-                if (has(sender, "bm.player.hide.other")) {
-                    OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[1]);
-                    if (offPlayer != null) {
-                        BmPlayer player = new BmPlayer(offPlayer);
-                        if (!player.isVisible()) io.sendError(sender, io
-                                .translate("Command.Player.Hide.Already.Other")
-                                .replaceAll("%player%", player.getName()));
-                        else {
-                            player.hide();
-                            io.send(sender,
-                                    io.translate("Command.Player.Hide.Other")
-                                            .replaceAll("%player%",
-                                                    player.getName()));
-                            io.send(player.getPlayer(),
-                                    io.translate("Command.Player.Hide.ByOther")
-                                            .replaceAll("%player%",
-                                                    sender.getName()));
-                            io.sendConsole(io
-                                    .translate(
-                                            "Command.Player.Hide.Console.Other")
-                                    .replaceAll("%player%", player.getName())
-                                    .replaceAll("%causer%", sender.getName()));
-                        }
-                    } else io.sendError(sender,
-                            io.translate("Command.Player.UnknownPlayer"));
-                }
-            }
-        }
-        return false;
-    }
+	@Override
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm player hide [player]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm player hide [player]");
+		else {
+			if (args.length == 1 && sender instanceof Player) {
+				if (has(sender, "bm.player.hide.your")) {
+					BmPlayer player = new BmPlayer((OfflinePlayer) sender);
+					if (!player.isVisible()) io.sendError(sender, io.translate("Command.Player.Hide.Already.You"));
+					else {
+						player.hide();
+						io.send(sender, io.translate("Command.Player.Hide.You"));
+						io.sendConsole(io.translate("Command.Player.Hide.Console.You").replaceAll("%player%", player.getName()));
+					}
+				}
+			}else if (args.length == 2) {
+				if (has(sender, "bm.player.hide.other")) {
+					OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[1]);
+					if (offPlayer != null) {
+						BmPlayer player = new BmPlayer(offPlayer);
+						if (!player.isVisible()) io.sendError(sender, io.translate("Command.Player.Hide.Already.Other").replaceAll("%player%", player.getName()));
+						else {
+							player.hide();
+							io.send(sender, io.translate("Command.Player.Hide.Other").replaceAll("%player%", player.getName()));
+							io.send(player.getPlayer(), io.translate("Command.Player.Hide.ByOther").replaceAll("%player%", sender.getName()));
+							io.sendConsole(io.translate("Command.Player.Hide.Console.Other").replaceAll("%player%", player.getName()).replaceAll("%causer%", sender.getName()));
+						}
+					}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
+				}
+			}
+		}
+		return false;
+	}
 }

@@ -7,25 +7,25 @@ import org.efreak.bukkitmanager.IOManager;
 
 public class BukkitmanagerAddon extends JavaPlugin {
 
-    protected IOManager io;
-    protected Configuration config;
-    protected BukkitmanagerAddon instance;
-    protected String name = "";
-
-    @Override
-    public void onLoad() {
-        instance = this;
-        Bukkitmanager.addAddon(this);
-    }
-
-    @Override
-    public void onEnable() {
-        io = Bukkitmanager.getIOManager();
-        config = Bukkitmanager.getConfiguration();
-        io.sendConsole("Loading Addon: " + name);
-    }
-
-    public String getAddonName() {
-        return name;
-    }
+	protected IOManager io;
+	protected Configuration config;
+	protected BukkitmanagerAddon instance;
+	protected String name = "";
+	
+	@Override
+	public void onLoad() {
+		instance = this;
+		Bukkitmanager.addAddon(this);
+	}
+	
+	@Override
+	public void onEnable() {
+		io = Bukkitmanager.getIOManager();
+		config = Bukkitmanager.getConfiguration();
+		io.sendConsole("Loading Addon: " + name);
+	}
+	
+	public String getAddonName() {
+		return name;
+	}
 }

@@ -11,34 +11,29 @@ import org.efreak.bukkitmanager.commands.CommandCategory;
 
 public class PlayerCmdCmd extends Command {
 
-    public PlayerCmdCmd() {
-        super("cmd", "Player.Cmd", "bm.player.cmd", Arrays.asList("(player)",
-                "(cmd)"), CommandCategory.PLAYER);
-    }
-
-    @Override
-    public boolean execute(CommandSender sender, String[] args) {
-        if (args.length < 3) io.sendFewArgs(sender,
-                "/bm player cmd (player) (cmd)");
-        else {
-            if (has(sender, "bm.player.cmd")) {
-                if (Bukkit.getPlayer(args[1]) != null) {
-                    Player player = Bukkit.getPlayer(args[1]);
-                    String cmd = null;
-                    for (int i = 2; i < args.length; i++) {
-                        if (cmd != null) cmd = cmd + " " + args[i];
-                        else cmd = args[i];
-                    }
-                    if (cmd != null) {
-                        if (player.performCommand(cmd)) io.sendTranslation(
-                                sender, "Command.Player.Cmd.Send");
-                        else io.sendError(sender,
-                                io.translate("Command.Player.Cmd.Error"));
-                    }
-                } else io.sendError(sender,
-                        io.translate("Command.Player.UnknownPlayer"));
-            }
-        }
-        return true;
-    }
+	public PlayerCmdCmd() {
+		super("cmd", "Player.Cmd", "bm.player.cmd", Arrays.asList("(player)", "(cmd)"), CommandCategory.PLAYER);
+	}
+	
+	@Override
+	public boolean execute(CommandSender sender, String[] args) {
+		if (args.length < 3) io.sendFewArgs(sender, "/bm player cmd (player) (cmd)");
+		else {
+			if (has(sender, "bm.player.cmd")) {
+				if (Bukkit.getPlayer(args[1]) != null) {
+					Player player = Bukkit.getPlayer(args[1]);
+					String cmd = null;
+					for (int i = 2; i < args.length; i++) {
+						if (cmd != null) cmd = cmd + " " + args[i];
+						else cmd = args[i];
+					}
+					if (cmd != null) {
+						if (player.performCommand(cmd)) io.sendTranslation(sender, "Command.Player.Cmd.Send");
+						else io.sendError(sender, io.translate("Command.Player.Cmd.Error"));
+					}
+				}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
+			}
+		}
+		return true;
+	}
 }

@@ -15,26 +15,27 @@ import org.json.JSONObject;
 
 public class WorldCommands extends RemoteCommandHandler {
 
-    @RemoteCommand(name = "worldlist")
-    public String worldlist() {
-        JSONArray json = new JSONArray();
-        List<World> worlds = Bukkit.getWorlds();
-        for (World world : worlds) {
-            try {
-                String object = new JSONObject().put("name", world.getName())
-                        .put("worldtype", world.getWorldType().toString())
-                        .put("environment", world.getEnvironment().toString())
-                        .put("seed", world.getSeed())
-                        .put("pvp", world.getPVP())
-                        // .put("players", world.getPlayers())
-                        .toString();
-                json.put(object);
-            } catch (JSONException e) {
-                if (config.getDebug()) e.printStackTrace();
-                return ReturnCodes.echo500();
-            }
-        }
-        return json.toString();
-    }
-
+	@RemoteCommand(name="worldlist")
+	public String worldlist() {
+		JSONArray json = new JSONArray();
+		List<World> worlds = Bukkit.getWorlds();
+		for (World world : worlds) {
+			try {
+				String object = new JSONObject()
+					.put("name", world.getName())
+					.put("worldtype", world.getWorldType().toString())
+					.put("environment", world.getEnvironment().toString())
+					.put("seed", world.getSeed())
+					.put("pvp", world.getPVP())
+					//.put("players", world.getPlayers())
+					.toString();
+				json.put(object);
+			} catch (JSONException e) {
+				if (config.getDebug()) e.printStackTrace();
+				return ReturnCodes.echo500();
+			}
+		}
+		return json.toString();
+	}
+	
 }

@@ -8,19 +8,18 @@ import org.efreak.bukkitmanager.scripting.APIObject;
 
 public class PluginAPI implements APIObject {
 
-    HashMap<String, APIPlugin> plugins;
+	HashMap<String, APIPlugin> plugins;
+	
+	public APIPlugin getPlugin(String name) {
+		return plugins.get(name);
+	}
 
-    public APIPlugin getPlugin(String name) {
-        return plugins.get(name);
-    }
-
-    @Override
-    public boolean loadAPI() {
-        plugins = new HashMap<String, APIPlugin>();
-        Plugin[] pluginArray = PluginManager.getPlugins();
-        for (Plugin plugin : pluginArray)
-            plugins.put(plugin.getName(), new APIPlugin(plugin));
-        return true;
-    }
-
+	@Override
+	public boolean loadAPI() {
+		plugins = new HashMap<String, APIPlugin>();
+		Plugin[] pluginArray = PluginManager.getPlugins();
+		for (Plugin plugin : pluginArray) plugins.put(plugin.getName(), new APIPlugin(plugin));
+		return true;
+	}
+	
 }
