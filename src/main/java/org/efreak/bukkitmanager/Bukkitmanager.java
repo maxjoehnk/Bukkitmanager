@@ -80,6 +80,7 @@ public class Bukkitmanager extends JavaPlugin {
 		config.init();
 		FileHelper.setupFolderStructure();
 		io.init();
+		FileHelper.loadBukkitFile();
 		if (config.getDebug()) io.sendConsoleWarning(io.translate("Plugin.Debug"));
 		if (firstRun) io.sendConsole(io.translate("Plugin.FirstRun"));
 		try {

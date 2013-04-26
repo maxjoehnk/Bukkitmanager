@@ -22,6 +22,16 @@ public class FileHelper {
 		pluginFile = Bukkitmanager.getPluginFile();
 		pluginsDir = pluginDir.getParentFile();
 		bukkitDir = pluginsDir.getParentFile();
+		updateDir = Bukkitmanager.getInstance().getServer().getUpdateFolderFile();
+		//backupDir = new File(parsePath(config.getString("Autobackup.BackupDir")));
+		backupDir = new File(bukkitDir, config.getString("Autobackup.BackupDir"));
+		//tempBackupDir = new File(parsePath(config.getString("Autobackup.TempBackupDir")));
+		tempBackupDir = new File(bukkitDir, config.getString("Autobackup.TempBackupDir"));
+		scriptDir = new File(pluginDir, "scripts");
+		tutorialsDir = new File(pluginDir, "tutorials");
+	}
+	
+	public static void loadBukkitFile() {
 		if (new File(bukkitDir, "craftbukkit.jar").exists()) bukkitFile = new File(bukkitDir, "craftbukkit.jar");
 		else if (config.contains("General.BukkitFile")) {
 			if (new File(bukkitDir, config.getString("General.BukkitFile")).exists()) bukkitFile = new File(bukkitDir, config.getString("General.BukkitFile"));
@@ -32,13 +42,6 @@ public class FileHelper {
 			else if (bukkitFolderFiles.length == 0) io.sendConsoleError(io.translate("Autobackup.NoJar"));
 			else bukkitFile = bukkitFolderFiles[0];
 		}
-		updateDir = Bukkitmanager.getInstance().getServer().getUpdateFolderFile();
-		//backupDir = new File(parsePath(config.getString("Autobackup.BackupDir")));
-		backupDir = new File(bukkitDir, config.getString("Autobackup.BackupDir"));
-		//tempBackupDir = new File(parsePath(config.getString("Autobackup.TempBackupDir")));
-		tempBackupDir = new File(bukkitDir, config.getString("Autobackup.TempBackupDir"));
-		scriptDir = new File(pluginDir, "scripts");
-		tutorialsDir = new File(pluginDir, "tutorials");
 	}
 	
 	public static void setupFolderStructure() {
