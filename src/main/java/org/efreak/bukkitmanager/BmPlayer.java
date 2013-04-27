@@ -227,13 +227,26 @@ public class BmPlayer implements OfflinePlayer {
 	public Location getLocation() {
 		if (isOnline()) return getPlayer().getLocation();
 		else if (isSyncEnabled()) {
-			Location loc = new Location(Bukkit.getWorld(db.queryString("SELECT `location_world` FROM `player` WHERE  `name`='" + getName() + "';", "location_world"))
-					, db.queryInt("SELECT `location_x` FROM `player` WHERE `name`='" + getName() + "';", "location_x")
-					, db.queryInt("SELECT `location_y` FROM `player` WHERE `name`='" + getName() + "';", "location_y")
-					, db.queryInt("SELECT `location_z` FROM `player` WHERE `name`='" + getName() + "';", "location_z"));
+			Location loc = new Location(Bukkit.getWorld(db.queryString("SELECT `location_world` FROM `player` WHERE  `name`='" + getName() + "';", "location_world")),
+					db.queryInt("SELECT `location_x` FROM `player` WHERE `name`='" + getName() + "';", "location_x"),
+					db.queryInt("SELECT `location_y` FROM `player` WHERE `name`='" + getName() + "';", "location_y"),
+					db.queryInt("SELECT `location_z` FROM `player` WHERE `name`='" + getName() + "';", "location_z"));
 			return loc;
 		}
 		else return null;
+	}
+	
+	public void setLocation(Location location) {
+		if (isOnline()) {
+			getPlayer().getLocation().setWorld(location.getWorld());
+			getPlayer().getLocation().setX(location.getX());
+			getPlayer().getLocation().setY(location.getY());
+			getPlayer().getLocation().setZ(location.getZ());
+		}else if (isSyncEnabled()) setSynced(false);
+		if (isSyncEnabled()) db.update("UPDATE `player` SET `location_world`='" + location.getWorld().getName() + "'" +
+				", `location_x`='" + location.getBlockX() + "'" +
+				", `location_y`='" + location.getBlockY() + "'" +
+				", `location_z`='" + location.getBlockZ() + "' WHERE `name`='" + getName() + "';");
 	}
 	
 	public World getWorld() {
@@ -242,10 +255,22 @@ public class BmPlayer implements OfflinePlayer {
 		else return null;		
 	}
 	
+	public void setWorld(World world) {
+		if (isOnline()) getPlayer().getLocation().setWorld(world);
+		else if (isSyncEnabled()) setSynced(false);
+		if (isSyncEnabled()) db.update("UPDATE `player` SET `location_world`='" + world.getName() + "' WHERE `name`='" + getName() + "';");		
+	}
+	
 	public int getX() {
 		if (isOnline()) return getPlayer().getLocation().getBlockX();
 		else if (isSyncEnabled()) return db.queryInt("SELECT `location_x` FROM `player` WHERE `name`='" + getName() + "';", "location_x");
 		else return 0;				
+	}
+
+	public void setX(int x) {
+		if (isOnline()) getPlayer().getLocation().setX(x);
+		else if (isSyncEnabled()) setSynced(false);
+		if (isSyncEnabled()) db.update("UPDATE `player` SET `location_x`='" + x + "' WHERE `name`='" + getName() + "';");		
 	}
 	
 	public int getY() {
@@ -254,10 +279,22 @@ public class BmPlayer implements OfflinePlayer {
 		else return 0;				
 	}
 	
+	public void setY(int y) {
+		if (isOnline()) getPlayer().getLocation().setY(y);
+		else if (isSyncEnabled()) setSynced(false);
+		if (isSyncEnabled()) db.update("UPDATE `player` SET `location_y`='" + y + "' WHERE `name`='" + getName() + "';");		
+	}
+	
 	public int getZ() {
 		if (isOnline()) return getPlayer().getLocation().getBlockZ();
 		else if (isSyncEnabled()) return db.queryInt("SELECT `location_z` FROM `player` WHERE `name`='" + getName() + "';", "location_z");
 		else return 0;				
+	}
+	
+	public void setZ(int z) {
+		if (isOnline()) getPlayer().getLocation().setZ(z);
+		else if (isSyncEnabled()) setSynced(false);
+		if (isSyncEnabled()) db.update("UPDATE `player` SET `location_z`='" + z + "' WHERE `name`='" + getName() + "';");		
 	}
 	
 	public String getRemotePassword() {
