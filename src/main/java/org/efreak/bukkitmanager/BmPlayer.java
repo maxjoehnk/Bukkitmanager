@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public class BmPlayer implements OfflinePlayer {
@@ -223,6 +224,42 @@ public class BmPlayer implements OfflinePlayer {
 		if (isSyncEnabled()) db.update("UPDATE `player` SET `level`='" + value + "' WHERE `name`='" + getName() + "';");	  
 	}
 	
+	public Location getLocation() {
+		if (isOnline()) return getPlayer().getLocation();
+		else if (isSyncEnabled()) {
+			Location loc = new Location(Bukkit.getWorld(db.queryString("SELECT `location_world` FROM `player` WHERE  `name`='" + getName() + "';", "location_world"))
+					, db.queryInt("SELECT `location_x` FROM `player` WHERE `name`='" + getName() + "';", "location_x")
+					, db.queryInt("SELECT `location_y` FROM `player` WHERE `name`='" + getName() + "';", "location_y")
+					, db.queryInt("SELECT `location_z` FROM `player` WHERE `name`='" + getName() + "';", "location_z"));
+			return loc;
+		}
+		else return null;
+	}
+	
+	public World getWorld() {
+		if (isOnline()) return getPlayer().getLocation().getWorld();
+		else if (isSyncEnabled()) return Bukkit.getWorld(db.queryString("SELECT `location_world` FROM `player` WHERE  `name`='" + getName() + "';", "location_world"));
+		else return null;		
+	}
+	
+	public int getX() {
+		if (isOnline()) return getPlayer().getLocation().getBlockX();
+		else if (isSyncEnabled()) return db.queryInt("SELECT `location_x` FROM `player` WHERE `name`='" + getName() + "';", "location_x");
+		else return 0;				
+	}
+	
+	public int getY() {
+		if (isOnline()) return getPlayer().getLocation().getBlockY();
+		else if (isSyncEnabled()) return db.queryInt("SELECT `location_y` FROM `player` WHERE `name`='" + getName() + "';", "location_y");
+		else return 0;				
+	}
+	
+	public int getZ() {
+		if (isOnline()) return getPlayer().getLocation().getBlockZ();
+		else if (isSyncEnabled()) return db.queryInt("SELECT `location_z` FROM `player` WHERE `name`='" + getName() + "';", "location_z");
+		else return 0;				
+	}
+	
 	public String getRemotePassword() {
 		return db.queryString("SELECT `remote_password` FROM `player` WHERE `name`='" + getName() + "';", "remote_password");
 	}
@@ -272,15 +309,15 @@ public class BmPlayer implements OfflinePlayer {
 			setExp(db.queryFloat("SELECT `exp` FROM `player` WHERE `name`='" + getName() + "';", "exp"));
 			setHealth(db.queryInt("SELECT `health` FROM `player` WHERE `name`='" + getName() + "';", "health"));
 			setFoodLevel(db.queryInt("SELECT `foodlevel` FROM `player` WHERE `name`='" + getName() + "';", "foodlevel"));
-			setGameMode(GameMode.valueOf(db.queryString("SELECT `gamemode` FROM `player` WHERE `name`='" + getName() + "';", "gamemode")));
+			//setGameMode(GameMode.valueOf(db.queryString("SELECT `gamemode` FROM `player` WHERE `name`='" + getName() + "';", "gamemode")));
 			getPlayer().saveData();
 			setSynced(true);
-		}else db.update("UPDATE `player` SET `listname`='" + getPlayer().getPlayerListName() + "', `displayname`='" + getPlayer().getDisplayName() + "', `level`='" + getPlayer().getLevel() + "', `exp`='" + getPlayer().getExp() + "', `total_exp`='" + getPlayer().getTotalExperience() + "', `health`='" + getPlayer().getHealth() + "', `max_health`='" + getPlayer().getMaxHealth() + "', `foodlevel`='" + getPlayer().getFoodLevel() + "', `gamemode`='" + getPlayer().getGameMode() + "' WHERE name='" + getName() + "';");
+		}else db.update("UPDATE `player` SET `listname`='" + getPlayerListName() + "', `displayname`='" + getDisplayName() + "', `level`='" + getLevel() + "', `exp`='" + getExp() + "', `total_exp`='" + getPlayer().getTotalExperience() + "', `health`='" + getHealth() + "', `max_health`='" + getPlayer().getMaxHealth() + "', `foodlevel`='" + getPlayer().getFoodLevel() + "', `gamemode`='" + getPlayer().getGameMode() + "', `location_world`='" + getWorld().getName() + "', `location_x`='" + getX() + "', `location_y`='" + getY() + "', `location_z`='" + getZ() + "' WHERE name='" + getName() + "';");
 	}
 
 	public void onJoin() {
-		if (!db.tableContains("player", "name", getName())) db.update("INSERT INTO player (name, synced, hidden, listname, displayname, level, exp, total_exp, health, max_health, foodlevel, gamemode, remote_password) " + 
-			"VALUES ('" + getName() + "', '1', '0', '" + getPlayer().getPlayerListName() + "', '" + getPlayer().getDisplayName() + "', '" + getPlayer().getLevel() + "', '" + getPlayer().getExp() + "', '" + getPlayer().getTotalExperience() + "', '" + getPlayer().getHealth() + "', '" + getPlayer().getMaxHealth() + "', '" + getPlayer().getFoodLevel() + "', '" + getPlayer().getGameMode() + "', NULL);");
+		if (!db.tableContains("player", "name", getName())) db.update("INSERT INTO player (name, synced, hidden, listname, displayname, level, exp, total_exp, health, max_health, foodlevel, gamemode, remote_password, location_world, location_x, location_y, location_z) " + 
+			"VALUES ('" + getName() + "', '1', '0', '" + getPlayer().getPlayerListName() + "', '" + getPlayer().getDisplayName() + "', '" + getPlayer().getLevel() + "', '" + getPlayer().getExp() + "', '" + getPlayer().getTotalExperience() + "', '" + getPlayer().getHealth() + "', '" + getPlayer().getMaxHealth() + "', '" + getPlayer().getFoodLevel() + "', '" + getPlayer().getGameMode() + "', NULL, '" + getWorld().getName() + "', '" + getX() + "', '" + getY() + "', '" + getZ() + "');");
 		if (isSyncEnabled()) sync();
 		applyDisplayName();
 		applyPlayerListName();
