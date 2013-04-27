@@ -38,7 +38,11 @@ public abstract class Database {
 				", foodlevel int NOT NULL" +
 				", gamemode varchar(255) NOT NULL" +
 				//", password varchar(255)" +
-				", remote_password varchar(255)");
+				", remote_password varchar(255)" +
+				", location_world varchar(255) NOT NULL" +
+				", location_x int NOT NULL" +
+				", location_y int NOT NULL" +
+				", location_z int NOT NULL");
 		//Blockevents
 		createTable("Log_BlockBreakEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
@@ -284,6 +288,7 @@ public abstract class Database {
 	public boolean tableContains(String table, String column, String value) {
 		try {
 			ResultSet rs = query("SELECT COUNT(" + column + ") AS " + column + "Count FROM " + table + " WHERE " + column + "='" + value + "'");
+			if (rs == null) return false;
 			if (!rs.first()) return false;
 			if (rs.getInt(1) == 0) return false;
 			else return true;
