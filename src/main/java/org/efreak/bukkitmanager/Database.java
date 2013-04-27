@@ -178,9 +178,9 @@ public abstract class Database {
 	public ResultSet query(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return null;
-			//if (rs.isAfterLast()) return null;
-			//rs.beforeFirst();
+			if (rs == null) return null;
+			if (rs.isAfterLast()) return null;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs;
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -191,29 +191,35 @@ public abstract class Database {
 	public String queryString(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return null;
+			if (rs == null) return null;
+			if (rs.isAfterLast()) return null;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getString(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
-			return "";
+			return null;
 		}
 	}
 	
 	public String queryString(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return null;
+			if (rs == null) return null;
+			if (rs.isAfterLast()) return null;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getString(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
-			return "";
+			return null;
 		}
 	}
 	
 	public int queryInt(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return -1;
+			if (rs == null) return -1;
+			if (rs.isAfterLast()) return -1;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getInt(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -224,7 +230,9 @@ public abstract class Database {
 	public int queryInt(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return -1;
+			if (rs == null) return -1;
+			if (rs.isAfterLast()) return -1;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getInt(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -235,7 +243,9 @@ public abstract class Database {
 	public float queryFloat(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return -1F;
+			if (rs == null) return -1F;
+			if (rs.isAfterLast()) return -1F;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getFloat(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -246,7 +256,9 @@ public abstract class Database {
 	public float queryFloat(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return -1F;
+			if (rs == null) return -1F;
+			if (rs.isAfterLast()) return -1F;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getFloat(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -257,7 +269,9 @@ public abstract class Database {
 	public boolean queryBoolean(String sql) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return false;
+			if (rs == null) return false;
+			if (rs.isAfterLast()) return false;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getBoolean(1);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -268,7 +282,9 @@ public abstract class Database {
 	public boolean queryBoolean(String sql, String column) {
 		try {
 			ResultSet rs = dbStatement.executeQuery(sql);
-			if (!rs.first()) return false;
+			if (rs == null) return false;
+			if (rs.isAfterLast()) return false;
+			if (rs.isBeforeFirst()) rs.next();
 			return rs.getBoolean(column);
 		}catch (SQLException e) {
 			if (config.getDebug()) e.printStackTrace();
@@ -289,7 +305,8 @@ public abstract class Database {
 		try {
 			ResultSet rs = query("SELECT COUNT(" + column + ") AS " + column + "Count FROM " + table + " WHERE " + column + "='" + value + "'");
 			if (rs == null) return false;
-			if (!rs.first()) return false;
+			if (rs.isAfterLast()) return false;
+			if (rs.isBeforeFirst()) rs.next();
 			if (rs.getInt(1) == 0) return false;
 			else return true;
 		}catch (SQLException e) {
