@@ -67,7 +67,7 @@ public class PlayerFoodCmd extends Command {
 						BmPlayer player = new BmPlayer((OfflinePlayer) sender);
 						try {
 							int newFood = player.getFoodLevel() + new Integer(args[2]);
-							if (newFood > player.getMaxHealth()) {
+							if (newFood > 20) {
 								io.sendError(sender, io.translate("Command.Player.Food.TooMuch"));
 								return true;
 							}
