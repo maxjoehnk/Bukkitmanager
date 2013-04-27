@@ -83,14 +83,15 @@ public class BmCommandExecutor implements CommandExecutor {
 		registerCommand(new PlayerGamemodeCmd());
 		registerCommand(new PlayerHealthCmd());
 		registerCommand(new PlayerHideCmd());
+		registerCommand(new PlayerInfoCmd());
 		registerCommand(new PlayerLastseenCmd());
 		registerCommand(new PlayerLevelCmd());
 		registerCommand(new PlayerListnameCmd());
+		registerCommand(new PlayerLocationCmd());
 		registerCommand(new PlayerLoadCmd());
 		registerCommand(new PlayerSaveCmd());
 		registerCommand(new PlayerShowCmd());
 		registerCommand(new PlayerTimeCmd());
-		registerCommand(new PlayerLocationCmd());
 		//Plugincommands
 		registerAlias("plugin", new PluginCommand());
 		registerCommand(new PluginConfigCmd());
