@@ -12,12 +12,3 @@
 #Libraries
 /lib/*
 !/lib/plugins
-!/lib/jsoup-1.6.2.jar
-
-#Backups
-/beta1.1_backup
-/Beta1.2_backup
-/src_1.3_old
-
-#Testserver
-/server
