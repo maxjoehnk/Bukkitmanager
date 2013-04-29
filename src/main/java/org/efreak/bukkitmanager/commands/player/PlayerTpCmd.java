@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import org.efreak.bukkitmanager.BmPlayer;
 import org.efreak.bukkitmanager.commands.Command;
@@ -28,7 +29,7 @@ public class PlayerTpCmd extends Command {
 					OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[1]);
 					if (offPlayer != null) {
 						BmPlayer player2 = new BmPlayer(offPlayer);
-						player1.setLocation(player2.getLocation());
+						player1.teleport(player2.getLocation(), TeleportCause.COMMAND);
 					}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 				}else io.sendError(sender, "You don't have permission to do that");
 			}else if (args.length == 3) {
@@ -39,7 +40,7 @@ public class PlayerTpCmd extends Command {
 						OfflinePlayer offPlayer2 = Bukkit.getOfflinePlayer(args[2]);
 						if (offPlayer2 != null) {
 							BmPlayer player2 = new BmPlayer(offPlayer2);
-							player1.setLocation(player2.getLocation());
+							player1.teleport(player2.getLocation(), TeleportCause.COMMAND);
 							io.send(player1.getPlayer(), "You were teleported to " + player2.getName() + " by " + sender.getName());
 						}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer").replaceAll("%player%", args[1]));
 					}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer").replaceAll("%player%", args[2]));
