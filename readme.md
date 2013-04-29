@@ -5,6 +5,17 @@ Welcome to the Github Page of Bukkitmanager.
 
 Changelog
 =========
+Beta 1.4
+--------
+* Added /bm player tp command (Can teleport to the last position of a Player too)
+* Added /bm player info command
+* Added /bm player location command
+* Fixed Bugs in Database Queries
+* Fixed wrong Command Tracking (Tracker report as last registered Command)
+* Fixed a bug where the plugin crashes if the craftbukkit.jar can't be found
+* Fixed a bug where Addons crash on Command Registration
+* Several other improvements
+
 Beta 1.3.1
 ----------
 * Implemented Chatfilter
