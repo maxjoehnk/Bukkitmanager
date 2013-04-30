@@ -32,7 +32,7 @@ public class AutobackupIntervalCmd extends Command {
 					ThreadManager.startThread(ThreadType.AUTOBACKUP);
 					io.sendTranslation(sender, "Plugin.Done");
 				}
-			}else io.sendManyArgs(sender, "/bm autobackup interval [interval]");
+			}
 		}
 		return true;
 	}

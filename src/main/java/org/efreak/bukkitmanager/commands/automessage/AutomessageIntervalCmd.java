@@ -31,7 +31,7 @@ public class AutomessageIntervalCmd extends Command {
 					ThreadManager.startThread(ThreadType.AUTOMESSAGE);
 					io.sendTranslation(sender, "Plugin.Done");
 				}
-			}else io.sendManyArgs(sender, "/bm automessage interval [interval]");
+			}
 		}
 		return true;
 	}

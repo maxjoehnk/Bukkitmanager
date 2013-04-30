@@ -31,7 +31,7 @@ public class AutosaveIntervalCmd extends Command {
 					ThreadManager.startThread(ThreadType.AUTOSAVE);
 					io.sendTranslation(sender, "Plugin.Done");
 				}
-			}else io.sendManyArgs(sender, "/bm autosave interval [interval]");
+			}
 		}
 		return true;
 	}
