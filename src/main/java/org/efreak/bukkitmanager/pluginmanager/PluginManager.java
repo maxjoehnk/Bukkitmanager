@@ -146,10 +146,10 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 		if (plugin.isEnabled()) disablePlugin(plugin);
 		try {
 			SimplePluginManager spm = (SimplePluginManager) Bukkit.getPluginManager();
-			Field field = spm.getClass().getField("lookupNames");
+			Field field = SimplePluginManager.class.getDeclaredField("lookupNames");
 			field.setAccessible(true);
 			Map<String, Plugin> lookupNames = (Map<String, Plugin>) field.get(spm);
-			field = spm.getClass().getField("plugins");
+			field = spm.getClass().getDeclaredField("plugins");
 			field.setAccessible(true);
 			List<Plugin> plugins = (List<Plugin>) field.get(spm);
 			lookupNames.remove(plugin.getName());
