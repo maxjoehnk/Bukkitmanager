@@ -1,5 +1,6 @@
 package org.efreak.bukkitmanager.commands.plugin;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import org.bukkit.command.CommandSender;
@@ -29,28 +30,34 @@ public class PluginReloadCmd extends Command {
 						PluginManager.reloadPlugin(Bukkitmanager.getInstance());
 						io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", "Bukkitmanager"));
 					}catch (UnknownDependencyException e) {
-						io.send(sender, "Plugin.Load.Error.UnknownDependency");
+						io.sendError(sender, io.translate("Plugin.Load.Error.UnknownDependency"));
 						if (config.getDebug()) e.printStackTrace();
 					}catch (InvalidPluginException e) {
-						io.send(sender, "Plugin.Load.Error.InvalidPlugin");
+						io.sendError(sender, io.translate("Plugin.Load.Error.InvalidPlugin"));
 						if (config.getDebug()) e.printStackTrace();
 					}catch (InvalidDescriptionException e) {
-						io.send(sender, "Plugin.Load.Error.InvalidDescription");
+						io.sendError(sender, io.translate("Plugin.Load.Error.InvalidDescription"));
+						if (config.getDebug()) e.printStackTrace();
+					} catch (FileNotFoundException e) {
+						io.sendError(sender, io.translate("Plugin.Load.Error.FileNotFound"));
 						if (config.getDebug()) e.printStackTrace();
 					}
 				}else {
 					if (args[1].equalsIgnoreCase("all")) {
 						try {
 							PluginManager.reloadPlugins();
-							io.send(sender, io.translate("Command.Plugin.Reload.Success.All"));
+							io.sendError(sender, io.translate("Command.Plugin.Reload.Success.All"));
 						}catch (UnknownDependencyException e) {
-							io.send(sender, "Plugin.Load.Error.UnknownDependency");
+							io.sendError(sender, io.translate("Plugin.Load.Error.UnknownDependency"));
 							if (config.getDebug()) e.printStackTrace();
 						}catch (InvalidPluginException e) {
-							io.send(sender, "Plugin.Load.Error.InvalidPlugin");
+							io.sendError(sender, io.translate("Plugin.Load.Error.InvalidPlugin"));
 							if (config.getDebug()) e.printStackTrace();
 						}catch (InvalidDescriptionException e) {
-							io.send(sender, "Plugin.Load.Error.InvalidDescription");
+							io.sendError(sender, io.translate("Plugin.Load.Error.InvalidDescription"));
+							if (config.getDebug()) e.printStackTrace();
+						} catch (FileNotFoundException e) {
+							io.sendError(sender, io.translate("Plugin.Load.Error.FileNotFound"));
 							if (config.getDebug()) e.printStackTrace();
 						}
 					}else if (PluginManager.getPlugin(args[1]) == null) {
@@ -61,13 +68,16 @@ public class PluginReloadCmd extends Command {
 							PluginManager.reloadPlugin(PluginManager.getPlugin(args[1]));
 							io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1]));
 						}catch (UnknownDependencyException e) {
-							io.send(sender, "Plugin.Load.Error.UnknownDependency");
+							io.sendError(sender, io.translate("Plugin.Load.Error.UnknownDependency"));
 							if (config.getDebug()) e.printStackTrace();
 						}catch (InvalidPluginException e) {
-							io.send(sender, "Plugin.Load.Error.InvalidPlugin");
+							io.sendError(sender, io.translate("Plugin.Load.Error.InvalidPlugin"));
 							if (config.getDebug()) e.printStackTrace();
 						}catch (InvalidDescriptionException e) {
-							io.send(sender, "Plugin.Load.Error.InvalidDescription");
+							io.sendError(sender, io.translate("Plugin.Load.Error.InvalidDescription"));
+							if (config.getDebug()) e.printStackTrace();
+						} catch (FileNotFoundException e) {
+							io.sendError(sender, io.translate("Plugin.Load.Error.FileNotFound"));
 							if (config.getDebug()) e.printStackTrace();
 						}
 					}
