@@ -103,7 +103,7 @@ public class BmCommandExecutor implements CommandExecutor {
 		registerCommand(new PluginLoadCmd());
 		//registerCommand(new PluginReloadCmd());
 		registerCommand(new PluginRestartCmd());
-		//registerCommand(new PluginUnloadCmd());
+		registerCommand(new PluginUnloadCmd());
 		registerCommand(new PluginUpdateCmd());
 		//Servercomands
 		registerAlias("server", new ServerCommand());

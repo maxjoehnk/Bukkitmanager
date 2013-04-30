@@ -1,14 +1,18 @@
 package org.efreak.bukkitmanager.pluginmanager;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.UnknownDependencyException;
 
 import org.efreak.bukkitmanager.Bukkitmanager;
@@ -140,7 +144,19 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 	
 	public static void unloadPlugin(Plugin plugin) {
 		if (plugin.isEnabled()) disablePlugin(plugin);
-		
+		try {
+			SimplePluginManager spm = (SimplePluginManager) Bukkit.getPluginManager();
+			Field field = SimplePluginManager.class.getField("lookupNames");
+			field.setAccessible(true);
+			Map<String, Plugin> lookupNames = (Map<String, Plugin>) field.get(spm);
+			field = SimplePluginManager.class.getField("plugins");
+			field.setAccessible(true);
+			List<Plugin> plugins = (List<Plugin>) field.get(spm);
+			lookupNames.remove(plugin.getName());
+			plugins.remove(plugin);
+		}catch(Exception e) {
+			if (config.getDebug()) e.printStackTrace();
+		}
 	}
 	
 	public static void unloadPlugins(Plugin[] plugins) {
