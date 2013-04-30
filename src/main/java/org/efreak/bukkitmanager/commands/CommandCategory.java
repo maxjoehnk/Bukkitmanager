@@ -37,16 +37,7 @@ public enum CommandCategory {
 	 */
 	
 	PLAYER,
-	
-	/**
-	 * 
-	 * All commands, which are concerned with Addons
-	 * Layout: /bm addon (label) (args) or /addon (label) (args)
-	 *  
-	 */
-	
-	ADDON,
-	
+
 	/**
 	 * 
 	 * All commands, which are concerned with the autobackup function

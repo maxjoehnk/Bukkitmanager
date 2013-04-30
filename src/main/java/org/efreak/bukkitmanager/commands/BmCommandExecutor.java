@@ -39,8 +39,6 @@ public class BmCommandExecutor implements CommandExecutor {
 		registerCommand(new HelpCmd());
 		//registerCommand(new FilebrowserCmd());
 		if (Bukkitmanager.firstRun) registerCommand(new InstallCmd());
-		//Addoncommands
-		//new AddonCommand();
 		//Autobackupcommands
 		registerAlias("autobackup", new AutobackupCommand());
 		//registerCommand(new AutobackupCmd());
