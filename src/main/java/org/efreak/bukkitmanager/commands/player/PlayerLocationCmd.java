@@ -30,7 +30,7 @@ public class PlayerLocationCmd extends Command {
 					io.send(sender, "World:    " + location.getWorld().getName(), false);
 					io.send(sender, "Position: {x=" + location.getBlockX() + "|y=" + location.getBlockY() + "|z=" + location.getBlockZ() + "}", false);
 					io.send(sender, "Chunk:    {x=" + location.getChunk().getX() + "|z=" + location.getChunk().getZ() + "}", false);
-				}else io.sendError(sender, "You don't have permission to do that");
+				}
 			}else if (args.length == 2) {
 				if (has(sender, "bm.player.location.other")) {
 					OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[1]);
@@ -41,7 +41,7 @@ public class PlayerLocationCmd extends Command {
 						io.send(sender, "Position: {x=" + location.getBlockX() + "|y=" + location.getBlockY() + "|z=" + location.getBlockZ() + "}", false);
 						io.send(sender, "Chunk:    {x=" + location.getChunk().getX() + "|z=" + location.getChunk().getZ() + "}", false);
 					}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
-				}else io.sendError(sender, "You don't have permission to do that");
+				}
 			}
 		}
 		return true;
