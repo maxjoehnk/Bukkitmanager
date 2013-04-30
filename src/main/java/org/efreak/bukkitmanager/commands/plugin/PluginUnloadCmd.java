@@ -12,7 +12,7 @@ import org.efreak.bukkitmanager.pluginmanager.PluginManager;
 public class PluginUnloadCmd extends Command {
 	
 	public PluginUnloadCmd() {
-		super("reload", "Plugin.Reload", "bm.plugin.unload", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
+		super("unload", "Plugin.Unload", "bm.plugin.unload", Arrays.asList("[plugin|all]"), CommandCategory.PLUGIN);
 	}
 
 	@Override
