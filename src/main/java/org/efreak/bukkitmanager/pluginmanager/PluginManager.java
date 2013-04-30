@@ -214,7 +214,7 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 		}
 		if (pluginFile == null) pluginFile = new File(FileHelper.getPluginDir(), plugin.getName() + ".jar");
 		unloadPlugin(plugin);
-		if (pluginFile != null && pluginFile.exists()) loadPlugin(pluginFile);
+		if (pluginFile != null && pluginFile.exists()) enablePlugin(loadPlugin(pluginFile));
 		else throw new FileNotFoundException();
 	}
 	
