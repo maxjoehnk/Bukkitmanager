@@ -22,8 +22,9 @@ public class PluginUnloadCmd extends Command {
 		else {
 			if (has(sender, "bm.plugin.unload")) {
 				if (args.length == 1) {
-					PluginManager.unloadPlugin(Bukkitmanager.getInstance());
-					io.send(sender, io.translate("Command.Plugin.Unload.Success").replaceAll("%plugin%", "Bukkitmanager"));
+					if (PluginManager.unloadPlugin(Bukkitmanager.getInstance())) 
+						io.send(sender, io.translate("Command.Plugin.Unload.Success").replaceAll("%plugin%", "Bukkitmanager"));
+					else io.sendError(sender, "Error unloading Plugin Bukkitmanager");
 				}else {
 					if (args[1].equalsIgnoreCase("all")) {
 						PluginManager.unloadPlugins();
@@ -32,8 +33,9 @@ public class PluginUnloadCmd extends Command {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
-						PluginManager.unloadPlugin(PluginManager.getPlugin(args[1]));
-						io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1]));
+						if (PluginManager.unloadPlugin(PluginManager.getPlugin(args[1]))) 
+							io.send(sender, io.translate("Command.Plugin.Unload.Success").replaceAll("%plugin%", args[1]));
+						else io.sendError(sender, "Error unloading Plugin " + args[1]);
 					}
 				}
 			}
