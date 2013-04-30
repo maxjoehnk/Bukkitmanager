@@ -1,6 +1,7 @@
 package org.efreak.bukkitmanager.pluginmanager;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.UnknownDependencyException;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
@@ -142,7 +144,7 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 		return Bukkitmanager.getInstance().getServer().getPluginManager().loadPlugins(dir);
 	}
 	
-	public static void unloadPlugin(Plugin plugin) {
+	public static boolean unloadPlugin(Plugin plugin) {
 		if (plugin.isEnabled()) disablePlugin(plugin);
 		try {
 			SimplePluginManager spm = (SimplePluginManager) Bukkit.getPluginManager();
@@ -156,7 +158,9 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 			plugins.remove(plugin);
 		}catch(Exception e) {
 			if (config.getDebug()) e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public static void unloadPlugins(Plugin[] plugins) {
@@ -192,24 +196,33 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 			if (filePage == null) return true;
 			if (filePage.getName().contains(plugin.getDescription().getVersion())) return true;
 			else return false;
-		}else return true;//throw new NullPointerException("Database doesn't contains the plugin " + plugin.getName());
+		}else return true;
 	}
 
 	public static File getUpdateFolder() {
 		return FileHelper.getUpdateDir();
 	}
 
-	public static void reloadPlugin(Plugin plugin) throws UnknownDependencyException, InvalidPluginException, InvalidDescriptionException {
-		File pluginFile = new File(""); // = plugin
+	public static void reloadPlugin(Plugin plugin) throws UnknownDependencyException, InvalidPluginException, InvalidDescriptionException, FileNotFoundException {
+		File pluginFile = null;
+		try {
+			Field field = JavaPlugin.class.getDeclaredField("file");
+			field.setAccessible(true);
+			pluginFile = (File) field.get(plugin);
+		}catch(Exception e) {
+			if (config.getDebug()) e.printStackTrace();
+		}
+		if (pluginFile == null) pluginFile = new File(FileHelper.getPluginDir(), plugin.getName() + ".jar");
 		unloadPlugin(plugin);
-		loadPlugin(pluginFile);
+		if (pluginFile != null && pluginFile.exists()) loadPlugin(pluginFile);
+		else throw new FileNotFoundException();
 	}
 	
-	public static void reloadPlugins(Plugin[] plugins) throws UnknownDependencyException, InvalidPluginException, InvalidDescriptionException {
+	public static void reloadPlugins(Plugin[] plugins) throws UnknownDependencyException, InvalidPluginException, InvalidDescriptionException, FileNotFoundException {
 		for (int i = 0; i < plugins.length; i++) reloadPlugin(plugins[i]);
 	}
 	
-	public static void reloadPlugins() throws UnknownDependencyException, InvalidPluginException, InvalidDescriptionException {
+	public static void reloadPlugins() throws UnknownDependencyException, InvalidPluginException, InvalidDescriptionException, FileNotFoundException {
 		Plugin[] plugins = Bukkitmanager.getInstance().getServer().getPluginManager().getPlugins();
 		for (int i = 0; i < plugins.length; i++) reloadPlugin(plugins[i]);
 	}
