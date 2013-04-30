@@ -25,8 +25,7 @@ public class AutomessageListCmd extends Command {
 		else {
 			if (has(sender, "bm.automessage.list")) {
 				List<String> list = msgReader.listMessages();
-				for (int i = 0; i < list.size(); i++) 
-					io.send(sender, list.get(i), false);
+				for (int i = 0; i < list.size(); i++) io.send(sender, list.get(i), false);
 			}
 		}
 		return true;

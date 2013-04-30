@@ -40,7 +40,6 @@ public class BukkitConfigCmd extends Command {
 		} catch (IOException e) {
 			if (config.getDebug()) e.printStackTrace();
 		}
-
 		if (args.length < 2) io.sendFewArgs(sender, "/bm bukkit config (entry|list) [value]");
 		else if (args.length > 3) io.sendManyArgs(sender, "/bm bukkit config (entry|list) [value]");
 		else {
