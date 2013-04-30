@@ -1,5 +1,7 @@
 package org.efreak.bukkitmanager.scripting.api;
 
+import java.io.FileNotFoundException;
+
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
@@ -42,6 +44,8 @@ public class APIPlugin {
 		} catch (InvalidPluginException e) {
 			if (config.getDebug()) e.printStackTrace();
 		} catch (InvalidDescriptionException e) {
+			if (config.getDebug()) e.printStackTrace();
+		} catch (FileNotFoundException e) {
 			if (config.getDebug()) e.printStackTrace();
 		}
 	}
