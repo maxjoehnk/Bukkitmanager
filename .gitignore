@@ -5,6 +5,7 @@
 
 # Build stuff
 /bin
+/target
 
 #Javadoc
 /doc
