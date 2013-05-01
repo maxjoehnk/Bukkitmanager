@@ -10,6 +10,8 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
@@ -252,4 +254,49 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 		return pluginList.toString();
 	}
 
+	public static SimpleCommandMap getCommandMap() {
+		try {
+			Field field = SimplePluginManager.class.getDeclaredField("commandMap");
+			field.setAccessible(true);
+			SimpleCommandMap scm = (SimpleCommandMap) field.get(Bukkitmanager.getInstance().getServer().getPluginManager());
+			return scm;
+		}catch (Exception e) {
+			if (config.getDebug()) e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static boolean registerCommand(String fallbackPrefix, Command cmd) {
+		return registerCommand(cmd.getName(), fallbackPrefix, cmd);
+	}
+	
+	public static boolean registerCommand(String label, String fallbackPrefix, Command cmd) {
+		SimpleCommandMap scm = getCommandMap();
+		if (scm != null) return scm.register(label, fallbackPrefix, cmd);
+		else return false;
+	}
+	
+	public static boolean unregisterCommand(String label) {
+		SimpleCommandMap scm = getCommandMap();
+		if (scm != null) {
+			try {
+				Field field = SimpleCommandMap.class.getDeclaredField("knownCommands");
+				field.setAccessible(true);
+				Map<String, Command> cmds = (Map<String, Command>) field.get(scm);
+				if (cmds.containsKey(label)) {
+					cmds.remove(label);
+					return true;
+				}else return true;
+			}catch (Exception e) {
+				if (config.getDebug()) e.printStackTrace();
+				return false;
+			}
+		}else return false;
+	}
+	
+	public static boolean replaceComand(String label, Command cmd) {
+		if (unregisterCommand(label)) {
+			return registerCommand("", cmd);
+		}else return false;
+	}
 }
