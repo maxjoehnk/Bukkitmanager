@@ -31,7 +31,7 @@ public class Alias extends org.bukkit.command.Command implements PluginIdentifia
 		description = desc;
 		usageMessage = "Use /bm help for more Help";
 		try {
-			if (config.getAlias(name)) ((org.bukkit.craftbukkit.v1_5_R2.CraftServer) plugin.getServer()).getCommandMap().register(name, this);
+			if (config.getAlias(name)) ((org.bukkit.craftbukkit.v1_5_R3.CraftServer) plugin.getServer()).getCommandMap().register(name, this);
 		}catch (Exception e) {
 			io.sendConsoleError("Error registering Commandalias '" + name + "'. Try updating Bukkitmanager!");
 			if (config.getDebug()) e.printStackTrace();
