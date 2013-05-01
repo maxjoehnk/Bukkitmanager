@@ -29,7 +29,7 @@ public class PlayerLastseenCmd extends Command {
 					if (player != null) io.send(sender, io.translate("Command.Player.Lastseen.Other").replaceAll("%player%", player.getName()).replaceAll("%lastseen%", String.valueOf(player.getLastPlayed())));
 					else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 				}
-			}else if (args.length == 1) io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
+			}else io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
 		}
 		return true;
 	}

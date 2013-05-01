@@ -46,7 +46,7 @@ public class PlayerHideCmd extends Command {
 						}
 					}else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 				}
-			}
+			}else io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
 		}
 		return false;
 	}

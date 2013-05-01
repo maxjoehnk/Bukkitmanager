@@ -29,7 +29,7 @@ public class PlayerFirstseenCmd extends Command {
 					if (player != null) io.send(sender, io.translate("Command.Player.Firstseen.Other").replaceAll("%player%", player.getName()).replaceAll("%firstseen%", String.valueOf(player.getFirstPlayed())));
 					else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 				}
-			}else if (args.length == 1) io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
+			}else io.sendError(sender, io.translate("Command.Player.SpecifyPlayer"));
 		}
 		return true;
 	}
