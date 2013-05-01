@@ -72,5 +72,14 @@ public enum CommandCategory {
 	 * 
 	 */
 	
-	SERVER
+	SERVER,
+	
+	/**
+	 * 
+	 * All commands which manage the worlds
+	 * Layout: /bm world (label) (args) or /world (label) (args)
+	 * 
+	 */
+	
+	WORLD
 }

@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 
 import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.IOManager;
-//import org.efreak.bukkitmanager.Commands.Addon.*;
 import org.efreak.bukkitmanager.commands.autobackup.*;
 import org.efreak.bukkitmanager.commands.automessage.*;
 import org.efreak.bukkitmanager.commands.autosave.*;
@@ -19,6 +18,7 @@ import org.efreak.bukkitmanager.commands.general.*;
 import org.efreak.bukkitmanager.commands.player.*;
 import org.efreak.bukkitmanager.commands.plugin.*;
 import org.efreak.bukkitmanager.commands.server.*;
+import org.efreak.bukkitmanager.commands.world.*;
 
 public class BmCommandExecutor implements CommandExecutor {
 	
@@ -105,11 +105,15 @@ public class BmCommandExecutor implements CommandExecutor {
 		registerCommand(new PluginRestartCmd());
 		registerCommand(new PluginUnloadCmd());
 		registerCommand(new PluginUpdateCmd());
-		//Servercomands
+		//Servercommands
 		registerAlias("server", new ServerCommand());
 		registerCommand(new ServerInfoCmd());
 		registerCommand(new ServerLoadCmd());
 		registerCommand(new ServerNetworkCmd());
+		//Worldcommands
+		registerAlias("world", new WorldCommand());
+		registerCommand(new WorldListCmd());
+		registerCommand(new WorldCreateCmd());
 		io.sendConsole(io.translate("Plugin.CommandsLoaded"));
 	}
 	
