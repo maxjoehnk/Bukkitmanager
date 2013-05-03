@@ -147,6 +147,16 @@ public class en extends Language {
 			set("Command.Player.Health.Add.Other", "%health% was added to the Health of %player%.");
 			set("Command.Player.Health.Remove.Your", "%health% was removed from your Health.");
 			set("Command.Player.Health.Remove.Other", "%health% was removed from the Health of %player%.");
+			set("Command.Player.Food.Error", "&cThe Foodlevel has to be an Integer!");
+			set("Command.Player.Food.TooMuch", "&cThis Foodlevel is to big! Choose a smaller one.");
+			set("Command.Player.Food.Get.Your", "Your Foodlevel is: %food%.");
+			set("Command.Player.Food.Get.Other", "The Foodlevel of %player% is: %food%.");
+			set("Command.Player.Food.Set.Your", "Your Foodlevel was set to: %food%.");
+			set("Command.Player.Food.Set.Other", "The Foodlevel of %player% was set to: %food%.");
+			set("Command.Player.Food.Add.Your", "%food% was added to your Foodlevel.");
+			set("Command.Player.Food.Add.Other", "%food% was added to the Foodlevel of %player%.");
+			set("Command.Player.Food.Remove.Your", "%food% was removed from your Foodlevel.");
+			set("Command.Player.Food.Remove.Other", "%food% was removed from the Foodlevel of %player%.");
 			set("Command.Player.Hide.You", "You were successfully hidden!");
 			set("Command.Player.Hide.Other", "%player% were successfully hidden!");
 			set("Command.Player.Hide.ByOther", "You were hidden by %player%!");

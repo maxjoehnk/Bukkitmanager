@@ -35,7 +35,7 @@ public class de extends Language {
 			set("Plugin.LoadingCommands", "&2Lade Befehle...");
 			set("Plugin.CommandsLoaded", "&aBefehle wurden erfolgreich geladen!");
 			set("Plugin.FirstRun", "Es sieht so aus als waere dies das erste Mal das Bukkitmanager ausgefuehrt wird. Um Bukkitmanager zu konfigurieren kannst du /bm install ausfuehren...");
-			set("Plugin.Debug", "Bukkitmanager wird im Debug Mode ausgeführt.");
+			set("Plugin.Debug", "Bukkitmanager wird im Debug Mode ausgefï¿½hrt.");
 
 			set("Plugin.Load.Error.UnknownDependency", "Das Plugin konnte nicht geladen werden: Unbekannte Abhaengigkeit");
 			set("Plugin.Load.Error.InvalidPlugin", "Das Plugin konnte nicht geladen werden: Fehlerhaftes Plugin");
@@ -43,7 +43,7 @@ public class de extends Language {
 			
 			set("PluginUpdater.FetchingPlugins", "Fetching plugins...");
 			set("PluginUpdater.CheckingUpdates", "Suche nach Updates...");
-			set("PluginUpdater.UpdatesAvailable", "Es gibt Updates für einige Plugins. Bitte führe /bm plugin update aus");
+			set("PluginUpdater.UpdatesAvailable", "Es gibt Updates fï¿½r einige Plugins. Bitte fï¿½hre /bm plugin update aus");
 			
 			set("AutoUpdater.NewVersion", "Es gibt eine neue Version: %name%");
 			set("AutoUpdater.Running", "Installiert ist %name%");
@@ -150,6 +150,16 @@ public class de extends Language {
 			set("Command.Player.Health.Add.Other", "%health% was added to the Health of %player%.");
 			set("Command.Player.Health.Remove.Your", "%health% was removed from your Health.");
 			set("Command.Player.Health.Remove.Other", "%health% was removed from the Health of %player%.");
+			set("Command.Player.Food.Error", "&cThe Foodlevel has to be an Integer!");
+			set("Command.Player.Food.TooMuch", "&cThis Foodlevel is to big! Choose a smaller one.");
+			set("Command.Player.Food.Get.Your", "Your Foodlevel is: %food%.");
+			set("Command.Player.Food.Get.Other", "The Foodlevel of %player% is: %food%.");
+			set("Command.Player.Food.Set.Your", "Your Foodlevel was set to: %food%.");
+			set("Command.Player.Food.Set.Other", "The Foodlevel of %player% was set to: %food%.");
+			set("Command.Player.Food.Add.Your", "%food% was added to your Foodlevel.");
+			set("Command.Player.Food.Add.Other", "%food% was added to the Foodlevel of %player%.");
+			set("Command.Player.Food.Remove.Your", "%food% was removed from your Foodlevel.");
+			set("Command.Player.Food.Remove.Other", "%food% was removed from the Foodlevel of %player%.");
 			set("Command.Player.Hide.You", "You were successfully hidden!");
 			set("Command.Player.Hide.Other", "%player% were successfully hidden!");
 			set("Command.Player.Hide.ByOther", "You were hidden by %player%!");
