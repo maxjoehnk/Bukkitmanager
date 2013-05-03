@@ -168,8 +168,8 @@ public class en extends Language {
 			set("Command.Player.Gamemode.Unknown", "&cUnknown Gamemode!");
 			set("Command.Player.Lastseen.Your", "You were lastseen on %lastseen_date% at %lastseen_time%");
 			set("Command.Player.Lastseen.Other", "%player% was lastseen on %lastseen_date% at %lastseen_time%");
-			set("Command.Player.Firstseen.Your", "You were firstseen on %firstseen%");
-			set("Command.Player.Firstseen.Other", "%player% was firstseen on %firstseen%");
+			set("Command.Player.Firstseen.Your", "You were firstseen on %firstseen_date% at %firstseen_time%");
+			set("Command.Player.Firstseen.Other", "%player% was firstseen on %firstseen_date% at %firstseen_time%");
 			set("Command.Player.Level.Error", "&cThe Level has to be an Integer!");
 			set("Command.Player.Level.Get.Your", "Your Level is: %level%.");
 			set("Command.Player.Level.Get.Other", "The Level of %player% is: %level%.");
