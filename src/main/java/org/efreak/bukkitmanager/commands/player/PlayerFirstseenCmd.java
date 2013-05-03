@@ -28,7 +28,9 @@ public class PlayerFirstseenCmd extends Command {
 					Calendar calendar = new GregorianCalendar();
 					calendar.setTimeInMillis(((OfflinePlayer) sender).getFirstPlayed());
 					String date = calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.YEAR);
-					String time = calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE);
+					String time = calendar.get(Calendar.HOUR_OF_DAY) + ":";
+					if (calendar.get(Calendar.MINUTE) < 10) time += "0";
+					time += calendar.get(Calendar.MINUTE);
 					io.send(sender, io.translate("Command.Player.Firstseen.Your").replaceAll("%firstseen_date%", date).replaceAll("%firstseen_time%", time));
 				}
 			}else if (args.length == 2) {
@@ -37,7 +39,9 @@ public class PlayerFirstseenCmd extends Command {
 					Calendar calendar = new GregorianCalendar();
 					calendar.setTimeInMillis(player.getFirstPlayed());
 					String date = calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.YEAR);
-					String time = calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE);
+					String time = calendar.get(Calendar.HOUR_OF_DAY) + ":";
+					if (calendar.get(Calendar.MINUTE) < 10) time += "0";
+					time += calendar.get(Calendar.MINUTE);
 					if (player != null) io.send(sender, io.translate("Command.Player.Firstseen.Other").replaceAll("%player%", player.getName()).replaceAll("%firstseen_date%", date).replaceAll("%firstseen_time%", time));
 					else io.sendError(sender, io.translate("Command.Player.UnknownPlayer"));
 				}
