@@ -95,6 +95,8 @@ public class Bukkitmanager extends JavaPlugin {
 		if (config.getBoolean("Autobackup.Enabled")) ThreadManager.startThread(ThreadType.AUTOBACKUP);
 		if (config.getBoolean("Autosave.Enabled")) ThreadManager.startThread(ThreadType.AUTOSAVE);
 		if (config.getBoolean("Automessage.Enabled")) ThreadManager.startThread(ThreadType.AUTOMESSAGE);
+		logManager = new LoggingManager();
+		logManager.initialize();
 		Database.registerDatabaseSystem("MySQL", new MySQL());
 		Database.registerDatabaseSystem("SQLite", new SQLite());
 		db = Database.getDatabaseBySystem(config.getString("Database.System"));
@@ -103,8 +105,6 @@ public class Bukkitmanager extends JavaPlugin {
 			db = Database.getDatabaseBySystem("SQLite");
 		}
 		db.init();
-		logManager = new LoggingManager();
-		logManager.initialize();
 		new HelpManager().init();
 		getServer().getPluginCommand("bm").setExecutor(new BmCommandExecutor());
 		getServer().getPluginManager().registerEvents(new BukkitListener(), this);

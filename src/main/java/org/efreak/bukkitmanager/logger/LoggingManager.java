@@ -71,4 +71,8 @@ public class LoggingManager {
 		arg1Logger.setupLogger();
 		logger.add(arg1Logger);
 	}
+	
+	public static boolean isDbLogging(String path) {
+		return (LoggerConfiguration.get(path + ".Enabled") && LoggerConfiguration.get(path + ".Database"));
+	}
 }

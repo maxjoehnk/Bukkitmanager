@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import org.efreak.bukkitmanager.logger.LoggingManager;
+
 public abstract class Database {
 
 	protected Connection dbConn;
@@ -44,70 +46,84 @@ public abstract class Database {
 				", location_y int NOT NULL" +
 				", location_z int NOT NULL");
 		//Blockevents
-		createTable("Log_BlockBreakEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockBreak")) 
+			createTable("Log_BlockBreakEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", player varchar(255) NOT NULL");
-		createTable("Log_BlockBurnEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockBurn")) 
+			createTable("Log_BlockBurnEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL");
-		createTable("Log_BlockCanBuildEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockCanBuild")) 
+			createTable("Log_BlockCanBuildEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", buildable Boolean NOT NULL" +
 				", material varchar(255) NOT NULL" +
 				", materialId Integer NOT NULL");
-		createTable("Log_BlockDamageEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockDamage")) 
+			createTable("Log_BlockDamageEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", player varchar(255) NOT NULL" +
 				", instaBreak Boolean NOT NULL" +
 				", itemInHand varchar(255) NOT NULL");
-		createTable("Log_BlockDispenseEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockDispense")) 
+			createTable("Log_BlockDispenseEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", item varchar(255) NOT NULL" +
 				", velocity varchar(255) NOT NULL");
-		createTable("Log_BlockFadeEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockFade")) 
+			createTable("Log_BlockFadeEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", newState varchar(255) NOT NULL");
-		createTable("Log_BlockFormEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockForm")) 
+			createTable("Log_BlockFormEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", newState varchar(255) NOT NULL");
-		createTable("Log_BlockFromToEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockFromTo")) 
+			createTable("Log_BlockFromToEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", face varchar(255) NOT NULL" +
 				", toBlock varchar(255) NOT NULL");
-		createTable("Log_BlockGrowEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockGrow")) 
+			createTable("Log_BlockGrowEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", newState varchar(255) NOT NULL");
-		createTable("Log_BlockIgniteEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockIgnite")) 
+			createTable("Log_BlockIgniteEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", igniteCause varchar(255) NOT NULL" +
 				", player varchar(255) NOT NULL");
-		createTable("Log_BlockPhysicsEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockPhysics")) 
+			createTable("Log_BlockPhysicsEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", changedType varchar(255) NOT NULL" +
 				", changedTypeId Integer NOT NULL");
-		createTable("Log_BlockPistonExtendEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockPistonExtend")) 
+			createTable("Log_BlockPistonExtendEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", blocks varchar(255) NOT NULL" +
 				", direction varchar(255) NOT NULL" +
 				", length Integer NOT NULL" +
 				", sticky Boolean NOT NULL");
-		createTable("Log_BlockPistonRetractEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockPistonRetract")) 
+			createTable("Log_BlockPistonRetractEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", retractLocation varchar(255) NOT NULL" +
 				", sticky Boolean NOT NULL" +
 				", direction varchar(255) NOT NULL");
-		createTable("Log_BlockPlaceEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockPlace")) 
+			createTable("Log_BlockPlaceEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", player varchar(255) NOT NULL" +
@@ -116,24 +132,29 @@ public abstract class Database {
 				", blockReplacedState varchar(255) NOT NULL" +
 				", itemInHand varchar(255) NOT NULL" +
 				", canBuild Boolean NOT NULL");
-		createTable("Log_BlockRedstoneEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockRedstone")) 
+			createTable("Log_BlockRedstoneEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", newCurrent Integer NOT NULL" +
 				", oldCurrent Integer NOT NULL");
-		createTable("Log_BlockSpreadEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.BlockSpread")) 
+			createTable("Log_BlockSpreadEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", newState varchar(255) NOT NULL" +
 				", source varchar(255) NOT NULL");
-		createTable("Log_EntityBlockFormEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.EntityBlockForm")) 
+			createTable("Log_EntityBlockFormEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", newState varchar(255) NOT NULL" +
 				", entity varchar(255) NOT NULL");
-		createTable("Log_LeavesDecayEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.LeavesDecay")) 
+			createTable("Log_LeavesDecayEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL");
-		createTable("Log_SignChangeEvent", "time varchar(255) NOT NULL" +
+		if (LoggingManager.isDbLogging("Block.SignChange")) 
+			createTable("Log_SignChangeEvent", "time varchar(255) NOT NULL" +
 				", block varchar(255) NOT NULL" +
 				", cancelled Boolean NOT NULL" +
 				", lines varchar(255) NOT NULL" +
