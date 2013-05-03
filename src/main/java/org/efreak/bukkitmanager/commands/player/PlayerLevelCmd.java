@@ -20,7 +20,7 @@ public class PlayerLevelCmd extends Command {
 	@Override
 	public boolean execute(CommandSender sender, String[] args) {
 		if (args.length < 2) io.sendFewArgs(sender, "/bm player level (get|set) [level] [player]");
-		else if (args.length > 3) io.sendManyArgs(sender, "/bm player level (get|set) [level] [player]");
+		else if (args.length > 4) io.sendManyArgs(sender, "/bm player level (get|set) [level] [player]");
 		else {
 			if (args[1].equalsIgnoreCase("get")) {
 				if (args.length == 2 && sender instanceof Player) {
