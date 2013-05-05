@@ -59,6 +59,14 @@
       <id>turt2live-repo</id>
       <url>http://repo.turt2live.com</url>
     </repository>
+    <repository>
+      <id>milkbowl-repo</id>
+      <url>http://ci.milkbowl.net/plugin/repository/everything/</url>
+    </repository>
+    <!--<repository>
+      <id>tehkode-repo</id>
+      <url>http://repo.tehkode.ru/browse/ru.tehkode</url>
+    </repository>-->
   </repositories>
   
   <dependencies>
@@ -81,16 +89,17 @@
       <groupId>com.turt2live.metrics</groupId>
       <artifactId>MetricsExtension</artifactId>
       <version>0.0.4-SNAPSHOT</version>
-      <type>jar</type>
     </dependency>
     <dependency>
-	  <groupId>net.milkbowl.vault</groupId>
-	  <artifactId>Vault</artifactId>
-	  <version>1.2.15-SNAPSHOT</version>
-	  <scope>system</scope>
-	  <systemPath>${project.basedir}/lib/plugins/Vault.jar</systemPath>
-	  <type>jar</type>
-	</dependency>
+      <groupId>net.milkbowl.vault</groupId>
+      <artifactId>Vault</artifactId>
+      <version>1.2.26-SNAPSHOT</version>
+    </dependency>
+    <!--<dependency>
+      <groupId>ru.tehkode</groupId>
+      <artifactId>PermissionsEx</artifactId>
+      <version>1.19.5</version>
+    </dependency>-->
 	<dependency>
 	  <groupId>ru.tehkode</groupId>
 	  <artifactId>PermissionsEx</artifactId>
@@ -128,6 +137,15 @@
       </resource>
     </resources>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
