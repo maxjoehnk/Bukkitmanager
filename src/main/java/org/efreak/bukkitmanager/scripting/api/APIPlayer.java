@@ -14,5 +14,12 @@ public class APIPlayer {
 		return player.isOnline();
 	}
 	
+	public int getHealth() {
+		return player.getHealth();
+	}
+	
+	public float getExp() {
+		return player.getExp();
+	}	
 	//TODO: Add more APIPlayer Methods
 }

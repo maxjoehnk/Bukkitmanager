@@ -50,9 +50,12 @@ public class APIPlugin {
 		}
 	}
 	
+	public void unload() {
+		PluginManager.unloadPlugin(plugin);
+	}
+	
 	public boolean isEnabled() {
 		return PluginManager.isPluginEnabled(plugin);
 	}
-	
 	//TODO: Add more APIPlugin Methods
 }
