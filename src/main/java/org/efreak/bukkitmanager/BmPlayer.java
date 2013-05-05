@@ -1,5 +1,7 @@
 package org.efreak.bukkitmanager;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
@@ -51,11 +53,23 @@ public class BmPlayer implements OfflinePlayer {
 		return player.getBedSpawnLocation();
 	}
 
+	public Calendar getFirstPlayedDateTime() {
+		Calendar cal = new GregorianCalendar();
+		cal.setTimeInMillis(player.getFirstPlayed());
+		return cal;
+	}
+	
 	@Override
 	public long getFirstPlayed() {
 		return player.getFirstPlayed();
 	}
 
+	public Calendar getLastPlayedDateTime() {
+		Calendar cal = new GregorianCalendar();
+		cal.setTimeInMillis(player.getLastPlayed());
+		return cal;
+	}
+	
 	@Override
 	public long getLastPlayed() {
 		return player.getLastPlayed();
