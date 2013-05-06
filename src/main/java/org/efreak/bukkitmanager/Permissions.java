@@ -78,20 +78,7 @@ public class Permissions {
 	}
 	
 	public static boolean has(CommandSender sender, String perm, String cmd, boolean log) {
-		if (sender instanceof ConsoleCommandSender) return true;
-		if (sender.isOp()) return true;
-		boolean hasPerm = false;
-		if (!usePerms) hasPerm = sender.isOp();
-		else {
-			if (forceSuper) hasPerm = sender.hasPermission(perm);
-			else if (permSystem.equalsIgnoreCase("Vault")) hasPerm = vault.has(sender, perm);
-			else if (permSystem.equalsIgnoreCase("GroupManager")) hasPerm = groupManager.getWorldsHolder().getWorldPermissions(((Player) sender)).has((Player) sender, perm);
-			else if (permSystem.equalsIgnoreCase("PermissionsBukkit")) hasPerm = sender.hasPermission(perm);
-			else if (permSystem.equalsIgnoreCase("PermissionsEx")) hasPerm = pex.has((Player) sender, perm);
-			else if (permSystem.equalsIgnoreCase("bPermissions")) hasPerm = de.bananaco.bpermissions.imp.Permissions.hasPermission((Player) sender, perm);
-			else if (permSystem.equalsIgnoreCase("zPermissions")) hasPerm = sender.hasPermission(perm);
-			else if (permSystem.equalsIgnoreCase("DroxPerms")) hasPerm = sender.hasPermission(perm);
-		}
+		boolean hasPerm = has(sender, perm);
 		if (hasPerm == false) {
 			io.send(sender, io.translate("Command.NoPerm.Player"));
 			if (log) io.sendConsoleWarning(io.translate("Command.NoPerm.Console").replaceAll("%cmd%", cmd).replaceAll("%player%", sender.getName()));
