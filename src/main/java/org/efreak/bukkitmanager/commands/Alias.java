@@ -32,8 +32,7 @@ public class Alias extends org.bukkit.command.Command implements PluginIdentifia
 		description = desc;
 		usageMessage = "Use /bm help for more help";
 		if (config.getAlias(name)) {
-			if (!PluginManager.registerCommand(name, this));
-			io.sendConsoleWarning("Error registering Alias " + name);
+			if (!PluginManager.registerCommand(name, this))	io.sendConsoleWarning("Error registering Alias " + name);
 		}
 	}
 
