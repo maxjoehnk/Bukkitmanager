@@ -279,6 +279,10 @@ public class BmPlayer implements OfflinePlayer {
 		if (isOnline()) getPlayer().teleport(location, cause);
 	}
 	
+	public boolean hasPerm(String node) {
+		return Permissions.has(player.getPlayer(), node);
+	}
+	
 	public String getRemotePassword() {
 		return db.queryString("SELECT `remote_password` FROM `player` WHERE `name`='" + getName() + "';", "remote_password");
 	}

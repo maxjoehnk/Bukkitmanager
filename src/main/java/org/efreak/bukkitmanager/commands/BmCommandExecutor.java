@@ -79,6 +79,7 @@ public class BmCommandExecutor implements CommandExecutor {
 		registerCommand(new PlayerFirstseenCmd());
 		registerCommand(new PlayerFoodCmd());
 		registerCommand(new PlayerGamemodeCmd());
+		registerCommand(new PlayerHasCmd());
 		registerCommand(new PlayerHealthCmd());
 		registerCommand(new PlayerHideCmd());
 		registerCommand(new PlayerInfoCmd());

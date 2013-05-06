@@ -73,6 +73,7 @@ public class HelpFile {
 		update("Player.Firstseen", "Gets the first Online Time of the Player");
 		update("Player.Food", "Modify the Foodlevel of a Players");
 		update("Player.Gamemode", "Changes the Gamemode");
+		update("Player.Has", "Check if a Player has a Permission");
 		update("Player.Health", "Modify the Health of a Players");
 		update("Player.Hide", "Hides a Player");
 		update("Player.Info", "Displays Informations about a Player");
