@@ -29,11 +29,11 @@ public class PluginUnloadCmd extends Command {
 					if (args[1].equalsIgnoreCase("all")) {
 						PluginManager.unloadPlugins();
 						io.send(sender, io.translate("Command.Plugin.Reload.Success.All"));
-					}else if (PluginManager.getPlugin(args[1]) == null) {
+					}else if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
-						if (PluginManager.unloadPlugin(PluginManager.getPlugin(args[1]))) 
+						if (PluginManager.unloadPlugin(PluginManager.getPluginIgnoreCase(args[1]))) 
 							io.send(sender, io.translate("Command.Plugin.Unload.Success").replaceAll("%plugin%", args[1]));
 						else io.sendError(sender, "Error unloading Plugin " + args[1]);
 					}

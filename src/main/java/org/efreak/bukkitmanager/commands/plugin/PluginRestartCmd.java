@@ -28,13 +28,13 @@ public class PluginRestartCmd extends Command {
 					if (args[1].equalsIgnoreCase("all")) {
 						PluginManager.restartPlugins();
 						io.send(sender, io.translate("Command.Plugin.Restart.Success.All"));
-					}else if (PluginManager.getPlugin(args[1]) == null) {
+					}else if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
 						if (args[1] == "Spout") io.sendWarning(sender, io.translate("Command.Plugin.Restart.Spout"));
 						else {
-							PluginManager.restartPlugin(PluginManager.getPlugin(args[1]));
+							PluginManager.restartPlugin(PluginManager.getPluginIgnoreCase(args[1]));
 							io.send(sender, io.translate("Command.Plugin.Restart.Success").replaceAll("%plugin%", args[1]));
 						}
 					}

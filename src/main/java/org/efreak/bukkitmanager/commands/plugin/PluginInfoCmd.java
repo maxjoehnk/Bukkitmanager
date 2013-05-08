@@ -23,11 +23,11 @@ public class PluginInfoCmd extends Command {
 		else {
 			if (has(sender, "bm.plugin.info")) {
 				if (args.length == 2) {
-					if (PluginManager.getPlugin(args[1]) == null) {
+					if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, "This Plugin does not exists.");
 						return true;
 					}
-					PluginDescriptionFile pdfFile = PluginManager.getPlugin(args[1]).getDescription();
+					PluginDescriptionFile pdfFile = PluginManager.getPluginIgnoreCase(args[1]).getDescription();
 					io.send(sender, ChatColor.YELLOW + "--------------" + ChatColor.WHITE + " Plugin Info " + ChatColor.YELLOW + "--------------", false);
 					io.send(sender, ChatColor.RED + "Name:          " + ChatColor.DARK_RED + pdfFile.getName(), false);
 					io.send(sender, ChatColor.RED + "Version:       " + ChatColor.DARK_RED + pdfFile.getVersion(), false);

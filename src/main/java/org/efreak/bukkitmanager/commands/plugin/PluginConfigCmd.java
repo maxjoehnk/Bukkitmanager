@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -28,12 +27,12 @@ public class PluginConfigCmd extends Command {
 		else {
 			if (args.length == 3 && args [2].equalsIgnoreCase("list")) {
 				if (has(sender, "bm.plugin.config.get")) {
-					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
+					if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 						return true;
 					}else {
-						Plugin plugin = PluginManager.getPlugin(args[1]);
+						Plugin plugin = PluginManager.getPluginIgnoreCase(args[1]);
 						File pluginFolder = plugin.getDataFolder();
 						if (new File(pluginFolder + File.separator + "config.yml").exists()) {
 							FileConfiguration pluginConfig = plugin.getConfig();
@@ -64,12 +63,12 @@ public class PluginConfigCmd extends Command {
 				}
 			}else if (args.length == 3) {
 				if (has(sender, "bm.plugin.config.get")) {
-					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
+					if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 						return true;
 					}else {
-						Plugin plugin = PluginManager.getPlugin(args[1]);
+						Plugin plugin = PluginManager.getPluginIgnoreCase(args[1]);
 						File pluginFolder = plugin.getDataFolder();
 						if (new File(pluginFolder + File.separator + "config.yml").exists()) {
 							FileConfiguration pluginConfig = plugin.getConfig();
@@ -90,12 +89,12 @@ public class PluginConfigCmd extends Command {
 				}
 			}else if (args.length == 4) {
 				if (has(sender, "bm.plugin.config.set")) {
-					if (Bukkit.getServer().getPluginManager().getPlugin(args[1]) == null) {
+					if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.sendError(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 						return true;
 					}else {
-						Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(args[1]);
+						Plugin plugin = PluginManager.getPluginIgnoreCase(args[1]);
 						File pluginFolder = plugin.getDataFolder();
 						if (new File(pluginFolder + File.separator + "config.yml").exists()) {
 							FileConfiguration pluginConfig = plugin.getConfig();

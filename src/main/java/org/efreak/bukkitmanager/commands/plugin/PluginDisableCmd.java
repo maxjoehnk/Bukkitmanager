@@ -28,17 +28,17 @@ public class PluginDisableCmd extends Command {
 					PluginManager.disablePlugins();
 					io.send(sender, io.translate("Command.Plugin.Disable.Success.All"));
 				}else {
-					if (PluginManager.getPlugin(args[1]) == null) {
+					if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
-						if (!PluginManager.getPlugin(args[1]).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Disable.Already"));
+						if (!PluginManager.getPluginIgnoreCase(args[1]).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Disable.Already"));
 						else {
 							if (args[1] == "Spout") {
 								io.sendWarning(sender, io.translate("Command.Plugin.Disable.Spout"));
 								return true;
 							}else {
-								PluginManager.disablePlugin(PluginManager.getPlugin(args[1]));
+								PluginManager.disablePlugin(PluginManager.getPluginIgnoreCase(args[1]));
 								io.send(sender, io.translate("Command.Plugin.Disable.Success").replaceAll("%plugin%", args[1]));
 							}
 						}

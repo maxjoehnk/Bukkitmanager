@@ -38,7 +38,7 @@ public class PluginUpdateCmd extends Command{
 			}else if (args[1].equalsIgnoreCase("all")) {
 				PluginManager.updatePlugins();
 			}else {
-				Plugin plugin = PluginManager.getPlugin(args[1]);
+				Plugin plugin = PluginManager.getPluginIgnoreCase(args[1]);
 				if (plugin != null) {
 					boolean uptodate = PluginManager.checkPlugin(plugin);
 					if (uptodate) io.send(sender, io.translate("PluginUpdater.UpToDate").replaceAll("%plugin%", plugin.getName()));
@@ -70,7 +70,7 @@ class UpdatePluginPrompt extends BooleanPrompt {
 	@Override
 	protected Prompt acceptValidatedInput(ConversationContext context, boolean value) {
 		if (value) {
-			PluginManager.updatePlugin(PluginManager.getPlugin(pluginName));
+			PluginManager.updatePlugin(PluginManager.getPluginIgnoreCase(pluginName));
 		}
 		return Prompt.END_OF_CONVERSATION;
 	}

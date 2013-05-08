@@ -23,13 +23,13 @@ public class PluginEnableCmd extends Command {
 					PluginManager.enablePlugins();
 					io.send(sender, io.translate("Command.Plugin.Enable.Success.All"));
 				}else {
-					if (PluginManager.getPlugin(args[1]) == null) {
+					if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
-						if (PluginManager.getPlugin(args[1]).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Enable.Already"));
+						if (PluginManager.getPluginIgnoreCase(args[1]).isEnabled()) io.sendError(sender, io.translate("Command.Plugin.Enable.Already"));
 						else {
-							PluginManager.enablePlugin(PluginManager.getPlugin(args[1]));
+							PluginManager.enablePlugin(PluginManager.getPluginIgnoreCase(args[1]));
 							io.send(sender, io.translate("Command.Plugin.Enable.Success").replaceAll("%plugin%", args[1]));
 						}
 					}

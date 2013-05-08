@@ -60,12 +60,12 @@ public class PluginReloadCmd extends Command {
 							io.sendError(sender, io.translate("Plugin.Load.Error.FileNotFound"));
 							if (config.getDebug()) e.printStackTrace();
 						}
-					}else if (PluginManager.getPlugin(args[1]) == null) {
+					}else if (PluginManager.getPluginIgnoreCase(args[1]) == null) {
 						io.sendError(sender, io.translate("Command.Plugin.DoesntExists"));
 						io.send(sender, io.translate("Command.Plugin.Available").replaceAll("%pluginlist%", PluginManager.getPluginList()));
 					}else {
 						try {
-							PluginManager.reloadPlugin(PluginManager.getPlugin(args[1]));
+							PluginManager.reloadPlugin(PluginManager.getPluginIgnoreCase(args[1]));
 							io.send(sender, io.translate("Command.Plugin.Reload.Success").replaceAll("%plugin%", args[1]));
 						}catch (UnknownDependencyException e) {
 							io.sendError(sender, io.translate("Plugin.Load.Error.UnknownDependency"));
