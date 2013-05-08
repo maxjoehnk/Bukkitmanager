@@ -26,8 +26,9 @@ import org.efreak.bukkitmanager.pluginmanager.updater.FilePage;
 import org.efreak.bukkitmanager.pluginmanager.updater.PluginPage;
 import org.efreak.bukkitmanager.util.FileHelper;
 
-public class PluginManager {//implements org.bukkit.plugin.PluginManager {
+public class PluginManager {
 	
+	private static HashMap<String, Plugin> plugins;
 	private static HashMap<Plugin, PluginPage> pluginPages;
 	private static HashMap<Plugin, FilePage> filePages;
 	private static Configuration config;
@@ -41,6 +42,8 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 	}
 	
 	public void init() {
+		plugins = new HashMap<String, Plugin>();
+		updateLowerCasePlugins();
 		pluginPages = new HashMap<Plugin, PluginPage>();
 		filePages = new HashMap<Plugin, FilePage>();
 		if (config.getBoolean("PluginUpdater.Enabled")) {
@@ -124,6 +127,19 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 
 	public static Plugin getPlugin(String plugin) {
 		return Bukkitmanager.getInstance().getServer().getPluginManager().getPlugin(plugin);
+	}
+	
+	public static Plugin getPluginIgnoreCase(String name) {
+		name = name.toLowerCase();
+		if (plugins.containsKey(name)) {
+			Plugin plugin = plugins.get(name);
+			if (getPlugin(plugin.getName()) != null) return plugin;
+			else plugins.remove(name);
+		}else {
+			updateLowerCasePlugins();
+			if (plugins.containsKey(name)) return plugins.get(name);
+		}
+		return null;
 	}
 
 	public static Plugin[] getPlugins() {
@@ -298,5 +314,12 @@ public class PluginManager {//implements org.bukkit.plugin.PluginManager {
 		if (unregisterCommand(label)) {
 			return registerCommand("", cmd);
 		}else return false;
+	}
+	
+	private static void updateLowerCasePlugins() {
+		plugins.clear();
+		for (Plugin plugin : getPlugins()) {
+			plugins.put(plugin.getName().toLowerCase(), plugin);
+		}
 	}
 }
