@@ -166,7 +166,9 @@ public class PluginManager {
 		if (plugin.isEnabled()) disablePlugin(plugin);
 		try {
 			Map<String, Map<String, Object>> cmds = plugin.getDescription().getCommands();
-			for (String cmdLabel : cmds.keySet()) unregisterCommand(cmdLabel);
+			if (cmds != null) {
+				for (String cmdLabel : cmds.keySet()) unregisterCommand(cmdLabel);
+			}
 			SimplePluginManager spm = (SimplePluginManager) Bukkit.getPluginManager();
 			Field field = SimplePluginManager.class.getDeclaredField("lookupNames");
 			field.setAccessible(true);
