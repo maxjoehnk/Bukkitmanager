@@ -3,7 +3,6 @@ package org.efreak.bukkitmanager.util;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
 import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.IOManager;

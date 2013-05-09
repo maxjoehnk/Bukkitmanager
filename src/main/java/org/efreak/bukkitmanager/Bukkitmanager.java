@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.efreak.bukkitmanager.addons.BukkitmanagerAddon;
@@ -26,6 +24,7 @@ import org.efreak.bukkitmanager.remoteserver.RemoteServer;
 import org.efreak.bukkitmanager.remoteserver.commands.*;
 import org.efreak.bukkitmanager.scripting.ScriptManager;
 import org.efreak.bukkitmanager.util.ChatFilter;
+import org.efreak.bukkitmanager.util.FileUtils;
 //import org.efreak.bukkitmanager.scoreboards.ScoreboardManager;
 import org.efreak.bukkitmanager.util.FileHelper;
 

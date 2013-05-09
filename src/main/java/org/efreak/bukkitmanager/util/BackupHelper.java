@@ -8,10 +8,10 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
+
 import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.IOManager;
@@ -70,7 +70,7 @@ public class BackupHelper {
 			if (config.getBoolean("Autobackup.PostExecution.Enabled")) Runtime.getRuntime().exec(new File(FileHelper.getPluginDir(), config.getString("Autobackup.PostExecution.File")).toString());
 			if (config.getInt("Autobackup.KeepBackups") == 0) removeOld(0);
 			if (config.getBoolean("Autobackup.Notification")) io.broadcast(io.translate("Autobackup.Notification.Finish"));		
-			if (config.getBoolean("Notifications.Autobackup.Finished")) NotificationsHandler.notify("Bukkitmanager", "Autobackup Finished", "Size: " + Downloader.readableSize(FileUtils.sizeOf(backupFile)));
+			if (config.getBoolean("Notifications.Autobackup.Finished")) NotificationsHandler.notify("Bukkitmanager", "Autobackup Finished", "Size: " + Downloader.readableSize(backupFile.length()));
 		}catch (IOException e) {
 			if (config.getDebug()) e.printStackTrace();
 		}finally {
