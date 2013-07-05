@@ -14,7 +14,7 @@ public class APIPlayer {
 		return player.isOnline();
 	}
 	
-	public int getHealth() {
+	public double getHealth() {
 		return player.getHealth();
 	}
 	
