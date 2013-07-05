@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class PlayerCommands extends RemoteCommandHandler {
 
 	@RemoteCommand(name="playerlist")
-	public String worldlist() {
+	public String playerlist() {
 		JSONArray json = new JSONArray();
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			try {
