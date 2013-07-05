@@ -209,19 +209,19 @@ public class BmPlayer implements OfflinePlayer {
 		if (isSyncEnabled()) db.update("UPDATE `player` SET `gamemode`='" + value + "' WHERE `name`='" + getName() + "';");		
 	}
 	
-	public int getMaxHealth() {
+	public double getMaxHealth() {
 		if (isOnline()) return getPlayer().getMaxHealth();
-		else if (isSyncEnabled()) return db.queryInt("SELECT `max_health` FROM `player` WHERE `name`='" + getName() + "';", "max_health");
+		else if (isSyncEnabled()) return db.queryDouble("SELECT `max_health` FROM `player` WHERE `name`='" + getName() + "';", "max_health");
 		else return 20;
 	}
 	
-	public int getHealth() {
+	public double getHealth() {
 		if (isOnline()) return getPlayer().getHealth();
-		else if (isSyncEnabled()) return db.queryInt("SELECT `health` FROM `player` WHERE `name`='" + getName() + "';", "health");
+		else if (isSyncEnabled()) return db.queryDouble("SELECT `health` FROM `player` WHERE `name`='" + getName() + "';", "health");
 		else return 0;
 	}
 	
-	public void setHealth(int value) {
+	public void setHealth(double value) {
 		if (isOnline()) getPlayer().setHealth(value);
 		else if (isSyncEnabled()) setSynced(false);
 		if (isSyncEnabled()) db.update("UPDATE `player` SET `health`='" + value + "' WHERE `name`='" + getName() + "';");		
@@ -330,7 +330,7 @@ public class BmPlayer implements OfflinePlayer {
 			setPlayerListName(db.queryString("SELECT `listname` FROM `player` WHERE `name`='" + getName() + "';", "listname"));
 			setLevel(db.queryInt("SELECT `level` FROM `player` WHERE `name`='" + getName() + "';", "level"));
 			setExp(db.queryFloat("SELECT `exp` FROM `player` WHERE `name`='" + getName() + "';", "exp"));
-			setHealth(db.queryInt("SELECT `health` FROM `player` WHERE `name`='" + getName() + "';", "health"));
+			setHealth(db.queryDouble("SELECT `health` FROM `player` WHERE `name`='" + getName() + "';", "health"));
 			setFoodLevel(db.queryInt("SELECT `foodlevel` FROM `player` WHERE `name`='" + getName() + "';", "foodlevel"));
 			//setGameMode(GameMode.valueOf(db.queryString("SELECT `gamemode` FROM `player` WHERE `name`='" + getName() + "';", "gamemode")));
 			getPlayer().saveData();
