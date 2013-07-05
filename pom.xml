@@ -2,7 +2,7 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.efreak.bukkitmanager</groupId>
+  <groupId>org.efreak.bukkit</groupId>
   <artifactId>bukkitmanager</artifactId>
   <version>Beta 1.5</version>
   
@@ -72,9 +72,8 @@
   <dependencies>
     <dependency>
       <groupId>org.bukkit</groupId>
-      <artifactId>craftbukkit</artifactId>
-      <version>1.5.2-R0.1-SNAPSHOT</version>
-      <type>jar</type>
+      <artifactId>bukkit</artifactId>
+      <version>1.6.1-R0.1-SNAPSHOT</version>
     </dependency>
 	<dependency>
       <groupId>org.jsoup</groupId>
@@ -138,6 +137,7 @@
     <resources>
       <resource>
         <directory>src/main/resources</directory>
+        <filtering>true</filtering>
       </resource>
     </resources>
     <plugins>
