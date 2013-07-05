@@ -38,7 +38,7 @@ public class PlayerHealthCmd extends Command {
 				if (args.length == 3 && sender instanceof Player) {
 					if (has(sender, "bm.player.health.set.your")) {
 						try {
-							new BmPlayer((OfflinePlayer) sender).setHealth(new Integer(args[2]));
+							new BmPlayer((OfflinePlayer) sender).setHealth(new Double(args[2]));
 							io.send(sender, io.translate("Command.Player.Health.Set.Your").replaceAll("%health%", args[2]));
 						}catch (NumberFormatException e) {
 							io.sendError(sender, io.translate("Command.Player.Health.Error"));
@@ -51,7 +51,7 @@ public class PlayerHealthCmd extends Command {
 						if (offPlayer != null) {
 							BmPlayer player = new BmPlayer(offPlayer);
 							try {
-								player.setHealth(new Integer(args[2]));
+								player.setHealth(new Double(args[2]));
 								io.send(sender, io.translate("Command.Player.Health.Set.Other").replaceAll("%player%", player.getName()).replaceAll("%health%", args[2]));
 							}catch (NumberFormatException e) {
 								io.sendError(sender, io.translate("Command.Player.Health.Error"));
@@ -65,7 +65,7 @@ public class PlayerHealthCmd extends Command {
 					if (has(sender, "bm.player.health.add.your")) {
 						BmPlayer player = new BmPlayer((OfflinePlayer) sender);
 						try {
-							int newHealth = player.getHealth() + new Integer(args[2]);
+							double newHealth = player.getHealth() + new Double(args[2]);
 							if (newHealth > player.getMaxHealth()) {
 								io.sendError(sender, io.translate("Command.Player.Health.TooMuch"));
 								return true;
@@ -83,7 +83,7 @@ public class PlayerHealthCmd extends Command {
 						if (offPlayer != null) {
 							BmPlayer player = new BmPlayer(offPlayer);
 							try {
-								int newHealth = player.getHealth() + new Integer(args[2]);
+								double newHealth = player.getHealth() + new Double(args[2]);
 								if (newHealth > player.getMaxHealth()) {
 									io.sendError(sender, io.translate("Command.Player.Health.TooMuch"));
 									return true;
@@ -102,7 +102,7 @@ public class PlayerHealthCmd extends Command {
 					if (has(sender,  "bm.player.health.remove.your")) {
 						BmPlayer player = new BmPlayer((OfflinePlayer) sender);
 						try {
-							int newHealth = player.getHealth() - new Integer(args[2]);
+							double newHealth = player.getHealth() - new Double(args[2]);
 							if (newHealth < 0) {
 								io.sendError(sender, io.translate("Command.Player.Health.TooMuch"));
 								return true;
@@ -120,7 +120,7 @@ public class PlayerHealthCmd extends Command {
 						if (offPlayer != null) {
 							BmPlayer player = new BmPlayer(offPlayer);
 							try {
-								int newHealth = player.getHealth() - new Integer(args[2]);
+								double newHealth = player.getHealth() - new Double(args[2]);
 								if (newHealth < 0) {
 									io.sendError(sender, io.translate("Command.Player.Health.TooMuch"));
 									return true;
