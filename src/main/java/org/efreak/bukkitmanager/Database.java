@@ -286,6 +286,32 @@ public abstract class Database {
 			return 0;
 		}
 	}
+	
+	public double queryDouble(String sql) {
+		try {
+			ResultSet rs = dbStatement.executeQuery(sql);
+			if (rs == null) return -1F;
+			if (rs.isAfterLast()) return -1F;
+			if (rs.isBeforeFirst()) rs.next();
+			return rs.getDouble(1);
+		}catch (SQLException e) {
+			if (config.getDebug()) e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	public double queryDouble(String sql, String column) {
+		try {
+			ResultSet rs = dbStatement.executeQuery(sql);
+			if (rs == null) return -1F;
+			if (rs.isAfterLast()) return -1F;
+			if (rs.isBeforeFirst()) rs.next();
+			return rs.getDouble(column);
+		}catch (SQLException e) {
+			if (config.getDebug()) e.printStackTrace();
+			return 0;
+		}
+	}
 
 	public boolean queryBoolean(String sql) {
 		try {
