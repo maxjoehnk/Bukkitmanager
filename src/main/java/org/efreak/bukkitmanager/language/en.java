@@ -141,7 +141,7 @@ public class en extends Language {
 			set("Command.Player.Has.Your.Hasnt", "You don't have the permissions node %node%");
 			set("Command.Player.Has.Other.Has", "%player% has the permissions node %node");
 			set("Command.Player.Has.Other.Hasnt", "%player% doesn't has the permissions node %node%");
-			set("Command.Player.Health.Error", "&cThe Healthvalue has to be an Integer!");
+			set("Command.Player.Health.Error", "&cThe Healthvalue has to be a Float!");
 			set("Command.Player.Health.TooMuch", "&cThis Helpvalue is to big! Choose a smaller one.");
 			set("Command.Player.Health.Get.Your", "Your Healthvalue is: %health%.");
 			set("Command.Player.Health.Get.Other", "The Healthvalue of %player% is: %health%.");
