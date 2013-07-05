@@ -13,6 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * Copied and Modified for own purposes and to keep the File as small as possible
  */
 package org.efreak.bukkitmanager.util;
 
