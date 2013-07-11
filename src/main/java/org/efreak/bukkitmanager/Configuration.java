@@ -92,6 +92,7 @@ public class Configuration{
 		update("IO.Prefix", "&4[Bukkitmanager]");
 		update("IO.Error", "&c[Error]");
 		update("IO.Warning", "&e[Warning]");
+		update("IO.Debug", "&1[Debug]");
 		update("IO.Language", "en");		
 		update("IO.ColoredLogs", true);
 		update("IO.HelpHeader", "BUKKITMANAGER HELP(%page%/%pages%)");
@@ -137,6 +138,7 @@ public class Configuration{
 		update("CustomMessages.Join", Arrays.asList("&e%player% joined the game."));
 		update("CustomMessages.Leave", Arrays.asList("&e%player% has left the game."));
 		update("CustomMessages.Kick", Arrays.asList("&e%player% has left the game."));
+		update("CustomMessages.UnknownCommand", Arrays.asList("Unknown Command"));
 		update("Fakepluginlist.Enabled", true);
 		update("Fakepluginlist.Fakes", Arrays.asList("fakeplugin123", "AntiGrief"));
 		update("Fakepluginlist.Hidden", Arrays.asList("*", "--BukkitManager"));
