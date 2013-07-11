@@ -27,9 +27,10 @@ public class IOManager {
 	private static final Plugin plugin;
 	private static ConversationFactory conversationFactory;
 	private static Hashtable<String, Conversation> conversations;
-	public static String prefix = ChatColor.DARK_RED + "[Bukkitmanager] " + ChatColor.WHITE;
-	public static String error = ChatColor.RED + "[Error] " + ChatColor.WHITE;
-	public static String warning = ChatColor.YELLOW + "[Warning] " + ChatColor.WHITE;
+	private static String prefix = ChatColor.DARK_RED + "[Bukkitmanager] " + ChatColor.WHITE;
+	private static String error = ChatColor.RED + "[Error] ";
+	private static String warning = ChatColor.YELLOW + "[Warning] ";
+	private static String debug = ChatColor.BLUE + "[Debug] ";
 	private static Translator translator;
 	private static boolean color = true;
 	
@@ -41,12 +42,17 @@ public class IOManager {
 	public void init() {
 		color = config.getBoolean("IO.ColoredLogs");
 		prefix = color(config.getString("IO.Prefix")) + " " + ChatColor.WHITE;
-		error = color(config.getString("IO.Error")) + " " + ChatColor.WHITE;
-		warning = color(config.getString("IO.Warning")) + " " + ChatColor.WHITE;
+		error = color(config.getString("IO.Error")) + " ";
+		warning = color(config.getString("IO.Warning")) + " ";
+		debug = color(config.getString("IO.Debug")) + " ";
 		translator = new Translator();
 		translator.initialize();
 		conversationFactory = new ConversationFactory(Bukkitmanager.getInstance());
 		conversations = new Hashtable<String, Conversation>();
+	}
+	
+	public void debug(String msg) {
+		plugin.getServer().getConsoleSender().sendMessage(parseColor(prefix + debug + msg));
 	}
 
 	public void broadcast(String msg) {
@@ -84,34 +90,34 @@ public class IOManager {
 		plugin.getServer().getConsoleSender().sendMessage(color(prefix + "[Dev] " + msg));
 	}
 	public void sendConsoleDevError(String msg) {
-		plugin.getServer().getConsoleSender().sendMessage(color(prefix + "[Dev] " + error + ChatColor.RED + msg));
+		plugin.getServer().getConsoleSender().sendMessage(color(prefix + "[Dev] " + error + msg));
 	}
 	
 	public void sendConsoleWarning(String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + warning + ChatColor.YELLOW + msg));
+		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + warning + msg));
 		else plugin.getServer().getConsoleSender().sendMessage(color(warning + msg));
 	}
 	public void sendConsoleWarning(String msg, boolean showPrefix) {
-		if (showPrefix) plugin.getServer().getConsoleSender().sendMessage(color(prefix + warning + ChatColor.YELLOW + msg));
+		if (showPrefix) plugin.getServer().getConsoleSender().sendMessage(color(prefix + warning + msg));
 		else plugin.getServer().getConsoleSender().sendMessage(color(warning + msg));
 	}
 	
 	public void sendConsoleAddonWarning(BukkitmanagerAddon addon, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + ChatColor.DARK_RED + "[" + addon.getAddonName() + "] " + warning + ChatColor.YELLOW + msg));
+		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + ChatColor.DARK_RED + "[" + addon.getAddonName() + "] " + warning + msg));
 		else plugin.getServer().getConsoleSender().sendMessage(color(msg));		
 	}
 	
 	public void sendConsoleError(String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + error + ChatColor.RED + msg));
+		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + error + msg));
 		else plugin.getServer().getConsoleSender().sendMessage(color(error + msg));
 	}
 	public void sendConsoleError(String msg, boolean showPrefix) {
-		if (showPrefix) plugin.getServer().getConsoleSender().sendMessage(color(prefix + error + ChatColor.RED + msg));
+		if (showPrefix) plugin.getServer().getConsoleSender().sendMessage(color(prefix + error + msg));
 		else plugin.getServer().getConsoleSender().sendMessage(color(error + msg));
 	}
 	
 	public void sendConsoleAddonError(BukkitmanagerAddon addon, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + ChatColor.DARK_RED + "[" + addon.getAddonName() + "] " + error + ChatColor.RED + msg));
+		if (config.getBoolean("IO.Show-Prefix")) plugin.getServer().getConsoleSender().sendMessage(color(prefix + ChatColor.DARK_RED + "[" + addon.getAddonName() + "] " + error + msg));
 		else plugin.getServer().getConsoleSender().sendMessage(color(msg));		
 	}
 
@@ -138,20 +144,20 @@ public class IOManager {
 	}
 	
 	public void sendWarning(CommandSender sender, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(prefix + warning + ChatColor.YELLOW + msg));
+		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(prefix + warning + msg));
 		else sender.sendMessage(parseColor(warning + msg));
 	}
 	public void sendWarning(CommandSender sender, String msg, boolean showPrefix) {
-		if (showPrefix) sender.sendMessage(parseColor(prefix + warning + ChatColor.YELLOW + msg));
+		if (showPrefix) sender.sendMessage(parseColor(prefix + warning + msg));
 		else sender.sendMessage(parseColor(warning + msg));
 	}
 
 	public void sendError(CommandSender sender, String msg) {
-		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(prefix + error + ChatColor.RED + msg));
+		if (config.getBoolean("IO.Show-Prefix")) sender.sendMessage(parseColor(prefix + error + msg));
 		else sender.sendMessage(parseColor(error + msg));
 	}
 	public void sendError(CommandSender sender, String msg, boolean showPrefix) {
-		if (showPrefix) sender.sendMessage(parseColor(prefix + error + ChatColor.RED + msg));
+		if (showPrefix) sender.sendMessage(parseColor(prefix + error + msg));
 		else sender.sendMessage(parseColor(warning + msg));
 	}
 	
