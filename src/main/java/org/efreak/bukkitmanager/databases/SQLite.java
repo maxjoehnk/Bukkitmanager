@@ -33,5 +33,6 @@ public class SQLite extends Database {
 	@Override
 	protected void config() {
 		config.update("Database.File", "database.db");
+		config.save();
 	}
 }

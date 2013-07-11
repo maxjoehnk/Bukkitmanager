@@ -31,5 +31,6 @@ public class MySQL extends Database {
 		config.update("Database.Name", "minecraft");
 		config.update("Database.Username", "root");
 		config.update("Database.Password", "");
+		config.save();
 	}
 }
