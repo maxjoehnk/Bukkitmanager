@@ -35,8 +35,9 @@ public class CommandManager implements TabExecutor {
 	
 	public CommandManager() {
 		if (Bukkitmanager.firstRun) registerHandler(new InstallCmd()); 
-		registerHandler(new AutosaveCmd());
 		registerHandler(new AutobackupCmd());
+		registerHandler(new AutomessageCmd());
+		registerHandler(new AutosaveCmd());
 		registerHandler(new BukkitCmd());
 		registerHandler(new LanguageCmd());
 		registerHandler(new PluginCmd());
