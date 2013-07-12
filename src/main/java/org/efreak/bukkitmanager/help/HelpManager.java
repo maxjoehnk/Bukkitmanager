@@ -1,32 +1,36 @@
 package org.efreak.bukkitmanager.help;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.efreak.bukkitmanager.Bukkitmanager;
+import org.efreak.bukkitmanager.IOManager;
 import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
+import org.efreak.bukkitmanager.commands.SubCommand;
 
 public class HelpManager {
 
 	private static List<HelpTopic> helpTopics;
 	private static HelpFile helpFile;
 
-	public void init() {
+	private static IOManager io;
+	
+	static {
+		io = Bukkitmanager.getIOManager();
 		helpTopics = new ArrayList<HelpTopic>();
 		helpFile = new HelpFile();
 		helpFile.initialize();
 	}
 	
-	public static void registerCommand(Command arg1Cmd) {
-		String cmd = "/bm ";
-		if (arg1Cmd.getCategory().equals(CommandCategory.GENERAL)) cmd += arg1Cmd.getLabel();
-		else cmd += arg1Cmd.getCategory().toString().toLowerCase() + " " + arg1Cmd.getLabel();
-		String args;
-		if (arg1Cmd.getArgs().size() != 0) {
-			args = arg1Cmd.getArgs().get(0);
-			for (int i = 1; i < arg1Cmd.getArgs().size(); i++) args += " " + arg1Cmd.getArgs().get(i);
-		}else args = "";
-		registerTopic(new HelpTopic(cmd, args, helpFile.getHelp(arg1Cmd.getHelpNode()), arg1Cmd.getHelpPermission()));
+	public static void registerCommand(Method method) {
+		if (method.getAnnotation(Command.class) != null) {
+			if (!method.getAnnotation(Command.class).hideHelp())
+				registerTopic(new HelpTopic(method.getAnnotation(Command.class).usage(), helpFile.getHelp(method.getAnnotation(Command.class).helpNode()), method.getAnnotation(Command.class).permission()));
+		}else {
+			if (!method.getAnnotation(SubCommand.class).hideHelp())
+				registerTopic(new HelpTopic(method.getAnnotation(SubCommand.class).usage(), helpFile.getHelp(method.getAnnotation(SubCommand.class).helpNode()), method.getAnnotation(SubCommand.class).permission()));
+		}
 	}
 	
 	public static void registerTopic(HelpTopic topic) {
@@ -53,5 +57,9 @@ public class HelpManager {
 	
 	public static List<HelpTopic> getTopics() {
 		return helpTopics;
-	}	
+	}
+	
+	public static String getHelp(String key) {
+		return helpFile.getHelp(key);
+	}
 }
