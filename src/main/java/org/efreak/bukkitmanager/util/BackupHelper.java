@@ -35,12 +35,12 @@ public class BackupHelper {
 		saveHelper = new SaveHelper();
 	}
 	
-	public void performBackup() {
+	public static void performBackup() {
 		if (config.getString("Autobackup.Taskmode").equalsIgnoreCase("sync")) plugin.getServer().getScheduler().runTask(plugin, new Runnable() {public void run() {backup();}});
 		else plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {public void run() {backup();}});
 	}
 	
-	private void backup() {
+	private static void backup() {
 		if (inProgress) {
 			io.sendConsoleWarning(io.translate("Autobackup.BackupInProgress"));
 			return;
@@ -84,7 +84,7 @@ public class BackupHelper {
 		inProgress = false;
 	}
 	
-	private void copyWorld(World world) {
+	private static void copyWorld(World world) {
 		try {
 			FileUtils.copyDirectory(world.getWorldFolder(), new File(FileHelper.getTempBackupDir() + File.separator + world.getName()));
 		} catch (IOException e) {
@@ -93,7 +93,7 @@ public class BackupHelper {
 		}
 	}
 	
-	private void copyPlugins() {
+	private static void copyPlugins() {
 		try {
 			FileUtils.copyDirectory(plugin.getDataFolder().getParentFile(), new File(FileHelper.getTempBackupDir() + File.separator + "plugins"));
 		} catch (IOException e) {
@@ -102,7 +102,7 @@ public class BackupHelper {
 		}
 	}
 	
-	private void copyJar() {
+	private static void copyJar() {
 		try {
 			if (config.getBoolean("Autobackup.RenameJar")) FileUtils.copyFile(FileHelper.getBukkitFile(), new File(FileHelper.getTempBackupDir(), File.separator + "craftbukkit#" + Bukkit.getVersion().split("-b")[1].split("jnks")[0] + ".jar"));
 			else FileUtils.copyFileToDirectory(FileHelper.getBukkitFile(), FileHelper.getTempBackupDir());
@@ -112,7 +112,7 @@ public class BackupHelper {
 		}
 	}
 	
-	private void removeOld(int amount) {
+	private static void removeOld(int amount) {
 		File[] files = Arrays.asList(FileHelper.getBackupDir().listFiles()).toArray(new File[0]);
 		if (files.length - amount < 1) return;
 		Arrays.sort(files, new Comparator<File>() {
