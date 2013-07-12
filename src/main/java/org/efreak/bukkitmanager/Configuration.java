@@ -96,7 +96,7 @@ public class Configuration{
 		update("IO.Language", "en");		
 		update("IO.ColoredLogs", true);
 		update("IO.HelpHeader", "BUKKITMANAGER HELP(%page%/%pages%)");
-		update("IO.HelpFormat", "&e%cmd% %args%: &f%desc%");
+		update("IO.HelpFormat", "&e%cmd%: &f%desc%");
 		update("PluginUpdater.Enabled", true);
 		update("PluginUpdater.CheckOnStart", true);
 		update("PluginUpdater.Whitelist.Enabled", false);
