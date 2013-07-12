@@ -1,40 +1,44 @@
-package org.efreak.bukkitmanager.commands.general;
+package org.efreak.bukkitmanager.commands;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.command.CommandSender;
-import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
-import org.efreak.bukkitmanager.help.*;
+import org.efreak.bukkitmanager.commands_old.CommandCategory;
+import org.efreak.bukkitmanager.help.HelpManager;
+import org.efreak.bukkitmanager.help.HelpTopic;
 
-public class HelpCmd extends Command {
-		
-	public HelpCmd() {
-		super("help", "Help", "bm.help", new ArrayList<String>(), CommandCategory.GENERAL);
+public class HelpCmd extends CommandHandler {
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
+		List<String> tabs = new ArrayList<String>();
+		return tabs;
 	}
 	
-	@Override
-	public boolean execute(CommandSender sender, String[] args) {
+	@Command(label = "help", alias = false, hideHelp = true, usage = "bm help [cmd|#|caption]")
+	public boolean helpCommand(CommandSender sender, String[] args) {
 		List<HelpTopic> helpTopics = HelpManager.getTopics();
 		List<String> topics = new ArrayList<String>();
 		for (int i = 0; i < helpTopics.size(); i++) {
-			if (helpTopics.get(i).hasPerm(sender)) topics.add(helpTopics.get(i).format());
+			if (helpTopics.get(i).hasPerm(sender)) {
+				topics.add(helpTopics.get(i).format());
+			}
 		}
 		int pages = 1;
 		if (topics.size() > 9) pages = (int)(topics.size() / 9F+0.4F);
 		if (args.length == 0) {
 			io.sendHeader(sender, config.getString("IO.HelpHeader").replaceAll("%page%",  "1").replaceAll("%pages%", String.valueOf(pages)));
 			for (int i = 0; i < 9 && i < topics.size(); i++) io.send(sender, topics.get(i), false);
-		}else if (args.length == 1) {
+		}else if (args.length >= 1) {
 			if (args[0].equalsIgnoreCase("caption")) {
-				io.sendHeader(sender, "BUKKITMANAGER HELP LEGEND");
-	       		io.send(sender, "&c#&f : Number", false);
-	       		io.send(sender, "&cvalue&f : place holder", false);
-	       		io.send(sender, "&evalue&f : defined value", false);
-	       		io.send(sender, "&c[]&f : optional value", false);
-	       		io.send(sender, "&c()&f : required value", false);
-	       		io.send(sender, "&c|&f : (or) seperator", false);
+				io.sendHeader(sender, "BUKKITMANAGER HELP CAPTION");
+	       		io.send(sender, "&e#&f: Number", false);
+	       		io.send(sender, "&e&ovalue&f: place holder", false);
+	       		io.send(sender, "&evalue&f: defined value", false);
+	       		io.send(sender, "&e[]&f: optional value", false);
+	       		io.send(sender, "&e<>&f: required value", false);
+	       		io.send(sender, "&e|&f: (or) seperator", false);
 			}else {
 				try {
 					if (new Integer(args[0]) <= pages) {
@@ -51,4 +55,5 @@ public class HelpCmd extends Command {
 		}
 		return true;
 	}
+
 }
