@@ -23,12 +23,12 @@ public class SaveHelper {
 	}
 	
 
-	public void performSave() {
+	public static void performSave() {
 		if (config.getString("Autosave.Taskmode").equalsIgnoreCase("sync")) plugin.getServer().getScheduler().runTask(plugin, new Runnable() {public void run() {save();}});
 		else plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {public void run() {save();}});
 	}
 	
-	private void save() {
+	private static void save() {
 		if (saveInProgress) {
 			io.sendConsoleWarning(io.translate("Autosave.SaveInProgress"));
 			return;
@@ -45,21 +45,21 @@ public class SaveHelper {
 		saveInProgress = false;
 	}
 	
-	private void savePlayers() {
-		io.sendConsole(io.translate("Autosave.Saving.Players"));
+	private static void savePlayers() {
+		io.debug(io.translate("Autosave.Saving.Players"));
 		Bukkit.getServer().savePlayers();
-		io.sendConsole(io.translate("Autosave.Saved.Players"));
+		io.debug(io.translate("Autosave.Saved.Players"));
 	}
 
-	private void saveWorlds() {
+	private static void saveWorlds() {
 		int i = 0;
 		Iterator<World> itr = plugin.getServer().getWorlds().iterator();
 		while (itr.hasNext()) {
 		    World world = itr.next();
-			io.sendConsole(io.translate("Autosave.Saving.World").replaceAll("%world%", world.getName()));
+			io.debug(io.translate("Autosave.Saving.World").replaceAll("%world%", world.getName()));
 		    world.save();
 		    i++;
 		}
-		io.sendConsole(io.translate("Autosave.Saved.Worlds").replaceAll("%worlds%", String.valueOf(i)));
+		io.debug(io.translate("Autosave.Saved.Worlds").replaceAll("%worlds%", String.valueOf(i)));
 	}
 }
