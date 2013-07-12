@@ -3,9 +3,8 @@ package org.efreak.bukkitmanager.commands.server;
 import java.util.ArrayList;
 
 import org.bukkit.command.CommandSender;
-
-import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
+import org.efreak.bukkitmanager.commands_old.Command;
+import org.efreak.bukkitmanager.commands_old.CommandCategory;
 import org.efreak.bukkitmanager.util.CpuUsage;
 
 public class ServerLoadCmd extends Command {

@@ -7,9 +7,8 @@ import java.util.Collections;
 import java.util.Enumeration;
 
 import org.bukkit.command.CommandSender;
-
-import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
+import org.efreak.bukkitmanager.commands_old.Command;
+import org.efreak.bukkitmanager.commands_old.CommandCategory;
 
 public class ServerNetworkCmd extends Command {
 

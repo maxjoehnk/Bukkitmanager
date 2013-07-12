@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.bukkit.command.CommandSender;
-
-import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
+import org.efreak.bukkitmanager.commands_old.Command;
+import org.efreak.bukkitmanager.commands_old.CommandCategory;
 import org.efreak.bukkitmanager.util.CpuUsage;
 
 public class ServerInfoCmd extends Command {
