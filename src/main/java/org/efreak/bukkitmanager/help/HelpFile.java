@@ -34,12 +34,12 @@ public class HelpFile {
 	}
 	
 	private void addContent() {
-		update("Help", "Helps you:D");
 		update("Language", "Gets/Sets the Language");
 		update("Filebrowser", "A simple Filebrowser, based on UNIX Commands");
 		update("Install", "Configure Bukkitmanager for the first time");
 		update("Password", "Gets/Sets the Remote Password");
 		
+		update("Autobackup", "Manage the Autobackup function of Bukkitmanager");
 		update("Autobackup.Backup", "Performs a Backup");
 		update("Autobackup.Interval", "Gets/Sets the Autobackup Interval");
 		update("Autobackup.Restart", "Restarts the Autobackupthread");
@@ -56,16 +56,19 @@ public class HelpFile {
 		update("Automessage.Start", "Starts the Automessagethread");
 		update("Automessage.Stop", "Stops the Automessagethread");
 		
+		update("Autosave", "Manage the Autosave function of Bukkitmanager");
 		update("Autosave.Interval", "Gets/Sets the Autosave Interval");
 		update("Autosave.Restart", "Restarts the Autosavethread");
 		update("Autosave.Save", "Performs a Save");
 		update("Autosave.Start", "Starts the Autosavethread");
 		update("Autosave.Stop", "Stops the Autosavethread");
 		
+		update("Bukkit", "Manage Bukkit");
 		update("Bukkit.Config", "Modify the server.properties");
 		update("Bukkit.Info", "Shows info about Bukkit");
 		update("Bukkit.Restart", "Restarts Bukkit");
 				
+		update("Player", "Manage your Players");
 		update("Player.Chat", "Send a Message with another Player");
 		update("Player.Cmd", "Perform a Command with another Player");
 		update("Player.Displayname", "Get/Set/Reset the Players Displayname");
@@ -87,6 +90,7 @@ public class HelpFile {
 		update("Player.Time", "Modify the Players Time");
 		update("Player.Tp", "Teleport a Player to another Player");
 
+		update("Plugin", "Manage your installed Plugins");
 		update("Plugin.Config", "Modify Plugins Configs");
 		update("Plugin.Delete", "Delete Plugins");
 		update("Plugin.Disable", "Disable Plugins");
@@ -100,12 +104,14 @@ public class HelpFile {
 		update("Plugin.Unload", "Unload Plugins");
 		update("Plugin.Update", "Update Plugins");
 		
+		update("Server", "Manage your Server");
 		update("Server.Info", "Gives you general Server Information");
 		update("Server.Load", "Displays the Serverload");		
 		update("Server.Network", "Gives you informations about the Network Adapter");
 		
+		update("World", "Manage your Worlds");
 		update("World.Create", "Create and Load a new World");
-		update("World.Delte", "Delete a world");
+		update("World.Delete", "Delete a world");
 		update("World.List", "List all loaded Worlds");
 		update("World.Load", "Load an already created World");
 		update("World.Unload", "Unload a world");
