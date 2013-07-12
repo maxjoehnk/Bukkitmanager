@@ -34,17 +34,17 @@ public class BukkitCmd extends CommandHandler {
 		return tabs;
 	}
 
-	@Command(label = "bukkit", alias = true, hideHelp = true, usage = "/bukkit <config|info|restart> [args]")
+	@Command(label = "bukkit", helpNode = "Bukkit", hideHelp = true, usage = "/bukkit <config|info|restart> [args]")
 	public boolean bukkitCommand(CommandSender sender, String[] args) {
 		if (args.length >= 1) handleSubCommands(sender, args);
 		else listSubCommands(sender);
 		return true;
 	}
 	
-	@SubCommand(label = "info", helpNode = "Bukkit.Info", permission = "bm.bukkit.info", usage = "/bukkit info")
+	@SubCommand(label = "info", helpNode = "Bukkit.Info", permission = "bm.bukkit.info", usage = "bukkit info")
 	public boolean infoCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm bukkit info");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm bukkit info");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm bukkit info");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm bukkit info");
 		else {
 			io.sendHeader(sender, "BUKKIT INFO");
 			io.send(sender, "Minecraftversion: " + Bukkit.getBukkitVersion().split("-")[0], false);
@@ -58,16 +58,16 @@ public class BukkitCmd extends CommandHandler {
 	
 	//@SubCommand(label = "restart", helpNode = "Bukkit.Restart", permission = "bm.bukkit.restart", usage = "/bukkit restart [time]")
 	public boolean restartCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm bukkit restart [time]");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm bukkit restart [time]");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm bukkit restart [time]");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm bukkit restart [time]");
 		else {
 			String cmd = "java -jar " + Bukkitmanager.getPluginFile().toString();
-			if (args.length == 1) {
+			if (args.length == 0) {
 				io.broadcast(io.translate("Bukkit.Restart.Now"));
 				cmd += "--external --task restart";
 			}else {
 				io.broadcast(io.translate("Bukkit.Restart.Timer").replaceAll("%time%", args[1]));
-				cmd += "--external --task restart --timer " + args[1];
+				cmd += "--external --task restart --timer " + args[0];
 			}
 			try {
 				Runtime.getRuntime().exec(cmd);
@@ -78,7 +78,7 @@ public class BukkitCmd extends CommandHandler {
 		return true;
 	}
 	
-	@SubCommand(label = "config", helpNode = "Bukkit.Config", permission = "bm.bukkit.config", usage = "/bukkit config <entry|list> [value]")
+	@SubCommand(label = "config", helpNode = "Bukkit.Config", permission = "bm.bukkit.config", usage = "bukkit config <entry|list> [value]")
 	public boolean configCommand(CommandSender sender, String[] args) {
 		FileInputStream streamIn = null;
 		FileOutputStream streamOut = null;
@@ -91,10 +91,10 @@ public class BukkitCmd extends CommandHandler {
 		} catch (IOException e) {
 			if (config.getDebug()) e.printStackTrace();
 		}
-		if (args.length < 2) io.sendFewArgs(sender, "/bm bukkit config (entry|list) [value]");
-		else if (args.length > 3) io.sendManyArgs(sender, "/bm bukkit config (entry|list) [value]");
+		if (args.length < 1) io.sendFewArgs(sender, "/bm bukkit config (entry|list) [value]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm bukkit config (entry|list) [value]");
 		else {
-			if (args.length == 2 && args[1].equalsIgnoreCase("list")) {
+			if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
 				if (Permissions.has(sender, "bm.bukkit.config.list", "/bukkit config list")) {
 					Object[] properties = propertie.entrySet().toArray();
 					StringBuilder output = new StringBuilder();
@@ -105,16 +105,16 @@ public class BukkitCmd extends CommandHandler {
 					}
 					io.send(sender, io.translate("Command.Bukkit.Config.List").replaceAll("%items%", output.toString()));
 				}
-			}else if (args.length == 2) {
-				if (Permissions.has(sender, "bm.bukkit.config.get", "/bukkit config " + args[1])) {
-					if (propertie.getProperty(args[1]) != null) io.send(sender, io.translate("Command.Bukkit.Config.Get").replaceAll("%entry%", args[1]).replaceAll("%value%", propertie.getProperty(args[1])));
-					else io.sendError(sender, io.translate("Command.Bukkit.Config.NotFound").replaceAll("%entry%", args[1]));
+			}else if (args.length == 1) {
+				if (Permissions.has(sender, "bm.bukkit.config.get", "/bukkit config " + args[0])) {
+					if (propertie.getProperty(args[0]) != null) io.send(sender, io.translate("Command.Bukkit.Config.Get").replaceAll("%entry%", args[0]).replaceAll("%value%", propertie.getProperty(args[0])));
+					else io.sendError(sender, io.translate("Command.Bukkit.Config.NotFound").replaceAll("%entry%", args[0]));
 				}
-			}else if (args.length == 3) {
-				if (Permissions.has(sender, "bm.bukkit.config.set", "/bukkit config " + args[1] + " " + args[2])) {
-					if (propertie.getProperty(args[1]) != null) {
-						propertie.setProperty(args[1], args[2]);
-						io.send(sender, io.translate("Command.Bukkit.Config.Set").replaceAll("%entry%", args[1]).replaceAll("%value%", args[2]));
+			}else if (args.length == 2) {
+				if (Permissions.has(sender, "bm.bukkit.config.set", "/bukkit config " + args[0] + " " + args[1])) {
+					if (propertie.getProperty(args[0]) != null) {
+						propertie.setProperty(args[0], args[1]);
+						io.send(sender, io.translate("Command.Bukkit.Config.Set").replaceAll("%entry%", args[0]).replaceAll("%value%", args[1]));
 						try {
 							streamOut = new FileOutputStream("server.properties");
 						} catch (FileNotFoundException e) {

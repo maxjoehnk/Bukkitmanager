@@ -38,17 +38,17 @@ public class ServerCmd extends CommandHandler {
 		return tabs;
 	}
 	
-	@Command(label = "server", alias = true, hideHelp = true, usage = "/server <info|load|network> [list] [#]")
+	@Command(label = "server", helpNode = "Server", hideHelp = true, usage = "/server <info|load|network> [list] [#]")
 	public boolean serverCommand(CommandSender sender, String[] args) {
 		if (args.length >= 1) handleSubCommands(sender, args);
 		else listSubCommands(sender);
 		return true;
 	}
 	
-	@SubCommand(label = "load", helpNode = "Server.Load", permission = "bm.server.load", usage = "/bm server load")
+	@SubCommand(label = "load", helpNode = "Server.Load", permission = "bm.server.load", usage = "server load")
 	public boolean serverLoadCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm server load");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm server load");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm server load");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm server load");
 		else {
 			int mb = 1024*1024;
 			long maxMem = Runtime.getRuntime().maxMemory()/mb
@@ -67,10 +67,10 @@ public class ServerCmd extends CommandHandler {
 		return true;
 	}
 	
-	@SubCommand(label = "info", helpNode = "Server.Info", permission = "bm.server.info", usage = "/bm server info")
+	@SubCommand(label = "info", helpNode = "Server.Info", permission = "bm.server.info", usage = "server info")
 	public boolean serverInfoCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm server info");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm server info");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm server info");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm server info");
 		else {
 			Long uptimeMilli = ManagementFactory.getRuntimeMXBean().getUptime();
 			String uptime = String.format("%d hours %d min %d sec",
@@ -101,12 +101,12 @@ public class ServerCmd extends CommandHandler {
 		return true;
 	}
 	
-	@SubCommand(label = "network", helpNode = "Server.Network", permission = "bm.server.network", usage = "/bm server network [list] [#]")
+	@SubCommand(label = "network", helpNode = "Server.Network", permission = "bm.server.network", usage = "server network [list] [#]")
 	public boolean serverNetworkCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm server network [list] [#]");
-		else if (args.length > 3) io.sendManyArgs(sender, "/bm server network [list] [#]");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm server network [list] [#]");
+		else if (args.length > 2) io.sendManyArgs(sender, "/bm server network [list] [#]");
 		else {
-			if (args.length == 1) {
+			if (args.length == 0) {
 				try {
 					int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size();
 					io.sendHeader(sender, "NETWORK INFOS (1/" + pages + ")");
@@ -128,16 +128,17 @@ public class ServerCmd extends CommandHandler {
 					io.send(sender, "Can't load Networkinformation", false);
 					if (config.getDebug()) e.printStackTrace();
 				}
-			}else if (args[1].equalsIgnoreCase("list")) {
+			}else if (args[0].equalsIgnoreCase("list")) {
 				if (Permissions.has(sender, "bm.server.network.list")) {
-					if (args.length == 2) {
-						try {
-							int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size()/9;
-							io.sendHeader(sender, "NETWORK LIST (1/" + pages + ")");
-						} catch (SocketException e) {
-							io.sendHeader(sender, "NETWORK LIST");
-							if (config.getDebug()) e.printStackTrace();
-						}
+					int pages = 1;
+					try {
+						pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size()/9;
+						if (Collections.list(NetworkInterface.getNetworkInterfaces()).size() % 9 > 0) pages++;
+					}catch (SocketException e) {
+						if (config.getDebug()) e.printStackTrace();
+					}
+					if (args.length == 1) {
+						io.sendHeader(sender, "NETWORK LIST (1/" + pages + ")");
 						int i = 1;
 						try {
 							Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
@@ -150,16 +151,10 @@ public class ServerCmd extends CommandHandler {
 							if (config.getDebug()) e.printStackTrace();
 						}
 					}else {
-						try {
-							int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size()/9;
-							io.sendHeader(sender, "NETWORK LIST (" + args[2] + "/" + pages + ")");
-						} catch (SocketException e) {
-							io.sendHeader(sender, "NETWORK LIST");
-							if (config.getDebug()) e.printStackTrace();
-						}
+						io.sendHeader(sender, "NETWORK LIST (" + args[1] + "/" + pages + ")");
 						int i = 1;
-						int min = (Integer.parseInt(args[2])-1)*9;
-						int max = Integer.parseInt(args[2])*9;
+						int min = (Integer.parseInt(args[1])-1)*9;
+						int max = Integer.parseInt(args[1])*9;
 						try {
 							Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
 							while (networkInterfaces.hasMoreElements() && i <= max) {
@@ -175,7 +170,7 @@ public class ServerCmd extends CommandHandler {
 			}else {
 				try {
 					int pages = Collections.list(NetworkInterface.getNetworkInterfaces()).size();
-					io.sendHeader(sender, "NETWORK INFOS (" + args[1] + "/" + pages + ")");
+					io.sendHeader(sender, "NETWORK INFOS (" + args[0] + "/" + pages + ")");
 				} catch (SocketException e) {
 					io.sendHeader(sender, "NETWORK INFOS");
 					if (config.getDebug()) e.printStackTrace();
@@ -185,7 +180,7 @@ public class ServerCmd extends CommandHandler {
 					int i = 1;
 					while (networkInterfaces.hasMoreElements()) {
 						NetworkInterface netInterface = networkInterfaces.nextElement();
-						if (args[1].equals(String.valueOf(i))) {
+						if (args[0].equals(String.valueOf(i))) {
 							io.send(sender, "#" + i + ": " + netInterface.getDisplayName(), false);
 							io.send(sender, "Is Up:              " + netInterface.isUp(), false);
 							io.send(sender, "MTU:                " + netInterface.getMTU(), false);

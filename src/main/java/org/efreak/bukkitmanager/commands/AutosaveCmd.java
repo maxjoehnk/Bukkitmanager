@@ -30,26 +30,26 @@ public class AutosaveCmd extends CommandHandler {
 		return tabs;
 	}
 	
-	@Command(label = "autosave", alias = true, hideHelp = true, usage = "/autosave <save|start|stop|restart|interval> [args]")
+	@Command(label = "autosave", helpNode = "Autosave", hideHelp = true, usage = "/autosave <save|start|stop|restart|interval> [args]")
 	public boolean autosaveCommand(CommandSender sender, String[] args) {
 		if (args.length >= 1) handleSubCommands(sender, args);
 		else listSubCommands(sender);
 		return true;
 	}
 	
-	@Command(label = "save", alias = true, helpNode = "Autosave.Save", hideHelp = true, permission = "bm.autosave.save", usage = "/save")
+	@Command(label = "save", helpNode = "Autosave.Save", hideHelp = true, permission = "bm.autosave.save", usage = "/save")
 	@SubCommand(label = "save", helpNode = "Autosave.Save", permission = "bm.autosave.save", usage = "autosave save")
 	public boolean saveCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm save");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm save");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm save");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm save");
 		else SaveHelper.performSave();
 		return true;
 	}
 	
 	@SubCommand(label = "start", helpNode = "Autosave.Start", permission = "bm.autosave.start", usage = "autosave start")
 	public boolean startCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autosave start");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autosave start");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autosave start");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm autosave start");
 		else {
 			ThreadManager.startThread(ThreadType.AUTOSAVE);
 			io.sendTranslation(sender, "Command.Autosave.Start");
@@ -59,8 +59,8 @@ public class AutosaveCmd extends CommandHandler {
 	
 	@SubCommand(label = "stop", helpNode = "Autosave.Stop", permission = "bm.autosave.stop", usage = "autosave stop")
 	public boolean stopCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autosave stop");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autosave stop");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autosave stop");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm autosave stop");
 		else {
 			ThreadManager.stopThread(ThreadType.AUTOSAVE);
 			io.sendTranslation(sender, "Command.Autosave.Stop");
@@ -70,8 +70,8 @@ public class AutosaveCmd extends CommandHandler {
 	
 	@SubCommand(label = "restart", helpNode = "Autosave.Restart", permission = "bm.autosave.restart", usage = "autosave restart")
 	public boolean restartCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autosave restart");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autosave restart");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autosave restart");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm autosave restart");
 		else {
 			ThreadManager.stopThread(ThreadType.AUTOSAVE);
 			ThreadManager.startThread(ThreadType.AUTOSAVE);
@@ -82,15 +82,15 @@ public class AutosaveCmd extends CommandHandler {
 	
 	@SubCommand(label = "interval", helpNode = "Autosave.Interval", permission = "bm.autosave.interval", usage = "autosave interval [interval]")
 	public boolean intervalCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autosave interval [interval]");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm autosave interval [interval]");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autosave interval [interval]");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm autosave interval [interval]");
 		else {
-			if (args.length == 1) {
+			if (args.length == 0) {
 				if (Permissions.has(sender, "bm.autosave.interval.get", "/autosave interval")) io.send(sender, io.translate("Command.Autosave.Interval.Get").replaceAll("%interval%", config.getString("Autosave.Interval")));
-			}else if (args.length == 2) {
-				if (Permissions.has(sender, "bm.autosave.interval.set", "/autosave interval " + args[1])) {
-					io.send(sender, io.translate("Command.Autosave.Interval.Set").replaceAll("%interval_new", args[1]).replaceAll("%interval_old%", config.getString("Autosave.Interval")));
-					config.set("Autosave.Interval", args[1]);
+			}else if (args.length == 1) {
+				if (Permissions.has(sender, "bm.autosave.interval.set", "/autosave interval " + args[0])) {
+					io.send(sender, io.translate("Command.Autosave.Interval.Set").replaceAll("%interval_new", args[0]).replaceAll("%interval_old%", config.getString("Autosave.Interval")));
+					config.set("Autosave.Interval", args[0]);
 					config.save();
 					io.sendTranslation(sender, "Command.Autosave.Restart");
 					ThreadManager.stopThread(ThreadType.AUTOSAVE);

@@ -18,7 +18,7 @@ public class LanguageCmd extends CommandHandler {
 		return tabs;
 	}
 
-	@Command(label = "lang", alias = false, helpNode = "Language", usage = "bm lang [language]", permission = "bm.language")
+	@Command(label = "lang", alias = false, helpNode = "Language", usage = "lang [language]", permission = "bm.language")
 	public boolean langCommand(CommandSender sender, String[] args) {
 		if (args.length < 0) io.sendFewArgs(sender, "/bm lang [language]");
 		else if (args.length > 1) io.sendManyArgs(sender, "/bm lang [language]");

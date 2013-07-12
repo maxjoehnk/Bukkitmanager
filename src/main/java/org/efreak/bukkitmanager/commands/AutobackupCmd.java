@@ -30,26 +30,26 @@ public class AutobackupCmd extends CommandHandler {
 		return tabs;
 	}
 	
-	@Command(label = "autobackup", alias = true, hideHelp = true, usage = "/autobackup <backup|start|stop|restart|interval> [args]")
+	@Command(label = "autobackup", helpNode = "Autobackup", hideHelp = true, usage = "/autobackup <backup|start|stop|restart|interval> [args]")
 	public boolean autobackupCommand(CommandSender sender, String[] args) {
 		if (args.length >= 1) handleSubCommands(sender, args);
 		else listSubCommands(sender);
 		return true;
 	}
 	
-	@Command(label = "backup", alias = true, helpNode = "Autobackup.Backup", hideHelp = true, permission = "bm.autobackup.backup", usage = "/backup")
-	@SubCommand(label = "backup", helpNode = "Autobackup.Backup", permission = "bm.autobackup.backup", usage = "/autobackup backup")
+	@Command(label = "backup", helpNode = "Autobackup.Backup", hideHelp = true, permission = "bm.autobackup.backup", usage = "/backup")
+	@SubCommand(label = "backup", helpNode = "Autobackup.Backup", permission = "bm.autobackup.backup", usage = "autobackup backup")
 	public boolean backupCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm backup");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm backup");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm backup");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm backup");
 		else BackupHelper.performBackup();
 		return true;
 	}
 	
-	@SubCommand(label = "start", helpNode = "Autobackup.Start", permission = "bm.autobackup.start", usage = "/autobackup start")
+	@SubCommand(label = "start", helpNode = "Autobackup.Start", permission = "bm.autobackup.start", usage = "autobackup start")
 	public boolean startCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup start");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup start");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autobackup start");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm autobackup start");
 		else {
 			ThreadManager.startThread(ThreadType.AUTOBACKUP);
 			io.sendTranslation(sender, "Command.Autobackup.Start");
@@ -57,10 +57,10 @@ public class AutobackupCmd extends CommandHandler {
 		return true;
 	}
 	
-	@SubCommand(label = "stop", helpNode = "Autobackup.Stop", permission = "bm.autobackup.stop", usage = "/autobackup stop")
+	@SubCommand(label = "stop", helpNode = "Autobackup.Stop", permission = "bm.autobackup.stop", usage = "autobackup stop")
 	public boolean stopCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup stop");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup stop");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autobackup stop");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm autobackup stop");
 		else {
 			ThreadManager.stopThread(ThreadType.AUTOBACKUP);
 			io.sendTranslation(sender, "Command.Autobackup.Stop");
@@ -68,10 +68,10 @@ public class AutobackupCmd extends CommandHandler {
 		return true;
 	}
 	
-	@SubCommand(label = "restart", helpNode = "Autobackup.Restart", permission = "bm.autobackup.restart", usage = "/autobackup restart")
+	@SubCommand(label = "restart", helpNode = "Autobackup.Restart", permission = "bm.autobackup.restart", usage = "autobackup restart")
 	public boolean restartCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup restart");
-		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup restart");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autobackup restart");
+		else if (args.length > 0) io.sendManyArgs(sender, "/bm autobackup restart");
 		else {
 			ThreadManager.stopThread(ThreadType.AUTOBACKUP);
 			ThreadManager.startThread(ThreadType.AUTOBACKUP);
@@ -80,17 +80,17 @@ public class AutobackupCmd extends CommandHandler {
 		return true;
 	}
 	
-	@SubCommand(label = "interval", helpNode = "Autobackup.Interval", permission = "bm.autobackup.interval", usage = "/autobackup interval [interval]")
+	@SubCommand(label = "interval", helpNode = "Autobackup.Interval", permission = "bm.autobackup.interval", usage = "autobackup interval [interval]")
 	public boolean intervalCommand(CommandSender sender, String[] args) {
-		if (args.length < 1) io.sendFewArgs(sender, "/bm autobackup interval [interval]");
-		else if (args.length > 2) io.sendManyArgs(sender, "/bm autobackup interval [interval]");
+		if (args.length < 0) io.sendFewArgs(sender, "/bm autobackup interval [interval]");
+		else if (args.length > 1) io.sendManyArgs(sender, "/bm autobackup interval [interval]");
 		else {
-			if (args.length == 1) {
+			if (args.length == 0) {
 				if (Permissions.has(sender, "bm.autobackup.interval.get", "/autobackup interval")) io.send(sender, io.translate("Command.Autobackup.Interval.Get").replaceAll("%interval%", config.getString("Autobackup.Interval")));
-			}else if (args.length == 2) {
-				if (Permissions.has(sender, "bm.autobackup.interval.set", "/autobackup interval " + args[1])) {
-					io.send(sender, io.translate("Command.Autobackup.Interval.Set").replaceAll("%interval_new", args[1]).replaceAll("%interval_old%", config.getString("Autobackup.Interval")));
-					config.set("Autobackup.Interval", args[1]);
+			}else if (args.length == 1) {
+				if (Permissions.has(sender, "bm.autobackup.interval.set", "/autobackup interval " + args[0])) {
+					io.send(sender, io.translate("Command.Autobackup.Interval.Set").replaceAll("%interval_new", args[0]).replaceAll("%interval_old%", config.getString("Autobackup.Interval")));
+					config.set("Autobackup.Interval", args[0]);
 					config.save();
 					io.sendTranslation(sender, "Command.Autobackup.Restart");
 					ThreadManager.stopThread(ThreadType.AUTOBACKUP);
