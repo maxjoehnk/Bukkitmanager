@@ -70,6 +70,7 @@ public class Translator {
 		if (languages.containsKey(name)) {
 			language = name;
 			config.set("IO.Language", name);
+			config.save();
 			return true;
 		}else return false;
 	}
