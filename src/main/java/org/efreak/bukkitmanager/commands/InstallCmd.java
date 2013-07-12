@@ -1,32 +1,33 @@
-package org.efreak.bukkitmanager.commands.general;
+package org.efreak.bukkitmanager.commands;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.conversations.*;
-
+import org.bukkit.conversations.BooleanPrompt;
+import org.bukkit.conversations.ConversationContext;
+import org.bukkit.conversations.MessagePrompt;
+import org.bukkit.conversations.Prompt;
+import org.bukkit.conversations.StringPrompt;
 import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.Permissions;
-import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
 import org.efreak.bukkitmanager.pluginmanager.PluginManager;
 
-public class InstallCmd extends Command {
-	
-	public InstallCmd() {
-		super("install", "Install", "bm.install", new ArrayList<String>(), CommandCategory.GENERAL);
-	}
+public class InstallCmd extends CommandHandler {
 
 	@Override
-	public boolean execute(CommandSender sender, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
+		return null;
+	}
+
+	@Command(label = "server", alias = false, hideHelp = true, usage = "/bm install", permission = "bm.install")
+	public boolean installCommand(CommandSender sender, String[] args) {
 		if (args.length < 0) io.sendFewArgs(sender, "/bm install");
 		else if (args.length > 0) io.sendManyArgs(sender, "/bm install");
-		else {
-			if (has(sender, "bm.install")) io.createConversation(sender, "Bukkitmanager Installation", new WelcomePrompt());
-		}
+		else  io.createConversation(sender, "Bukkitmanager Installation", new WelcomePrompt());
 		return true;
 	}
+	
 }
 
 class WelcomePrompt extends MessagePrompt {
@@ -46,7 +47,7 @@ class IntroductionPrompt extends MessagePrompt {
 	
 	@Override
 	public String getPromptText(ConversationContext context) {
-		return "This Wizard will help you to configure Bukkitmanager for the first time.\nEverything is pre-configured so you don't have to change, but you can:)";
+		return "This Wizard will help you to configure Bukkitmanager for the first time.\nEverything is pre-configured so you don't have to change something, but you can :)";
 	}
 	
 	@Override
@@ -84,12 +85,10 @@ class AliasPrompt extends BooleanPrompt {
 			config.set("General.Aliases.Bukkit", true);
 			config.set("General.Aliases.Plugin", true);
 			config.set("General.Aliases.Player", true);
-			config.set("General.Aliases.Language", true);
 		}else {
 			config.set("General.Aliases.Bukkit", false);
 			config.set("General.Aliases.Plugin", false);
 			config.set("General.Aliases.Player", false);
-			config.set("General.Aliases.Language", false);
 		}
 		return new PermissionsPrompt();
 	}
