@@ -73,7 +73,7 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.6.1-R0.1-SNAPSHOT</version>
+      <version>1.6.2-R0.1-SNAPSHOT</version>
     </dependency>
 	<dependency>
       <groupId>org.jsoup</groupId>
@@ -84,7 +84,7 @@
     <dependency>
       <groupId>com.turt2live.metrics</groupId>
       <artifactId>MetricsExtension</artifactId>
-      <version>0.0.4-SNAPSHOT</version>
+      <version>0.0.5-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>net.milkbowl.vault</groupId>
