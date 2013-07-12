@@ -21,12 +21,13 @@ public class HelpCmd extends CommandHandler {
 		List<HelpTopic> helpTopics = HelpManager.getTopics();
 		List<String> topics = new ArrayList<String>();
 		for (int i = 0; i < helpTopics.size(); i++) {
-			if (helpTopics.get(i).hasPerm(sender)) {
-				topics.add(helpTopics.get(i).format());
-			}
+			if (helpTopics.get(i).hasPerm(sender)) topics.add(helpTopics.get(i).format());
 		}
 		int pages = 1;
-		if (topics.size() > 9) pages = (int)(topics.size() / 9F+0.4F);
+		if (topics.size() > 9) {
+			pages = topics.size() / 9;
+			if (topics.size() % 9 > 0) pages++;
+		}
 		if (args.length == 0) {
 			io.sendHeader(sender, config.getString("IO.HelpHeader").replaceAll("%page%",  "1").replaceAll("%pages%", String.valueOf(pages)));
 			for (int i = 0; i < 9 && i < topics.size(); i++) io.send(sender, topics.get(i), false);
@@ -43,8 +44,8 @@ public class HelpCmd extends CommandHandler {
 				try {
 					if (new Integer(args[0]) <= pages) {
 						int page = new Integer(args[0]);
-						io.send(sender, config.getString("IO.HelpHeader").replaceAll("%page%",  args[0]).replaceAll("%pages%", String.valueOf(pages)), false);
-						for (int i = 9*page-9; i < 9*page && i < topics.size()-1; i++) io.send(sender, topics.get(i), false);
+						io.sendHeader(sender, config.getString("IO.HelpHeader").replaceAll("%page%",  args[0]).replaceAll("%pages%", String.valueOf(pages)));
+						for (int i = 9 * (page - 1); i < 9 * page && i < topics.size(); i++) io.send(sender, topics.get(i), false);
 					}else io.sendError(sender, "This Page doesn't exist.");
 				}catch (NumberFormatException e) {
 					if (CommandCategory.valueOf(args[0].toUpperCase()) != null) {
