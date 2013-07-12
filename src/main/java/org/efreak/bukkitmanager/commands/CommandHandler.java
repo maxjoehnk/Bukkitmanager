@@ -3,6 +3,7 @@ package org.efreak.bukkitmanager.commands;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.AbstractMap;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -46,7 +47,7 @@ public abstract class CommandHandler {
 			if (Permissions.has(sender, subCommands.get(args[0]).getAnnotation(SubCommand.class).permission(), args.toString())) {
 				try {
 					CommandHandler handler = (CommandHandler) subCommands.get(args[0]).getDeclaringClass().newInstance();
-					subCommands.get(args[0]).invoke(handler, sender, args).toString();
+					subCommands.get(args[0]).invoke(handler, sender, Arrays.copyOfRange(args, 1, args.length)).toString();
 				} catch (IllegalAccessException e) {
 					io.sendError(sender, "Error executing command: " + e.getLocalizedMessage());
 					if (config.getDebug()) e.printStackTrace();
@@ -75,6 +76,6 @@ public abstract class CommandHandler {
 	}
 	
 	protected void listSubCommands(CommandSender sender) {
-		
+		for (String cmd : subCommands.keySet()) io.send(sender, cmd, false);
 	}
 }
