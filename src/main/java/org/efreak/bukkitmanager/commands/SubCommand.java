@@ -7,13 +7,13 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Command {
+public @interface SubCommand {
 
 	String label();
-	boolean alias() default true;
+	//String parent();
 	String helpNode() default "";
 	String permission() default "";
 	String usage();
 	boolean hideHelp() default false;
-
+	
 }
