@@ -49,7 +49,7 @@ public class PluginCmd extends CommandHandler {
 	}
 
 	@Command(label = "plugin", helpNode = "Plugin", hideHelp = true, usage = "/plugin <config|disable|enable|info|install|list|load|reload|restart|unload|update>")
-	public boolean worldCommand(CommandSender sender, String[] args) {
+	public boolean pluginCommand(CommandSender sender, String[] args) {
 		if (args.length >= 1) handleSubCommands(sender, args);
 		else listSubCommands(sender);
 		return true;
