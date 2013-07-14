@@ -30,7 +30,7 @@ public class IOManager {
 	private static String prefix = ChatColor.DARK_RED + "[Bukkitmanager] " + ChatColor.WHITE;
 	private static String error = ChatColor.RED + "[Error] ";
 	private static String warning = ChatColor.YELLOW + "[Warning] ";
-	private static String debug = ChatColor.BLUE + "[Debug] ";
+	private static String debug = ChatColor.DARK_AQUA + "[Debug] ";
 	private static Translator translator;
 	private static boolean color = true;
 	
@@ -52,7 +52,7 @@ public class IOManager {
 	}
 	
 	public void debug(String msg) {
-		plugin.getServer().getConsoleSender().sendMessage(parseColor(prefix + debug + msg));
+		if (config.getDebug()) plugin.getServer().getConsoleSender().sendMessage(parseColor(prefix + debug + msg));
 	}
 
 	public void broadcast(String msg) {
