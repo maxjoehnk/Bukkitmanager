@@ -92,7 +92,7 @@ public class Configuration{
 		update("IO.Prefix", "&4[Bukkitmanager]");
 		update("IO.Error", "&c[Error]");
 		update("IO.Warning", "&e[Warning]");
-		update("IO.Debug", "&1[Debug]");
+		update("IO.Debug", "&3[Debug]");
 		update("IO.Language", "en");		
 		update("IO.ColoredLogs", true);
 		update("IO.HelpHeader", "BUKKITMANAGER HELP(%page%/%pages%)");
