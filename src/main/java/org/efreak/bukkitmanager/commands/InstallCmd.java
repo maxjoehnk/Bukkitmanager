@@ -20,7 +20,7 @@ public class InstallCmd extends CommandHandler {
 		return null;
 	}
 
-	@Command(label = "server", alias = false, hideHelp = true, usage = "/bm install", permission = "bm.install")
+	@Command(label = "install", alias = false, hideHelp = true, usage = "/bm install", permission = "bm.install")
 	public boolean installCommand(CommandSender sender, String[] args) {
 		if (args.length < 0) io.sendFewArgs(sender, "/bm install");
 		else if (args.length > 0) io.sendManyArgs(sender, "/bm install");
