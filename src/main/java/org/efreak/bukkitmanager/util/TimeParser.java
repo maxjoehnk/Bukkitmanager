@@ -9,7 +9,7 @@ public class TimeParser {
 
     protected static final Pattern TWELVE_HOUR_TIME = Pattern.compile("^([0-9]+(?::[0-9]+)?)([apmAPM\\.]+)$");
 	
-    public int matchTime(String timeStr) {
+    public static int matchTime(String timeStr) {
         Matcher matcher;
 
         try {
