@@ -39,7 +39,10 @@ public class CommandManager implements TabExecutor {
 		registerHandler(new AutomessageCmd());
 		registerHandler(new AutosaveCmd());
 		registerHandler(new BukkitCmd());
+		registerHandler(new FilebrowserCmd());
 		registerHandler(new LanguageCmd());
+		registerHandler(new PasswordCmd());
+		registerHandler(new PlayerCmd());
 		registerHandler(new PluginCmd());
 		registerHandler(new ServerCmd());
 		registerHandler(new WorldCmd());
@@ -53,7 +56,7 @@ public class CommandManager implements TabExecutor {
 		if (sender instanceof Player) p = (Player) sender;
 		if (sender instanceof ConsoleCommandSender) c = (ConsoleCommandSender) sender;
 		if (p == c) return false;
-		if (args.length == 0); //show help
+		if (args.length == 0) new HelpCmd().helpCommand(sender, new String[0]);
 		else {
 			if (commands.containsKey(args[0])) {
 				if (Permissions.has(sender, commands.get(args[0]).getAnnotation(Command.class).permission(), args.toString())) {
