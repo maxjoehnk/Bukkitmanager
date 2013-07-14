@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.efreak.bukkitmanager.BmPlayer;
 import org.efreak.bukkitmanager.Permissions;
+import org.efreak.bukkitmanager.pluginmanager.PluginManager;
 import org.efreak.bukkitmanager.util.TimeParser;
 
 public class PlayerCmd extends CommandHandler {
@@ -713,7 +714,10 @@ public class PlayerCmd extends CommandHandler {
 		if (args.length < 0) io.sendFewArgs(sender, "/bm player list");
 		else if (args.length > 0) io.sendFewArgs(sender, "/bm player list");
 		else {
-			
+			Player[] players = Bukkit.getOnlinePlayers();
+			StringBuilder playerList = new StringBuilder();
+			for (Player player : players) playerList.append(player.getName() + " ");
+			io.send(sender, "Online Players (" + players.length + "): " + playerList);
 		}
 		return true;
 	}
