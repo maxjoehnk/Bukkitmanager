@@ -6,14 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.plugin.java.JavaPlugin;
-
 import org.efreak.bukkitmanager.addons.BukkitmanagerAddon;
-import org.efreak.bukkitmanager.commands.BmCommandExecutor;
-import org.efreak.bukkitmanager.commands.Command;
-import org.efreak.bukkitmanager.commands.CommandCategory;
+import org.efreak.bukkitmanager.commands.CommandManager;
 import org.efreak.bukkitmanager.databases.*;
 //import org.efreak.bukkitmanager.external.ArgumentParser;
-import org.efreak.bukkitmanager.help.HelpManager;
 import org.efreak.bukkitmanager.listener.BukkitListener;
 import org.efreak.bukkitmanager.logger.LoggingManager;
 import org.efreak.bukkitmanager.pluginmanager.PluginManager;
@@ -29,7 +25,7 @@ import org.efreak.bukkitmanager.util.FileUtils;
 import org.efreak.bukkitmanager.util.FileHelper;
 
 import com.turt2live.metrics.EMetrics;
-import com.turt2live.metrics.graph.DonutGraph;
+//import com.turt2live.metrics.graph.DonutGraph;
 import com.turt2live.metrics.graph.PieGraph;
 import com.turt2live.metrics.tracker.BasicTracker;
 
@@ -42,7 +38,7 @@ public class Bukkitmanager extends JavaPlugin {
 	private static LoggingManager logManager;
 	private static File pluginFile;
 	private static EMetrics metrics;
-	private static DonutGraph<CommandCategory> commandStatistics;
+	//private static DonutGraph<CommandCategory> commandStatistics;
 	private static PieGraph<BukkitmanagerAddon> addonStatistics;
 	private static RemoteServer remoteServer;
 	private static List<BukkitmanagerAddon> addons;
@@ -84,7 +80,7 @@ public class Bukkitmanager extends JavaPlugin {
 		if (firstRun) io.sendConsole(io.translate("Plugin.FirstRun"));
 		try {
 			metrics = new EMetrics(this);
-			commandStatistics = new DonutGraph<CommandCategory>("Command Usage");
+			//commandStatistics = new DonutGraph<CommandCategory>("Command Usage");
 			addonStatistics = new PieGraph<BukkitmanagerAddon>("Addon Usage");
 			for (BukkitmanagerAddon addon : addons) addonStatistics.addSlice(addon, addon.getAddonName());
 		} catch (IOException e) {
@@ -104,13 +100,11 @@ public class Bukkitmanager extends JavaPlugin {
 			db = Database.getDatabaseBySystem("SQLite");
 		}
 		db.init();
-		new HelpManager().init();
-		getServer().getPluginCommand("bm").setExecutor(new BmCommandExecutor());
+		getServer().getPluginCommand("bm").setExecutor(new CommandManager());
 		getServer().getPluginManager().registerEvents(new BukkitListener(), this);
 		new CustomMessageManager().init();
 		new FakepluginsManager();
 		new PluginManager().init();
-		//new ScoreboardManager().init();
 		new ScriptManager().init();
 		new ChatFilter().init();
 		if (config.getDev()) {
@@ -122,7 +116,7 @@ public class Bukkitmanager extends JavaPlugin {
 			remoteServer.init();
 		}
 		if (config.getBoolean("General.Statistics")) {
-			metrics.addGraph(commandStatistics);
+			//metrics.addGraph(commandStatistics);
 			metrics.addGraph(addonStatistics);
 			metrics.startMetrics();
 		}
@@ -212,29 +206,29 @@ public class Bukkitmanager extends JavaPlugin {
 	 * Set up the Tracker for a Command and add them to Metrics
 	 * 
 	 * @param command
-	 * @see org.efreak.bukkitmanager.commands.Command
+	 * @see org.efreak.bukkitmanager.commands_old.Command
 	 * 
 	 */
 	
-	public static void addCommandTracker(Command command) {
+	/*public static void addCommandTracker(Command command) {
 		if (commandStatistics == null) commandStatistics = new DonutGraph<CommandCategory>("Command Usage");
 		commandStatistics.addSlice(command.getCategory(), command.getCategory().toString().toLowerCase(), command.getLabel().toLowerCase());
 		addTracker(command.getTracker());
-	}
+	}*/
 	
 	/**
 	 * 
 	 * Increment all Tracker of a Command
 	 * 
 	 * @param command
-	 * @see org.efreak.bukkitmanager.commands.Command
+	 * @see org.efreak.bukkitmanager.commands_old.Command
 	 * 
 	 */
 	
-	public static void incrementCommandTracker(Command command) {
+	/*public static void incrementCommandTracker(Command command) {
 		commandStatistics.increment(command.getCategory(), command.getLabel().toLowerCase());
 		command.getTracker().increment();
-	}
+	}*/
 	
 	/**
 	 * 
