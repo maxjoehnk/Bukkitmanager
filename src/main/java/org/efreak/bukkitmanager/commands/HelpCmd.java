@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.command.CommandSender;
-import org.efreak.bukkitmanager.commands_old.CommandCategory;
 import org.efreak.bukkitmanager.help.HelpManager;
 import org.efreak.bukkitmanager.help.HelpTopic;
 
@@ -48,9 +47,7 @@ public class HelpCmd extends CommandHandler {
 						for (int i = 9 * (page - 1); i < 9 * page && i < topics.size(); i++) io.send(sender, topics.get(i), false);
 					}else io.sendError(sender, "This Page doesn't exist.");
 				}catch (NumberFormatException e) {
-					if (CommandCategory.valueOf(args[0].toUpperCase()) != null) {
-						io.send(sender, "Command..");
-					}
+					io.send(sender, "Command..");
 				}
 			}
 		}
