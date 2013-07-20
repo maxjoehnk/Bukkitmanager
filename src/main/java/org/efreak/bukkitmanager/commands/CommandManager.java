@@ -40,6 +40,7 @@ public class CommandManager implements TabExecutor {
 		registerHandler(new AutosaveCmd());
 		registerHandler(new BukkitCmd());
 		registerHandler(new FilebrowserCmd());
+		registerHandler(new ItemCmd());
 		registerHandler(new LanguageCmd());
 		registerHandler(new PasswordCmd());
 		registerHandler(new PlayerCmd());
