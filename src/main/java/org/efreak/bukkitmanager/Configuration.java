@@ -212,6 +212,9 @@ public class Configuration{
 	
 	public int getInt(String path) {return config.getInt(path);}
 	public int getInt(String path, int def) {return config.getInt(path, def);}
+
+	public long getLong(String path) {return config.getLong(path);}
+	public long getLong(String path, int def) {return config.getLong(path, def);}
 	
 	public List<?> getList(String path) {return config.getList(path);}
 	public List<?> getList(String path, List<?> def) {return config.getList(path, def);}
@@ -269,5 +272,9 @@ public class Configuration{
 	
 	public void addToList(String path, Object value) {
 		update(path, Arrays.asList(getList(path), value));
+	}
+	
+	public FileConfiguration getConfig() {
+		return config;
 	}
 }
