@@ -22,9 +22,8 @@ import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.IOManager;
 import org.efreak.bukkitmanager.Permissions;
+import org.efreak.bukkitmanager.pluginmanager.FileFeed;
 import org.efreak.bukkitmanager.pluginmanager.PluginManager;
-import org.efreak.bukkitmanager.pluginmanager.updater.FilePage;
-import org.efreak.bukkitmanager.pluginmanager.updater.PluginPage;
 import org.efreak.bukkitmanager.util.FileHelper;
 
 public class PluginCmd extends CommandHandler {
@@ -250,9 +249,13 @@ public class PluginCmd extends CommandHandler {
 		if (args.length < 1) io.sendFewArgs(sender, "/bm plugin install (plugin)");
 		else if (args.length > 1) io.sendManyArgs(sender, "/bm plugin install (plugin)");
 		else {
-			PluginPage pluginPage = new PluginPage(args[0]);
-			if (pluginPage.exists()) io.createConversation(sender, "PluginInstallRequest", new InstallPluginPrompt(args[0]));
-			else io.sendError(sender, "Can't find Plugin " + args[0]);
+			try {
+				FileFeed pluginFeed = new FileFeed(args[0]);
+				io.createConversation(sender, "PluginInstallRequest", new InstallPluginPrompt(args[0]));
+			}catch (Exception e) {
+				if (config.getDebug()) e.printStackTrace();
+				io.sendError(sender, "Can't find Plugin " + args[0]);
+			}
 		}
 		return true;
 	}
@@ -445,6 +448,12 @@ public class PluginCmd extends CommandHandler {
 class UpdatePluginPrompt extends BooleanPrompt {
 
 	String pluginName;
+
+	private static Configuration config;
+
+	static {
+		config = Bukkitmanager.getConfiguration();
+	}
 	
 	public UpdatePluginPrompt(String pluginName) {
 		super();
@@ -459,13 +468,14 @@ class UpdatePluginPrompt extends BooleanPrompt {
 	@Override
 	protected Prompt acceptValidatedInput(ConversationContext context, boolean value) {
 		if (value) {
-			PluginPage pluginPage = null;
-			if (Bukkitmanager.getConfiguration().getString("PluginUpdater.System").equalsIgnoreCase("DevBukkit")) {
-				pluginPage = new PluginPage(pluginName);
+			try {
+				FileFeed pluginFeed = new FileFeed(pluginName);
+				File updateFile = pluginFeed.getNewestFile().download();
+				return new LoadPluginPrompt(pluginName, updateFile);
+			}catch (Exception e) {
+				if (config.getDebug()) e.printStackTrace();
+				return Prompt.END_OF_CONVERSATION;
 			}
-			FilePage filePage = pluginPage.getNewestFile();
-			File file = filePage.download();
-			return new LoadPluginPrompt(this.pluginName, file);
 		}
 		return Prompt.END_OF_CONVERSATION;
 	}
@@ -475,6 +485,12 @@ class UpdatePluginPrompt extends BooleanPrompt {
 class InstallPluginPrompt extends BooleanPrompt {
 
 	String pluginName;
+	
+	private static Configuration config;
+
+	static {
+		config = Bukkitmanager.getConfiguration();
+	}
 	
 	public InstallPluginPrompt(String pluginName) {
 		super();
@@ -489,13 +505,14 @@ class InstallPluginPrompt extends BooleanPrompt {
 	@Override
 	protected Prompt acceptValidatedInput(ConversationContext context, boolean value) {
 		if (value) {
-			PluginPage pluginPage = null;
-			if (Bukkitmanager.getConfiguration().getString("PluginUpdater.System").equalsIgnoreCase("DevBukkit")) {
-				pluginPage = new PluginPage(pluginName);
+			try {
+				FileFeed pluginFeed = new FileFeed(pluginName);
+				File updateFile = pluginFeed.getNewestFile().download();
+				return new LoadPluginPrompt(pluginName, updateFile);
+			}catch (Exception e) {
+				if (config.getDebug()) e.printStackTrace();
+				return Prompt.END_OF_CONVERSATION;
 			}
-			FilePage filePage = pluginPage.getNewestFile();
-			File file = filePage.download();
-			return new LoadPluginPrompt(this.pluginName, file);
 		}
 		return Prompt.END_OF_CONVERSATION;
 	}

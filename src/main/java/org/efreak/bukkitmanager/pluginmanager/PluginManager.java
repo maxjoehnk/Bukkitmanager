@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,15 +23,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.efreak.bukkitmanager.Bukkitmanager;
 import org.efreak.bukkitmanager.Configuration;
 import org.efreak.bukkitmanager.IOManager;
-import org.efreak.bukkitmanager.pluginmanager.updater.FilePage;
-import org.efreak.bukkitmanager.pluginmanager.updater.PluginPage;
 import org.efreak.bukkitmanager.util.FileHelper;
 
 public class PluginManager {
 	
 	private static HashMap<String, Plugin> plugins;
-	private static HashMap<Plugin, PluginPage> pluginPages;
-	private static HashMap<Plugin, FilePage> filePages;
+	private static HashMap<String, FileFeed> pluginFeeds;
 	private static Configuration config;
 	private static IOManager io;
 	private static boolean pluginsFetched = false;
@@ -44,8 +42,7 @@ public class PluginManager {
 	public void init() {
 		plugins = new HashMap<String, Plugin>();
 		updateLowerCasePlugins();
-		pluginPages = new HashMap<Plugin, PluginPage>();
-		filePages = new HashMap<Plugin, FilePage>();
+		pluginFeeds = new HashMap<String, FileFeed>();
 		if (config.getBoolean("PluginUpdater.Enabled")) {
 			new Thread() {
 				public void run() {
@@ -61,11 +58,13 @@ public class PluginManager {
 					for (int i = 0; i < plugins.length; i++) {
 						if (config.getBoolean("PluginUpdater.Blacklist.Enabled") && blacklist.contains(plugins[i].getName())) continue;
 						if (config.getBoolean("PluginUpdater.Whitelist.Enabled") && !whitelist.contains(plugins[i].getName())) continue;
-						PluginPage pluginPage = new PluginPage(plugins[i].getName());
-						if (pluginPage.exists()) {
-					    	pluginPages.put(plugins[i], pluginPage);
-					    	filePages.put(plugins[i], pluginPage.getNewestFile());
-						}else if (config.getDebug()) io.sendConsoleWarning("Could not load BukkitDev Page of Plugin " + plugins[i].getName());
+						try {
+							FileFeed pluginFeed = new FileFeed(plugins[i].getName());
+							pluginFeeds.put(plugins[i].getName(), pluginFeed);
+						}catch(Exception e) {
+							io.debug("Could not load BukkitDev Page of Plugin " + plugins[i].getName());
+							if (config.getDebug()) e.printStackTrace();
+						}
 					}
 					pluginsFetched = true;
 					io.sendConsole(io.translate("Plugin.Done"));
@@ -199,9 +198,8 @@ public class PluginManager {
 	}
 	
 	public static void updatePlugin(Plugin plugin) {
-		FilePage filePage = filePages.get(plugin);
-		if (filePage == null) return;
-		filePage.download();
+		FileFeed pluginFeed = pluginFeeds.get(plugin.getName());
+		pluginFeed.getNewestFile().download();
 	}
 
 	public static void updatePlugins() {
@@ -213,12 +211,22 @@ public class PluginManager {
 	
 	public static boolean checkPlugin(Plugin plugin) {
 		if (!pluginsFetched) return true;
-		if (pluginPages.containsKey(plugin)) {
-			FilePage filePage = filePages.get(plugin);
-			if (filePage == null) return true;
-			if (filePage.getName().contains(plugin.getDescription().getVersion())) return true;
-			else return false;
+		if (pluginFeeds.containsKey(plugin.getName())) {
+			FileFeed feed = pluginFeeds.get(plugin.getName());
+			String latestVersion = feed.getNewestFileName();
+			String currentVersion = plugin.getDescription().getFullName();
+			latestVersion = flattenVersion(latestVersion);
+			currentVersion = flattenVersion(currentVersion);
+			int result = currentVersion.compareTo(latestVersion);
+			return result >= 0;
 		}else return true;
+	}
+	
+	public static String flattenVersion(String version) {
+		String[] split = Pattern.compile(".", Pattern.LITERAL).split(version);
+		StringBuilder sb = new StringBuilder();
+		for (String s : split) sb.append(String.format("%4s", s));
+		return sb.toString();
 	}
 
 	public static File getUpdateFolder() {

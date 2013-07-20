@@ -12,9 +12,8 @@ import org.efreak.bukkitmanager.databases.*;
 //import org.efreak.bukkitmanager.external.ArgumentParser;
 import org.efreak.bukkitmanager.listener.BukkitListener;
 import org.efreak.bukkitmanager.logger.LoggingManager;
+import org.efreak.bukkitmanager.pluginmanager.FileFeed;
 import org.efreak.bukkitmanager.pluginmanager.PluginManager;
-import org.efreak.bukkitmanager.pluginmanager.updater.FilePage;
-import org.efreak.bukkitmanager.pluginmanager.updater.PluginPage;
 import org.efreak.bukkitmanager.remoteserver.RemoteCommandManager;
 import org.efreak.bukkitmanager.remoteserver.RemoteServer;
 import org.efreak.bukkitmanager.remoteserver.commands.*;
@@ -126,13 +125,22 @@ public class Bukkitmanager extends JavaPlugin {
 				setName("Bukkitmanager Autoupdater");
 				if (config.getBoolean("General.Auto-Updater") &! (config.getBoolean("PluginUpdater.Enabled") && config.getBoolean("PluginUpdater.CheckOnStart"))) {
 					io.sendConsole(io.translate("PluginUpdater.CheckingUpdates"));
-					PluginPage pluginPage = new PluginPage(instance.getName());
-					FilePage filePage = pluginPage.getNewestFile();
-					if (!filePage.getName().equals("Bukkitmanager Beta " + getDescription().getVersion())) {
-						io.sendConsole(io.translate("AutoUpdater.NewVersion").replaceAll("%name%", filePage.getName()));
-						io.sendConsole(io.translate("AutoUpdater.Running").replaceAll("%name%", "Bukkitmanager Beta " + getDescription().getVersion()));
-						filePage.download();
-					}else io.sendConsole(io.translate("AutoUpdater.UpToDate"));
+					try {
+						FileFeed feed = new FileFeed("Bukkitmanager");
+						String latestVersion = feed.getNewestFileName();
+						String currentVersion = getDescription().getFullName();
+						latestVersion = PluginManager.flattenVersion(latestVersion);
+						currentVersion = PluginManager.flattenVersion(currentVersion);
+						int result = currentVersion.compareTo(latestVersion);
+						if (result < 0) {
+							io.sendConsole(io.translate("AutoUpdater.NewVersion").replaceAll("%name%", feed.getNewestFileName()));
+							io.sendConsole(io.translate("AutoUpdater.Running").replaceAll("%name%", "Bukkitmanager Beta " + getDescription().getVersion()));
+							feed.getNewestFile().download();
+						}else io.sendConsole(io.translate("AutoUpdater.UpToDate"));
+					}catch (Exception e) {
+						if (config.getDebug()) e.printStackTrace();
+						io.sendConsoleWarning(io.translate("AutoUpdater.Error"));
+					}
 				}
 			}
 		}.start();
