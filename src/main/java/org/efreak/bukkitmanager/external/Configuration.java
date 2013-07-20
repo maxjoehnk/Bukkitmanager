@@ -44,7 +44,10 @@ public class Configuration {
 	}
 	
 	private void update() {
-		properties.setProperty("", "");
+		update("Plugin.Directory", "../");
 	}
 	
+	private void update(String key, String value) {
+		if (!properties.contains(key)) properties.setProperty(key, value);
+	}
 }
