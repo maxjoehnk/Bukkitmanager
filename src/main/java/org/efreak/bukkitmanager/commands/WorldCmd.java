@@ -10,6 +10,7 @@ import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.World.Environment;
 import org.bukkit.command.CommandSender;
+import org.efreak.bukkitmanager.util.WorldManager;
 
 public class WorldCmd extends CommandHandler {
 
@@ -85,6 +86,42 @@ public class WorldCmd extends CommandHandler {
 			}
 			Bukkit.createWorld(creator);
 			io.send(sender, "World " + args[0] + " successfully created");
+		}
+		return true;
+	}
+	
+	@SubCommand(label = "load", helpNode = "World.Load", permission = "bm.world.load", usage = "world load <name> [-e env] [-t type] [-s seed]")
+	public boolean loadCommand(CommandSender sender, String[] args) {
+		if (args.length < 1) io.sendFewArgs(sender, "/bm world load <name> [-e environment] [-t type] [-s seed]");
+		else if (args.length > 7) io.sendManyArgs(sender, "/bm world load <name> [-e env] [-t type] [-s seed]");
+		else {
+			if (args.length == 1) {
+				if (WorldManager.loadWorld(args[0]) != null) io.send(sender, "World " + args[0] + " successfully loaded");
+				else io.sendError(sender, "Error loading World " + args[0]);
+			}else {
+				WorldCreator creator = new WorldCreator(args[0]);
+				List<String> argList = Arrays.asList(args);
+				if (argList.contains("-e")) {
+					String env = argList.get(argList.indexOf("-e") + 1);
+					if (Environment.valueOf(env.toUpperCase()) != null) creator.environment(Environment.valueOf(env.toUpperCase()));
+					else io.sendWarning(sender, "Unknown Environment " + env);
+				}
+				if (argList.contains("-s")) {
+					try {
+						long seed = Long.valueOf(argList.get(argList.indexOf("-s") + 1));
+						creator.seed(seed);
+					}catch (Exception e) {
+						io.sendWarning(sender, "Unsupported Seed: " + argList.get(argList.indexOf("-s") + 1));
+					}
+				}
+				if (argList.contains("-t")) {
+					String type = argList.get(argList.indexOf("-t") + 1);
+					if (WorldType.valueOf(type.toUpperCase()) != null) creator.type(WorldType.valueOf(type.toUpperCase()));
+					else io.sendWarning(sender, "Unknown World Type " + type);				
+				}
+				if (WorldManager.loadWorld(creator) != null) io.send(sender, "World " + args[0] + " successfully loaded");
+				else io.sendError(sender, "Error loading World " + args[0]);
+			}
 		}
 		return true;
 	}
