@@ -1,6 +1,6 @@
 name: Bukkitmanager
 main: org.efreak.bukkitmanager.Bukkitmanager
-version: 1.5
+version: {$version}
 website: http://dev.bukkit.org/server-mods/bukkitmanager
 author: e-freak
 prefix: Bukkitmanager
