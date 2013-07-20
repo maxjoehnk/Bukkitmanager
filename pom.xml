@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.efreak.bukkit</groupId>
   <artifactId>bukkitmanager</artifactId>
-  <version>Beta 1.5</version>
+  <version>1.0-SNAPSHOT</version>
   
   <name>Bukkitmanager</name>
   <url>http://dev.bukkit.org/server-mods/bukkitmanager/</url>

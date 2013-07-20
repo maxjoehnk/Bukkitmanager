@@ -22,6 +22,7 @@ import org.efreak.bukkitmanager.util.ChatFilter;
 import org.efreak.bukkitmanager.util.FileUtils;
 //import org.efreak.bukkitmanager.scoreboards.ScoreboardManager;
 import org.efreak.bukkitmanager.util.FileHelper;
+import org.efreak.bukkitmanager.util.WorldManager;
 
 import com.turt2live.metrics.EMetrics;
 //import com.turt2live.metrics.graph.DonutGraph;
@@ -45,6 +46,7 @@ public class Bukkitmanager extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		WorldManager.saveWorlds();
     	db.shutdown();
     	ThreadManager.stopThread(ThreadType.AUTOSAVE);
     	ThreadManager.stopThread(ThreadType.AUTOBACKUP);
@@ -99,6 +101,7 @@ public class Bukkitmanager extends JavaPlugin {
 			db = Database.getDatabaseBySystem("SQLite");
 		}
 		db.init();
+		WorldManager.loadWorlds();
 		getServer().getPluginCommand("bm").setExecutor(new CommandManager());
 		getServer().getPluginManager().registerEvents(new BukkitListener(), this);
 		new CustomMessageManager().init();
