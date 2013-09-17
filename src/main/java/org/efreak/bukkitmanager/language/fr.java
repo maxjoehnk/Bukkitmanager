@@ -33,55 +33,59 @@ public class fr extends Language {
 			
 			set("Plugin.Done", "&aFait!");
 			set("Plugin.LoadingCommands", "&2Chargement commandes...");
-			set("Plugin.CommandsLoaded", "&aCommandes charg� avec succ�s!");
-			set("Plugin.FirstRun", "Cela semble �tre la premi�re fois que vous ex�cutez Bukkitmanager. Vous pouvez ex�cuter /bm install pour configurer Bukkitmanager...");
-			set("Plugin.Lite", "You are using a Lite version of Bukkitmanager, which doesn't offers you the Swing GUI, the FTP Server and the H2 Database Support.");
+			set("Plugin.CommandsLoaded", "&aCommandes chargé avec succès!");
+			set("Plugin.FirstRun", "Cela semble être la première fois que vous exécutez Bukkitmanager. Vous pouvez exécuter /bm install pour configurer Bukkitmanager...");
+			set("Plugin.Debug", "Bukkitmanager runs in Debug Mode");
+			
+			set("Plugin.Load.Error.UnknownDependency", "Plugin couldn't be loaded: Unknown Dependency");
+			set("Plugin.Load.Error.InvalidPlugin", "Plugin couldn't be loaded: Invalid Plugin");
+			set("Plugin.Load.Error.InvalidDescription", "Plugin couldn't be loaded: Invalid Plugin Description");
 			
 			set("PluginUpdater.FetchingPlugins", "Obtention de plugins...");
-			set("PluginUpdater.CheckingUpdates", "V�rification des mises � jour...");
-			set("PluginUpdater.UpdatesAvailable", "Des mises � jour pour certains de vos plugins disponibles. S'il vous pla�t ex�cuter /bm plugin update");
+			set("PluginUpdater.CheckingUpdates", "Vérification des mises à jour...");
+			set("PluginUpdater.UpdatesAvailable", "Des mises à jour pour certains de vos plugins disponibles. S'il vous plaît exécuter /bm plugin update");
 			
 			set("AutoUpdater.NewVersion", "Il ya une nouvelle version disponible: %name%");
-			set("AutoUpdater.Running", "Vous ex�cutez %name%");
-			set("AutoUpdater.UpToDate", "Aucune mise � jour trouv�e!");
+			set("AutoUpdater.Running", "Vous exécutez %name%");
+			set("AutoUpdater.UpToDate", "Aucune mise à jour trouvée!!");
 			
-			set("Player.Login.Hidden", "Vous �tes cach�!");
+			set("Player.Login.Hidden", "Vous êtes caché!");
 			
-			set("Permissions.ForceSuper", "&2Superperms forc�!");
+			set("Permissions.ForceSuper", "&2Superperms forcé!");
 			set("Permissions.Found", "&a%perms% soutenir enabled!");
-			set("Permissions.NoPerms", "&ePas de syst�me de permissions trouv�!");
+			set("Permissions.NoPerms", "&ePas de système de permissions trouvé!");
 			set("Permissions.OP", "&aUtilisation OP-droits pour les commandes!");
 			
-			set("Autobackup.BackupInProgress", "&ePlusieurs sauvegarde simultan�e tent�! Autobackup intervalle est probablement trop court!");
+			set("Autobackup.BackupInProgress", "&ePlusieurs sauvegarde simultanée tenté! Autobackup intervalle est probablement trop court!");
 			set("Autobackup.NoPlayer", "&eSaut de sauvegarde, pas de joueurs en ligne.");
-			set("Autobackup.MultipleJars", "&cPlusieurs fichiers JAR. Dans le dossier racine d�tect�e. S'il vous pla�t indiquer Nom dans le config.yml!");
-			set("Autobackup.NoJar", "&cNon. Fichier jar dans le dossier racine d�tect�! S'il vous pla�t indiquer Filepath + Nom dans le config.yml!");
-			set("Autobackup.JarDoesntExists", "&c%file% n'existe pas. S'il vous pla�t v�rifier votre config.yml!");
+			set("Autobackup.MultipleJars", "&cPlusieurs fichiers JAR. Dans le dossier racine détectée. S'il vous plaît indiquer Nom dans le config.yml!");
+			set("Autobackup.NoJar", "&cNon. Fichier jar dans le dossier racine détecté! S'il vous plaît indiquer Filepath + Nom dans le config.yml!");
+			set("Autobackup.JarDoesntExists", "&c%file% n'existe pas. S'il vous plaît vérifier votre config.yml!");
 			set("Autobackup.Compressing.Plugins", "&2Compression de plugins...");
 			set("Autobackup.Compressing.World", "&2Compression monde: %world%...");
 			set("Autobackup.Compressing.Bukkit", "&2Compression %jar%...");
 			set("Autobackup.Warn", "Sauvegarde automatique dans %timeleft% seconde.");
-			set("Autobackup.Notification.Start", "&aAutobackup a commenc�!");
+			set("Autobackup.Notification.Start", "&aAutobackup a commencé!");
 			set("Autobackup.Notification.Finish", "&aAutobackup fini!");
 			
-			set("Autosave.Saving.Players", "&2Les joueurs d'�pargne...");
-			set("Autosave.Saved.Players", "&aLes joueurs sauv�!");
+			set("Autosave.Saving.Players", "&2Les joueurs d'épargne...");
+			set("Autosave.Saved.Players", "&aLes joueurs sauvé!");
 			set("Autosave.Saving.World", "&2sauver le monde: %world%...");
-			set("Autosave.Saved.Worlds", "&aSauv� %worlds% mondes!");
-			set("Autosave.SaveInProgress", "&eSimultan�e de plusieurs tent� sauve! Intervalle de sauvegarde automatique est probable trop court!");
+			set("Autosave.Saved.Worlds", "&aSauvé %worlds% mondes!");
+			set("Autosave.SaveInProgress", "&eSimultanée de plusieurs tenté sauve! Intervalle de sauvegarde automatique est probable trop court!");
 			set("Autosave.NoPlayer", "&eSaut d'enregistrement, pas de joueurs en ligne.");
 			set("Autosave.Warn", "Autosave dans %timeleft% seconde.");
-			set("Autosave.Notification.Start", "&aAutosave commenc�!");
+			set("Autosave.Notification.Start", "&aAutosave commencé!");
 			set("Autosave.Notification.Finish", "&aAutosave fini!");
 			
-			set("Downloader.Downloading", "&2t�l�chargement %file% (%filesize%)");
-			set("Downloader.Downloaded", "&aT�l�chargez des %file% fini.");
-			set("Downloader.Error", "&cErreur de fichier t�l�chargement: %file%.");
+			set("Downloader.Downloading", "&2téléchargement %file% (%filesize%)");
+			set("Downloader.Downloaded", "&aTéléchargez des %file% fini.");
+			set("Downloader.Error", "&cErreur de fichier téléchargement: %file%.");
 			
-			set("Thread.Start", "&a%thread% commenc�! intervalle est %interval% seconde");
-			set("Thread.Stopping", "&2arr�t %thread%...");
-			set("Thread.Stop", "&ar�ussi � arr�ter %thread%!");
-			set("Thread.Error", "&cImpossible d'arr�ter %thread%");
+			set("Thread.Start", "&a%thread% commencé! intervalle est %interval% seconde");
+			set("Thread.Stopping", "&2arrêt %thread%...");
+			set("Thread.Stop", "&aréussi à arrêter %thread%!");
+			set("Thread.Error", "&cImpossible d'arrêter %thread%");
 			
 			set("Command.FewArgs", "&cArguments trop peu");
 			set("Command.ManyArgs", "&cArguments trop nombreux");
