@@ -92,29 +92,29 @@ public class fr extends Language {
 			set("Command.Usage", "Usage: %usage%");
 			
 			set("Command.NoPerm.Player", "&cVous n'avez pas la permission de faire cela!");
-			set("Command.NoPerm.Console", "&e%player% a essay� d'ex�cuter la commande &8%cmd%!");
+			set("Command.NoPerm.Console", "&e%player% a essayé d'exécuter la commande &8%cmd%!");
 			
 			set("Command.Language.Get", "La langue est %lang%.");
-			set("Command.Language.Set", "&aLe langage a �t� fix� � %lang%!");
+			set("Command.Language.Set", "&aLe langage a été fixé à %lang%!");
 			set("Command.Language.Error", "&cLa langue %lang% ne pas exister!");
 			
 			set("Command.Autobackup.Interval.Get", "L'intervalle courant Autobackup est: %interval%");
-			set("Command.Autobackup.Interval.Set", "D�finir l'intervalle de sauvegarde automatique: %interval_old% �: %interval_new%!");
-			set("Command.Autobackup.Restart", "Red�marr� fil Autobackup!");
-			set("Command.Autobackup.Start", "Commenc� fil Autobackup!");
-			set("Command.Autobackup.Stop", "Arr�t� fil Autobackup!");
+			set("Command.Autobackup.Interval.Set", "Définir l'intervalle de sauvegarde automatique: %interval_old% à: %interval_new%!");
+			set("Command.Autobackup.Restart", "Redémarré fil Autobackup!");
+			set("Command.Autobackup.Start", "Commencé fil Autobackup!");
+			set("Command.Autobackup.Stop", "Arrêté fil Autobackup!");
 			
 			set("Command.Autosave.Interval.Get", "L'intervalle de sauvegarde automatique est en cours: %interval%");
-			set("Command.Autosave.Interval.Set", "D�finir l'intervalle de sauvegarde automatique � partir: %interval_old% �: %interval_new%!");
-			set("Command.Autosave.Restart", "Autosave fil red�marr�!");
-			set("Command.Autosave.Start", "Autosave commenc� fil!");
-			set("Command.Autosave.Stop", "Fil Autosave arr�t�!");
+			set("Command.Autosave.Interval.Set", "Définir l'intervalle de sauvegarde automatique à partir: %interval_old% à: %interval_new%!");
+			set("Command.Autosave.Restart", "Autosave fil redémarré!");
+			set("Command.Autosave.Start", "Autosave commencé fil!");
+			set("Command.Autosave.Stop", "Fil Autosave arrêté!");
 			
 			set("Command.Automessage.Interval.Get", "L'intervalle courant est Automessage: %interval%");
-			set("Command.Automessage.Interval.Set", "D�finir l'intervalle de Automessage: %interval_old% �: %interval_new%!");
-			set("Command.Automessage.Restart", "Red�marr� fil Automessage!");
-			set("Command.Automessage.Start", "Commenc� fil Automessage!");
-			set("Command.Automessage.Stop", "Arr�t� fil Automessage!");
+			set("Command.Automessage.Interval.Set", "Définir l'intervalle de Automessage: %interval_old% à: %interval_new%!");
+			set("Command.Automessage.Restart", "Redémarré fil Automessage!");
+			set("Command.Automessage.Start", "Commencé fil Automessage!");
+			set("Command.Automessage.Stop", "Arrêté fil Automessage!");
 			set("Command.Automessage.Add", "&aUne nouvelle Automessage a �t� ajout� � l'index %index%.");
 			set("Command.Automessage.Remove", "&aLe Automessage avec index %index% a �t� �limin�.");
 			set("Command.Automessage.Get", "L'indice de Automessage %index% contient:");
