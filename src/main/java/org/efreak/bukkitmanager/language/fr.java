@@ -32,185 +32,185 @@ public class fr extends Language {
 			lang.load(langFile);
 			
 			set("Plugin.Done", "&aFait!");
-			set("Plugin.LoadingCommands", "&2Chargement commandes...");
+			set("Plugin.LoadingCommands", "&2Chargement des commandes...");
 			set("Plugin.CommandsLoaded", "&aCommandes chargé avec succès!");
-			set("Plugin.FirstRun", "Cela semble être la première fois que vous exécutez Bukkitmanager. Vous pouvez exécuter /bm install pour configurer Bukkitmanager...");
+			set("Plugin.FirstRun", "Il semblerait que c'est la première fois que vous exécutez Bukkitmanager. Vous pouvez exécuter /bm install pour configurer Bukkitmanager...");
 			set("Plugin.Debug", "Bukkitmanager runs in Debug Mode");
 			
-			set("Plugin.Load.Error.UnknownDependency", "Plugin couldn't be loaded: Unknown Dependency");
+			set("Plugin.Load.Error.UnknownDependency", "Le plugin n'a pas pu être chargé : Dépendance inconnue");
 			set("Plugin.Load.Error.InvalidPlugin", "Plugin couldn't be loaded: Invalid Plugin");
 			set("Plugin.Load.Error.InvalidDescription", "Plugin couldn't be loaded: Invalid Plugin Description");
 			
 			set("PluginUpdater.FetchingPlugins", "Obtention de plugins...");
 			set("PluginUpdater.CheckingUpdates", "Vérification des mises à jour...");
-			set("PluginUpdater.UpdatesAvailable", "Des mises à jour pour certains de vos plugins disponibles. S'il vous plaît exécuter /bm plugin update");
+			set("PluginUpdater.UpdatesAvailable", "Des mises à jour pour certains de vos plugins sont disponibles. Veuillez exécuter /bm plugin update");
 			
-			set("AutoUpdater.NewVersion", "Il ya une nouvelle version disponible: %name%");
+			set("AutoUpdater.NewVersion", "Nouvelle version disponible: %name%");
 			set("AutoUpdater.Running", "Vous exécutez %name%");
-			set("AutoUpdater.UpToDate", "Aucune mise à jour trouvée!!");
+			set("AutoUpdater.UpToDate", "Aucune mise à jour trouvée.");
 			
-			set("Player.Login.Hidden", "Vous êtes caché!");
+			set("Player.Login.Hidden", "Vous êtes Invisible.");
 			
-			set("Permissions.ForceSuper", "&2Superperms forcé!");
-			set("Permissions.Found", "&a%perms% soutenir enabled!");
-			set("Permissions.NoPerms", "&ePas de système de permissions trouvé!");
-			set("Permissions.OP", "&aUtilisation OP-droits pour les commandes!");
+			set("Permissions.ForceSuper", "&2Superperms forcées.");
+			set("Permissions.Found", "&a%perms% soutenir activé.");
+			set("Permissions.NoPerms", "&eAucun système de permissions n'a été trouvé.");
+			set("Permissions.OP", "&aUtilisation des droits d'Opérateur pour les commandes.");
 			
-			set("Autobackup.BackupInProgress", "&ePlusieurs sauvegarde simultanée tenté! Autobackup intervalle est probablement trop court!");
-			set("Autobackup.NoPlayer", "&eSaut de sauvegarde, pas de joueurs en ligne.");
-			set("Autobackup.MultipleJars", "&cPlusieurs fichiers JAR. Dans le dossier racine détectée. S'il vous plaît indiquer Nom dans le config.yml!");
-			set("Autobackup.NoJar", "&cNon. Fichier jar dans le dossier racine détecté! S'il vous plaît indiquer Filepath + Nom dans le config.yml!");
-			set("Autobackup.JarDoesntExists", "&c%file% n'existe pas. S'il vous plaît vérifier votre config.yml!");
-			set("Autobackup.Compressing.Plugins", "&2Compression de plugins...");
-			set("Autobackup.Compressing.World", "&2Compression monde: %world%...");
-			set("Autobackup.Compressing.Bukkit", "&2Compression %jar%...");
-			set("Autobackup.Warn", "Sauvegarde automatique dans %timeleft% seconde.");
-			set("Autobackup.Notification.Start", "&aAutobackup a commencé!");
-			set("Autobackup.Notification.Finish", "&aAutobackup fini!");
+			set("Autobackup.BackupInProgress", "&ePlusieurs sauvegarde ont été tentées simultanément! L'intervalle d'AutoBackup est probablement trop courte.");
+			set("Autobackup.NoPlayer", "&eSauvegarde ignorée : aucun joueur en ligne.");
+			set("Autobackup.MultipleJars", "&cPlusieurs fichiers .JAR dans le dossier racine ont été détectés. Veuillez indiquer les noms dans le fichier config.yml!");
+			set("Autobackup.NoJar", "&cAucun fichier .jar dans le dossier racine n'a été détecté! S'il vous plaît indiquer le chemin du fichier + son nom dans le config.yml!");
+			set("Autobackup.JarDoesntExists", "&c%file% n'existe pas. Veuillez vérifier votre config.yml!");
+			set("Autobackup.Compressing.Plugins", "&2Compression des plugins...");
+			set("Autobackup.Compressing.World", "&2Compression du monde %world%...");
+			set("Autobackup.Compressing.Bukkit", "&2Compression de %jar%...");
+			set("Autobackup.Warn", "Sauvegarde automatique dans %timeleft% secondes.");
+			set("Autobackup.Notification.Start", "&al'Autobackup a commencé.");
+			set("Autobackup.Notification.Finish", "&al'Autobackup est terminée.");
 			
-			set("Autosave.Saving.Players", "&2Les joueurs d'épargne...");
-			set("Autosave.Saved.Players", "&aLes joueurs sauvé!");
-			set("Autosave.Saving.World", "&2sauver le monde: %world%...");
-			set("Autosave.Saved.Worlds", "&aSauvé %worlds% mondes!");
-			set("Autosave.SaveInProgress", "&eSimultanée de plusieurs tenté sauve! Intervalle de sauvegarde automatique est probable trop court!");
-			set("Autosave.NoPlayer", "&eSaut d'enregistrement, pas de joueurs en ligne.");
-			set("Autosave.Warn", "Autosave dans %timeleft% seconde.");
-			set("Autosave.Notification.Start", "&aAutosave commencé!");
-			set("Autosave.Notification.Finish", "&aAutosave fini!");
+			set("Autosave.Saving.Players", "&2Sauvegarde des joueurs...");
+			set("Autosave.Saved.Players", "&aJoueurs sauvegardés.");
+			set("Autosave.Saving.World", "&2Sauvegarde du monde %world%...");
+			set("Autosave.Saved.Worlds", "&aMondes %worlds% sauvegardés.");
+			set("Autosave.SaveInProgress", "&ePlusieurs sauvegardes ont été tentées simultanément! L'intervalle de sauvegarde automatique est probablement trop courte.");
+			set("Autosave.NoPlayer", "&eEnregistrement ignorée : aucun joueur en ligne.");
+			set("Autosave.Warn", "Autosave dans %timeleft% secondes.");
+			set("Autosave.Notification.Start", "&aAutosave commencée.");
+			set("Autosave.Notification.Finish", "&aAutosave finie.");
 			
-			set("Downloader.Downloading", "&2téléchargement %file% (%filesize%)");
-			set("Downloader.Downloaded", "&aTéléchargez des %file% fini.");
-			set("Downloader.Error", "&cErreur de fichier téléchargement: %file%.");
+			set("Downloader.Downloading", "&2Téléchargement en cours de %file% (%filesize%)");
+			set("Downloader.Downloaded", "&aTéléchargement de %file% terminé.");
+			set("Downloader.Error", "&cUne erreur est survenue lors du téléchargement de : %file%.");
 			
-			set("Thread.Start", "&a%thread% commencé! intervalle est %interval% seconde");
-			set("Thread.Stopping", "&2arrêt %thread%...");
-			set("Thread.Stop", "&aréussi à arrêter %thread%!");
-			set("Thread.Error", "&cImpossible d'arrêter %thread%");
+			set("Thread.Start", "&a%thread% commencé. L'intervalle est %interval% secondes");
+			set("Thread.Stopping", "&2Arrêt de %thread%...");
+			set("Thread.Stop", "&a%thread% est arrêté!");
+			set("Thread.Error", "&cImpossible d'arrêter %thread%.");
 			
-			set("Command.FewArgs", "&cArguments trop peu");
-			set("Command.ManyArgs", "&cArguments trop nombreux");
+			set("Command.FewArgs", "&cTrop peu d'arguments");
+			set("Command.ManyArgs", "&cTrop d'arguments");
 			set("Command.Usage", "Usage: %usage%");
 			
-			set("Command.NoPerm.Player", "&cVous n'avez pas la permission de faire cela!");
-			set("Command.NoPerm.Console", "&e%player% a essayé d'exécuter la commande &8%cmd%!");
+			set("Command.NoPerm.Player", "&cErreur : Permissions insufisantes. Contactez l'administrateur.");
+			set("Command.NoPerm.Console", "&e%player% a tenté d'exécuter &8%cmd%!");
 			
 			set("Command.Language.Get", "La langue est %lang%.");
-			set("Command.Language.Set", "&aLe langage a été fixé à %lang%!");
-			set("Command.Language.Error", "&cLa langue %lang% ne pas exister!");
+			set("Command.Language.Set", "&aLe langue a été fixé à %lang%.");
+			set("Command.Language.Error", "&cLa langue %lang% n'existe pas.");
 			
-			set("Command.Autobackup.Interval.Get", "L'intervalle courant Autobackup est: %interval%");
-			set("Command.Autobackup.Interval.Set", "Définir l'intervalle de sauvegarde automatique: %interval_old% à: %interval_new%!");
-			set("Command.Autobackup.Restart", "Redémarré fil Autobackup!");
-			set("Command.Autobackup.Start", "Commencé fil Autobackup!");
-			set("Command.Autobackup.Stop", "Arrêté fil Autobackup!");
+			set("Command.Autobackup.Interval.Get", "L'intervalle actuelle d'Autobackup est: %interval%");
+			set("Command.Autobackup.Interval.Set", "L'intervalle d'AutoBackup a étédéfini à: %interval_new%.");
+			set("Command.Autobackup.Restart", "AutoBackup redémarré.");
+			set("Command.Autobackup.Start", "Autobackup démarré.");
+			set("Command.Autobackup.Stop", "AutoBackup arrêté.");
 			
-			set("Command.Autosave.Interval.Get", "L'intervalle de sauvegarde automatique est en cours: %interval%");
-			set("Command.Autosave.Interval.Set", "Définir l'intervalle de sauvegarde automatique à partir: %interval_old% à: %interval_new%!");
-			set("Command.Autosave.Restart", "Autosave fil redémarré!");
-			set("Command.Autosave.Start", "Autosave commencé fil!");
-			set("Command.Autosave.Stop", "Fil Autosave arrêté!");
+			set("Command.Autosave.Interval.Get", "L'intervalle de sauvegarde automatique est : %interval%");
+			set("Command.Autosave.Interval.Set", "Intervalle de sauvegarde automatique défini à: %interval_new%!");
+			set("Command.Autosave.Restart", "Autosave redémarré.");
+			set("Command.Autosave.Start", "Autosave démarré.");
+			set("Command.Autosave.Stop", "Autosave arrêté.");
 			
-			set("Command.Automessage.Interval.Get", "L'intervalle courant est Automessage: %interval%");
-			set("Command.Automessage.Interval.Set", "Définir l'intervalle de Automessage: %interval_old% à: %interval_new%!");
-			set("Command.Automessage.Restart", "Redémarré fil Automessage!");
-			set("Command.Automessage.Start", "Commencé fil Automessage!");
-			set("Command.Automessage.Stop", "Arrêté fil Automessage!");
-			set("Command.Automessage.Add", "&aUne nouvelle Automessage a �t� ajout� � l'index %index%.");
-			set("Command.Automessage.Remove", "&aLe Automessage avec index %index% a �t� �limin�.");
-			set("Command.Automessage.Get", "L'indice de Automessage %index% contient:");
+			set("Command.Automessage.Interval.Get", "L'intervalle actuelle d'AutoMessage est: %interval%");
+			set("Command.Automessage.Interval.Set", "Intervalle d'Automessage défini à: %interval_new%!");
+			set("Command.Automessage.Restart", "Automessage Redémarré.");
+			set("Command.Automessage.Start", "Automessage Démarré.");
+			set("Command.Automessage.Stop", "Automessage Arrêté.");
+			set("Command.Automessage.Add", "&aUn nouveau message a été ajouté à l'index %index%.");
+			set("Command.Automessage.Remove", "&aLe message à index %index% a été supprimmé.");
+			set("Command.Automessage.Get", "Le message à l'index %index% est:");
 			
-			set("Command.Bukkit.Config.NotFound", "&cl'entr�e %entry% n'a pas �t� trouv�.");
-			set("Command.Bukkit.Config.Get", "l'entr�e %entry% a la valeur: &8%value%.");
-			set("Command.Bukkit.Config.Set", "&al'entr�e %entry% a �t� fix� �: &8%value%.");
+			set("Command.Bukkit.Config.NotFound", "&cL'entrée %entry% n'a pas été trouvé.");
+			set("Command.Bukkit.Config.Get", "l'entrée %entry% a comme valeur: &8%value%.");
+			set("Command.Bukkit.Config.Set", "&al'entrée %entry% a été défini à: &8%value%.");
 			set("Command.Bukkit.Config.List", "Le server.properties contient: %items%");
 			
-			set("Command.Player.UnknownPlayer", "&cLecteur inconnu!");
-			set("Command.Player.SpecifyPlayer", "&cS'il vous pla�t sp�cifier un lecteur!");
+			set("Command.Player.UnknownPlayer", "&cJoueur inconnu");
+			set("Command.Player.SpecifyPlayer", "&cVeuillez spécifier un joueur");
 			
-			set("Command.Player.Cmd.Send", "&aCommande envoy� avec succ�s!");
-			set("Command.Player.Cmd.Error", "&cErreur d'envoi de commande!");
+			set("Command.Player.Cmd.Send", "&aCommande envoyé avec succès!");
+			set("Command.Player.Cmd.Error", "&cErreur d'envoi de la commande!");
 			
 			set("Command.Player.Displayname.Get.Your", "Votre nom d'affichage est: %displayname%.");
 			set("Command.Player.Displayname.Get.Other", "Le nom d'affichage de %player% est: %displayname%.");
-			set("Command.Player.Displayname.Set.Your", "Votre nom d'affichage a �t� fix� �: %displayname%.");
-			set("Command.Player.Displayname.Set.Other", "Le nom d'affichage de %player% a �t� fix� �: %displayname%.");
-			set("Command.Player.Displayname.Reset.Your", "Votre nom d'affichage a �t� suspendue pour: %displayname%.");
-			set("Command.Player.Displayname.Reset.Other", "Le nom d'affichage de %player% a �t� �vid�e pour: %displayname%.");
+			set("Command.Player.Displayname.Set.Your", "Votre nom d'affichage a été défini à: %displayname%.");
+			set("Command.Player.Displayname.Set.Other", "Le nom d'affichage de %player% a été défini à: %displayname%.");
+			set("Command.Player.Displayname.Reset.Your", "Votre nom d'affichage a été rétabli à: %displayname%.");
+			set("Command.Player.Displayname.Reset.Other", "Le nom d'affichage de %player% a été rétabli à: %displayname%.");
 			
 			set("Command.Player.Listname.Get.Your", "Votre nom de liste est: %listname%.");
 			set("Command.Player.Listname.Get.Other", "Le nom de liste de %player% est: %listname%.");
-			set("Command.Player.Listname.Set.Your", "Votre nom de liste a �t� fix�e �: %listname%.");
-			set("Command.Player.Listname.Set.Other", "Le nom de liste de %player% a �t� fix� �: %listname%.");
-			set("Command.Player.Listname.Reset.Your", "Votre nom de liste a �t� suspendue pour: %listname%.");
-			set("Command.Player.Listname.Reset.Other", "Le nom de liste de %player% a �t� �vid�e pour: %listname%.");
+			set("Command.Player.Listname.Set.Your", "Votre nom de liste a été défini à: %listname%.");
+			set("Command.Player.Listname.Set.Other", "Le nom de liste de %player% a été défini à: %listname%.");
+			set("Command.Player.Listname.Reset.Your", "Votre nom de liste a été rétabli à: %listname%.");
+			set("Command.Player.Listname.Reset.Other", "Le nom de liste de %player% a été rétabli àlistname%.");
 			
-			set("Command.Player.Exp.Error", "&cLa valeur exp doit �tre un entier!");
-			set("Command.Player.Exp.Get.Your", "Votre valeur exp est: %exp%.");
-			set("Command.Player.Exp.Get.Other", "La valeur de exp %player% est: %exp%.");
-			set("Command.Player.Exp.Set.Your", "Votre valeur exp a �t� fix� �: %exp%.");
-			set("Command.Player.Exp.Set.Other", "La valeur de exp %player% a �t� fix� �: %exp%.");
-			set("Command.Player.Exp.Add.Your", "%exp%Exp a �t� ajout� � votre valeur de exp.");
-			set("Command.Player.Exp.Add.Other", "%exp%Exp a �t� ajout� � la valeur de exp %player%.");
+			set("Command.Player.Exp.Error", "&cLa valeur EXP doit être un nombre entier!");
+			set("Command.Player.Exp.Get.Your", "Votre valeur EXP est: %exp%.");a laest ré-initialisé pour
+			set("Command.Player.Exp.Get.Other", "La valeur de EXP %player% est: %exp%.");
+			set("Command.Player.Exp.Set.Your", "Votre valeur EXP a été défini à: %exp%.");
+			set("Command.Player.Exp.Set.Other", "La valeur de EXP %player% a été défini à: %exp%.");
+			set("Command.Player.Exp.Add.Your", "%exp%Exp a été ajouté votre EXP.");
+			set("Command.Player.Exp.Add.Other", "%exp%Exp a été ajouté é la valeur EXP de %player%.");
 			
-			set("Command.Player.Health.Error", "&cLa valeur de la sant� doit �tre un nombre entier!");
-			set("Command.Player.Health.TooMuch", "&cCette valeur est trop grande aide! Choisissez une plus petite.");
-			set("Command.Player.Health.Get.Your", "Votre sant� est la valeur: %health%.");
-			set("Command.Player.Health.Get.Other", "La valeur de la sant� %player% est: %health%.");
-			set("Command.Player.Health.Set.Your", "Votre �tat de sant� a �t� fix� �: %health%.");
-			set("Command.Player.Health.Set.Other", "La sant� des %player% a �t� fix� �: %health%.");
-			set("Command.Player.Health.Add.Your", "%health% a �t� ajout� � votre sant�.");
-			set("Command.Player.Health.Add.Other", "%health% a �t� ajout� � la sant� de %player%.");
-			set("Command.Player.Health.Remove.Your", "%health% a �t� supprim� de votre sant�.");
-			set("Command.Player.Health.Remove.Other", "%health% a �t� retir� de la sant� de %player%.");
+			set("Command.Player.Health.Error", "&cLa valeur de la santé doit être un nombre entier!");
+			set("Command.Player.Health.TooMuch", "&cVotre santé est trop grande ! Choisissez un nombre entre 1 et 20.");
+			set("Command.Player.Health.Get.Your", "Votre santé est à: %health%.");
+			set("Command.Player.Health.Get.Other", "La valeur de la santé %player% est: %health%.");
+			set("Command.Player.Health.Set.Your", "Votre état de santé a été fixé à: %health%.");
+			set("Command.Player.Health.Set.Other", "La santé de %player% a été défini à: %health%.");
+			set("Command.Player.Health.Add.Your", "%health% a été ajouté à votre santé.");
+			set("Command.Player.Health.Add.Other", "%health% a été ajouté à la santé de %player%.");
+			set("Command.Player.Health.Remove.Your", "%health% PV ont été retirés de votre santé.");
+			set("Command.Player.Health.Remove.Other", "%health% PV ont été retirés de la santé de %player%.");
 			
-			set("Command.Player.Hide.You", "Vous avez �t� cach� avec succ�s!");
-			set("Command.Player.Hide.Other", "%player% a pu �tre cach�!");
-			set("Command.Player.Hide.ByOther", "Vous avez �t� cach� par %player%!");
-			set("Command.Player.Hide.Already.You", "&eVous �tes d�j� cach�!");
-			set("Command.Player.Hide.Already.Other", "&e%player% est d�j� cach�!");
-			set("Command.Player.Hide.Console.You", "%player% s'est cach�!");
-			set("Command.Player.Hide.Console.Other", "%causer% a cach� %player%!");
+			set("Command.Player.Hide.You", "Vous êtes désormais invisible.");
+			set("Command.Player.Hide.Other", "%player% est désormais invisible.");
+			set("Command.Player.Hide.ByOther", "Vous avez été dissimulé par %player%!");
+			set("Command.Player.Hide.Already.You", "&eVous êtes déjà invisible!");
+			set("Command.Player.Hide.Already.Other", "&e%player% est déjà invisible!");
+			set("Command.Player.Hide.Console.You", "%player% s'est dissimulé!");
+			set("Command.Player.Hide.Console.Other", "%causer% a dissimulé %player%!");
 			
-			set("Command.Player.Gamemode.Error", "&cMode de jeu doit �tre un entier!");
-			set("Command.Player.Gamemode.Unknown", "&cgamemode inconnu!");
+			set("Command.Player.Gamemode.Error", "&cLe Gamemode doit être un entier.");
+			set("Command.Player.Gamemode.Unknown", "&cgamemode inconnu! (0 : Survival, 1 : Création, 2 : Aventure");
 			
-			set("Command.Player.Lastseen.Your", "Vous avez �t� la derni�re fois sur %lastseen_date% at %lastseen_time%");
-			set("Command.Player.Lastseen.Other", "%player% a �t� vu la derni�re fois sur %lastseen_date% at %lastseen_time%");
+			set("Command.Player.Lastseen.Your", "Vous avez été vu pour la dernière fois le %lastseen_date% à %lastseen_time%");
+			set("Command.Player.Lastseen.Other", "%player% a été vu la dernière fois le %lastseen_date% à %lastseen_time%");
 			
-			set("Command.Player.Firstseen.Your", "Vous avez �t� la premi�re fois sur %firstseen%");
-			set("Command.Player.Firstseen.Other", "%player% a d'abord �t� vu sur %firstseen%");
+			set("Command.Player.Firstseen.Your", "Vous avez été vu pour la première fois le %firstseen%");
+			set("Command.Player.Firstseen.Other", "%player% a été vu pour la première fois le %firstseen%");
 			
-			set("Command.Player.Level.Error", "&cLe niveau doit �tre un entier!");
+			set("Command.Player.Level.Error", "&cLe niveau doit être un entier!");
 			set("Command.Player.Level.Get.Your", "Votre niveau est: %level%.");
 			set("Command.Player.Level.Get.Other", "Le niveau de %player% est: %level%.");
-			set("Command.Player.Level.Set.Your", "Votre niveau a �t� fix� �: %level%.");
-			set("Command.Player.Level.Set.Other", "Le niveau de %player% a �t� fix� �: %level%.");
+			set("Command.Player.Level.Set.Your", "Votre niveau a été défini à: %level%.");
+			set("Command.Player.Level.Set.Other", "Le niveau de %player% a été défini à: %level%.");
 			
-			set("Command.Player.Load", "&a%player%.dat charg�!");
-			set("Command.Player.Save", "&a%player%.dat sauv�!");
+			set("Command.Player.Load", "&a%player%.dat chargé.");
+			set("Command.Player.Save", "&a%player%.dat sauvé.");
 			
-			set("Command.Player.Show.You", "Vous avez �t� d�montr� avec succ�s!");
-			set("Command.Player.Show.Other", "%player% a �t� d�montr� avec succ�s!");
-			set("Command.Player.Show.ByOther", "On vous a montr� par %player%!");
-			set("Command.Player.Show.Already.You", "&eVous �tes d�j� visibles!");
-			set("Command.Player.Show.Already.Other", "&e%player% est d�j� visible!");
-			set("Command.Player.Show.Console.You", "%player% s'est montr�e!");
-			set("Command.Player.Show.Console.Other", "%causer% a montr� %player%!");
+			set("Command.Player.Show.You", "Vous êtes visible à nouveau.");
+			set("Command.Player.Show.Other", "Vous avez rendu %player% visible.");
+			set("Command.Player.Show.ByOther", "%player% vous a rendu visible.");
+			set("Command.Player.Show.Already.You", "&eVous êtes déjà visible.");
+			set("Command.Player.Show.Already.Other", "&e%player% est déjé visible");
+			set("Command.Player.Show.Console.You", "%player% se montre!");
+			set("Command.Player.Show.Console.Other", "%causer% à rendu %player% visible.");
 			
 			set("Command.Player.Time.Get.Your", "Votre temps est: %time%.");
-			set("Command.Player.Time.Get.Other", "Le temps de la %player% est: %time%.");
-			set("Command.Player.Time.Set.Your", "Votre temps a �t� fix� �: %time%.");
-			set("Command.Player.Time.Set.Other", "Le temps de la %player% a �t� fix� �: %time%.");
-			set("Command.Player.Time.Reset.Your", "Votre temps est en retrait pour: %time%.");
-			set("Command.Player.Time.Reset.Other", "Le temps de la %player% a �t� �vid�e pour: %time%.");
+			set("Command.Player.Time.Get.Other", "Le temps de %player% est: %time%.");
+			set("Command.Player.Time.Set.Your", "Votre temps a été défini à: %time%.");
+			set("Command.Player.Time.Set.Other", "Le temps de %player% a été défini à: %time%.");
+			set("Command.Player.Time.Reset.Your", "Votre temps est ré-initialisé à : %time%.");
+			set("Command.Player.Time.Reset.Other", "Le temps de %player% est ré-initialisé à: %time%.");
 			
 			set("Command.Plugin.DoesntExists", "&cCe plugin n'existe pas.");
-			set("Command.Plugin.Available", "plugins disponibles: %pluginlist%");
+			set("Command.Plugin.Available", "Plugins disponibles: %pluginlist%");
 			
-			set("Command.Plugin.Config.NoConfig", "&cCe plugin n'a pas de config!");
-			set("Command.Plugin.Config.NoEntry", "&cCette entr�e n'existe pas!");
-			set("Command.Plugin.Config.Get", "l'entr�e %entry% a la valeur: &8%value%&f.");
-			set("Command.Plugin.Config.Set", "&al'entr�e %entry% a �t� mis de: &8%value_old% &f�: &8%value_new%&f.");
+			set("Command.Plugin.Config.NoConfig", "&cCe plugin n'a pas de configuration!");
+			set("Command.Plugin.Config.NoEntry", "&cCette entrée n'existe pas");
+			set("Command.Plugin.Config.Get", "l'entrée %entry% a la valeur suivante: &8%value%&f.");
+			set("Command.Plugin.Config.Set", "&al'entrée %entry% a été mis de: &8%value_old% &fà: &8%value_new%&f.");
 			set("Command.Plugin.Config.List", "Le config.yml de of %plugin% contient: %items%");
 			
 			set("Command.Plugin.Disable.Already", "&cCe plugin est d�j� d�sactiv�.");
