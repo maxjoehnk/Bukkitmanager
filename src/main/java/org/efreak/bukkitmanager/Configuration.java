@@ -111,10 +111,7 @@ public class Configuration{
 		update("Autosave.Warntimes", Arrays.asList(60));
 		update("Autosave.Notification", true);
 		update("Autosave.NoOffline", true);
-		if (update("Autosave.Taskmode", "async") && 
-				!getString("Autosave.Taskmode").equalsIgnoreCase("sync") && 
-				!getString("Autosave.Taskmode").equalsIgnoreCase("async")) 
-			set("Autosave.Taskmode", "async");
+		if (update("Autosave.Taskmode", "async") && !getString("Autosave.Taskmode").equalsIgnoreCase("sync") && !getString("Autosave.Taskmode").equalsIgnoreCase("async")) set("Autosave.Taskmode", "async");
 		update("Autobackup.Enabled", true);
 		update("Autobackup.RenameJar", true);
 		update("Autobackup.Interval", 3600);
@@ -126,10 +123,7 @@ public class Configuration{
 		update("Autobackup.TempBackupDir", "backups/temp");
 		update("Autobackup.PostExecution.Enabled", false);
 		update("Autobackup.PostExecution.File", "backup.sh");
-		if (update("Autobackup.Taskmode", "async") && 
-				!getString("Autobackup.Taskmode").equalsIgnoreCase("sync") && 
-				!getString("Autobackup.Taskmode").equalsIgnoreCase("async")) 
-			set("Autobackup.Taskmode", "async");
+		if (update("Autobackup.Taskmode", "async") && !getString("Autobackup.Taskmode").equalsIgnoreCase("sync") && !getString("Autobackup.Taskmode").equalsIgnoreCase("async")) set("Autobackup.Taskmode", "async");
 		updateWorlds();
 		update("Autobackup.Backup.Plugins", true);
 		update("Autobackup.Backup.craftbukkit", true);
@@ -145,6 +139,7 @@ public class Configuration{
 		/*update("Scoreboards.Enabled", true);
 		update("Scoreboards.Updates", true);
 		update("Scoreboards.OnlinePlayer", false);*/
+		update("Worlds.Autoload", true);
 		update("Notifications.Enabled", true);
 		update("Notifications.PluginUpdater.Updates", true);
 		update("Notifications.PluginUpdater.Updated", true);
@@ -165,18 +160,6 @@ public class Configuration{
 		update("Chatfilter.Enabled", true);
 		update("Chatfilter.File", "chatfilter.txt");
 		update("Chatfilter.Replacement", "*");
-		/*if (devMode) {
-			update("Swing.Enabled", false);
-		  	update("Swing.Start", "on-load");
-			update("FTPServer.Enabled", false);
-			update("FTPServer.SSL", false);
-			update("FTPServer.Port", 21);
-			update("FTPServer.Anonymous.Enabled", false);
-			update("FTPServer.Anonymous.Password", "");
-			update("FTPServer.Admin.Username", "admin");
-			update("FTPServer.Admin.Password", "123456");
-			update("FTPServer.Admin.HomeDirectory", "ftproot");
-		}*/
 		config.save(configFile);
 	}
 	
@@ -189,7 +172,7 @@ public class Configuration{
 	
 	/**
 	 * 
-	 * Return whether Bukkimanager is in Debug Mode or not
+	 * Return whether Bukkitmanager is in Debug Mode or not
 	 * 
 	 * @return The Debug Mode
 	 * 
