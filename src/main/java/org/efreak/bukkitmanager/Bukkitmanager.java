@@ -101,7 +101,7 @@ public class Bukkitmanager extends JavaPlugin {
 			db = Database.getDatabaseBySystem("SQLite");
 		}
 		db.init();
-		WorldManager.loadWorlds();
+		if (config.getBoolean("Worlds.Autoload")) WorldManager.loadWorlds();
 		getServer().getPluginCommand("bm").setExecutor(new CommandManager());
 		getServer().getPluginManager().registerEvents(new BukkitListener(), this);
 		new CustomMessageManager().init();
