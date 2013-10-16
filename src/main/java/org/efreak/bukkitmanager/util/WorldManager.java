@@ -64,7 +64,9 @@ public class WorldManager {
 	
 	public static void loadWorlds() {
 		if (config.contains("Worlds")) {
-			for (String worldName : config.getConfig().getConfigurationSection("Worlds").getKeys(false)) loadWorld(worldName);
+			for (String worldName : config.getConfig().getConfigurationSection("Worlds").getKeys(false)) {
+				if (worldName != "Autoload") loadWorld(worldName);
+			}
 		}
 	}
 	
